@@ -15,8 +15,42 @@
     <!-- Header -->
 
     <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        header
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+
 
     </header>
 
@@ -27,13 +61,57 @@
 
 		{% block content %}{% endblock %}
 		
-	</div>
+	</div><hr><br><br>
 
 	<!-- Footer -->
-    <footer class="footer">
-
-        footer
-
+    <footer class="container-fluid">
+        <div class="row">
+            <div class="col-6 col-md-6" style="margin-left: 40px; text-align: center;">
+                <h3 style="color: black;"><u>Informations :</u></h3>
+                <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition<br> 
+                   ise en page avant impression. Le Lorem Ipsum est le faux texte standard<br>
+                   ie depuis les années 1500, quand un imprimeur anonyme assembla ensemble<br>
+                      rceaux de texte pour réaliser un livre spécimen de polices de texte.<br>
+                    ise en page avant impression. Le Lorem Ipsum est le faux texte standard<br>
+                   ie depuis les années 1500, quand un imprimeur anonyme assembla ensemble<br>
+                      rceaux de texte pour réaliser un livre spécimen de polices de texte.<br>
+                       a pas fait que survivre cinq siècles, mais s'est aussi adapté à la </p>
+            </div> 
+            <div class="col-5 col-md-5">
+                <a href="www.facebook.com">
+                    <i class="fab fa-facebook-square fa-3x" alt="logo facebook" style="margin-right: 20px; margin-left: 300px;"></i>
+                </a>
+                <a href="www.google.com/discover"></a>
+                    <i class="fab fa-google-plus-square fa-3x" alt="logo google+" style="margin-right: 20px; margin-left: 20px;"></i>
+                <a href="www.youtube.com">
+                    <i class="fab fa-youtube fa-3x" alt="logo youtube" style="color: red; margin-left: 20px;"></i>
+                </a><br><br>
+                <p>
+                    <ul style="margin-left: 250px;">                          
+                            <a href="#" style="color: black;">
+                                <li>  
+                                    Informations
+                                </li>
+                            </a>
+                            <a href="#" style="color: black;">
+                                <li>
+                                    Conditions d'utilisation
+                                </li>
+                            </a>
+                            <a href="#" style="color: black;">
+                                <li>
+                                    Contact
+                                </li>
+                            </a>
+                            <a href="#" style="color: black;">
+                                <li>
+                                    Adresse
+                                </li>
+                            </a>
+                    </ul>
+                </p>                
+            </div>           
+        </div>
     </footer>   
     
     <!-- JQuery 3.3.1 -->
