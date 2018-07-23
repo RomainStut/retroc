@@ -26,6 +26,7 @@ class SecurityController extends Controller
             'last_username' => $lastUsername,
             'error' => $error
         ]);
+
     }
 
     /**
@@ -46,12 +47,14 @@ class SecurityController extends Controller
 
             $mdpEncoded = $encoder->encodePassword($user, $user->getPlainPassword());
 
+            dump($mdpEncoded);
+            dump($user->getPlainPassword());
             $user->setPassword($mdpEncoded);
 
             $user->eraseCredentials();
             dump($user);
 
-            $user->setRoles(array('ROLE_VENDEUR'));
+            $user->setRoles(array('ROLE_USER'));
 
             $entityManager = $this->getDoctrine()->getManager();
 
@@ -64,7 +67,7 @@ class SecurityController extends Controller
                 'Vous êtes bien inscrit, vous pouvez vous connecter !'
             );
 
-            return $this->redirectToRoute('login');
+           // return $this->redirectToRoute('login');
 
 
         }
