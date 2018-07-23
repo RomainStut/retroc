@@ -26,19 +26,19 @@ class UserType extends AbstractType
         }
 
         $builder
-            ->add('username', TextType::class)
-            ->add('email', EmailType::class, array('label' => 'Ecrivez votre email'))
-            ->add('tel', TelType::class, array('label' => 'Ecrivez votre téléphone'))
+            ->add('username', TextType::class, array('label' => 'Pseudonyme'))
+            ->add('email', EmailType::class, array('label' => 'Adresse email'))
+            ->add('tel', TelType::class, array('label' => 'Numéro de téléphone'))
             ->add('datebirth', DateType::class, array(
-                'label'=>'Date de publication',
+                'label'=>'Date de naissance',
                 'years'=>$years
             ))
-            ->add('address', TextType::class)
+            ->add('address', TextType::class, array('label' => 'Adresse'))
+            ->add('codepostal', IntegerType::class, array('label' => 'Code postal'))
+            ->add('city', TextType::class, array('label' => 'Ville'))
             ->add('password',RepeatedType::class, array('type'=> PasswordType::class, 'invalid_message' => 'les mdp ne sont pas identiques',
-                'first_options' => ['label' => 'mot de passe'],
-                'second_options' => ['label' => 'repetez le mot de passe']))
-            ->add('codepostal', IntegerType::class)
-            ->add('city', TextType::class)
+                'first_options' => ['label' => 'Mot de passe'],
+                'second_options' => ['label' => 'Répétez le mot de passe']))
             ->add('s\'inscrire', SubmitType::class, array('label'=>'s\'inscrire', 'attr' => ['class' => 'btn btn-info']));
         ;
     }
