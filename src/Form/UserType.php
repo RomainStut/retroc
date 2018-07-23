@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -19,11 +20,18 @@ class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        for($i=date('Y');$i>=1900; $i--){
+            $years[] = $i;
+        }
+
         $builder
-            ->add('pseudo', TextType::class)
+            ->add('username', TextType::class)
             ->add('email', EmailType::class, array('label' => 'Ecrivez votre email'))
             ->add('tel', TelType::class, array('label' => 'Ecrivez votre téléphone'))
-            ->add('datebirth', DateType::class)
+            ->add('datebirth', DateType::class, array(
+                'label'=>'Date de publication',
+                'years'=>$years
+            ))
             ->add('address', TextType::class)
             ->add('password',RepeatedType::class, array('type'=> PasswordType::class, 'invalid_message' => 'les mdp ne sont pas identiques',
                 'first_options' => ['label' => 'mot de passe'],

@@ -2,14 +2,16 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
  */
-class Users
+class Users implements UserInterface, \Serializable
 {
     /**
      * @ORM\Id()
@@ -21,7 +23,7 @@ class Users
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private $pseudo;
+    private $username;
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -49,9 +51,14 @@ class Users
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @param mixed
      */
-    private $role;
+    private $plainPassword;
+
+    /**
+     * @ORM\Column(name="roles", type="array")
+     */
+    private $roles;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
@@ -113,14 +120,14 @@ class Users
         return $this->id;
     }
 
-    public function getPseudo(): ?string
+    public function getUsername(): ?string
     {
-        return $this->pseudo;
+        return $this->username;
     }
 
-    public function setPseudo(string $pseudo): self
+    public function setUsername(string $username): self
     {
-        $this->pseudo = $pseudo;
+        $this->username = $username;
 
         return $this;
     }
@@ -185,14 +192,14 @@ class Users
         return $this;
     }
 
-    public function getRole(): ?string
+    public function getRoles(): array
     {
-        return $this->role;
+        return $this->roles;
     }
 
-    public function setRole(string $role): self
+    public function setRoles(array $roles): self
     {
-        $this->role = $role;
+        $this->roles = $roles;
 
         return $this;
     }
@@ -205,6 +212,47 @@ class Users
     public function setProfilepicture(?string $profilepicture): self
     {
         $this->profilepicture = $profilepicture;
+
+        return $this;
+    }
+
+    public function eraseCredentials(){
+        $this->plainPassword = null;
+    }
+
+    public function getSalt(){
+
+        return null;
+    }
+
+    public function serialize(){
+        return serialize(array(
+            $this->id,
+            $this->username,
+            $this->password,
+            // see section on salt below
+            // $this->salt,
+        ));
+    }
+
+    public function unserialize($serialized){
+        list (
+            $this->id,
+            $this->username,
+            $this->password,
+            // see section on salt below
+            // $this->salt
+            ) = unserialize($serialized, ['allowed_classes' => false]);
+    }
+
+    public function getPlainPassword(): ?string
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword(?string $plainPassword): self
+    {
+        $this->plainPassword = $plainPassword;
 
         return $this;
     }
