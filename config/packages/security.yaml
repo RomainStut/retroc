@@ -47,5 +47,4 @@ security:
 
     #on peut définir des hierarchies entre les roles
     role_hierarchy:
-        ROLE_VENDEUR: ROLE_USER #si j'ai ROLE_VENDEUR, j'ai aussi ROLE_USER
-        ROLE_ADMIN: [ROLE_VENDEUR, ROLE_MODERATEUR] # ROLE_ADMIN aura aussi ROLE_MODERATEUR et ROLE_VENDEUR, donc aussi ROLE_USER
+        ROLE_ADMIN: [ROLE_USER, ROLE_MODERATEUR] # ROLE_ADMIN aura aussi ROLE_MODERATEUR et ROLE_VENDEUR, donc aussi ROLE_USER
