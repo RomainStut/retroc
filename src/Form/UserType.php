@@ -4,7 +4,7 @@ namespace App\Form;
 
 use App\Entity\Users;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -23,7 +23,7 @@ class UserType extends AbstractType
             ->add('pseudo', TextType::class)
             ->add('email', EmailType::class, array('label' => 'Ecrivez votre email'))
             ->add('tel', TelType::class, array('label' => 'Ecrivez votre téléphone'))
-            ->add('datebirth', DateType::class)
+            ->add('datebirth', BirthdayType::class)
             ->add('address', TextType::class)
             ->add('password',RepeatedType::class, array('type'=> PasswordType::class, 'invalid_message' => 'les mdp ne sont pas identiques',
                 'first_options' => ['label' => 'mot de passe'],
