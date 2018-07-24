@@ -10,6 +10,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\File;
 use App\Service\FileUploader;
 
+
+
 class ProductController extends Controller
 {
     /**
@@ -74,6 +76,19 @@ class ProductController extends Controller
         return $this->render('product/add-product.html.twig', array(
             'form' => $form->createView()
         ));
+    }
+
+    /**
+     * @route("/product/all", name="showAll")
+     */
+    public function showAll(){
+        $repository = $this->getDoctrine()->getRepository(Products::class);
+
+        $products = $repository->myFindAll();
+
+        return $this->render('product/all-products.html.twig',
+            array('products'=> $products)
+            );
     }
 }
 
