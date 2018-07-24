@@ -25,6 +25,19 @@ class ProductController extends Controller
     }
 
     /**
+     * @Route("product/{id}", name="product", requirements = {"id"="[0-9]+"})
+     */
+    public function infoArticle($id){
+        $repository = $this->getDoctrine()->getRepository(Products::class);
+        $product = $repository->myFind($id);
+        return $this->render('product/infoProduct.html.twig', array('product'=>$product[0]));
+        // nous permet de renvoyer un message d'erreur si aucun id ne correspond
+        if(!$product){
+            throw $this->createNotFoundException('No article found for id '.$id);
+        }
+    }
+
+    /**
      * @route("/product/add/", name="addProduct")
      */
 

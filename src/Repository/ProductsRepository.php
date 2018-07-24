@@ -19,6 +19,29 @@ class ProductsRepository extends ServiceEntityRepository
         parent::__construct($registry, Products::class);
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
+
+    public function myFind($id)
+    {
+        $querybuilder = $this->createQuerybuilder('p')
+            ->innerJoin('p.user', 'u')
+            ->addSelect('u')
+            ->innerJoin('p.categorie', 'c')
+            ->addSelect('c')
+            ->innerJoin('p.quality', 'q')
+            ->addSelect('q')
+            ->innerJoin('p.type', 't')
+            ->addSelect('t')
+            ->andWhere('p.id = :id')
+            ->setparameter('id', $id)
+            ->setMaxResults(1)
+            ->getQuery();
+
+        return $querybuilder->execute();
+    }
 //    /**
 //     * @return Products[] Returns an array of Products objects
 //     */
