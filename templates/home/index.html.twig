@@ -4,16 +4,20 @@
 
 {% block content %}
 
-  {% for product in products %}
-    <h1> {{product.name}} </h1>
-    <p>{{product.name}}</p>
-    <p>{{product.user.username}}</p>
-    <p>{{product.description}}</p>
-    <p>{{product.categorie.name}}</p>
-    <img src=" {{asset('uploads/images/' ~ product.image)}} " alt="">
-    <p>{{product.type.name}}</p>
-    <p>{{product.quality.name}}</p>
-  {% endfor %}
+  <div class="row">
+    <div class="col-12 d-flex justify-content-between">
+      {% for product in products %}
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src=" {{asset('uploads/images/' ~ product.image)}} " alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{product.name}}</h5>
+            <p class="card-text"> {{product.price}} €</p>
+            <a href=" {{path('product', {id: product.id})}} " class="btn btn-primary">Détails</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
