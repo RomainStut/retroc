@@ -65,7 +65,7 @@ class ProductController extends Controller
                 
                 $fileName = $uploader->upload($file);
                 
-            $product->setImage($fileName);
+                $product->setImage($fileName);
             }
 
             
@@ -83,7 +83,7 @@ class ProductController extends Controller
                 'Votre product est soummis à validation'
             );
 
-            // return $this->redirectToRoute('login');
+            return $this->redirectToRoute('addProduct');
         }
 
         return $this->render('product/add-product.html.twig', array(
