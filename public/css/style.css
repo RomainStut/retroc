@@ -59,6 +59,9 @@ body{
 .networks .fa-youtube:hover {
     color: #FF0000;
 }
+p{
+    font-family: Rasa !important;
+}
 
 
 
@@ -70,16 +73,8 @@ body{
     background-position: center;
 }
 
-p{
-    font-family: 'Space Mono', monospace;    
-} 
+ 
 
-<<<<<<< HEAD
-=======
-.login:hover{
-    -ms-scroll-chaining: 50px;
-}
->>>>>>> c1eedf573653d7352c352cf5bf819a294aea21da
 
 
 
