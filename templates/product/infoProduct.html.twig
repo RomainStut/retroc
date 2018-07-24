@@ -13,6 +13,8 @@
     {% endif %}
     Publié le: {{ product.datepost|date('d-m-Y') }}<br>
     Publié par: {{ product.user.username }}<br>
+    Etat: {{ product.quality.name }}<br>
+                <span><b>Annonce</b></span><br>
     <p class="btn btn-secondary">{{ product.description }}</p>
             </div>
             <div class="col-6">
