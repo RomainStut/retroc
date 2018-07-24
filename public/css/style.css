@@ -1,10 +1,12 @@
+
+/**************************HEADER*****************************************************/
+
 body{
-
-    font-family: Orbitron !important;     
-    font-size: 20px;
+    
+    font-family: Hanalei Fill !important; 
+    font-size: 1.5em;   
+    
 }
-
-
 #head{
 
     background-image: url("../images/fondheader.jpg") ;
@@ -12,6 +14,17 @@ body{
     background-position: center;
 
 }
+#navbarColor01{
+    color: #ffffff;
+    background-color: #112735;
+    border-color: #375a7f;
+}
+#navtx{
+
+    color: #ced9e5;
+}
+
+
 
 .infos{
     text-align: center; 
@@ -46,23 +59,22 @@ body{
 .networks .fa-youtube:hover {
     color: #FF0000;
 }
-
-
-#navbarColor01{
-    color: #ffffff;
-    background-color: #112735;
-    border-color: #375a7f;
-}
-#navtx{
-
-    color: #ced9e5;
-}
-
 p{
-    font-family: 'Space Mono', monospace;    
+    font-family: Rasa !important;
 }
 
-.login:hover{
-    -ms-scroll-chaining: 50px;;
+
+
+/**************************footer******************************************************/
+#head {
+
+    background-image: url("../images/fondheader.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
 }
+
+ 
+
+
+
 
