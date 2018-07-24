@@ -2,10 +2,8 @@
 
 {% block title %}Contact{% endblock %}
 
-    {% block css %}
-         <!-- Boostrap.css -->
-         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-         <!-- FontAwesome v5.x -->
+    {% block css %}        
+         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">         
          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     {% endblock %}
         {% block stylesheets %}{% endblock %}
@@ -16,16 +14,16 @@
         <form class="container">           
                 <div class="form-group">
                     <h3><u>Nom</u> :</h3>
-                    <input type="name" class="form-control" id="exampleInputEmail1" aria-describedby="nameHelp" placeholder="entrez votre nom" style="border:2px solid #999999; border-style: inset">
+                    <input type="text" class="form-control" aria-describedby="nameHelp" placeholder="entrez votre nom" style="border:2px solid #999999; border-style: inset">
                     
                 </div>
                 <div class="form-group">
                     <h3><u>Prenom</u> :</h3>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="entrez votre prenom" style="border:2px solid #999999; border-style: inset">
+                    <input type="text" class="form-control" placeholder="entrez votre prenom" style="border:2px solid #999999; border-style: inset">
                 </div>
                 <div class="form-group">
                         <h3><u>Email</u> :</h3>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="entrez votre email" style="border:2px solid #999999; border-style: inset">
+                        <input type="password" class="form-control" placeholder="entrez votre email" style="border:2px solid #999999; border-style: inset">
                         <small id="emailHelp" class="form-text text-muted">Entrez un email valide</small>
                     </div> 
                     <div class="form-group">
