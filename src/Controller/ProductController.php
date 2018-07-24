@@ -7,6 +7,8 @@ use App\Form\ProductType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\File;
+use App\Service\FileUploader;
 
 class ProductController extends Controller
 {
@@ -24,34 +26,52 @@ class ProductController extends Controller
      * @route("/product/add/", name="addProduct")
      */
 
-    public function addArticle(Request $request)
+    public function addProduct(Request $request, FileUploader $uploader)
     {
-        $article = new Products();
-        $form = $this->createForm(ProductType::class, $article);
+        $product = new Products();
+
+        $form = $this->createForm(ProductType::class, $product);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $article = $form->getData();
+            $product = $form->getData();
 
-            $article->setIsValidate(false);
+            $product->setIsValidate(false);
+
+            $product->setUser($this->getUser());
+
+            $product->setDatepost(new \DateTime(date('Y-m-d H:i:s')));
+
+            if($product->getImage()){
+
+                $file = $product->getImage();
+                
+                $fileName = $uploader->upload($file);
+                
+            $product->setImage($fileName);
+            }
+
+            
+
+            dump($product);
 
             $entityManager = $this->getDoctrine()->getManager();
 
-            $entityManager->persist($article);
+            $entityManager->persist($product);
 
             $entityManager->flush();
 
             $this->addFlash(
                 'success',
-                'Votre article est soummis à validation de Romain'
+                'Votre product est soummis à validation'
             );
 
-            return $this->redirectToRoute('login');
+            // return $this->redirectToRoute('login');
         }
 
-        return $this->render('article/addArticle.html.twig', array(
+        return $this->render('product/add-product.html.twig', array(
             'form' => $form->createView()
         ));
     }
