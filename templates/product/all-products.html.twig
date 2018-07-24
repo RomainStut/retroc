@@ -15,7 +15,8 @@
                         {% if product.image%}
                             <img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}" alt="Card image cap">
                         {% endif %}
-                        <h5 class="card-title">{{ product.name }}</h5>
+                        <h5 class="card-title">{{ product.name }}</h5><hr>
+                        <p class="card-text">{{ product.price }} €</p>
 
 
                         <a href="{{ path('product', {id: product.id })}}">Voir 👁️</a>
