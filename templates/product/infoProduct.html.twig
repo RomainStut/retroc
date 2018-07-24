@@ -33,6 +33,11 @@
                         <h5>Description du produit :</h5>
                         <p> {{product.description}} </p>
                     </div>
+
+            <div class="col-6">
+                <h4> Vendeur: {{ product.user.username }}</h4>
+                <div id="contactUser">
+                    <button class="btn btn-info" id="contact">Contacter le vendeur</button>
                 </div>
             </div>
         </div>
@@ -55,12 +60,29 @@
 	{% block js %}
         <script>
             $(function(){
-                $('#send').on('click', function(e){
+                $('#contact').on('click', function(e){
                     event.preventDefault();
                     $('#contactUser').empty();
-                    $('#contactUser').append('<form method="post">'+'<input class="form-control" type="textarea">'+'<button class="btn btn-primary mt-4">Envoyer message</button>'+'</form>')
+                    $('#contactUser').append('<form method="post">'+'<input id="send" class="form-control" type="textarea">'+'<button class="btn btn-primary mt-4">Envoyer message</button>'+'</form>')
 
                 })
+
+                $('body').on('click', '#send', function(e){
+                    e.preventDefault();
+
+                    $.ajax({
+                        type: 'post',
+                        url: "{{ path('user-message') }}",
+                        data: ,
+                        timeout: 3000,
+                        dataType: 'json',
+                        success: function (data) {
+                            $('#contactUser').empty();
+                            $('#contactUser').append('<span>Message envoyé!</span')
+                        }
+                    })
+                })
+
             })
         </script>
     {% endblock %}
