@@ -8,14 +8,14 @@
     <div class="container">
         <div class="row">
             <div class="col-6">
-    {% if product.image %}
-        <img src="{{ asset('uploads/images/' ~ product.image) }}" alt=""><br>{#~ sert à effectuer une concaténation#}
-    {% endif %}
-    Publié le: {{ product.datepost|date('d-m-Y') }}<br>
-    Publié par: {{ product.user.username }}<br>
-    Etat: {{ product.quality.name }}<br>
+                {% if product.image %}
+                    <img src="{{ asset('uploads/images/' ~ product.image) }}" alt="">
+                {% endif %}
+                Publié le: {{ product.datepost|date('d-m-Y') }}<br>
+                Publié par: {{ product.user.username }}<br>
+                Etat: {{ product.quality.name }}<br>
                 <span><b>Annonce</b></span><br>
-    <p class="btn btn-secondary">{{ product.description }}</p>
+                <p>{{ product.description }}</p>
             </div>
             <div class="col-6">
                 <h4> Vendeur: {{ product.user.username }}</h4>
