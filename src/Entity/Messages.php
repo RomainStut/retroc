@@ -37,6 +37,12 @@ class Messages
      */
     private $user;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Products", inversedBy="messages")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $product;
+
     public function getId()
     {
         return $this->id;
@@ -86,6 +92,18 @@ class Messages
     public function setUser(?Users $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getProduct(): ?Products
+    {
+        return $this->product;
+    }
+
+    public function setProduct(?Products $product): self
+    {
+        $this->product = $product;
 
         return $this;
     }
