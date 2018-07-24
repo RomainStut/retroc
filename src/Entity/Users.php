@@ -66,17 +66,9 @@ class Users implements UserInterface, \Serializable
     private $profilepicture;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Messages", mappedBy="user")
-     */
-    private $messages;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Tokenresetpassword", mappedBy="user", orphanRemoval=true)
      */
     private $tokenresetpasswords;
-
-
-
 
     /**
      * @ORM\Column(type="integer")
@@ -93,6 +85,16 @@ class Users implements UserInterface, \Serializable
      */
     private $products;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Messages", mappedBy="expediteur", orphanRemoval=true)
+     */
+    private $messages;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Messages", mappedBy="destinataire", orphanRemoval=true)
+     */
+    private $messagesRecus;
+
     public function __construct()
     {
         $this->messages = new ArrayCollection();
@@ -102,6 +104,7 @@ class Users implements UserInterface, \Serializable
         $this->nextgens = new ArrayCollection();
         $this->goodies = new ArrayCollection();
         $this->products = new ArrayCollection();
+        $this->messagesRecus = new ArrayCollection();
     }
 
     public function getId()
@@ -246,36 +249,7 @@ class Users implements UserInterface, \Serializable
         return $this;
     }
 
-    /**
-     * @return Collection|Messages[]
-     */
-    public function getMessages(): Collection
-    {
-        return $this->messages;
-    }
-
-    public function addMessage(Messages $message): self
-    {
-        if (!$this->messages->contains($message)) {
-            $this->messages[] = $message;
-            $message->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeMessage(Messages $message): self
-    {
-        if ($this->messages->contains($message)) {
-            $this->messages->removeElement($message);
-            // set the owning side to null (unless already changed)
-            if ($message->getUser() === $this) {
-                $message->setUser(null);
-            }
-        }
-
-        return $this;
-    }
+    
 
     /**
      * @return Collection|Tokenresetpassword[]
@@ -358,6 +332,68 @@ class Users implements UserInterface, \Serializable
             // set the owning side to null (unless already changed)
             if ($product->getUser() === $this) {
                 $product->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Messages[]
+     */
+    public function getMessages(): Collection
+    {
+        return $this->messages;
+    }
+
+    public function addMessage(Messages $message): self
+    {
+        if (!$this->messages->contains($message)) {
+            $this->messages[] = $message;
+            $message->setExpediteur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMessage(Messages $message): self
+    {
+        if ($this->messages->contains($message)) {
+            $this->messages->removeElement($message);
+            // set the owning side to null (unless already changed)
+            if ($message->getExpediteur() === $this) {
+                $message->setExpediteur(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Messages[]
+     */
+    public function getMessagesRecus(): Collection
+    {
+        return $this->messagesRecus;
+    }
+
+    public function addMessagesRecus(Messages $messagesRecus): self
+    {
+        if (!$this->messagesRecus->contains($messagesRecus)) {
+            $this->messagesRecus[] = $messagesRecus;
+            $messagesRecus->setDestinataire($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMessagesRecus(Messages $messagesRecus): self
+    {
+        if ($this->messagesRecus->contains($messagesRecus)) {
+            $this->messagesRecus->removeElement($messagesRecus);
+            // set the owning side to null (unless already changed)
+            if ($messagesRecus->getDestinataire() === $this) {
+                $messagesRecus->setDestinataire(null);
             }
         }
 

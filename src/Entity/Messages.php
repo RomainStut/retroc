@@ -32,16 +32,22 @@ class Messages
     private $datepost;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="messages")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $user;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Products", inversedBy="messages")
      * @ORM\JoinColumn(nullable=false)
      */
     private $product;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="messages")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $expediteur;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="messagesRecus")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $destinataire;
 
     public function getId()
     {
@@ -84,17 +90,6 @@ class Messages
         return $this;
     }
 
-    public function getUser(): ?Users
-    {
-        return $this->user;
-    }
-
-    public function setUser(?Users $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
 
     public function getProduct(): ?Products
     {
@@ -104,6 +99,30 @@ class Messages
     public function setProduct(?Products $product): self
     {
         $this->product = $product;
+
+        return $this;
+    }
+
+    public function getExpediteur(): ?Users
+    {
+        return $this->expediteur;
+    }
+
+    public function setExpediteur(?Users $expediteur): self
+    {
+        $this->expediteur = $expediteur;
+
+        return $this;
+    }
+
+    public function getDestinataire(): ?Users
+    {
+        return $this->destinataire;
+    }
+
+    public function setDestinataire(?Users $destinataire): self
+    {
+        $this->destinataire = $destinataire;
 
         return $this;
     }

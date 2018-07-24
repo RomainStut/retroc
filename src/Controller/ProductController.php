@@ -111,9 +111,8 @@ class ProductController extends Controller
      */
     public function sendUserMessage(Request $request){
         $msg = new Message();
-        $form = $this->createForm(MessageType::class, $msg);
-        $form->handleRequest($request);
 
+        $form->handleRequest($request);
 
         }
 }
