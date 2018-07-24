@@ -47,4 +47,40 @@ class ProductsRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function myFindAll(){
+
+        $querybuilder = $this->createQuerybuilder('p')
+                        ->innerJoin('p.user', 'u')
+                        ->addSelect('u')
+                        ->innerJoin('p.categorie', 'c')
+                        ->addSelect('c')
+                        ->innerJoin('p.quality', 'q')
+                        ->addSelect('q')
+                        ->innerJoin('p.type', 't')
+                        ->addSelect('t')
+                        ->getQuery();
+
+        return $querybuilder->execute();
+
+    }
+
+    public function myFindLast4(){
+
+        $querybuilder = $this->createQuerybuilder('p')
+                        ->innerJoin('p.user', 'u')
+                        ->addSelect('u')
+                        ->innerJoin('p.categorie', 'c')
+                        ->addSelect('c')
+                        ->innerJoin('p.quality', 'q')
+                        ->addSelect('q')
+                        ->innerJoin('p.type', 't')
+                        ->addSelect('t')
+                        ->orderBy('p.datepost', 'DESC')
+                        ->setMaxResults(4)
+                        ->getQuery();
+
+        return $querybuilder->execute();
+
+    }
 }

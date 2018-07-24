@@ -4,8 +4,15 @@
 
 {% block content %}
 
-    <div class="alert alert-success" role="alert">
-      BoobsTraped opérationnel
-    </div>
+  {% for product in products %}
+    <h1> {{product.name}} </h1>
+    <p>{{product.name}}</p>
+    <p>{{product.user.username}}</p>
+    <p>{{product.description}}</p>
+    <p>{{product.categorie.name}}</p>
+    <img src=" {{asset('uploads/images/' ~ product.image)}} " alt="">
+    <p>{{product.type.name}}</p>
+    <p>{{product.quality.name}}</p>
+  {% endfor %}
 
 {% endblock %}
