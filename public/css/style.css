@@ -1,3 +1,10 @@
+body{
+
+    font-family: Orbitron !important;     
+    font-size: 20px;
+}
+
+
 #head{
 
     background-image: url("../images/fondheader.jpg") ;
@@ -5,9 +12,6 @@
     background-position: center;
 
 }
-
-
-
 
 .infos{
     text-align: center; 
@@ -54,4 +58,11 @@
     color: #ced9e5;
 }
 
+p{
+    font-family: 'Space Mono', monospace;    
+}
+
+.login:hover{
+    -ms-scroll-chaining: 50px;;
+}
 
