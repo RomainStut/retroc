@@ -67,7 +67,7 @@ class SecurityController extends Controller
                 'Vous êtes bien inscrit, vous pouvez vous connecter !'
             );
 
-           // return $this->redirectToRoute('login');
+            return $this->redirectToRoute('login');
 
 
         }
