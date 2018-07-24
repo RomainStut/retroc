@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\NextgenRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ProductsRepository")
  */
-class Nextgen
+class Products
 {
     /**
      * @ORM\Id()
@@ -17,7 +17,7 @@ class Nextgen
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=255)
      */
     private $name;
 
@@ -27,7 +27,7 @@ class Nextgen
     private $price;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=255)
      */
     private $quality;
 
@@ -42,26 +42,32 @@ class Nextgen
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Categories", inversedBy="nextgens")
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $image;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isvalidate;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Categories", inversedBy="products")
      * @ORM\JoinColumn(nullable=false)
      */
     private $categorie;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="nextgens")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="products")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Type", inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $image;
-
-    /**
-     * @ORM\Column(type="boolean", options={"default":false})
-     */
-    private $isValidate;
+    private $type;
 
     public function getId()
     {
@@ -128,6 +134,30 @@ class Nextgen
         return $this;
     }
 
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function getIsvalidate(): ?bool
+    {
+        return $this->isvalidate;
+    }
+
+    public function setIsvalidate(bool $isvalidate): self
+    {
+        $this->isvalidate = $isvalidate;
+
+        return $this;
+    }
+
     public function getCategorie(): ?Categories
     {
         return $this->categorie;
@@ -152,26 +182,14 @@ class Nextgen
         return $this;
     }
 
-    public function getImage(): ?string
+    public function getType(): ?Type
     {
-        return $this->image;
+        return $this->type;
     }
 
-    public function setImage(string $image): self
+    public function setType(?Type $type): self
     {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    public function getIsValidate(): ?bool
-    {
-        return $this->isValidate;
-    }
-
-    public function setIsValidate(bool $isValidate): self
-    {
-        $this->isValidate = $isValidate;
+        $this->type = $type;
 
         return $this;
     }
