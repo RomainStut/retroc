@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Message;
 use App\Entity\Products;
+use App\Form\MessageType;
 use App\Form\ProductType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -103,5 +105,16 @@ class ProductController extends Controller
             array('products'=> $products)
             );
     }
+
+    /**
+     * @route("/product/message", name="user-message")
+     */
+    public function sendUserMessage(Request $request){
+        $msg = new Message();
+        $form = $this->createForm(MessageType::class, $msg);
+        $form->handleRequest($request);
+
+
+        }
 }
 
