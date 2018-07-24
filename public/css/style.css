@@ -1,4 +1,12 @@
+
 /**************************HEADER*****************************************************/
+
+body{
+
+    font-family: Orbitron !important;     
+    font-size: 20px;
+}
+
 #head{
 
     background-image: url("../images/fondheader.jpg") ;
@@ -10,7 +18,6 @@
     color: #ffffff;
     background-color: #112735;
     border-color: #375a7f;
-
 }
 #navtx{
 
@@ -56,10 +63,20 @@
 
 
 /**************************footer******************************************************/
-#head{
+#head {
 
-    background-image: url("../images/fondheader.jpg") ;
+    background-image: url("../images/fondheader.jpg");
     background-repeat: no-repeat;
     background-position: center;
-
 }
+
+p{
+    font-family: 'Space Mono', monospace;    
+} 
+
+.login:hover{
+    -ms-scroll-chaining: 50px;
+}
+
+
+
