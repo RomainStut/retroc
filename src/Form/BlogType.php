@@ -19,7 +19,6 @@ class BlogType extends AbstractType
             ->add('content', TextareaType::class)
             ->add('image', FileType::class)
             ->add('Publier mon article', SubmitType::class, array('label'=>'Publier mon article', 'attr' => ['class' => 'btn btn-info']));
-
         ;
     }
 

@@ -6,8 +6,45 @@
 
 }
 
-#navbarColor01{
 
+
+
+.infos{
+    text-align: center; 
+    border:2px solid #999999; 
+    border-style: inset;
+    box-sizing: border-box;
+    width: 600px;
+}
+
+.links ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.networks a {
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+.networks i {
+    color: grey;
+}
+
+.networks .fa-facebook:hover {
+    color: #3B5998;
+}
+
+.networks .fa-google-plus-square:hover {
+    color: #D6492E;
+}
+
+.networks .fa-youtube:hover {
+    color: #FF0000;
+}
+
+
+#navbarColor01{
     color: #ffffff;
     background-color: #112735;
     border-color: #375a7f;

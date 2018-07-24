@@ -4,6 +4,16 @@
 
 {% block content %}
 
+  {% for product in products %}
+    <h1> {{product.name}} </h1>
+    <p>{{product.name}}</p>
+    <p>{{product.user.username}}</p>
+    <p>{{product.description}}</p>
+    <p>{{product.categorie.name}}</p>
+    <img src=" {{asset('uploads/images/' ~ product.image)}} " alt="">
+    <p>{{product.type.name}}</p>
+    <p>{{product.quality.name}}</p>
+  {% endfor %}
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>

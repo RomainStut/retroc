@@ -24,4 +24,11 @@ class InformationsController extends Controller
     {
         return $this->render('informations/contact.html.twig');
     }
+    /**
+     * @Route("/informations/cgv", name="cgv")
+     */
+    public function cgv()
+    {
+        return $this->render('informations/cgv.html.twig');
+    }
 }
