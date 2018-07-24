@@ -24,9 +24,7 @@ class Products
     /**
      * @ORM\Column(type="integer")
      */
-    private $price;
-
-   
+    private $price;   
 
     /**
      * @ORM\Column(type="datetime")
@@ -107,7 +105,7 @@ class Products
         return $this->quality;
     }
 
-    public function setQuality(string $quality): self
+    public function setQuality($quality): self
     {
         $this->quality = $quality;
 
@@ -138,12 +136,12 @@ class Products
         return $this;
     }
 
-    public function getImage(): ?string
+    public function getImage()
     {
         return $this->image;
     }
 
-    public function setImage(?string $image): self
+    public function setImage( $image): self
     {
         $this->image = $image;
 

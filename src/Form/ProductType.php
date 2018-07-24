@@ -28,8 +28,8 @@ class ProductType extends AbstractType
             ->add('price', IntegerType::class, array('label'=>'Prix du produit'))
             ->add('description', TextareaType::class, array('label'=>'Saisissez votre annonce'))
             ->add('image', FileType::class)
-            ->add('quality', EntityType::class, array('class'=>Quality::class, 'choice_label'=>'name'))
             ->add('type', EntityType::class, array('class'=>Type::class, 'choice_label'=>'name'))
+            ->add('quality', EntityType::class, array('class'=>Quality::class, 'choice_label'=>'name'))
             ->add('categorie', EntityType::class, array('class'=>Categories::class, 'choice_label'=>'name'))
             ->add('Publier mon annonce', SubmitType::class, array('label'=>'Publier mon annonce', 'attr' => ['class' => 'btn btn-info']));
 
