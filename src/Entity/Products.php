@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ArcadeRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ProductsRepository")
  */
-class Arcade
+class Products
 {
     /**
      * @ORM\Id()
@@ -17,19 +17,14 @@ class Arcade
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $price;
-
-    /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $quality;
+    private $price;   
 
     /**
      * @ORM\Column(type="datetime")
@@ -42,26 +37,39 @@ class Arcade
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Categories", inversedBy="arcades")
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     */
+    private $image;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isvalidate;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Categories", inversedBy="products")
      * @ORM\JoinColumn(nullable=false)
      */
     private $categorie;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="arcades")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="products")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Type", inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $image;
+    private $type;
 
     /**
-     * @ORM\Column(type="boolean", options={"default":false})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Quality", inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $isValidate;
+    private $quality;
 
     public function getId()
     {
@@ -97,7 +105,7 @@ class Arcade
         return $this->quality;
     }
 
-    public function setQuality(string $quality): self
+    public function setQuality($quality): self
     {
         $this->quality = $quality;
 
@@ -128,6 +136,30 @@ class Arcade
         return $this;
     }
 
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    public function setImage( $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function getIsvalidate(): ?bool
+    {
+        return $this->isvalidate;
+    }
+
+    public function setIsvalidate(bool $isvalidate): self
+    {
+        $this->isvalidate = $isvalidate;
+
+        return $this;
+    }
+
     public function getCategorie(): ?Categories
     {
         return $this->categorie;
@@ -152,26 +184,14 @@ class Arcade
         return $this;
     }
 
-    public function getImage(): ?string
+    public function getType(): ?Type
     {
-        return $this->image;
+        return $this->type;
     }
 
-    public function setImage(string $image): self
+    public function setType(?Type $type): self
     {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    public function getIsValidate(): ?bool
-    {
-        return $this->isValidate;
-    }
-
-    public function setIsValidate(bool $isValidate): self
-    {
-        $this->isValidate = $isValidate;
+        $this->type = $type;
 
         return $this;
     }

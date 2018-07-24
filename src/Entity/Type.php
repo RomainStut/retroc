@@ -7,9 +7,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\CategoriesRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\TypeRepository")
  */
-class Categories
+class Type
 {
     /**
      * @ORM\Id()
@@ -24,7 +24,7 @@ class Categories
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Products", mappedBy="categorie")
+     * @ORM\OneToMany(targetEntity="App\Entity\Products", mappedBy="type")
      */
     private $products;
 
@@ -62,7 +62,7 @@ class Categories
     {
         if (!$this->products->contains($product)) {
             $this->products[] = $product;
-            $product->setCategorie($this);
+            $product->setType($this);
         }
 
         return $this;
@@ -73,8 +73,8 @@ class Categories
         if ($this->products->contains($product)) {
             $this->products->removeElement($product);
             // set the owning side to null (unless already changed)
-            if ($product->getCategorie() === $this) {
-                $product->setCategorie(null);
+            if ($product->getType() === $this) {
+                $product->setType(null);
             }
         }
 
