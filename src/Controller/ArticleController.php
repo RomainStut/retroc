@@ -6,6 +6,7 @@ use App\Entity\Arcade;
 use App\Entity\Goodies;
 use App\Entity\Nextgen;
 use App\Entity\Retro;
+use App\Entity\Article;
 use App\Form\ArticleType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -48,8 +49,8 @@ class ArticleController extends Controller
             }
         }
 
-
         $form = $this->createForm(ArticleType::class, $article);
+
 
         $form->handleRequest($request);
 
