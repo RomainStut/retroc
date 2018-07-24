@@ -100,12 +100,12 @@ class Products
         return $this;
     }
 
-    public function getQuality(): ?string
+    public function getQuality(): ?Quality
     {
         return $this->quality;
     }
 
-    public function setQuality($quality): self
+    public function setQuality(?Quality $quality): self
     {
         $this->quality = $quality;
 

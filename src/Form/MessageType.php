@@ -15,9 +15,6 @@ class MessageType extends AbstractType
             ->add('title')
             ->add('content')
             ->add('Envoyer message', SubmitType::class, array('label'=>'Envoyer message', 'attr' => ['class' => 'btn btn-info']));
-
-
-
         ;
     }
 
