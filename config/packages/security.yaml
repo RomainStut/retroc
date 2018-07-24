@@ -26,8 +26,6 @@ security:
             logout: 
                 path:   /logout 
                 target: / 
-                # path chemin utilisé pour se déconnecter
-                # target chemin de redirection quand c'est fait
             # activate different ways to authenticate
 
             # http_basic: true

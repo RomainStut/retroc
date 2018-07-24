@@ -26,10 +26,7 @@ class Products
      */
     private $price;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $quality;
+   
 
     /**
      * @ORM\Column(type="datetime")
@@ -43,6 +40,7 @@ class Products
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
      */
     private $image;
 
@@ -68,6 +66,12 @@ class Products
      * @ORM\JoinColumn(nullable=false)
      */
     private $type;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Quality", inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $quality;
 
     public function getId()
     {
