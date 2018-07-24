@@ -1,3 +1,6 @@
+
+/**************************HEADER*****************************************************/
+
 body{
     
     font-family: Hanalei Fill !important; 
@@ -11,6 +14,17 @@ body{
     background-position: center;
 
 }
+#navbarColor01{
+    color: #ffffff;
+    background-color: #112735;
+    border-color: #375a7f;
+}
+#navtx{
+
+    color: #ced9e5;
+}
+
+
 
 .infos{
     text-align: center; 
@@ -47,18 +61,25 @@ body{
 }
 
 
-#navbarColor01{
-    color: #ffffff;
-    background-color: #112735;
-    border-color: #375a7f;
-}
-#navtx{
 
-    color: #ced9e5;
+/**************************footer******************************************************/
+#head {
+
+    background-image: url("../images/fondheader.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 p{
     font-family: 'Space Mono', monospace;    
+} 
+
+<<<<<<< HEAD
+=======
+.login:hover{
+    -ms-scroll-chaining: 50px;
 }
+>>>>>>> c1eedf573653d7352c352cf5bf819a294aea21da
+
 
 
