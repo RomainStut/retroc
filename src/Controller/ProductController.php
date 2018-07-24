@@ -10,6 +10,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\File;
 use App\Service\FileUploader;
 
+
+
 class ProductController extends Controller
 {
     /**
@@ -20,6 +22,19 @@ class ProductController extends Controller
         return $this->render('product/index.html.twig', [
             'controller_name' => 'ProductController',
         ]);
+    }
+
+    /**
+     * @Route("product/{id}", name="product", requirements = {"id"="[0-9]+"})
+     */
+    public function infoArticle($id){
+        $repository = $this->getDoctrine()->getRepository(Products::class);
+        $product = $repository->myFind($id);
+        return $this->render('product/infoProduct.html.twig', array('product'=>$product[0]));
+        // nous permet de renvoyer un message d'erreur si aucun id ne correspond
+        if(!$product){
+            throw $this->createNotFoundException('No article found for id '.$id);
+        }
     }
 
     /**
@@ -74,6 +89,19 @@ class ProductController extends Controller
         return $this->render('product/add-product.html.twig', array(
             'form' => $form->createView()
         ));
+    }
+
+    /**
+     * @route("/product/all", name="showAll")
+     */
+    public function showAll(){
+        $repository = $this->getDoctrine()->getRepository(Products::class);
+
+        $products = $repository->myFindAll();
+
+        return $this->render('product/all-products.html.twig',
+            array('products'=> $products)
+            );
     }
 }
 
