@@ -75,25 +75,8 @@ class Users implements UserInterface, \Serializable
      */
     private $tokenresetpasswords;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Retro", mappedBy="user")
-     */
-    private $retros;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Arcade", mappedBy="user")
-     */
-    private $arcades;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Nextgen", mappedBy="user")
-     */
-    private $nextgens;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Goodies", mappedBy="user")
-     */
-    private $goodies;
 
     /**
      * @ORM\Column(type="integer")
@@ -105,6 +88,11 @@ class Users implements UserInterface, \Serializable
      */
     private $city;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Products", mappedBy="user")
+     */
+    private $products;
+
     public function __construct()
     {
         $this->messages = new ArrayCollection();
@@ -113,6 +101,7 @@ class Users implements UserInterface, \Serializable
         $this->arcades = new ArrayCollection();
         $this->nextgens = new ArrayCollection();
         $this->goodies = new ArrayCollection();
+        $this->products = new ArrayCollection();
     }
 
     public function getId()
@@ -319,129 +308,6 @@ class Users implements UserInterface, \Serializable
         return $this;
     }
 
-    /**
-     * @return Collection|Retro[]
-     */
-    public function getRetros(): Collection
-    {
-        return $this->retros;
-    }
-
-    public function addRetro(Retro $retro): self
-    {
-        if (!$this->retros->contains($retro)) {
-            $this->retros[] = $retro;
-            $retro->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeRetro(Retro $retro): self
-    {
-        if ($this->retros->contains($retro)) {
-            $this->retros->removeElement($retro);
-            // set the owning side to null (unless already changed)
-            if ($retro->getUser() === $this) {
-                $retro->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Arcade[]
-     */
-    public function getArcades(): Collection
-    {
-        return $this->arcades;
-    }
-
-    public function addArcade(Arcade $arcade): self
-    {
-        if (!$this->arcades->contains($arcade)) {
-            $this->arcades[] = $arcade;
-            $arcade->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeArcade(Arcade $arcade): self
-    {
-        if ($this->arcades->contains($arcade)) {
-            $this->arcades->removeElement($arcade);
-            // set the owning side to null (unless already changed)
-            if ($arcade->getUser() === $this) {
-                $arcade->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Nextgen[]
-     */
-    public function getNextgens(): Collection
-    {
-        return $this->nextgens;
-    }
-
-    public function addNextgen(Nextgen $nextgen): self
-    {
-        if (!$this->nextgens->contains($nextgen)) {
-            $this->nextgens[] = $nextgen;
-            $nextgen->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeNextgen(Nextgen $nextgen): self
-    {
-        if ($this->nextgens->contains($nextgen)) {
-            $this->nextgens->removeElement($nextgen);
-            // set the owning side to null (unless already changed)
-            if ($nextgen->getUser() === $this) {
-                $nextgen->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Goodies[]
-     */
-    public function getGoodies(): Collection
-    {
-        return $this->goodies;
-    }
-
-    public function addGoody(Goodies $goody): self
-    {
-        if (!$this->goodies->contains($goody)) {
-            $this->goodies[] = $goody;
-            $goody->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeGoody(Goodies $goody): self
-    {
-        if ($this->goodies->contains($goody)) {
-            $this->goodies->removeElement($goody);
-            // set the owning side to null (unless already changed)
-            if ($goody->getUser() === $this) {
-                $goody->setUser(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function getCodepostal(): ?int
     {
@@ -463,6 +329,37 @@ class Users implements UserInterface, \Serializable
     public function setCity(string $city): self
     {
         $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Products[]
+     */
+    public function getProducts(): Collection
+    {
+        return $this->products;
+    }
+
+    public function addProduct(Products $product): self
+    {
+        if (!$this->products->contains($product)) {
+            $this->products[] = $product;
+            $product->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProduct(Products $product): self
+    {
+        if ($this->products->contains($product)) {
+            $this->products->removeElement($product);
+            // set the owning side to null (unless already changed)
+            if ($product->getUser() === $this) {
+                $product->setUser(null);
+            }
+        }
 
         return $this;
     }
