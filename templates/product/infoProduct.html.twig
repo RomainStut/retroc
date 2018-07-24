@@ -17,11 +17,28 @@
                 <span><b>Annonce</b></span><br>
                 <p>{{ product.description }}</p>
             </div>
+
             <div class="col-6">
                 <h4> Vendeur: {{ product.user.username }}</h4>
-                <a href="{{ path('product',{id:product.user.id }) }}" class="btn btn-info">Envoyer un message</a>
+                <div id="contactUser">
+                    <button class="btn btn-info" id="send">Contacter le vendeur</button>
+                </div>
             </div>
         </div>
     </div>
     {# {{ dump(product) }} #}
 {% endblock %}
+
+	{% block js %}
+        <script>
+            $(function(){
+                $('#send').on('click', function(e){
+                    event.preventDefault();
+                    $('#contactUser').empty();
+                    $('#contactUser').append('<form method="post">'+'<input class="form-control" type="textarea">'+'<button class="btn btn-primary mt-4">Envoyer message</button>'+'</form>')
+
+                })
+            })
+        </script>
+    {% endblock %}
+
