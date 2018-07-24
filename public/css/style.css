@@ -1,3 +1,12 @@
+
+/**************************HEADER*****************************************************/
+
+body{
+    
+    font-family: Hanalei Fill !important; 
+    font-size: 1.5em;   
+    
+}
 #head{
 
     background-image: url("../images/fondheader.jpg") ;
@@ -5,7 +14,15 @@
     background-position: center;
 
 }
+#navbarColor01{
+    color: #ffffff;
+    background-color: #112735;
+    border-color: #375a7f;
+}
+#navtx{
 
+    color: #ced9e5;
+}
 
 
 
@@ -42,16 +59,22 @@
 .networks .fa-youtube:hover {
     color: #FF0000;
 }
-
-
-#navbarColor01{
-    color: #ffffff;
-    background-color: #112735;
-    border-color: #375a7f;
+p{
+    font-family: Rasa !important;
 }
-#navtx{
 
-    color: #ced9e5;
+
+
+/**************************footer******************************************************/
+#head {
+
+    background-image: url("../images/fondheader.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
 }
+
+ 
+
+
 
 
