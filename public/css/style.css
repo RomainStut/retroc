@@ -1,3 +1,4 @@
+/**************************HEADER*****************************************************/
 #head{
 
     background-image: url("../images/fondheader.jpg") ;
@@ -5,7 +6,16 @@
     background-position: center;
 
 }
+#navbarColor01{
+    color: #ffffff;
+    background-color: #112735;
+    border-color: #375a7f;
 
+}
+#navtx{
+
+    color: #ced9e5;
+}
 
 
 
@@ -44,14 +54,12 @@
 }
 
 
-#navbarColor01{
-    color: #ffffff;
-    background-color: #112735;
-    border-color: #375a7f;
+
+/**************************footer******************************************************/
+#head{
+
+    background-image: url("../images/fondheader.jpg") ;
+    background-repeat: no-repeat;
+    background-position: center;
+
 }
-#navtx{
-
-    color: #ced9e5;
-}
-
-
