@@ -20,9 +20,46 @@ class InformationsController extends Controller
     /**
      * @Route("/informations/contact", name="contact")
      */
-    public function contact()
+    public function contact(\Swift_Mailer $mailer)
     {
-        return $this->render('informations/contact.html.twig');
+       $confirmMessage="";
+       $errorMessage="";
+       if ($_POST) {
+
+           $nom= $_POST['nom'];
+           $prenom= $_POST['prenom'];
+           $sujet= $_POST['sujet'];
+           $email= $_POST['email'];
+           $message1= $_POST['message'];
+
+           $message = (new \Swift_Message('Contact Octocote'))
+       ->setFrom($_POST['email'])
+       ->setTo('octocote@gmail.com')
+       ->setBody(
+           $this->renderView(
+               // templates/emails/registration.html.twig
+               'informations/mail.html.twig',
+               ['nom'=>$nom,'prenom'=>$prenom, 'sujet'=>$sujet, 'email'=>$email, 'message'=>$message1]
+           ),
+           'text/html'
+       
+       );
+       
+   
+   if ($mailer->send($message)) {
+       $confirmMessage="L'email a bien été envoyé !";
+   }else{
+       $errorMessage="Erreur lors de l'envoi de l'email veuillez verifier vos champs.";
+   }
+   
+       }
+
+       
+
+     
+       return $this->render('informations/contact.html.twig', [
+           'success'=>$confirmMessage, 'error'=>$errorMessage
+       ]);
     }
     /**
      * @Route("/informations/cgv", name="cgv")
@@ -35,43 +72,9 @@ class InformationsController extends Controller
     
     public function contactmail(\Swift_Mailer $mailer)
    {
-       $confirmMessage="";
-       $errorMessage="";
-       if ($_POST) {
-
-           $nom= $_POST['nom'];
-           $sujet= $_POST['sujet'];
-           $email= $_POST['email'];
-           $message= $_POST['message'];
-
-           $message = (new \Swift_Message('Contact Octocote'))
-       ->setFrom($_POST['email'])
-       ->setTo('octocote@gmail.com')
-       ->setBody(
-           $this->renderView(
-               // templates/emails/registration.html.twig
-               'contact/mail.html.twig',
-               ['nom'=>$nom, 'sujet'=>$sujet, 'email'=>$email, 'message'=>$message]
-           ),
-           'text/html'
        
-       )
-       
-   ;
-   if ($mailer->send($message)) {
-       $confirmMessage="L'email a bien été envoyé !";
-   }else{
-       $errorMessage="Erreur lors de l'envoi de l'email veuillez verifier vos champs.";
-   }
    
-       }
-
-       
-
-     
-       return $this->render('contact/index.html.twig', [
-           'success'=>$confirmMessage, 'error'=>$errorMessage
-       ]);
+    
    }
 
 }
