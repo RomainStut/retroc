@@ -73,8 +73,13 @@ p{
     background-position: center;
 }
 
- 
+/**************************Formulaire******************************************************/
 
+ 
+.addproduct{
+    text-align: center;
+    text-decoration: underline;
+}
 
 
 
