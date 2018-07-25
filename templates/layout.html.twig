@@ -8,12 +8,16 @@
     <!-- Boostrap.css -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <!-- FontAwesome v5.x -->
+<<<<<<< HEAD
     <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet">
 
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 
+=======
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}"> 
+>>>>>>> f37cbe8bbfbf89308e33f964cc159248890ee46d
     {% block css %}
     {% endblock %}
 </head>
@@ -34,13 +38,17 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <button type="button" id="navbarColor01" class="btn btn-dark text-warning mt-4 ">Connexion</button>
-                    <button type="button" id="navbarColor01" class="btn btn-dark text-warning mt-4 ">Inscription</button>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <a id="navbarColor01" class="btn btn-dark text-warning mt-4 ml-2" href="{{ path('logout') }}">Déconnexion</a>
+                    {% else %}
+                    <a id="navbarColor01" class="btn btn-dark text-warning mt-4 " href="{{ path('login') }}">Connexion</a>
+                    <a id="navbarColor01" class="btn btn-dark text-warning mt-4 " href="{{ path('register') }}">Inscription</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
         <nav class="navbar navbar-expand-lg" id="navbarColor01" >
-            <a class="navbar-brand text-light" href="">Home</a>
+            <a class="navbar-brand text-light" href="{{ path('home') }}">Accueil</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -50,17 +58,9 @@
                     <li class="nav-item active">
                         <a class="nav-link text-light" href="#"> <span class="sr-only">(current)</span></a>
                     </li>
-
                     <li class="nav-item">
-
-
                         <a class="nav-link text-light"  href="{{ path('showAll') }}">Annonces</a>
-
-
-
                     </li>
-
-
                     <li class="nav-item">
                         <a class="nav-link" href="#"></a>
                     </li>
@@ -69,6 +69,8 @@
                             Retro
                         </a>
                         <div class="dropdown-menu "  aria-labelledby="navbarDropdown" id="navbarColor01">
+                            <a class="dropdown-item text-light"  href="{{ path('product-type', {type: 1}) }}">Tout</a>
+                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item text-light"  href="#">Jeux</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item text-light"   href="#">Consoles</a>
@@ -81,6 +83,8 @@
                             Next-gen
                         </a>
                         <div class="dropdown-menu" id="navbarColor01" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item text-light"  href="{{ path('product-type', {type: 2}) }}">Tout</a>
+                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item text-light" href="#">Jeux</a>
                             <div class="dropdown-divider text-light"></div>
                             <a class="dropdown-item text-light" href="#">Consoles</a>
@@ -92,16 +96,16 @@
                             Arcade
                         </a>
                         <div class="dropdown-menu" id="navbarColor01" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item text-light"  href="{{ path('product-type', {type: 3}) }}">Tout</a>
+                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item text-light" href="#">Jeux</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item text-light" href="#">Consoles</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item text-light" href="#">Accessoires</a>
                         </div>
-                    </li>
+                    </li>                 
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">Goodies</a>
-                    </li>                    <li class="nav-item">
                         <a class="nav-link text-light" href="#">Contacts</a>
                     </li>
 

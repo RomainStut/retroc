@@ -97,13 +97,15 @@ class ProductController extends Controller
      * @route("/product/all", name="showAll")
      */
     public function showAll(){
+
         $repository = $this->getDoctrine()->getRepository(Products::class);
 
         $products = $repository->myFindAll();
 
         return $this->render('product/all-products.html.twig',
             array('products'=> $products)
-            );
+        );
+
     }
 
     /**
@@ -111,10 +113,22 @@ class ProductController extends Controller
      */
     public function sendUserMessage(Request $request){
         $msg = new Message();
-        $form = $this->createForm(MessageType::class, $msg);
+
         $form->handleRequest($request);
 
+    }
 
-        }
+
+    /**
+     * @Route("/product/type/{type}", name="product-type")
+     */
+    public function showAllRetro($type)
+    {
+        $repository = $this->getDoctrine()->getRepository(Products::class);
+
+        $products = $repository->findAllType($type);
+
+        return $this->render('product/all-retro.html.twig', array('products' => $products));
+    }
 }
 

@@ -1,0 +1,18 @@
+body .modal-dialog {
+    max-width: 100%;
+    width: auto !important;
+    display: inline-block;
+}
+
+.modal{
+    text-align: center;
+}
+
+.description{
+    border: 2px solid black;
+    border-radius: 15px;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    word-wrap: break-word;
+    padding: 15px;
+    height: 400px;
+}

@@ -8,8 +8,12 @@ body{
 
     font-family: 'Rajdhani', sans-serif;
     font-size: 120%;
-}
 
+    
+    font-family: Hanalei Fill !important; 
+    font-size: 1.5em;   
+
+}
 #head{
 
     background-image: url("../images/fondheader.jpg") ;
@@ -62,6 +66,9 @@ body{
 .networks .fa-youtube:hover {
     color: #FF0000;
 }
+p{
+    font-family: Rasa !important;
+}
 
 
 
@@ -73,14 +80,15 @@ body{
     background-position: center;
 }
 
+
 p{
     font-family: 'Space Mono', monospace;
 
 }
 
-.login:hover{
-    -ms-scroll-chaining: 50px;
-}
+ 
+
+
 
 
 

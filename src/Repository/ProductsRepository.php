@@ -106,4 +106,24 @@ class ProductsRepository extends ServiceEntityRepository
         return $querybuilder->execute();
 
     }
+
+    public function findAllType($type)
+    {
+        $querybuilder = $this->createQuerybuilder('p')
+                        ->innerJoin('p.user', 'u')
+                        ->addSelect('u')
+                        ->innerJoin('p.categorie', 'c')
+                        ->addSelect('c')
+                        ->innerJoin('p.quality', 'q')
+                        ->addSelect('q')
+                        ->innerJoin('p.type', 't')
+                        ->addSelect('t')
+                        ->andwhere('p.type = :type')
+                        ->setparameter('type', $type)
+                        ->orderBy('p.datepost', 'DESC')
+                        ->getQuery();
+        
+        return $querybuilder->execute();
+    }
+
 }
