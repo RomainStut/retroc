@@ -75,8 +75,14 @@ body{
 p{
     font-family: Rasa !important;
 }
-
-
+.register{
+    text-align: center;
+    text-decoration: underline;
+}
+.addproduct{
+    text-align: center;
+    text-decoration: underline;
+}
 
 
 /**************************footer******************************************************/
@@ -100,10 +106,7 @@ p{
 
 
  
-.addproduct{
-    text-align: center;
-    text-decoration: underline;
-}
+
 
 
 

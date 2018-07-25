@@ -22,7 +22,7 @@
             <div class="row img-fluid">
                 <div class="col-md-2">
                     <div class="d-flex justify-content-start">
-                        <img src=" {{asset('images/logo.png')}} " >
+                        <a class="nav-link text-light"  href="{{ path('home') }}"><img src=" {{asset('images/logo.png')}} " ></a>
                     </div>
                 </div>
                 <div class="col-md-10">
@@ -97,7 +97,7 @@
                         </div>
                     </li>                 
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">Contacts</a>
+                        <a class="nav-link text-light" href="{{ path('contact') }}">Contacts</a>
                     </li>              
 
                 </ul>
