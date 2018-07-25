@@ -58,32 +58,31 @@
 {% endblock %}
 
 	{% block js %}
-        <script>
-            $(function(){
-                $('#contact').on('click', function(e){
-                    event.preventDefault();
-                    $('#contactUser').empty();
-                    $('#contactUser').append('<form method="post">'+'<input id="send" class="form-control" type="textarea">'+'<button class="btn btn-primary mt-4">Envoyer message</button>'+'</form>')
+        {#<script>#}
+            {#$(function(){#}
+                {#$('#contact').on('click', function(e){#}
+                    {#event.preventDefault();#}
+                    {#$('#contactUser').empty();#}
+                    {#$('#contactUser').append('<form method="post">'+'<input id="send" class="form-control" type="textarea">'+'<button class="btn btn-primary mt-4">Envoyer message</button>'+'</form>')#}
 
-                })
+                {#})#}
 
-                $('body').on('click', '#send', function(e){
-                    e.preventDefault();
+                {#$('body').on('click', '#send', function(e){#}
+                    {#e.preventDefault();#}
 
-                    $.ajax({
-                        type: 'post',
-                        url: "{{ path('user-message') }}",
-                        data: ,
-                        timeout: 3000,
-                        dataType: 'json',
-                        success: function (data) {
-                            $('#contactUser').empty();
-                            $('#contactUser').append('<span>Message envoyé!</span')
-                        }
-                    })
-                })
+                    {#$.ajax({#}
+                        {#type: 'post',#}
+                        {#url: "{{ path('user-message') }}",#}
+                        {#timeout: 3000,#}
+                        {#dataType: 'json',#}
+                        {#success: function (data) {#}
+                            {#$('#contactUser').empty();#}
+                            {#$('#contactUser').append('<span>Message envoyé!</span')#}
+                        {#}#}
+                    {#})#}
+                {#})#}
 
-            })
-        </script>
+            {#})#}
+        {#</script>#}
     {% endblock %}
 

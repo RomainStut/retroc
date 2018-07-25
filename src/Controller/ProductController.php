@@ -64,13 +64,13 @@ class ProductController extends Controller
             if($product->getImage()){
 
                 $file = $product->getImage();
-                
+
                 $fileName = $uploader->upload($file);
-                
+
                 $product->setImage($fileName);
             }
 
-            
+
 
             dump($product);
 
@@ -97,23 +97,70 @@ class ProductController extends Controller
      * @route("/product/all", name="showAll")
      */
     public function showAll(){
+
         $repository = $this->getDoctrine()->getRepository(Products::class);
 
         $products = $repository->myFindAll();
 
         return $this->render('product/all-products.html.twig',
             array('products'=> $products)
-            );
+        );
+
     }
 
     /**
      * @route("/product/message", name="user-message")
      */
-    public function sendUserMessage(Request $request){
-        $msg = new Message();
+   public function sendUserMessage(Request $request)
+   {
+       $message = new Messages();
+       $form = $this->createForm(new ContactType(), $message);
 
-        $form->handleRequest($request);
+       $request = $this->getRequest();
+       if ($request->getMethod() == 'POST') {
+           $form->bind($request);
 
-        }
+           if ($form->isValid()) {
+               // Création de l'entité
+               $Message = new Messages();
+               $Message->setNom($form['Nom']->getData());
+               $Message->setMessage($form['message']->getData());
+               $Message->setEmail($form['email']->getData());
+               $Message->setSujet($form['sujet']->getData());
+
+               $ip = $this->container->get('request')->getClientIp();
+               $Message->setIp($ip);
+
+               // On récupère l'EntityManager
+               $em = $this->getDoctrine()->getManager();
+
+               // Étape 1 : On « persiste » l'entité
+               $em->persist($Message);
+
+               // Étape 2 : On « flush » tout ce qui a été persisté avant
+               $em->flush();
+
+               // Redirect - This is important to prevent users re-posting
+               // the form if they refresh the page
+               return $this->redirect($this->generateUrl('vd_imageGallery_contact'));
+           }
+       }
+
+       return $this->render('VDImageGalleryBundle:Image:contact.html.twig', array(
+           'form' => $form->createView()
+       ));
+
+   }
+
+     /**
+     * @Route("/product/type/{type}", name="product-type")
+     */
+    public function showAllRetro($type)
+    {
+        $repository = $this->getDoctrine()->getRepository(Products::class);
+
+        $products = $repository->findAllType($type);
+
+        return $this->render('product/all-retro.html.twig', array('products' => $products));
+    }
 }
-

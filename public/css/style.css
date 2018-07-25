@@ -1,11 +1,14 @@
 
 /**************************HEADER*****************************************************/
+header{
 
+    background-color:#193e57;
+}
 body{
-    
-    font-family: Hanalei Fill !important; 
-    font-size: 1.5em;   
-    
+
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 120%;
+
 }
 #head{
 
@@ -73,13 +76,24 @@ p{
     background-position: center;
 }
 
+
 /**************************Formulaire******************************************************/
+
+
+p{
+    font-family: 'Space Mono', monospace;
+
+}
+
+ 
+
 
  
 .addproduct{
     text-align: center;
     text-decoration: underline;
 }
+
 
 
 

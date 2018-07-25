@@ -8,7 +8,9 @@
     <!-- Boostrap.css -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <!-- FontAwesome v5.x -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}"> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">    
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet">
     {% block css %}
     {% endblock %}
 </head>
@@ -29,13 +31,17 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <button type="button" id="navbarColor01" class="btn btn-dark text-warning mt-4 ">Connexion</button>
-                    <button type="button" id="navbarColor01" class="btn btn-dark text-warning mt-4 ">Inscription</button>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <a id="navbarColor01" class="btn btn-dark text-warning mt-4 ml-2" href="{{ path('logout') }}">Déconnexion</a>
+                    {% else %}
+                    <a id="navbarColor01" class="btn btn-dark text-warning mt-4 " href="{{ path('login') }}">Connexion</a>
+                    <a id="navbarColor01" class="btn btn-dark text-warning mt-4 " href="{{ path('register') }}">Inscription</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
         <nav class="navbar navbar-expand-lg" id="navbarColor01" >
-            <a class="navbar-brand text-light" href="">Home</a>
+            <a class="navbar-brand text-light" href="{{ path('home') }}">Accueil</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -45,17 +51,9 @@
                     <li class="nav-item active">
                         <a class="nav-link text-light" href="#"> <span class="sr-only">(current)</span></a>
                     </li>
-
                     <li class="nav-item">
-
-
                         <a class="nav-link text-light"  href="{{ path('showAll') }}">Annonces</a>
-
-
-
                     </li>
-
-
                     <li class="nav-item">
                         <a class="nav-link" href="#"></a>
                     </li>
@@ -64,6 +62,8 @@
                             Retro
                         </a>
                         <div class="dropdown-menu "  aria-labelledby="navbarDropdown" id="navbarColor01">
+                            <a class="dropdown-item text-light"  href="{{ path('product-type', {type: 1}) }}">Tout</a>
+                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item text-light"  href="#">Jeux</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item text-light"   href="#">Consoles</a>
@@ -76,6 +76,8 @@
                             Next-gen
                         </a>
                         <div class="dropdown-menu" id="navbarColor01" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item text-light"  href="{{ path('product-type', {type: 2}) }}">Tout</a>
+                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item text-light" href="#">Jeux</a>
                             <div class="dropdown-divider text-light"></div>
                             <a class="dropdown-item text-light" href="#">Consoles</a>
@@ -87,16 +89,16 @@
                             Arcade
                         </a>
                         <div class="dropdown-menu" id="navbarColor01" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item text-light"  href="{{ path('product-type', {type: 3}) }}">Tout</a>
+                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item text-light" href="#">Jeux</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item text-light" href="#">Consoles</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item text-light" href="#">Accessoires</a>
                         </div>
-                    </li>
+                    </li>                 
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">Goodies</a>
-                    </li>                    <li class="nav-item">
                         <a class="nav-link text-light" href="#">Contacts</a>
                     </li>
 
@@ -108,6 +110,27 @@
             </div>
         </nav>
 
+        <div class="">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src=" {{asset('images/slider.jpg')}} " alt="First slide">
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
 
 
     </header>
@@ -128,9 +151,18 @@
                 <div class=" py-3 mt-3 my-3">
                         <h5>Informations :</h5>
                         <p>
-                            Now, Biff, um, can I assume that your insurance is gonna pay for the damage? I don't worry. this is all wrong. I don't know what it is but when I kiss you, it's like kissing my brother. I guess that doesn't make any sense, does it? You got a permit for that? Thank you, don't forget to take a flyer. So you're my Uncle Joey. Better get used to these bars, kid.
+                            Now, Biff, um, can I assume that your insurance is gonna pay for the damage? I don't worry.
+                            this is all wrong. I don't know what it is but when I kiss you, it's like kissing my brother.
+                            I guess that doesn't make any sense, does it? You got a permit for that? Thank you, don't forget to take a flyer.
+                            So you're my Uncle Joey. Better get used to these bars, kid.
+                            You know, Doc, you left your equipment on all week. I followed you.
+                            Yeah, you got my homework finished, McFly? I guess you guys aren't ready for that yet.
+
 
                             You know, Doc, you left your equipment on all week. I followed you. Yeah, you got my homework finished, McFly? I guess you guys aren't ready for that.
+
+
+
                         </p>
                 </div>
             </div> 
