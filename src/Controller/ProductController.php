@@ -64,13 +64,13 @@ class ProductController extends Controller
             if($product->getImage()){
 
                 $file = $product->getImage();
-                
+
                 $fileName = $uploader->upload($file);
-                
+
                 $product->setImage($fileName);
             }
 
-            
+
 
             dump($product);
 
@@ -103,17 +103,43 @@ class ProductController extends Controller
 
         return $this->render('product/all-products.html.twig',
             array('products'=> $products)
-            );
+        );
     }
 
     /**
      * @route("/product/message", name="user-message")
      */
-    public function sendUserMessage(Request $request){
-        $msg = new Message();
+   public function sendUserMessage(Request $request){
+       $message = new Messages();
+       $form = $this->createForm(new ContactType(), $message);
 
-        $form->handleRequest($request);
+       $request = $this->getRequest();
+       if ($request->getMethod() == 'POST'){
+           $form->bind($request);
 
-        }
+           if($form->isValid()){
+               // Création de l'entité
+               $Message = new Messages();
+               $Message->setTitle($form['Nom']->getData());
+               $Message->setMessage($form['message']->getData());
+               $Message->setEmail($form['email']->getData());
+               $Message->setSujet($form['sujet']->getData());
+
+               $ip = $this->container->get('request')->getClientIp();
+               $Message->setIp($ip);
+
+               $em = $this->getDoctrine()->getManager();
+
+               $em->persist($Message);
+
+               $em->flush();
+
+               return $this->redirect($this->generateUrl('vd_imageGallery_contact'));
+           }
+       }
+
+       return $this->render('VDImageGalleryBundle:Image:contact.html.twig', array(
+           'form' => $form->createView()
+       ));
+    }
 }
-
