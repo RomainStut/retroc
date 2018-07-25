@@ -108,49 +108,6 @@ class ProductController extends Controller
 
     }
 
-    /**
-     * @route("/product/message", name="user-message")
-     */
-   public function sendUserMessage(Request $request)
-   {
-       $message = new Messages();
-       $form = $this->createForm(new ContactType(), $message);
-
-       $request = $this->getRequest();
-       if ($request->getMethod() == 'POST') {
-           $form->bind($request);
-
-           if ($form->isValid()) {
-               // Création de l'entité
-               $Message = new Messages();
-               $Message->setNom($form['Nom']->getData());
-               $Message->setMessage($form['message']->getData());
-               $Message->setEmail($form['email']->getData());
-               $Message->setSujet($form['sujet']->getData());
-
-               $ip = $this->container->get('request')->getClientIp();
-               $Message->setIp($ip);
-
-               // On récupère l'EntityManager
-               $em = $this->getDoctrine()->getManager();
-
-               // Étape 1 : On « persiste » l'entité
-               $em->persist($Message);
-
-               // Étape 2 : On « flush » tout ce qui a été persisté avant
-               $em->flush();
-
-               // Redirect - This is important to prevent users re-posting
-               // the form if they refresh the page
-               return $this->redirect($this->generateUrl('vd_imageGallery_contact'));
-           }
-       }
-
-       return $this->render('VDImageGalleryBundle:Image:contact.html.twig', array(
-           'form' => $form->createView()
-       ));
-
-   }
 
      /**
      * @Route("/product/type/{type}", name="product-type")
