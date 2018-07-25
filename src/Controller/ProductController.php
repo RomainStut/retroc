@@ -64,13 +64,13 @@ class ProductController extends Controller
             if($product->getImage()){
 
                 $file = $product->getImage();
-                
+
                 $fileName = $uploader->upload($file);
-                
+
                 $product->setImage($fileName);
             }
 
-            
+
 
             dump($product);
 
@@ -108,18 +108,8 @@ class ProductController extends Controller
 
     }
 
-    /**
-     * @route("/product/message", name="user-message")
-     */
-    public function sendUserMessage(Request $request){
-        $msg = new Message();
 
-        $form->handleRequest($request);
-
-    }
-
-
-    /**
+     /**
      * @Route("/product/type/{type}", name="product-type")
      */
     public function showAllRetro($type)
@@ -131,4 +121,3 @@ class ProductController extends Controller
         return $this->render('product/all-retro.html.twig', array('products' => $products));
     }
 }
-

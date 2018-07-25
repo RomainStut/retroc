@@ -5,32 +5,28 @@ namespace App\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class InformationsController extends Controller
+class ContactController extends Controller
 {
     /**
-     * @Route("/informations", name="informations")
+     * @Route("/contact", name="contact")
      */
     public function index()
     {
-        return $this->render('informations/index.html.twig', [
-            'controller_name' => 'InformationsController',
+        return $this->render('contact/index.html.twig', [
+            'controller_name' => 'ContactController',
         ]);
     }
 
-    /**
-     * @Route("/informations/contact", name="contact")
-     */
-    public function contact(\Swift_Mailer $mailer)
-    {
+    public function contactmail(\Swift_Mailer $mailer)
+   {
        $confirmMessage="";
        $errorMessage="";
        if ($_POST) {
 
            $nom= $_POST['nom'];
-           $prenom= $_POST['prenom'];
            $sujet= $_POST['sujet'];
            $email= $_POST['email'];
-           $message1= $_POST['message'];
+           $message= $_POST['message'];
 
            $message = (new \Swift_Message('Contact Octocote'))
        ->setFrom($_POST['email'])
@@ -38,14 +34,14 @@ class InformationsController extends Controller
        ->setBody(
            $this->renderView(
                // templates/emails/registration.html.twig
-               'informations/mail.html.twig',
-               ['nom'=>$nom,'prenom'=>$prenom, 'sujet'=>$sujet, 'email'=>$email, 'message'=>$message1]
+               'contact/mail.html.twig',
+               ['nom'=>$nom, 'sujet'=>$sujet, 'email'=>$email, 'message'=>$message]
            ),
            'text/html'
        
-       );
+       )
        
-   
+   ;
    if ($mailer->send($message)) {
        $confirmMessage="L'email a bien été envoyé !";
    }else{
@@ -57,24 +53,10 @@ class InformationsController extends Controller
        
 
      
-       return $this->render('informations/contact.html.twig', [
+       return $this->render('contact/index.html.twig', [
            'success'=>$confirmMessage, 'error'=>$errorMessage
        ]);
-    }
-    /**
-     * @Route("/informations/cgv", name="cgv")
-     */
-    
-    public function cgv()
-    {
-        return $this->render('informations/cgv.html.twig');
-    }
-    
-    public function contactmail(\Swift_Mailer $mailer)
-   {
-       
-   
-    
    }
 
 }
+

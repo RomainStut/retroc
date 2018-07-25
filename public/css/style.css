@@ -86,6 +86,9 @@ p{
 }
 
 
+/**************************Formulaire******************************************************/
+
+
 p{
     font-family: 'Space Mono', monospace;
 
@@ -93,6 +96,12 @@ p{
 
  
 
+
+ 
+.addproduct{
+    text-align: center;
+    text-decoration: underline;
+}
 
 
 
