@@ -25,17 +25,13 @@
                         <img src=" {{asset('images/logo.png')}} " >
                     </div>
                 </div>
-                <div class="col-md-8">
-                    <div class="text-center">
-                        <i class="fas fa-user fa fa-3x"></i>
-                    </div>
-                </div>
-                <div class="col-md-2">
+                <div class="col-md-10">
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <a id="navbarColor01" class="btn btn-dark text-warning mt-4 ml-2" href="{{ path('logout') }}">Déconnexion</a>
+                    <a id="navbarColor01" class="btn btn-dark text-warning mt-4 mr-5 log-btn" href="{{ path('logout') }}">Déconnexion</a>
+                    <a id="navbarColor01" class="btn btn-dark text-warning mt-4 mr-3 log-btn" href="">Profil</a>
                     {% else %}
-                    <a id="navbarColor01" class="btn btn-dark text-warning mt-4 " href="{{ path('login') }}">Connexion</a>
-                    <a id="navbarColor01" class="btn btn-dark text-warning mt-4 " href="{{ path('register') }}">Inscription</a>
+                    <a id="navbarColor01" class="btn btn-dark text-warning mt-4 log-btn mr-5" href="{{ path('register') }}">Inscription</a>
+                    <a id="navbarColor01" class="btn btn-dark text-warning mt-4 log-btn mr-3" href="{{ path('login') }}">Connexion</a>
                     {% endif %}
                 </div>
             </div>
@@ -145,7 +141,7 @@
 	</div><hr><br>
 
 	<!-- Footer -->
-    <footer class="container-fluid my-5" id="navbarColor01">
+    <footer class="container-fluid mt-5" id="navbarColor01">
         <div class="row">
             <div class="col-md-6 d-flex justify-content-center">
                 <div class=" py-3 mt-3 my-3">
