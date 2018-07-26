@@ -21,6 +21,7 @@ body{
     background-position: center;
 
 }
+
 #navbarColor01{
     color: #ffffff;
     background-color: #112735;
@@ -83,7 +84,14 @@ header .dropdown-item:focus, .dropdown-item:hover{
 p{
     font-family: Rasa !important;
 }
-
+.register{
+    text-align: center;
+    text-decoration: underline;
+}
+.addproduct{
+    text-align: center;
+    text-decoration: underline;
+}
 
 
 /**************************footer******************************************************/
@@ -107,10 +115,7 @@ p{
 
 
  
-.addproduct{
-    text-align: center;
-    text-decoration: underline;
-}
+
 
 
 
