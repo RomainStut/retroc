@@ -47,4 +47,18 @@ class BlogRepository extends ServiceEntityRepository
         ;
     }
     */
+
+//    public function findblog($date_post): array
+//    {
+//        $querybuilder = $this->createQueryBuilder('a')
+//            ->innerJoin('a.user', 'u')
+//            ->addSelect('u')
+//            ->andWhere('a.date_publi > :date_post')
+//            ->setParameter('date_post', $date_post)
+//            ->orderBy('a.date_publi', 'DESC')
+//            ->getQuery();
+//        return $querybuilder->execute();
+//
+//    }
+
 }
