@@ -129,7 +129,7 @@ class ProductController extends Controller
     }
 
     /**
-     * @Route("/product/{type}/{cat}", name="product-type-cat")
+     * @Route("/product/typecat/{type}/{cat}", name="product-type-cat")
      */
     public function showAllTypeCat($type, $cat)
     {
@@ -139,5 +139,42 @@ class ProductController extends Controller
 
         return $this->render('product/all-type-cat.html.twig', array('products' => $products));
 
+    }
+
+    /**
+     * @Route("/product/update/{id}", name="update-product", requirements= {"id"="\d+"})
+     */
+    public function updateProduct(Products $products, Request $request, FileUploader $uploader){
+
+        $fileName = $products->getImage();
+        if($products->getImage()) {
+
+            $products->setImage(new File($this->getParameter('articles_image_directory') . '/' . $products->getImage()));
+        }
+        $form = $this->createForm(ProductType::class, $products);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $products = $form->getData();
+
+            if($products->getImage()){
+
+                $file = $products->getImage();
+
+                $fileName = $uploader->upload($file, $fileName);
+
+                $products->setImage($fileName);
+
+            }
+            $entityManager = $this->getDoctrine()->getManager();
+
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Annonce modifiée !');
+            return $this->redirectToRoute('userProfil');
+        }
+        return$this->render('product/modifier.html.twig', array('form' => $form->createView()));
     }
 }

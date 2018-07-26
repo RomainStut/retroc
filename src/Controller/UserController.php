@@ -48,7 +48,7 @@ class UserController extends Controller
     }
 
     /**
-     * @route("/profil/modifier/{id}", name="modif-user", requirements= {"id"="\d+"})
+     * @route("/profil/update/{id}", name="update-user", requirements= {"id"="\d+"})
      */
     public function updateUser(Users $users, Request $request, FileUploader $uploader)
     {
