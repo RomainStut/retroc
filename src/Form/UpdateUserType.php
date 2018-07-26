@@ -8,6 +8,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class UpdateUserType extends AbstractType
 {
@@ -15,6 +16,7 @@ class UpdateUserType extends AbstractType
     {
         $builder
             ->add("users", UserType::class, array('data_class' => Users::class))
+            ->add('profilepicture', FileType::class)
             ->add(" modifier", SubmitType::class, array('label'=>'Modifier', 'attr' => ['class' => 'btn btn-dark']))
 
         ;
