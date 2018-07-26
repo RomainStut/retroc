@@ -183,7 +183,7 @@ class ProductController extends Controller
      * @Route("product/delete/{id}", name = "product-delete", requirements= {"id"="\d+"})
      */
 
-    public function deleteCategory(Products $products){
+    public function deleteProduct(Products $products){
        //j'utilise mon voter pour déterminer si l'utilisateur peut modifier cette annonce
        // $this->denyAccessUnlessGranted('delete', $products);
         //recuperation de l'entity manager
