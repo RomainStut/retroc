@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Controller;
+use App\Form\AdduserType;
+use App\Form\UserType;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Users;
-use App\Form\UserType;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -56,8 +57,13 @@ class AdminController extends Controller
      */
     public function updateUser(Users $users, Request $request){
 
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
-        $form = $this->createForm(UserType::class, $users);
+        $users = $this->getUser();
+
+        $users = new Users();
+
+        $form = $this->createForm(AdduserType::class, $users);
 
         $form->remove('plainPassword');
 
@@ -65,7 +71,6 @@ class AdminController extends Controller
 
 
         $form->handleRequest($request);
-
 
 
 

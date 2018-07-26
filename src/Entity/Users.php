@@ -95,6 +95,7 @@ class Users implements UserInterface, \Serializable
      */
     private $messagesRecus;
 
+
     public function __construct()
     {
         $this->messages = new ArrayCollection();

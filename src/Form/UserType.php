@@ -44,7 +44,7 @@ class UserType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Users::class,
+            'inherit_data' => true,
         ]);
     }
 }

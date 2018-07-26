@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Users;
+use App\Form\UserType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -20,6 +21,7 @@ class AdduserType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
+
         $resolver->setDefaults([
             'data_class' => Users::class,
         ]);
