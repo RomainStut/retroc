@@ -40,4 +40,11 @@ class AjaxController extends Controller
 
         return $this->render('ajax/send-message.html.twig', array('success' => $res));
     }
-}
+
+
+};
+
+
+
+
+

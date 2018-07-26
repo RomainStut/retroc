@@ -8,6 +8,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Entity\Users;
+use App\Entity\Messages;
+
+
 
 class UserController extends Controller
 {
@@ -70,4 +73,29 @@ class UserController extends Controller
         }
         return$this->render('user/modifUser.html.twig', array('form' => $form->createView()));
     }
+    /**
+    *@Route("/profil/message", name="messageUser")
+    */
+
+    public function showMessage()
+    {
+
+    	$userId = $this->getUser();
+
+        $repository = $this->getDoctrine()->getRepository(Messages::class);
+        $messages = $repository->myfindUserMessage($userId);
+
+        //nous permet de renvoyer un message d'erreur si aucun id ne correspond
+        if (!$messages) {
+            throw $this->createNotFoundException(
+                'No message found for user id '.$userId
+            );
+        }
+
+        return $this->render('user/messageUser.html.twig',
+                                array('messages' => $messages)
+        );
+
+    }
+
 }

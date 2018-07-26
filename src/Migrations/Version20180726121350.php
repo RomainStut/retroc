@@ -8,13 +8,16 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20180725122250 extends AbstractMigration
+final class Version20180726121350 extends AbstractMigration
 {
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
+        $this->addSql('ALTER TABLE blog ADD type_id INT NOT NULL');
+        $this->addSql('ALTER TABLE blog ADD CONSTRAINT FK_C0155143C54C8C93 FOREIGN KEY (type_id) REFERENCES type (id)');
+        $this->addSql('CREATE INDEX IDX_C0155143C54C8C93 ON blog (type_id)');
         $this->addSql('ALTER TABLE messages DROP FOREIGN KEY FK_DB021E96A76ED395');
         $this->addSql('DROP INDEX IDX_DB021E96A76ED395 ON messages');
         $this->addSql('ALTER TABLE messages ADD expediteur_id INT NOT NULL, ADD destinataire_id INT NOT NULL, CHANGE user_id product_id INT NOT NULL');
@@ -31,6 +34,9 @@ final class Version20180725122250 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
+        $this->addSql('ALTER TABLE blog DROP FOREIGN KEY FK_C0155143C54C8C93');
+        $this->addSql('DROP INDEX IDX_C0155143C54C8C93 ON blog');
+        $this->addSql('ALTER TABLE blog DROP type_id');
         $this->addSql('ALTER TABLE messages DROP FOREIGN KEY FK_DB021E964584665A');
         $this->addSql('ALTER TABLE messages DROP FOREIGN KEY FK_DB021E9610335F61');
         $this->addSql('ALTER TABLE messages DROP FOREIGN KEY FK_DB021E96A4F84F6E');
