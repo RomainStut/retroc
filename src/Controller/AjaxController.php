@@ -11,20 +11,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class AjaxController extends Controller
 {
     /**
-     * @route("/product/message", name="user-message")
+     * @route("/product/message/{id}", name="user-message")
      */
-    public function sendUserMessage(Request $request)
+    public function sendUserMessage(Products $products, Request $request)
     {
         $message = new Messages();
         dump($request->request->all());
 
-        $product = new Products();
+        $repository = $this->getDoctrine()->getRepository(Products::class);
+        $product = $repository->find($products);
 
         $messagesend = $request->request->get('message', 'invalide');
 
         $message->setDatepost(new \DateTime(date('Y-m-d H:i:s')));
         $message->setExpediteur($this->getUser());
-        $message->setProduct($product->getId());
+        $message->setProduct($product);
         $message->setDestinataire($product->getUser());
         $message->setContent($messagesend);
         $message->setTitle('titre test');
@@ -34,11 +35,7 @@ class AjaxController extends Controller
 
         $entityManager->persist($message);
 
-        if($entityManager->flush()){
-            $res = "message envoyé";
-        } else {
-            $res = "bande de boloss";
-        }
+        $entityManager->flush();
 
 
         return $this->render('ajax/send-message.html.twig', array('success' => $res));
