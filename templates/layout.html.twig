@@ -213,21 +213,28 @@
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
 <script>
-            window.addEventListener("load", function(){
-            window.cookieconsent.initialise({
-              "palette": {
-                "popup": {
-                  "background": "#000"
-                },
-                "button": {
-                  "background": "#f1d600"
-                }
-              },
-              "content": {
-                "href": "http://localhost:8000/"
-              }
-            })});
+        window.addEventListener("load", function(){
+        window.cookieconsent.initialise({
+          "palette": {
+            "popup": {
+              "background": "#252e39"
+            },
+            "button": {
+              "background": "transparent",
+              "text": "#14a7d0",
+              "border": "#14a7d0"
+            }
+          },
+          "position": "bottom-left",
+          "content": {
+            "message": "En poursuivant votre navigation sur ce site, vous acceptez l’utilisation de [Cookies ou autres traceurs] pour vous proposer [Par exemple, des publicités ciblées adaptés à vos centres d’intérêts] et [Par exemple, réaliser des statistiques de visites].",
+            "dismiss": "Je l'ai",
+            "href": "http://localhost:8000/"
+          }
+        })});
 </script>
 
 	{% block js %}{% endblock %}
