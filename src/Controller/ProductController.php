@@ -177,4 +177,26 @@ class ProductController extends Controller
         }
         return$this->render('product/modifier.html.twig', array('form' => $form->createView()));
     }
+
+
+    /**
+     * @Route("product/delete/{id}", name = "product-delete", requirements= {"id"="\d+"})
+     */
+
+    public function deleteCategory(Products $products){
+       //j'utilise mon voter pour déterminer si l'utilisateur peut modifier cette annonce
+       // $this->denyAccessUnlessGranted('delete', $products);
+        //recuperation de l'entity manager
+        $entityManager = $this->getDoctrine()->getManager();
+        //je veux supprimer ce produit
+        $entityManager->remove($products);
+
+        //j'exécute la requete
+        $entityManager->flush();
+
+        //créer un message de succes en flash
+
+        $this->addFlash('success', 'Produit supprimé !');
+        return $this->redirectToRoute('userProfil');
+    }
 }
