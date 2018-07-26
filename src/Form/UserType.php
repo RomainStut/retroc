@@ -34,9 +34,9 @@ class UserType extends AbstractType
             ->add('address', TextType::class, array('label' => 'Adresse'))
             ->add('codepostal', IntegerType::class, array('label' => 'Code postal'))
             ->add('city', TextType::class, array('label' => 'Ville'))
-            ->add('plainPassword',RepeatedType::class, array('type'=> PasswordType::class, 'invalid_message' => 'les mdp ne sont pas identiques',
-                'first_options' => ['label' => 'Mot de passe'],
-                'second_options' => ['label' => 'Répétez le mot de passe']))
+//            ->add('plainPassword',RepeatedType::class, array('type'=> PasswordType::class, 'invalid_message' => 'les mdp ne sont pas identiques',
+//                'first_options' => ['label' => 'Mot de passe'],
+//                'second_options' => ['label' => 'Répétez le mot de passe']))
 
         ;
     }

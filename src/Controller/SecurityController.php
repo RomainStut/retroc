@@ -38,7 +38,7 @@ class SecurityController extends Controller
 
         $user = new Users();
 
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(AdduserType::class, $user);
 
         $form->handleRequest($request);
 
