@@ -126,4 +126,24 @@ class ProductsRepository extends ServiceEntityRepository
         return $querybuilder->execute();
     }
 
+    public function showAllTypeCat($type, $cat)
+    {
+        $querybuilder = $this->createQuerybuilder('p')
+                        ->innerJoin('p.user', 'u')
+                        ->addSelect('u')
+                        ->innerJoin('p.categorie', 'c')
+                        ->addSelect('c')
+                        ->innerJoin('p.quality', 'q')
+                        ->addSelect('q')
+                        ->innerJoin('p.type', 't')
+                        ->addSelect('t')
+                        ->andwhere('p.categorie = :cat AND p.type = :type')
+                        ->setparameter('type', $type)
+                        ->setparameter('cat', $cat)
+                        ->orderBy('p.datepost', 'DESC')
+                        ->getQuery();
+        
+        return $querybuilder->execute();
+    }
+
 }

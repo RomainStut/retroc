@@ -16,3 +16,7 @@ body .modal-dialog {
     padding: 15px;
     height: 400px;
 }
+
+.zoomin:hover{
+    cursor: pointer;
+}

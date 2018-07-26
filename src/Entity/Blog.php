@@ -36,6 +36,22 @@ class Blog
      */
     private $datepost;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Type", inversedBy="blogs")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $type;
+
+//    /**
+//     * @ORM\OneToMany(targetEntity="App\Entity\Blog", mappedBy="blog")
+//     */
+//    private $blog;
+
+    public function __construct()
+    {
+        $this->products = new ArrayCollection();
+    }
+
     public function getId()
     {
         return $this->id;
@@ -88,4 +104,28 @@ class Blog
 
         return $this;
     }
+
+    public function getType(): ?Type
+    {
+        return $this->type;
+    }
+
+    public function setType(?Type $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+//    public function getBlog(): ?Blog
+//    {
+//        return $this->blog;
+//    }
+//
+//    public function setBlog(?Blog $blog): self
+//    {
+//        $this->blog = $blog;
+//
+//        return $this;
+//    }
 }

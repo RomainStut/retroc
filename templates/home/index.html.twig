@@ -25,5 +25,19 @@
         </div>
     </div>
 
+{#<div>#}
+    {# equivalent de twig de la boucle foreach #}
+    {#{% for blog in blogs%}#}
 
+    {#<a href="{{ path('show',{id: blog.id})}}">les articles</a>#}
+    {# à chaque tour de boucle on recupere qui ici est un objet#}
+    {#pour acceder au titre, article.title #}
+    {#{{ blog.title }}, <br> publie le  {{ blog.datepost|date('d/m/Y') }}#}
+    {#<br>#}
+
+    {#{{ blog.content}}#}
+    {#<br>#}
+    {#<img src="{{asset('upload/bo/images/')}}{{blog.image}}" alt="" />#}
+{#</div>#}
+{#{% endfor %}#}
 {% endblock %}
