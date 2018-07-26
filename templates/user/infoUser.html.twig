@@ -9,7 +9,7 @@
         <div class="col-2">
             <div class="nav flex-column nav-pills" style="background-color: #112735;" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link active text-warning" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Mes annonces</a>
-                <a class="nav-link text-warning" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Mes messages</a>
+                <a class="nav-link text-warning load-message" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Mes messages</a>
                 <a class="btn btn-dark" href="{{ path('modif-user',{id:user.id }) }}"><button class="btn btn-dark">Modifier User</button></a>
                 {#<a href="{{ path('modif-user') }}" class="nav-link text-warning lienProfil"  id="v-pills-messages-tab" data-toggle="pill"  role="tab" aria-controls="v-pills-messages" aria-selected="false">#}Modifier profil</a>
 
@@ -61,11 +61,12 @@
 {% block js %}
 <script>
     $(function(){
-        $('#userMessage').on('click', function(e){
-            e.preventDefault();   
+        $('.load-message').on('click', function(e){
+            e.preventDefault();
+            console.log('ok');
             $.ajax({                
-                type: 'GET', 
-                url: '',
+                type: 'get', 
+                url: "{{ path('message-user')}}",
                 timeout : 3000, 
                 dataType : 'html', 
                 success: function(data){

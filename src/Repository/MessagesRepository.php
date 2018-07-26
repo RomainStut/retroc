@@ -51,17 +51,14 @@ class MessagesRepository extends ServiceEntityRepository
    public function myfindUserMessage($id)
    {
        $querybuilder = $this->createQuerybuilder('m')
-            ->innerJoin('m.user', 'u')
+            ->innerJoin('m.product', 'p')
+            ->addSelect('p')
+            ->innerJoin('m.expediteur', 'u')
             ->addSelect('u')
-            ->innerJoin('p.categorie', 'c')
-            ->addSelect('c')
-            ->innerJoin('p.quality', 'q')
-            ->addSelect('q')
-            ->innerJoin('p.type', 't')
-            ->addSelect('t')
-            ->andWhere('p.id = :id')
+            ->innerJoin('m.destinataire', 'y')
+            ->addSelect('y')
+            ->andWhere('m.expediteur = :id')
             ->setparameter('id', $id)
-            ->setMaxResults(1)
             ->getQuery();
 
         return $querybuilder->execute();
