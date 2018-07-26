@@ -1,6 +1,6 @@
 {% extends 'layout.html.twig' %}
-{% block title %} Liste utilisateurs {% endblock%}
-{% block titlepage %} Liste utilisateurs {% endblock%}
+{% block title %} Liste Des articles {% endblock%}
+{% block titlepage %} Liste Des articles {% endblock%}
 
 {% block content %}
 
@@ -9,24 +9,26 @@
 
             {% for blog in blogs %}
 
-                {#<div class="card col-4" style="width: 18rem;">#}
-                    {#<div class="card-body">#}
-                        {#{% if user.profilepicture%}#}
-                            {#<img class="card-img-top" src="{{ asset('uploads/images/' ~  user.profilepicture) }}" alt="Card image cap">#}
+                <div class="card col-4" style="width: 18rem;">
+                    <div class="card-body">
+                        {#{% if blog.image%}#}
+                            {#<img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}" alt="Card image cap">#}
                         {#{% endif %}#}
                         <h5 class="card-title">{{ blog.title }}</h5><hr>
-                        <p class="card-text">{{ blog.content }} €</p>
+                        <p class="card-text" style="overflow:auto;">{{ blog.content  | striptags | slice(0, 150) }} </p>
 
 
-                        {#<a href="{{ path('update-blog', {id: user.id })}}">Modifier le compte</a>#}
-                        {#<a href="{{ path('delete-blog', {id: user.id })}}">Supprimer le compte</a>#}
-
-                    {#</div>#}
-                {#</div>#}
+                        <a href="{{ path('blog', {id: blog.id })}}">Voir</a>
+                    </div>
+                </div>
 
 
             {% endfor %}
         </div>
     </div>
+
+
+
+
 
 {% endblock %}
