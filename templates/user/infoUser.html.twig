@@ -9,8 +9,9 @@
         <div class="col-2">
             <div class="nav flex-column nav-pills" style="background-color: #112735;" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link active text-warning" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Mes annonces</a>
-                <a class="nav-link text-warning" id="userMessage" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Mes messages</a>
-                <a href="{{ path('modifUser') }}" class="nav-link text-warning lienProfil"  id="v-pills-messages-tab" data-toggle="pill"  role="tab" aria-controls="v-pills-messages" aria-selected="false">Modifier profil</a>
+                <a class="nav-link text-warning" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Mes messages</a>
+                <a class="btn btn-dark" href="{{ path('modif-user',{id:user.id }) }}"><button class="btn btn-dark">Modifier User</button></a>
+                {#<a href="{{ path('modif-user') }}" class="nav-link text-warning lienProfil"  id="v-pills-messages-tab" data-toggle="pill"  role="tab" aria-controls="v-pills-messages" aria-selected="false">#}Modifier profil</a>
 
             </div>
         </div>
@@ -18,12 +19,14 @@
             <div class="row">
                 <div class="col-2 mr-5" >
                     <div class="row">
-                        <div class="col-12">
-                    <img src="{{ asset('images/yoda.jpeg' ) }}" alt="  " style=" " type="button" data-toggle="modal" data-target="#modalImage" class="btn btn-dark mr-5">
+                        <div class="col-12" >
+                            {% if user.profilepicture %}
+                                <img src="{{ 'uploads/images/' ~ user.profilepicture }}" type="button" data-toggle="modal" data-target="#modalImage" class="btn btn-dark mr-5" style="height: 150px; width: 150px" alt=""><br>
+                            {% else %}
+                                <img src="{{ asset('images/yoda.jpeg' ) }}" alt="  " style=" " type="button" data-toggle="modal" data-target="#modalImage" class="btn btn-dark mr-5">
+                            {% endif %}
                         </div>
-                        <div class="col-12">
-                            <button id="modifierPhoto" class="btn btn-dark mt-3">Modifier Photo</button>
-                        </div>
+
                     </div>
                 </div>
                 <div class="col-8 ml-5">
@@ -36,6 +39,13 @@
 
 
             </div>
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ label }} mt-4">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
         </div>
 
     </div>

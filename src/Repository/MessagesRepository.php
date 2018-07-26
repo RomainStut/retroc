@@ -47,4 +47,23 @@ class MessagesRepository extends ServiceEntityRepository
         ;
     }
     */
+   
+   public function myfindUserMessage($id)
+   {
+       $querybuilder = $this->createQuerybuilder('m')
+            ->innerJoin('m.user', 'u')
+            ->addSelect('u')
+            ->innerJoin('p.categorie', 'c')
+            ->addSelect('c')
+            ->innerJoin('p.quality', 'q')
+            ->addSelect('q')
+            ->innerJoin('p.type', 't')
+            ->addSelect('t')
+            ->andWhere('p.id = :id')
+            ->setparameter('id', $id)
+            ->setMaxResults(1)
+            ->getQuery();
+
+        return $querybuilder->execute();
+   }
 }

@@ -5,7 +5,6 @@
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>{% block title %}{% endblock%}</title>
-    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
     <!-- Boostrap.css -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <!-- FontAwesome v5.x -->
@@ -27,20 +26,23 @@
                     </div>
                 </div>
                 <div class="col-md-10">
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <a id="navbarColor01" class="btn btn-dark text-warning mt-4 ml-2 log-btn" href="{{ path('logout') }}">Déconnexion</a>
+                        <a id="navbarColor01" class="btn btn-dark text-warning mt-4 mr-3 log-btn" href="{{ path('userProfil') }}">Profil</a>
+
+
+                    {% else %}
+                        <a id="navbarColor01" class="btn btn-dark text-warning mt-4 log-btn mr-5" href="{{ path('register') }}">Inscription</a>
+                        <a id="navbarColor01" class="btn btn-dark text-warning mt-4 log-btn mr-3" href="{{ path('login') }}">Connexion</a>
+                    {% endif %}
+
                     {% if is_granted('ROLE_ADMIN') %}
 
                     <a id="navbarColor01" class="btn btn-dark text-warning mt-4 ml-2 log-btn" href="{{ path('admin-users') }}">Gestion users</a>
+                        <a id="navbarColor01" class="btn btn-dark text-warning mt-4 ml-2 log-btn" href="{{ path('admin-blog') }}">Gestion du blog</a>
                     {% endif %}
 
-                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <a id="navbarColor01" class="btn btn-dark text-warning mt-4 ml-2 log-btn" href="{{ path('logout') }}">Déconnexion</a> 
-                    <a id="navbarColor01" class="btn btn-dark text-warning mt-4 mr-3 log-btn" href="{{ path('userProfil') }}">Profil</a>         
-                  
 
-                    {% else %}
-                    <a id="navbarColor01" class="btn btn-dark text-warning mt-4 log-btn mr-5" href="{{ path('register') }}">Inscription</a>
-                    <a id="navbarColor01" class="btn btn-dark text-warning mt-4 log-btn mr-3" href="{{ path('login') }}">Connexion</a>
-                    {% endif %}
                 </div>
             </div>
         </div>
@@ -215,27 +217,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
-<script>
-        window.addEventListener("load", function(){
-        window.cookieconsent.initialise({
-          "palette": {
-            "popup": {
-              "background": "#252e39"
-            },
-            "button": {
-              "background": "transparent",
-              "text": "#14a7d0",
-              "border": "#14a7d0"
-            }
-          },
-          "position": "bottom-left",
-          "content": {
-            "message": "En poursuivant votre navigation sur ce site, vous acceptez l’utilisation de [Cookies ou autres traceurs] pour vous proposer [Par exemple, des publicités ciblées adaptés à vos centres d’intérêts] et [Par exemple, réaliser des statistiques de visites].",
-            "dismiss": "Je l'ai",
-            "href": "http://localhost:8000/"
-          }
-        })});
-</script>
+
 
 	{% block js %}{% endblock %}
 </body>

@@ -9,17 +9,18 @@
 
             {% for user in users %}
 
-                <div class="card col-4" style="width: 18rem;">
+                <div class="card col-4 mt-4 mr-3" style="width: 18rem;">
                     <div class="card-body">
                         {% if user.profilepicture%}
                             <img class="card-img-top" src="{{ asset('uploads/images/' ~  user.profilepicture) }}" alt="Card image cap">
                         {% endif %}
                         <h5 class="card-title">{{ user.username }}</h5><hr>
-                        <p class="card-text">{{ user.email }} €</p>
+                        <p class="card-text">{{ user.email }}</p>
 
 
-                        <a href="{{ path('update-user', {id: user.id })}}">Modifier le compte</a>
-                        <a href="{{ path('delete-user', {id: user.id })}}">Supprimer le compte</a>
+                        <a href="{{ path('update-user', {id: user.id })}}">Modifier le compte <i class="fas fa-cogs" style="color:#ffc107;"></i></a>
+                        <hr>
+                        <a href="{{ path('delete-user', {id: user.id })}}">Supprimer le compte <i class="fas fa-times" style="color:#ffc107;"></i></a>
 
                     </div>
                 </div>

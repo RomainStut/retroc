@@ -95,6 +95,7 @@ class Users implements UserInterface, \Serializable
      */
     private $messagesRecus;
 
+
     public function __construct()
     {
         $this->messages = new ArrayCollection();
@@ -196,12 +197,12 @@ class Users implements UserInterface, \Serializable
         return $this;
     }
 
-    public function getProfilepicture(): ?string
+    public function getProfilepicture()
     {
         return $this->profilepicture;
     }
 
-    public function setProfilepicture(?string $profilepicture): self
+    public function setProfilepicture($profilepicture): self
     {
         $this->profilepicture = $profilepicture;
 
