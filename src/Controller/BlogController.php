@@ -21,4 +21,18 @@ class BlogController extends Controller
     }
 
 
+    /**
+     * @Route("admin/blog/{id}", name="blog", requirements = {"id"="[0-9]+"})
+     */
+    public function infoArticle($id){
+        $repository = $this->getDoctrine()->getRepository(Blog::class);
+        $blogs = $repository->Find($id);
+        if(!$blogs){
+            throw $this->createNotFoundException('No article found for id '.$id);
+        }
+        return $this->render('admin/update-blog.html.twig', array('blogs'=>$blogs));
+
+    }
+
+
 }

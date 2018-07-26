@@ -12,7 +12,8 @@
                 <div class="card col-3" style="width: 18rem;">
                     <div class="card-body">
                         {% if product.image%}
-                            <img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}" alt="Card image cap">
+                            <img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}"
+                                 alt="Card image cap">
                         {% endif %}
                         <h5 class="card-title">{{ product.name }}</h5><hr>
                         <p class="card-text">{{ product.price }} €</p>
@@ -24,20 +25,27 @@
 
         </div>
     </div>
+    <div class="container">
+        <div class="row">
 
-{#<div>#}
-    {# equivalent de twig de la boucle foreach #}
-    {#{% for blog in blogs%}#}
+            {% for blog in blogs %}
 
-    {#<a href="{{ path('show',{id: blog.id})}}">les articles</a>#}
-    {# à chaque tour de boucle on recupere qui ici est un objet#}
-    {#pour acceder au titre, article.title #}
-    {#{{ blog.title }}, <br> publie le  {{ blog.datepost|date('d/m/Y') }}#}
-    {#<br>#}
+                <div class="card col-4 mt-5" style="width: 18rem;">
+                    <div class="card-body">
+                        {#{% if blog.image%}#}
+                        {#<img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}" alt="Card image cap">#}
+                        {#{% endif %}#}
+                        <h5 class="card-title">{{ blog.title }}</h5><hr>
+                        <p class="card-text" style="overflow:auto;">{{ blog.content  | striptags | slice(0, 150) }} </p>
 
-    {#{{ blog.content}}#}
-    {#<br>#}
-    {#<img src="{{asset('upload/bo/images/')}}{{blog.image}}" alt="" />#}
-{#</div>#}
-{#{% endfor %}#}
+
+                        <a href="{{ path('product', {id: blog.id })}}">Voir</a>
+                    </div>
+                </div>
+
+
+            {% endfor %}
+        </div>
+    </div>
+
 {% endblock %}
