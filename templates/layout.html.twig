@@ -22,21 +22,23 @@
             <div class="row img-fluid">
                 <div class="col-md-2">
                     <div class="d-flex justify-content-start">
-                        <img src=" {{asset('images/logo.png')}} " >
+                        <a class="nav-link text-light"  href="{{ path('home') }}"><img src=" {{asset('images/logo.png')}} " ></a>
                     </div>
                 </div>
-                <div class="col-md-8">
-                    <div class="text-center">
-                        <i class="fas fa-user fa fa-3x"></i>
-                    </div>
-                </div>
-                <div class="col-md-2">
+                <div class="col-md-10">
+                    {% if is_granted('ROLE_ADMIN') %}
+
+                    <a id="navbarColor01" class="btn btn-dark text-warning mt-4 ml-2 log-btn" href="{{ path('admin-users') }}">Gestion users</a>
+                    {% endif %}
+
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <a id="navbarColor01" class="btn btn-dark text-warning mt-4 ml-2" href="{{ path('admin-users') }}">Gestion users</a>
-                    <a id="navbarColor01" class="btn btn-dark text-warning mt-4 ml-2" href="{{ path('logout') }}">Déconnexion</a>
+                    <a id="navbarColor01" class="btn btn-dark text-warning mt-4 ml-2 log-btn" href="{{ path('logout') }}">Déconnexion</a> 
+                    <a id="navbarColor01" class="btn btn-dark text-warning mt-4 mr-3 log-btn" href="{{ path('userProfil') }}">Profil</a>         
+                  
+
                     {% else %}
-                    <a id="navbarColor01" class="btn btn-dark text-warning mt-4 " href="{{ path('login') }}">Connexion</a>
-                    <a id="navbarColor01" class="btn btn-dark text-warning mt-4 " href="{{ path('register') }}">Inscription</a>
+                    <a id="navbarColor01" class="btn btn-dark text-warning mt-4 log-btn mr-5" href="{{ path('register') }}">Inscription</a>
+                    <a id="navbarColor01" class="btn btn-dark text-warning mt-4 log-btn mr-3" href="{{ path('login') }}">Connexion</a>
                     {% endif %}
                 </div>
             </div>
@@ -100,8 +102,14 @@
                         </div>
                     </li>                 
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">Contacts</a>
-                    </li>
+                        <a class="nav-link text-light" href="{{ path('contact') }}">Contacts</a>
+                    </li> 
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}   
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="{{ path('addProduct') }}">Postez votre annonce</a>
+                    </li>   
+                    {% endif %}           
+          
 
                 </ul>
                 <form class="form-inline my-2 my-lg-0 mr-5">
@@ -123,21 +131,21 @@
                     </a>
                 </div>
             </div>
-
+        </div>
 
     </header>
 
     <!-- Content -->	
     <h1>{% block titlepage %}{% endblock%}</h1>
     
-	<div class="container">
+	<div class="container-fluid">
 
 		{% block content %}{% endblock %}
-		
+
 	</div><hr><br>
 
 	<!-- Footer -->
-    <footer class="container-fluid my-5" id="navbarColor01">
+    <footer class="container-fluid mt-5" id="navbarColor01">
         <div class="row">
             <div class="col-md-6 d-flex justify-content-center">
                 <div class=" py-3 mt-3 my-3">
@@ -149,6 +157,10 @@
                             So you're my Uncle Joey. Better get used to these bars, kid.
                             You know, Doc, you left your equipment on all week. I followed you.
                             Yeah, you got my homework finished, McFly? I guess you guys aren't ready for that yet.
+
+
+                            You know, Doc, you left your equipment on all week. I followed you. Yeah, you got my homework finished, McFly? I guess you guys aren't ready for that.
+
 
 
                         </p>

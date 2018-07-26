@@ -23,11 +23,11 @@ class ProductType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
+        $builder            
             ->add('name', TextType::class, array('label'=>'Nom du produit'))
             ->add('price', IntegerType::class, array('label'=>'Prix du produit'))
-            ->add('description', TextareaType::class, array('label'=>'Saisissez votre annonce'))
-            ->add('image', FileType::class)
+            
+            
 
             ->add('type', EntityType::class, array('class'=>Type::class, 'choice_label'=>'name'))
 
@@ -35,7 +35,13 @@ class ProductType extends AbstractType
 
             ->add('categorie', EntityType::class, array('class'=>Categories::class, 'choice_label'=>'name'))
 
+            ->add('description', TextareaType::class, array('label'=>'Saisissez votre annonce'))
+
+            ->add('image', FileType::class)
+
             ->add('Publier mon annonce', SubmitType::class, array('label'=>'Publier mon annonce', 'attr' => ['class' => 'btn btn-info']));
+
+            
 
         ;
     }
