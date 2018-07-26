@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Entity\Products;
 
 
+
 class HomeController extends Controller
 {
     /**
