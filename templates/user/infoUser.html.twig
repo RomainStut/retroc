@@ -1,0 +1,46 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Profil utilisateur{% endblock %}
+{% block titlepage %} <span class="ml-3">Profil de {{ user.username }}</span>{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-2">
+            <div class="nav flex-column nav-pills" style="background-color: #112735;" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link active text-warning" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Mes annonces</a>
+                <a class="nav-link text-warning" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Mes messages</a>
+                <a class="nav-link text-warning lienProfil"  id="v-pills-messages-tab" data-toggle="pill" href="{{ path('modifUser') }}" role="tab" aria-controls="v-pills-messages" aria-selected="false">Modifier profil</a>
+
+            </div>
+        </div>
+        <div class="col-6 offset-3">
+            <div class="row">
+                <div class="col-2 mr-5" >
+                    <div class="row">
+                        <div class="col-12">
+                    <img src="{{ asset('images/yoda.jpeg' ) }}" alt="  " style=" " type="button" data-toggle="modal" data-target="#modalImage" class="btn btn-dark mr-5">
+                        </div>
+                        <div class="col-12">
+                            <button id="modifierPhoto" class="btn btn-dark mt-3">Modifier Photo</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-8 ml-5">
+                    <b> Pseudo: </b>{{ user.username }}<br>
+                    <b> Email: </b>{{ user.email }}<br>
+                    <b>Tel: </b>{{ user.tel }}<br>
+                    <b> Date de naissance: </b>{{ user.datebirth|date('d-m-Y') }}<br>
+                    <b> Ville: </b>{{ user.city }}<br>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+    <div id="result"></div>
+
+
+
+{% endblock %}

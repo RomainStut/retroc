@@ -34,6 +34,7 @@
                     <p> {{product.description}} </p>
                 </div>
 
+<<<<<<< HEAD
                 <div class="col-6">
                     <h4> Vendeur: {{ product.user.username }}</h4>
                     <div id="contactUser">
@@ -41,7 +42,14 @@
                         {{ form_end(form) }}
                         {#<button class="btn btn-info" id="contact">Contacter le vendeur</button>#}
                     </div>
+=======
+            <div class="col-6">
+                <h4> Vendeur: {{ product.user.username }}</h4>
+                <div id="contactUser">
+                    <button class="btn btn-primary mt-4" type="submit" id="contact">coucou</button>
+>>>>>>> d74e6fee81f14689d0eac984c358b7160a69421c
                 </div>
+                <div class="resultat"></div>
             </div>
         </div>
         {# {{ dump(product) }} #}
@@ -59,33 +67,40 @@
 
         {% endblock %}
 
-        {% block js %}
-            {#<script>#}
-                {#$(function(){#}
-                    {#$('#contact').on('click', function(e){#}
-                        {#event.preventDefault();#}
-                        {#$('#contactUser').empty();#}
-                        {#$('#contactUser').append('<form method="post">'+'<input id="send" class="form-control" type="textarea">'+'<button class="btn btn-primary mt-4">Envoyer message</button>'+'</form>')#}
+	{% block js %}
+        <script>
+            $(function(){
 
-                    {#})#}
+                $('#contact').on('click', function(e) {
+                    event.preventDefault();
+                    $('#contactUser').empty();
+                    $('#contactUser').append('<form method="post">' + '<input id="message" class="form-control" type="textarea">' + '<button class="btn btn-primary mt-4" id="send">Envoyer message</button>' + '</form>')
 
-                    {#$('body').on('click', '#send', function(e){#}
-                        {#e.preventDefault();#}
+                })
 
-                        {#$.ajax({#}
-                            {#type: 'post',#}
-                            {#url: "{{ path('user-message') }}",#}
-                            {#data: ,#}
-                            {#timeout: 3000,#}
-                            {#dataType: 'json',#}
-                            {#success: function (data) {#}
-                                {#$('#contactUser').empty();#}
-                                {#$('#contactUser').append('<span>Message envoyé!</span')#}
-                            {#}#}
-                        {#})#}
-                    {#})#}
+                    $('body').on('click', '#send', function (e) {
+                        e.preventDefault();
+                        console.log('hello');
+                        var data = "destinataire=" + {{ product.user.id }} +"&productid=" + {{ product.id }} +"&message=" + $('#message').val();
+                        console.log(data)
+                        $.ajax({
+                            type: 'POST',
+                            url: " {{ path('user-message') }} ",
+                            timeout: 3000,
+                            data: data,
+                            dataType: 'html',
+                            success: function (data) {
+                                $('.resultat').append(data);
+                            },
+                            error: function (error) {
+                                console.log(error.responseText);
+                            }
+                        })
 
-                {#})#}
-            {#</script>#}
+                    })
+
+            });
+
+
         {% endblock %}
 

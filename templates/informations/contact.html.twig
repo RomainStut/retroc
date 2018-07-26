@@ -11,30 +11,36 @@
            
         {% block content %}
 
-        <form class="container">           
+        <form class="container" method="post" action="{{ path('contact')}}">           
                 <div class="form-group">
                     <h3><u>Nom</u> :</h3>
-                    <input type="text" class="form-control" aria-describedby="nameHelp" placeholder="entrez votre nom" style="border:2px solid #999999; border-style: inset">
+                    <input name="nom" type="text" class="form-control" aria-describedby="nameHelp" placeholder="entrez votre nom" style="border:2px solid #999999; border-style: inset">
                     
                 </div>
                 <div class="form-group">
                     <h3><u>Prenom</u> :</h3>
-                    <input type="text" class="form-control" placeholder="entrez votre prenom" style="border:2px solid #999999; border-style: inset">
+                    <input name="prenom" type="text" class="form-control" placeholder="entrez votre prenom" style="border:2px solid #999999; border-style: inset">
+                </div>
+                 <div class="form-group">
+                    <h3><u>Sujet</u> :</h3>
+                    <input name="sujet" type="text" class="form-control" placeholder="entrez votre sujet" style="border:2px solid #999999; border-style: inset">
                 </div>
                 <div class="form-group">
                         <h3><u>Email</u> :</h3>
-                        <input type="password" class="form-control" placeholder="entrez votre email" style="border:2px solid #999999; border-style: inset">
+                        <input name="email" type="email" class="form-control" placeholder="entrez votre email" style="border:2px solid #999999; border-style: inset">
                         <small id="emailHelp" class="form-text text-muted">Entrez un email valide</small>
                     </div> 
                     <div class="form-group">
                             <h3><u>Entrez votre message</u> :</h3>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" style="border:2px solid #999999; border-style: inset"></textarea>
+                            <textarea name="message" class="form-control" id="exampleFormControlTextarea1" rows="10" style="border:2px solid #999999; border-style: inset"></textarea>
                           </div>              
                 <button type="submit" class="btn btn-primary">Envoyer</button>            
         </form>
 
         {% endblock %}
         {% block javascripts %}{% endblock %}
+
+
         
         
         

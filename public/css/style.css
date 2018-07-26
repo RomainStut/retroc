@@ -1,12 +1,19 @@
 
 /**************************HEADER*****************************************************/
+header{
+
+    background-color:#193e57;
+}
 
 body{
-    
-    font-family: Hanalei Fill !important; 
-    font-size: 1.5em;   
-    
+
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 120%;
+    width: 100%;
+    margin: 0 auto;
+
 }
+
 #head{
 
     background-image: url("../images/fondheader.jpg") ;
@@ -14,11 +21,17 @@ body{
     background-position: center;
 
 }
+
 #navbarColor01{
     color: #ffffff;
     background-color: #112735;
     border-color: #375a7f;
 }
+
+.log-btn{
+    float: right;
+}
+
 #navtx{
 
     color: #ced9e5;
@@ -62,7 +75,14 @@ body{
 p{
     font-family: Rasa !important;
 }
-
+.register{
+    text-align: center;
+    text-decoration: underline;
+}
+.addproduct{
+    text-align: center;
+    text-decoration: underline;
+}
 
 
 /**************************footer******************************************************/
@@ -73,7 +93,20 @@ p{
     background-position: center;
 }
 
+
+/**************************Formulaire******************************************************/
+
+
+p{
+    font-family: 'Space Mono', monospace;
+
+}
+
  
+
+
+ 
+
 
 
 
