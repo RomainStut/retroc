@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>{% block title %}{% endblock%}</title>
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
     <!-- Boostrap.css -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <!-- FontAwesome v5.x -->
@@ -60,13 +61,13 @@
                             Retro
                         </a>
                         <div class="dropdown-menu "  aria-labelledby="navbarDropdown" id="navbarColor01">
-                            <a class="dropdown-item text-light"  href="{{ path('product-type', {type: 1}) }}">Tout</a>
+                            <a class="dropdown-item text-light hover-color"  href="{{ path('product-type', {type: 1}) }}">Tout</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-light"  href="#">Jeux</a>
+                            <a class="dropdown-item text-light hover-color"  href="#">Jeux</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-light"   href="#">Consoles</a>
+                            <a class="dropdown-item text-light hover-color"   href="#">Consoles</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-light" href="#">Accessoires</a>
+                            <a class="dropdown-item text-light hover-color" href="#">Accessoires</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -74,26 +75,26 @@
                             Next-gen
                         </a>
                         <div class="dropdown-menu" id="navbarColor01" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item text-light"  href="{{ path('product-type', {type: 2}) }}">Tout</a>
+                            <a class="dropdown-item text-light hover-color"  href="{{ path('product-type', {type: 2}) }}">Tout</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-light" href="#">Jeux</a>
+                            <a class="dropdown-item text-light hover-color" href=" {{ path('product-type-cat', {type: 2, cat:2})}} ">Jeux</a>
                             <div class="dropdown-divider text-light"></div>
-                            <a class="dropdown-item text-light" href="#">Consoles</a>
+                            <a class="dropdown-item text-light hover-color" href="{{ path('product-type-cat', {type: 2, cat:1})}}">Consoles</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-light" href="#">Accessoires</a>
+                            <a class="dropdown-item text-light hover-color" href="{{ path('product-type-cat', {type: 2, cat:3})}}">Accessoires</a>
                         </div>
                     </li>                    <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Arcade
                         </a>
                         <div class="dropdown-menu" id="navbarColor01" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item text-light"  href="{{ path('product-type', {type: 3}) }}">Tout</a>
+                            <a class="dropdown-item text-light hover-color"  href="{{ path('product-type', {type: 3}) }}">Tout</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-light" href="#">Jeux</a>
+                            <a class="dropdown-item text-light hover-color" href="#">Jeux</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-light" href="#">Consoles</a>
+                            <a class="dropdown-item text-light hover-color" href="#">Consoles</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-light" href="#">Accessoires</a>
+                            <a class="dropdown-item text-light hover-color" href="#">Accessoires</a>
                         </div>
                     </li>                 
                     <li class="nav-item">
@@ -214,6 +215,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <!-- Bootstrap.js -->
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+<script>
+            window.addEventListener("load", function(){
+            window.cookieconsent.initialise({
+              "palette": {
+                "popup": {
+                  "background": "#000"
+                },
+                "button": {
+                  "background": "#f1d600"
+                }
+              },
+              "content": {
+                "href": "http://localhost:8000/"
+              }
+            })});
+</script>
 
 	{% block js %}{% endblock %}
 </body>

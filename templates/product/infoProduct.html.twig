@@ -28,33 +28,38 @@
                     <img src="{{ asset('uploads/images/' ~ product.image) }}" alt=" {{product.name}} " style="width:400px; height:400px" type="button" data-toggle="modal" data-target="#modalImage" class="btn btn-dark">
                 {% endif %}
             </div>
+
             <div class="col-md-4 text-center">
                 <div class="text-center description" style="width:auto; text-align:center; overflow:scroll">
                     <h5>Description du produit :</h5>
                     <p> {{product.description}} </p>
+
+            <div class="col-12 d-flex">
+                <div class="col-md-8 text-center">
+                    {% if product.image %}
+                        <img src="{{ asset('uploads/images/' ~ product.image) }}" alt=" {{product.name}} " style="width:400px; height:400px" type="button" data-toggle="modal" data-target="#modalImage" class="btn btn-dark zoomin">
+                    {% endif %}
+
                 </div>
 
-<<<<<<< HEAD
                 <div class="col-6">
                     <h4> Vendeur: {{ product.user.username }}</h4>
                     <div id="contactUser">
                         {{ form_start(form) }}
                         {{ form_end(form) }}
-                        {#<button class="btn btn-info" id="contact">Contacter le vendeur</button>#}
+
                     </div>
-=======
+
             <div class="col-6">
                 <h4> Vendeur: {{ product.user.username }}</h4>
                 <div id="contactUser">
                     <button class="btn btn-primary mt-4" type="submit" id="contact">coucou</button>
->>>>>>> d74e6fee81f14689d0eac984c358b7160a69421c
+
                 </div>
                 <div class="resultat"></div>
             </div>
         </div>
-        {# {{ dump(product) }} #}
 
-        {# Div pour modal #}
         <div class="modal" id="modalImage" tabindex="-1" role="dialog" aria-labelledby="myModal">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -69,37 +74,63 @@
 
 	{% block js %}
         <script>
-            $(function(){
+            $(function() {
 
-                $('#contact').on('click', function(e) {
+                $('#contact').on('click', function (e) {
                     event.preventDefault();
                     $('#contactUser').empty();
+
                     $('#contactUser').append('<form method="post">' + '<input id="message" class="form-control" type="textarea">' + '<button class="btn btn-primary mt-4" id="send">Envoyer message</button>' + '</form>')
 
                 })
 
-                    $('body').on('click', '#send', function (e) {
-                        e.preventDefault();
-                        console.log('hello');
-                        var data = "destinataire=" + {{ product.user.id }} +"&productid=" + {{ product.id }} +"&message=" + $('#message').val();
-                        console.log(data)
-                        $.ajax({
-                            type: 'POST',
-                            url: " {{ path('user-message') }} ",
-                            timeout: 3000,
-                            data: data,
-                            dataType: 'html',
-                            success: function (data) {
-                                $('.resultat').append(data);
-                            },
-                            error: function (error) {
-                                console.log(error.responseText);
-                            }
-                        })
-
+                $('body').on('click', '#send', function (e) {
+                    e.preventDefault();
+                    console.log('hello');
+                    var data = "destinataire=" + {{ product.user.id }} +"&productid=" + {{ product.id }} +"&message=" + $('#message').val();
+                    console.log(data)
+                    $.ajax({
+                        type: 'POST',
+                        url: " {{ path('user-message') }} ",
+                        timeout: 3000,
+                        data: data,
+                        dataType: 'html',
+                        success: function (data) {
+                            $('.resultat').append(data);
+                        },
+                        error: function (error) {
+                            console.log(error.responseText);
+                        }
                     })
 
-            });
+
+                    $('#contactUser').append('<form method="post">' + '<input id="message" class="form-control" type="textarea">' + '<input hidden id="productid" value=" {{ product.id }} ">' + '<button class="btn btn-primary mt-4" id="send">Envoyer message</button>' + '</form>')
+
+                })
+
+                $('body').on('click', '#send', function (e) {
+                    e.preventDefault();
+                    var data = "message=" + $('#message').val();
+                    var url = " {{ path('user-message' , {id : 0}) }} ",
+                        url = url.replace('0', $('#productid').val())
+                    console.log(data)
+                    $.ajax({
+                        type: 'POST',
+                        url: url,
+                        timeout: 3000,
+                        data: data,
+                        dataType: 'html',
+                        success: function (data) {
+                            $('.resultat').append(data);
+                        },
+                        error: function (error) {
+                            console.log(error.responseText);
+                        }
+                    })
+
+                })
+
+            })
 
 
         {% endblock %}
