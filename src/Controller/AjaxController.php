@@ -66,6 +66,31 @@ class AjaxController extends Controller
 
     }
 
+    /**
+    *@Route("/profil/annonce", name="annonce-user")
+    */
+
+    public function showProducts()
+    {
+
+    	$userId = $this->getUser();
+
+        $repository = $this->getDoctrine()->getRepository(Products::class);
+        $products = $repository->myfindUserProducts($userId);
+
+        //nous permet de renvoyer un message d'erreur si aucun id ne correspond
+        if (!$products) {
+            throw $this->createNotFoundException(
+                'No annonce found for user id '.$userId
+            );
+        }
+
+        return $this->render('ajax/loadproduct.html.twig',
+                                array('products' => $products)
+        );
+
+    }
+
 
 };
 
