@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-2">
             <div class="nav flex-column nav-pills" style="background-color: #112735;" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link active text-warning" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Mes annonces</a>
+                <a class="nav-link active text-warning load-annonce" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Mes annonces</a>
                 <a class="nav-link text-warning load-message" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Mes messages</a>
                 <a class="btn btn-dark" href="{{ path('modif-user',{id:user.id }) }}"><button class="btn btn-dark">Modifier User</button></a>
                 {#<a href="{{ path('modif-user') }}" class="nav-link text-warning lienProfil"  id="v-pills-messages-tab" data-toggle="pill"  role="tab" aria-controls="v-pills-messages" aria-selected="false">#}Modifier profil</a>
@@ -49,10 +49,18 @@
         </div>
 
     </div>
-    <div class="col-12" id="result">
+    <div class="row">
+        <div class="col-6" id="result">
+
+        </div>
+        <div class="col-6" id="result2">
+
+        </div>
+    </div> 
+    
 
         
-    </div>    
+       
 
 
 
@@ -72,6 +80,26 @@
                 success: function(data){
                     
                     $('#result').html(data);
+                },
+                error: function (error) {
+                    console.log(error.responseText);
+                }
+            })
+        })
+    })
+
+    $(function(){
+        $('.load-annonce').on('click', function(e){
+            e.preventDefault();
+            console.log('ok');
+            $.ajax({                
+                type: 'get', 
+                url: "{{ path('annonce-user')}}",
+                timeout : 3000, 
+                dataType : 'html', 
+                success: function(data){
+                    
+                    $('#result2').html(data);
                 },
                 error: function (error) {
                     console.log(error.responseText);

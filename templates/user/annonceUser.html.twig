@@ -1,0 +1,8 @@
+{% for annonce in annonces %}
+<p>
+
+	{{ annonce.title }}, par {{ annonce.nom }},<br>
+    {{ annonce.content }}
+
+</p>
+{% endfor %}
