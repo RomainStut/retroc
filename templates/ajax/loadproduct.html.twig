@@ -4,13 +4,14 @@
 
     <a href="{{ path('update-product', {id:product.id}) }}">
 
-    <button class="btn btn-dark">Modifier</button>
-    
+        <button class="btn btn-dark">Modifier</button>
+
     </a>
     <a href="{{ path('product-delete', {id:product.id}) }}">
 
         <button class="btn btn-dark">Supprimer</button>
 
     </a>
+
     
 {% endfor %}
