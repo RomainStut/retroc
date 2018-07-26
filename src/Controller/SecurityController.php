@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\AdduserType;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -37,7 +38,7 @@ class SecurityController extends Controller
 
         $user = new Users();
 
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(AdduserType::class, $user);
 
         $form->handleRequest($request);
 
