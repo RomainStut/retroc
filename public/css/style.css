@@ -36,7 +36,16 @@ body{
     color: #ced9e5;
 }
 
+a.hover-color:hover{
+    color: #112735!important;
+}
 
+header .dropdown-item:focus, .dropdown-item:hover{
+    background-color: #ffde11 !important;
+}
+
+
+/**************************Content******************************************************/
 
 .infos{
     text-align: center; 

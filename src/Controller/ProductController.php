@@ -112,12 +112,25 @@ class ProductController extends Controller
      /**
      * @Route("/product/type/{type}", name="product-type")
      */
-    public function showAllRetro($type)
+    public function showAllType($type)
     {
         $repository = $this->getDoctrine()->getRepository(Products::class);
 
         $products = $repository->findAllType($type);
 
-        return $this->render('product/all-retro.html.twig', array('products' => $products));
+        return $this->render('product/all-type.html.twig', array('products' => $products));
+    }
+
+    /**
+     * @Route("/product/{type}/{cat}", name="product-type-cat")
+     */
+    public function showAllTypeCat($type, $cat)
+    {
+        $repository = $this->getDoctrine()->getRepository(Products::class);
+
+        $products = $repository->findAllType($type, $cat);
+
+        return $this->render('product/all-type-cat.html.twig', array('products' => $products));
+
     }
 }
