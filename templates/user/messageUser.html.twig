@@ -1,0 +1,7 @@
+{% for message in messages %}
+<p>
+
+	{{ message.title }}, publié le {{ message.datepubli|date('d/m/Y') }}, par {{ message.nom }}
+
+</p>
+{% endfor %}

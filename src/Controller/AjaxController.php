@@ -40,4 +40,36 @@ class AjaxController extends Controller
 
         return $this->render('ajax/send-message.html.twig', array('success' => $res));
     }
-}
+
+    /**
+    *@Route("/profil/message", name="message-user")
+    */
+
+    public function showMessage()
+    {
+
+    	$userId = $this->getUser();
+
+        $repository = $this->getDoctrine()->getRepository(Messages::class);
+        $messages = $repository->myfindUserMessage($userId);
+
+        //nous permet de renvoyer un message d'erreur si aucun id ne correspond
+        if (!$messages) {
+            throw $this->createNotFoundException(
+                'No message found for user id '.$userId
+            );
+        }
+
+        return $this->render('ajax/loadmessage.html.twig',
+                                array('messages' => $messages)
+        );
+
+    }
+
+
+};
+
+
+
+
+

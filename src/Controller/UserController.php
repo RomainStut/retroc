@@ -10,7 +10,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Entity\Users;
+
+use App\Entity\Messages;
+
+
 use Symfony\Component\HttpFoundation\File\File;
+
 
 
 class UserController extends Controller
@@ -80,4 +85,6 @@ class UserController extends Controller
         }
         return$this->render('user/modifUser.html.twig', array('form' => $form->createView()));
     }
+
+
 }
