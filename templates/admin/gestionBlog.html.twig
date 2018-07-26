@@ -1,0 +1,32 @@
+{% extends 'layout.html.twig' %}
+{% block title %} Liste utilisateurs {% endblock%}
+{% block titlepage %} Liste utilisateurs {% endblock%}
+
+{% block content %}
+{{ dump( blogs ) }}
+    <div class="container-fluid">
+        <div class="row">
+
+            {% for blog in blogs %}
+
+                {#<div class="card col-4" style="width: 18rem;">#}
+                    {#<div class="card-body">#}
+                        {#{% if user.profilepicture%}#}
+                            {#<img class="card-img-top" src="{{ asset('uploads/images/' ~  user.profilepicture) }}" alt="Card image cap">#}
+                        {#{% endif %}#}
+                        <h5 class="card-title">{{ blog.title }}</h5><hr>
+                        <p class="card-text">{{ blog.content }} €</p>
+
+
+                        {#<a href="{{ path('update-blog', {id: user.id })}}">Modifier le compte</a>#}
+                        {#<a href="{{ path('delete-blog', {id: user.id })}}">Supprimer le compte</a>#}
+
+                    {#</div>#}
+                {#</div>#}
+
+
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

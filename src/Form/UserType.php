@@ -35,7 +35,6 @@ class UserType extends AbstractType
             ->add('codepostal', IntegerType::class, array('label' => 'Code postal'))
             ->add('city', TextType::class, array('label' => 'Ville'))
 
-
         ;
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 use App\Form\AdduserType;
+use App\Form\UpdateUserType;
 use App\Form\UserType;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Users;
@@ -55,15 +56,15 @@ class AdminController extends Controller
     /**
      * @Route("/admin/users/update/{id}", name="update-user", requirements={"id", "\d+"})
      */
-    public function updateUser(Users $users, Request $request){
+    public function updateUser($id, Users $users, Request $request){
 
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
-        $users = $this->getUser();
+        $users = $this->getUser($id);
 
-        $users = new Users();
 
-        $form = $this->createForm(AdduserType::class, $users);
+
+        $form = $this->createForm(UpdateUserType::class, $users);
 
         $form->remove('plainPassword');
 
@@ -91,4 +92,7 @@ class AdminController extends Controller
         return $this->render('/admin/update.html.twig', array('form' => $form->createView()));
 
     }
+
+
+
 }
