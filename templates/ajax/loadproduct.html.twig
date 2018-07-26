@@ -1,0 +1,11 @@
+{% for product in products %}
+
+    <p> {{product.name}}, {{product.categorie.name}}  </p> 
+
+    <a href="{{ path('update-product', {id:product.id}) }}">
+
+    <button class="btn btn-dark">Modifier</button>
+    
+    </a>
+    
+{% endfor %}

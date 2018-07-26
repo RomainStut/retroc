@@ -32,11 +32,18 @@ class ProductController extends Controller
     public function infoArticle($id){
         $repository = $this->getDoctrine()->getRepository(Products::class);
         $product = $repository->myFind($id);
+
+         if(!$product){
+            throw $this->createNotFoundException('No article found for id '.$id);
+        }
+        return $this->render('product/infoProduct.html.twig', array('product'=>$product[0]));
+        // nous permet de renvoyer un message d'erreur si aucun id ne correspond
+       
+
         if(!$product){
             throw $this->createNotFoundException('No article found for id '.$id);
         }
         return $this->render('product/infoProduct.html.twig', array('product'=>$product[0]));
-
     }
 
     /**
@@ -122,7 +129,7 @@ class ProductController extends Controller
     }
 
     /**
-     * @Route("/product/{type}/{cat}", name="product-type-cat")
+     * @Route("/product/typecat/{type}/{cat}", name="product-type-cat")
      */
     public function showAllTypeCat($type, $cat)
     {
@@ -132,5 +139,64 @@ class ProductController extends Controller
 
         return $this->render('product/all-type-cat.html.twig', array('products' => $products));
 
+    }
+
+    /**
+     * @Route("/product/update/{id}", name="update-product", requirements= {"id"="\d+"})
+     */
+    public function updateProduct(Products $products, Request $request, FileUploader $uploader){
+
+        $fileName = $products->getImage();
+        if($products->getImage()) {
+
+            $products->setImage(new File($this->getParameter('articles_image_directory') . '/' . $products->getImage()));
+        }
+        $form = $this->createForm(ProductType::class, $products);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $products = $form->getData();
+
+            if($products->getImage()){
+
+                $file = $products->getImage();
+
+                $fileName = $uploader->upload($file, $fileName);
+
+                $products->setImage($fileName);
+
+            }
+            $entityManager = $this->getDoctrine()->getManager();
+
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Annonce modifiée !');
+            return $this->redirectToRoute('userProfil');
+        }
+        return$this->render('product/modifier.html.twig', array('form' => $form->createView()));
+    }
+
+
+    /**
+     * @Route("product/delete/{id}", name = "product-delete", requirements= {"id"="\d+"})
+     */
+
+    public function deleteCategory(Products $products){
+       //j'utilise mon voter pour déterminer si l'utilisateur peut modifier cette annonce
+       // $this->denyAccessUnlessGranted('delete', $products);
+        //recuperation de l'entity manager
+        $entityManager = $this->getDoctrine()->getManager();
+        //je veux supprimer ce produit
+        $entityManager->remove($products);
+
+        //j'exécute la requete
+        $entityManager->flush();
+
+        //créer un message de succes en flash
+
+        $this->addFlash('success', 'Produit supprimé !');
+        return $this->redirectToRoute('userProfil');
     }
 }
