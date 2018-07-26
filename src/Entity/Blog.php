@@ -42,10 +42,10 @@ class Blog
      */
     private $type;
 
-//    /**
-//     * @ORM\OneToMany(targetEntity="App\Entity\Blog", mappedBy="blog")
-//     */
-//    private $blog;
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Blog", mappedBy="blog")
+     */
+
 
     public function __construct()
     {
@@ -117,15 +117,5 @@ class Blog
         return $this;
     }
 
-//    public function getBlog(): ?Blog
-//    {
-//        return $this->blog;
-//    }
-//
-//    public function setBlog(?Blog $blog): self
-//    {
-//        $this->blog = $blog;
-//
-//        return $this;
-//    }
+
 }

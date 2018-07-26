@@ -9,17 +9,15 @@ use App\Entity\Blog;
 class BlogController extends Controller
 {
     /**
-     * @Route("/blog", name="blog")
+     * @Route("admin/blog", name="admin-blog")
      */
-    public function showall()
+    public function showAll()
     {
 
-        $repository = $this->getDoctrine()->getRepository(blog::class);
+        $repository = $this->getDoctrine()->getRepository(Blog::class);
 
-        $products = $repository->myFindLast4();
-        return $this->render('blog/index.html.twig', [
-            'controller_name' => 'BlogController',
-        ]);
+        $blogs = $repository->findAll();
+        return $this->render('admin/gestionBlog.html.twig', array('blogs' => $blogs ));
     }
 
 

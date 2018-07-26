@@ -27,20 +27,23 @@
                     </div>
                 </div>
                 <div class="col-md-10">
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <a id="navbarColor01" class="btn btn-dark text-warning mt-4 ml-2 log-btn" href="{{ path('logout') }}">Déconnexion</a>
+                        <a id="navbarColor01" class="btn btn-dark text-warning mt-4 mr-3 log-btn" href="{{ path('userProfil') }}">Profil</a>
+
+
+                    {% else %}
+                        <a id="navbarColor01" class="btn btn-dark text-warning mt-4 log-btn mr-5" href="{{ path('register') }}">Inscription</a>
+                        <a id="navbarColor01" class="btn btn-dark text-warning mt-4 log-btn mr-3" href="{{ path('login') }}">Connexion</a>
+                    {% endif %}
+
                     {% if is_granted('ROLE_ADMIN') %}
 
                     <a id="navbarColor01" class="btn btn-dark text-warning mt-4 ml-2 log-btn" href="{{ path('admin-users') }}">Gestion users</a>
+                        <a id="navbarColor01" class="btn btn-dark text-warning mt-4 ml-2 log-btn" href="{{ path('admin-blog') }}">Gestion du blog</a>
                     {% endif %}
 
-                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <a id="navbarColor01" class="btn btn-dark text-warning mt-4 ml-2 log-btn" href="{{ path('logout') }}">Déconnexion</a> 
-                    <a id="navbarColor01" class="btn btn-dark text-warning mt-4 mr-3 log-btn" href="{{ path('userProfil') }}">Profil</a>         
-                  
 
-                    {% else %}
-                    <a id="navbarColor01" class="btn btn-dark text-warning mt-4 log-btn mr-5" href="{{ path('register') }}">Inscription</a>
-                    <a id="navbarColor01" class="btn btn-dark text-warning mt-4 log-btn mr-3" href="{{ path('login') }}">Connexion</a>
-                    {% endif %}
                 </div>
             </div>
         </div>
