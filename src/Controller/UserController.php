@@ -4,12 +4,18 @@ namespace App\Controller;
 
 use App\Form\UpdateUserType;
 use App\Form\UserType;
+
 use App\Service\FileUploader;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Entity\Users;
+
+use App\Entity\Messages;
+
+
 use Symfony\Component\HttpFoundation\File\File;
+
 
 
 class UserController extends Controller
@@ -42,38 +48,43 @@ class UserController extends Controller
     }
 
     /**
-     * @route("/profil/modifier/{id}", name="modif-user", requirements= {"id"="\d+"})
+     * @route("/profil/update/{id}", name="update-user", requirements= {"id"="\d+"})
      */
-    public function updateUser($id, Users $users, Request $request, FileUploader $uploader)
+    public function updateUser(Users $users, Request $request, FileUploader $uploader)
     {
-//j'utilise mon voter pour déterminer si l'utilisateur peut modifier cet article
-/*        $this->denyAccessUnlessGranted('edit', $users);*/
-
-
-        /*$fileName = $users->getImage();
-        if($users->getImage()) {
-            $users->setImage(new File($this->getParameter('articles_image_directory') . '/' . $users->getImage()));
-        }*/
-
+        $fileName = $users->getProfilepicture();
+        if($users->getProfilepicture()) {
+            //pour povoir générer le formulaire, on doit transformer le nom du fichier stocké pour l'instant
+            // dans l'attribut image en instance de la classe File (ce qui est attendu par le formulaire)
+            $users->setProfilepicture(new File($this->getParameter('articles_image_directory') . '/' . $users->getProfilepicture()));
+        }
         $form = $this->createForm(UpdateUserType::class, $users);
+
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
 
             $users = $form->getData();
-           /* if ($users->getImage()){
-                //on récupère un objet de classe File
-                $file = $users->getImage();
 
-                $users = $uploader->upload($file, $fileName);
+            if($users->getProfilepicture()){
+
+                $file = $users->getProfilepicture();
+
+                $fileName = $uploader->upload($file, $fileName);
+
+                $users->setProfilepicture($fileName);
+
             }
-            $users->setImage($fileName);*/
+
             $entityManager = $this->getDoctrine()->getManager();
+
             $entityManager->flush();
+
             $this->addFlash('success', 'Utilisateur modifié !');
             return $this->redirectToRoute('userProfil');
         }
-
-
         return$this->render('user/modifUser.html.twig', array('form' => $form->createView()));
     }
+
+
 }
