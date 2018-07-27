@@ -23,7 +23,7 @@ class BlogController extends Controller
         $repository = $this->getDoctrine()->getRepository(Blog::class);
 
         $blogs = $repository->findAll();
-        return $this->render('admin/gestionBlog.html.twig', array('blogs' => $blogs));
+        return $this->render('admin/liste-article-blog.html.twig', array('blogs' => $blogs));
     }
 
 
@@ -37,7 +37,7 @@ class BlogController extends Controller
         if (!$blogs) {
             throw $this->createNotFoundException('No article found for id ' . $id);
         }
-        return $this->render('admin/update-blog.html.twig', array('blogs' => $blogs));
+        return $this->render('admin/info-article-blog.html.twig', array('blogs' => $blogs));
 
     }
 
@@ -77,7 +77,7 @@ class BlogController extends Controller
 
             return $this->redirectToRoute('admin-blog');
         }
-        return $this->render('admin/addArticleBlog.html.twig', array(
+        return $this->render('admin/add-article-blog.html.twig', array(
             'form' => $form->createView()
         ));
     }
