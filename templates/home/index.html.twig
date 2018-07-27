@@ -32,9 +32,9 @@
 
                 <div class="card col-4 mt-5" style="width: 18rem;">
                     <div class="card-body">
-                        {#{% if blog.image%}#}
-                        {#<img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}" alt="Card image cap">#}
-                        {#{% endif %}#}
+                        {% if blog.image%}
+                            <img class="card-img-top" src="{{ asset('uploads/images/' ~ blog.image) }}" alt="Card image cap">
+                        {% endif %}
                         <h5 class="card-title">{{ blog.title }}</h5><hr>
                         <p class="card-text" style="overflow:auto;">{{ blog.content  | striptags | slice(0, 150) }} </p>
 

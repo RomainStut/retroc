@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\BlogRepository")
@@ -42,9 +43,6 @@ class Blog
      */
     private $type;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Blog", mappedBy="blog")
-     */
 
 
     public function __construct()
@@ -81,12 +79,12 @@ class Blog
         return $this;
     }
 
-    public function getImage(): ?string
+    public function getImage()
     {
         return $this->image;
     }
 
-    public function setImage(?string $image): self
+    public function setImage( $image): self
     {
         $this->image = $image;
 

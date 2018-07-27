@@ -86,5 +86,28 @@ class UserController extends Controller
         return$this->render('user/modifUser.html.twig', array('form' => $form->createView()));
     }
 
+    /**
+     * @Route("profil/delete/message/{id}", name = "message-delete", requirements= {"id"="\d+"})
+     */
+
+    public function deleteMessage(Messages $messages){
+        //j'utilise mon voter pour déterminer si l'utilisateur peut modifier cette annonce
+        //  $this->denyAccessUnlessGranted('delete', $messages);
+         //recuperation de l'entity manager
+         $entityManager = $this->getDoctrine()->getManager();
+         //je veux supprimer ce produit
+         $entityManager->remove($messages);
+ 
+         //j'exécute la requete
+         $entityManager->flush();
+ 
+         //créer un message de succes en flash
+ 
+         $this->addFlash('success', 'Message supprimé !');
+         return $this->redirectToRoute('userProfil');
+     }
+
+     
+
 
 }

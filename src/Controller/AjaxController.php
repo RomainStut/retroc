@@ -130,7 +130,7 @@ class AjaxController extends Controller
 
             foreach($products as $product){
 
-                $json[] = array('name' => $product->getName());
+                $json[] = array('name' => $product->getName(), 'url' => $this->generateUrl('product', ['id' => $product->getId()]));
 
             }
 

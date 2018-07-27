@@ -115,10 +115,17 @@
           
 
                 </ul>
+
+                {# bar de recherche #}
+
                 <form class="form-inline my-2 my-lg-0 mr-5">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" id="chercher" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
+                <div id="chercher-resultat"></div>
+
+
+
             </div>
         </nav>
 
@@ -147,7 +154,8 @@
 
 	</div><hr><br>
 
-	<!-- Footer -->
+
+    <!-- Footer -->
     <footer class="container-fluid mt-5" id="navbarColor01">
         <div class="row">
             <div class="col-md-6 d-flex justify-content-center">
@@ -217,6 +225,40 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+
+
+    <script>
+        $(function(){
+            $('body').on('keyup', '#chercher', function(e){
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: " {{ path('ajax-search-by-title') }} ",
+                    timeout: 3000,
+                    data: "title=" + $(this).val(),
+                    dataType: 'json',
+                    success: function(data){
+                        console.log(data);
+                        $('#chercher-resultat').empty();
+                        if(data.status === "ok"){
+                            $.each(data.products, function(i, product){
+                                $('#chercher-resultat').append
+                                ('<p><a class="badge badge-primary" href="'+product.url+'">' + product.name  + '</a></p>')
+                            })
+                        } else {
+                            $('#chercher-resultat').append(data.erreur)
+                        }
+
+                    },
+                    error: function(error){
+                        console.log(error.responseText);
+                    }
+                })
+
+            })
+
+        })
+    </script>
 
 
 
