@@ -122,10 +122,8 @@
 
                 {# bar de recherche #}
 
-                <form class="form-inline my-2 my-lg-0 mr-5">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" id="layout-recherche" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" id="layout-chercher" type="submit">Search</button>
-                </form>
+                {{ render(controller('App\\Controller\\HomeController::searchBarHome')) }}
+
 
 
             </div>
@@ -323,34 +321,7 @@
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
 
-
-    <script>
-        $(function(){
-            $('body').on('click', '#layout-chercher', function(e){
-                e.preventDefault();
-                console.log('ok')
-                $.ajax({
-                    type: 'POST',
-                    url: " {{ path('ajax-search-by-title') }} ",
-                    timeout: 3000,
-                    data: "title=" + $('#layout-recherche').val(),
-                    dataType: 'html',
-                    success: function(){
-                        console.log('redirected')
-                    },
-                    error: function(error){
-                        console.log(error.responseText);
-                    }
-                })
-
-            })
-
-        })
-    </script>
-
-
-
-
 	{% block js %}{% endblock %}
+
 </body>
 </html>
