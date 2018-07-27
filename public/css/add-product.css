@@ -1,0 +1,22 @@
+.search img{
+    border-radius: 15px;
+}
+
+.search div{
+    border: 2px solid #375a7f;
+    background: #1A3E58;
+    padding: 2px;
+    width: 400px;
+    color: #fff;
+}
+
+.search p{
+    padding-left: 5px;
+    padding-top: 10px;
+}
+
+.search div:hover {
+    color: #fec007;
+    cursor: pointer;
+    background: rgba(26, 62, 88, 0.7);
+}

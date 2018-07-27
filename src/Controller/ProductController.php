@@ -28,12 +28,7 @@ class ProductController extends Controller
         }
         return $this->render('product/infoProduct.html.twig', array('product'=>$product[0]));
         // nous permet de renvoyer un message d'erreur si aucun id ne correspond
-       
 
-        if(!$product){
-            throw $this->createNotFoundException('No article found for id '.$id);
-        }
-        return $this->render('product/infoProduct.html.twig', array('product'=>$product[0]));
     }
 
     /**
@@ -82,7 +77,7 @@ class ProductController extends Controller
                 'Votre product est soummis à validation'
             );
 
-            return $this->redirectToRoute('addProduct');
+            return $this->redirectToRoute('showAll');
         }
 
         return $this->render('product/add-product.html.twig', array(
