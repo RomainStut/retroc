@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Messages;
 use App\Entity\Products;
+use Symfony\Component\Asset\Packages;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -118,7 +119,7 @@ class AjaxController extends Controller
     /**
      * @Route("/admin/search-by-title", name="ajax-search-by-title")
      */
-    public function searchByTitle(Request $request)
+    public function searchByTitle(Request $request, Packages $asset)
     {
 
         $search = $request->request->get('title', 'invalide');
@@ -130,7 +131,7 @@ class AjaxController extends Controller
 
             foreach($products as $product){
 
-                $json[] = array('name' => $product->getName(), 'url' => $this->generateUrl('product', ['id' => $product->getId()]));
+                $json[] = array('name' => $product->getName(), 'img' => $asset->getUrl('uploads/images/'.$product->getImage()) ,'url' => $this->generateUrl('product', ['id' => $product->getId()]));
 
             }
 
@@ -172,6 +173,10 @@ class AjaxController extends Controller
 
         return $this->json(array('status'=>'ko', 'erreur' => 'Aucun prix'));
     }
+
+    /**
+     * @Route
+     */
 
 
 };
