@@ -1,0 +1,65 @@
+{% extends 'layout.html.twig' %}
+{% block title %} Liste annonces {% endblock%}
+{% block titlepage %} Liste annonces {% endblock%}
+
+
+{% block content %}
+    <div class="container">
+        <div class="row loadcontent">
+            {% for product in products %}
+                <div class="col-12">
+                    <div style="height: 190px" class="card mb-3">
+                        <h5 class="card-header"> {{ product.name }} | {{ product.user.username }} </h5>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    {% if product.image%}
+                                        <img style="width: 100px; height: 100px" src="{{ asset('uploads/images/' ~ product.image) }}" alt=" {{ product.name }} ">
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-4">
+                                    <p style="text-overflow: ellipsis;"> {{ product.description | striptags | slice(0, 150) }} </p>
+                                </div>
+                                <div class="col-md-4">
+                                    <p><strong>Qualité</strong> {{ product.quality.name }} </p>
+                                    <p><strong>Catégorie</strong> {{ product.categorie.name }} </p>
+                                    <p><strong>Type</strong> {{ product.type.name }} </p>
+                                </div>
+                                <div class="col-md-2">
+                                    <button id="validate" value="{{ product.id }}" class="btn btn-success">Valider</button>
+                                    <button class="btn btn-warning">Refuser</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
+{% block js %}
+    <script>
+        $(function(){
+            $('body').on('click', 'button#validate',function(e){
+                e.preventDefault();
+                var url = " {{path('validation-success' , {id : 0})}} ",
+                    url = url.replace('0', $(this).val() )
+                console.log(url);
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    timeout: 3000,
+                    dataType: 'html',
+                    success: function(data){
+                        $('.loadcontent').empty();
+                        $('.loadcontent').append(data);
+                    },
+                    error: function(error){
+                        console.log(error.responseText);
+                    }
+                })
+            })
+        })
+    </script>
+{% endblock %}

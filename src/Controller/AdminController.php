@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+use App\Entity\Products;
 use App\Form\AdduserType;
 use App\Form\UpdateUserType;
 use App\Form\UserType;
@@ -60,9 +61,7 @@ class AdminController extends Controller
      */
     public function updateUser(Users $users, Request $request, FileUploader $uploader){
 
-//        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
-//        $users = $this->getUser($id);
 
         $fileName = $users->getProfilepicture();
         if($users->getProfilepicture()) {
@@ -106,6 +105,18 @@ class AdminController extends Controller
 
     }
 
+    /**
+     * @Route("/admin/validation", name="validation-annonce")
+     */
+    public function showInvalid()
+    {
+        $repository = $this->getDoctrine()->getRepository(Products::class);
 
+        $products = $repository->findInvalid();
+
+        return $this->render('admin/gestionAnnonces.html.twig',
+            array('products' => $products));
+
+    }
 
 }
