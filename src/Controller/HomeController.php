@@ -23,7 +23,7 @@ class HomeController extends Controller
 
         $repository = $this->getDoctrine()->getRepository(Blog::class);
 
-        $blogs = $repository->findAll();
+        $blogs = $repository->myFindLastArticle();
 
         return $this->render('home/index.html.twig',
                                 array('products'=> $products,
@@ -31,4 +31,6 @@ class HomeController extends Controller
                                     )
         );
     }
+
+
 }
