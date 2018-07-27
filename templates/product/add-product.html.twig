@@ -13,6 +13,7 @@
             {{ form_end(form) }}
         </div>
         <div class="col-4 search"></div>
+        <div class="cote"></div>
 
     </div>
 </div>
@@ -22,7 +23,7 @@
     <script>
         $(function(){
 
-            $('body').on('keyup', 'input#product_name', function(e){
+            $('body').on('change', 'input#product_name', function(e){
                 e.preventDefault();
                 $.ajax({
                     type: 'POST',
@@ -35,12 +36,35 @@
                         $('.search').empty();
                         if(data.status === "ok"){
                             $.each(data.products, function(i, product){
-                                $('.search').append('<p>' + product.name  + '</p>')
+                                $('.search').append('<p class="title-result">' + product.name  + '</p>')
                             })
                         } else {
                             $('.search').append(data.erreur)
                         }
 
+                    },
+                    error: function(error){
+                        console.log(error.responseText);
+                    }
+                })
+            })
+
+            $('body').on('click', 'p.title-result', function(){
+                console.log($(this).val());
+                $('#product_name').val($(this).html())
+                $.ajax({
+                    type: 'POST',
+                    url: " {{ path('ajax-calcule-cote') }} ",
+                    timeout: 3000,
+                    data: "title=" + $(this).html(),
+                    dataType: 'json',
+                    success: function(data){
+                        console.log(data);
+                        if(data.status === "ok"){
+                            $('.cote').append('<p> COTE =' + data.cote  + '</p>');
+                        } else {
+                            $('.search').append(data.erreur)
+                        }
                     },
                     error: function(error){
                         console.log(error.responseText);

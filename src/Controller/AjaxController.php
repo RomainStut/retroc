@@ -141,6 +141,38 @@ class AjaxController extends Controller
 
     }
 
+    /**
+     * @Route("/admin/calcule-cote", name="ajax-calcule-cote")
+     */
+    public function calculeCote(Request $request)
+    {
+        $search = $request->request->get('title', 'invalide');
+
+        $repository = $this->getDoctrine()->getRepository(Products::class);
+        $products = $repository->findAllWhereTitle($search);
+
+        if(!empty($products)){
+
+            $total = 0;
+            $nb_article = 0;
+            $moyenne = 0;
+
+            foreach($products as $product){
+
+                $total += $product->getPrice();
+
+                $nb_article += 1;
+
+            }
+
+            $moyenne = $total/$nb_article;
+
+            return $this->json(array('status'=>'ok', 'cote' => $moyenne));
+        }
+
+        return $this->json(array('status'=>'ko', 'erreur' => 'Aucun prix'));
+    }
+
 
 };
 
