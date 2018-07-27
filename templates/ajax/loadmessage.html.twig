@@ -4,7 +4,19 @@
     <h1><u>Titre : </u></h1>
     <p> {{message.title}} </p>
     <h1><u>Contenu du message : </u></h1>
-    <p> {{message.content}} </p><hr>
+    <p> {{message.content}} </p>
+    </a>
+    <a href="{{ path('message-delete', {id:message.id}) }}">
+
+        <button class="btn btn-dark">Supprimer</button>
+
+    </a>
+     <a href="{{ path('update-message', {id:message.id}) }}">
+
+        <button class="btn btn-dark">Modifier</button>
+
+    </a>
+    <hr>
     </div>
 
 {% endfor %}
