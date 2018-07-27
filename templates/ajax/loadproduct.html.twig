@@ -1,25 +1,35 @@
+<div class="row d-flex justify-content-around">
+
 {% for product in products %}
 
-    <div class="annonceUser mb-3" style="border:3px double #1A3E58; padding:3px; -moz-border-radius:10px 0;-webkit-border-radius:10px 0;border-radius:10px 0;">
+    <div class="annonceUser mb-3 bg-dark col-5 mr-5 mt-3 " style="border:3px double #1A3E58; padding:3px; -moz-border-radius:10px 0;-webkit-border-radius:10px 0;border-radius:10px 0;">
         <div class="row">
-        <h4 style="margin-left: 10px; color: #1A3E58"><u>Nom :</u></h4>
-        <p style="margin-left: 10px; color: #1A3E58"> {{product.name}} </p>
-        <h4 style="margin-left: 10px; color: #1A3E58"><u>Catégorie :</u></h4>
-        <p style="margin-left: 10px; color: #1A3E58">  {{product.categorie.name}}
-        <h4 style="margin-left: 10px; color: #1A3E58"><u>Prix :</u></h4>
-        <p style="margin-left: 10px; color: #1A3E58"> {{product.price}} € </p>
+            <div class="col-7 ">
+                <div class="row">
+                    <h4 class="col-4 text-warning" ><u><b>Nom</b></u> :</h4>
+                    <p class="col-8 text-warning"> {{product.name}} </p>
+                    <h4 class="col-6 text-warning" ><u><b>Catégorie</b></u> :</h4>
+                    <p class="col-6 text-warning" >  {{product.categorie.name}}
+                    <h4 class="col-4 text-warning" ><u><b>Prix</b></u> :</h4>
+                    <p class="col-8 text-warning" > {{product.price}} € </p>
+                </div>
+            </div>
+            <div class="col-5">
+                <img src="{{ 'uploads/images/' ~ product.image }}" alt="..." class="img-thumbnail">
+            </div>
         </div>
         <a href="{{ path('update-product', {id:product.id}) }}">
 
-            <button class="btn btn-dark">Modifier</button>
+            <button class="btn btn-warning btn-sm text-dark">Modifier</button>
 
         </a>
         <a href="{{ path('product-delete', {id:product.id}) }}">
 
-            <button class="btn btn-dark">Supprimer</button>
+            <button class="btn btn-warning btn-sm text-dark">Supprimer</button>
 
         </a>
     </div>
 
 
 {% endfor %}
+</div>

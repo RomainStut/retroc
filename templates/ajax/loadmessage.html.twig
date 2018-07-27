@@ -1,15 +1,21 @@
 {% for message in messages %}
 
-  <div class="messageUser" style="border:3px double #1A3E58; padding:3px; -moz-border-radius:10px 0;-webkit-border-radius:10px 0;border-radius:10px 0;">
-    <h4 style="margin-left: 10px; color: #1A3E58"><u>Titre : </u></h4>
-    <p style="margin-left: 10px; color: #1A3E58"> {{message.title}} </p>
-    <h4 style="margin-left: 10px; color: #1A3E58"><u>Contenu du message : </u></h4>
-    <p style="margin-left: 10px; color: #1A3E58"> {{message.content}} </p>
-    
-    <a href="{{ path('message-delete', {id:message.id}) }}">
+  <div class="messageUser bg-dark" style="border:3px double #1A3E58; padding:3px; -moz-border-radius:10px 0;-webkit-border-radius:10px 0;border-radius:10px 0;">
+      <div class="row">
+    <h4 class="text-warning col-3"><u>Titre</u> : </h4>
+    <p class="text-warning col-6"> {{message.title}} </p>
+      </div>
+      <h4 class="text-warning"><u>Message </u> : </h4>
+    <p class="text-warning"> {{message.content}} </p>
 
-        <button class="btn btn-dark" style="margin-left: 10px;">Supprimer</button></a>  
-    
-    </div><br><br>
+      <a href="{{ path('message-delete', {id:message.id}) }}">
+          <button class="btn btn-warning text-dark btn-sm" style="margin-left: 10px;">Répondre</button>
+      </a>
 
+      <a href="{{ path('message-delete', {id:message.id}) }}">
+          <button class="btn btn-warning text-dark btn-sm" style="margin-left: 10px;">Supprimer</button>
+      </a>
+
+
+  </div>
 {% endfor %}

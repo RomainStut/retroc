@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\BlogRepository")
@@ -29,6 +30,7 @@ class Blog
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Assert\Image
      */
     private $image;
 

@@ -6,7 +6,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
@@ -62,6 +62,7 @@ class Users implements UserInterface, \Serializable
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Assert\Image
      */
     private $profilepicture;
 
@@ -202,7 +203,7 @@ class Users implements UserInterface, \Serializable
         return $this->profilepicture;
     }
 
-    public function setProfilepicture($profilepicture): self
+    public function setProfilepicture($profilepicture)
     {
         $this->profilepicture = $profilepicture;
 

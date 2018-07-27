@@ -4,7 +4,7 @@
 {% block titlepage %} <h1 class="ml-3" style="text-align: center; margin-bottom: 10px;">Profil de {{ user.username }}</h1>{% endblock %}
 
 {% block content %}
-
+<div class="container">
     <div class="row">
         <div class="col-2">
             <button class="btn btn-dark mt-1 text-warning" ><a class="text-warning" href="{{ path('updateUser',{id:user.id }) }}">Modifier Profil</a></button>
@@ -46,14 +46,16 @@
         </div>
 
     </div>
+
     <div class="row">
-        <div class="col-" id="result">
+        <div class="col-12" id="result">
 
         </div>
-        <div class="col-6" id="result2">
+        <div class="col-12" id="result2">
 
         </div>
     </div>
+</div>
 {% endblock %}
 
 {% block js %}
