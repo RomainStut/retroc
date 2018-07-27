@@ -115,6 +115,32 @@ class AjaxController extends Controller
 
     }
 
+    /**
+     * @Route("/admin/search-by-title", name="ajax-search-by-title")
+     */
+    public function searchByTitle(Request $request)
+    {
+
+        $search = $request->request->get('title', 'invalide');
+
+        $repository = $this->getDoctrine()->getRepository(Products::class);
+        $products = $repository->findAllWhereTitle($search);
+
+        if(!empty($products)){
+
+            foreach($products as $product){
+
+                $json[] = array('name' => $product->getName());
+
+            }
+
+            return $this->json(array('status'=>'ok', 'products' => $json));
+        }
+
+        return $this->json(array('status'=>'ko', 'erreur' => 'Aucun résultat'));
+
+    }
+
 
 };
 

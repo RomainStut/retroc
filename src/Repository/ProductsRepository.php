@@ -184,4 +184,26 @@ class ProductsRepository extends ServiceEntityRepository
 
     }
 
+    public function findAllWhereTitle($search){
+
+        $querybuilder = $this->createQuerybuilder('p')
+            ->innerJoin('p.user', 'u')
+            ->addSelect('u')
+            ->innerJoin('p.categorie', 'c')
+            ->addSelect('c')
+            ->innerJoin('p.quality', 'q')
+            ->addSelect('q')
+            ->innerJoin('p.type', 't')
+            ->addSelect('t')
+            ->andWhere('p.name LIKE :search')
+            ->setparameter('search', '%'.$search.'%')
+            ->orderBy('p.datepost', 'DESC')
+            ->getQuery();
+
+        return $querybuilder->execute();
+
+    }
+
+
+
 }
