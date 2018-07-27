@@ -10,12 +10,13 @@
 
             <div class="card col-10" style="width: 18rem;">
                 <div class="card-body">
-                    {#{% if user.profilepicture%}#}
-                        {#<img class="card-img-top" src="{{ asset('uploads/images/' ~  user.profilepicture) }}" alt="Card image cap">#}
-                    {#{% endif %}#}
+                    {% if blogs.image%}
+                        <img class="card-img-top" src="{{ asset('uploads/images/' ~  blogs.image) }}" alt="Card image cap">
+                    {% endif %}
                     <h5 class="card-title">{{ blogs.title }}</h5><hr>
                     <p class="card-text">{{ blogs.content }}</p>
-
+                    <a href="{{ path('update-article-blog', {id:blogs.id}) }}" class="btn btn-dark">Modifier article</a>
+                    <a href="{{ path('delete-article-blog', {id:blogs.id}) }}" class="btn btn-dark">Supprimer article</a>
 
                 </div>
             </div>

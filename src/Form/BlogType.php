@@ -3,7 +3,10 @@
 namespace App\Form;
 
 use App\Entity\Blog;
+use App\Entity\Type;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -17,8 +20,9 @@ class BlogType extends AbstractType
         $builder
             ->add('title', TextType::class)
             ->add('content', TextareaType::class)
+            ->add('type', EntityType::class, array('class'=>Type::class, 'choice_label'=>'name'))
             ->add('image', FileType::class)
-            ->add('Publier mon article', SubmitType::class, array('label'=>'Publier mon article', 'attr' => ['class' => 'btn btn-info']));
+            ->add('Publier mon article', SubmitType::class, array('label'=>'Publier mon article', 'attr' => ['class' => 'btn btn-dark text-warning']));
         ;
     }
 
