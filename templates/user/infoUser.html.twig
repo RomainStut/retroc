@@ -7,9 +7,9 @@
 
     <div class="row">
         <div class="col-2">
-            <button class="btn btn-dark mt-1 text-warning" href="{{ path('update-user',{id:user.id }) }}">Modifier Profil</button>
-            <button class="btn btn-dark mt-1 text-warning" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Mes annonces</button>
-            <button class="btn btn-dark mt-1 text-warning" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Mes messages</button>
+            <button class="btn btn-dark mt-1 text-warning" ><a class="text-warning" href="{{ path('updateUser',{id:user.id }) }}">Modifier Profil</a></button>
+            <button class="btn btn-dark mt-1 text-warning load-annonce" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Mes annonces</button>
+            <button class="btn btn-dark mt-1 text-warning load-message" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Mes messages</button>
 
         </div>
         <div class="col-6 offset-3">
@@ -54,13 +54,6 @@
 
         </div>
     </div>
-
-
-
-
-
-
-
 {% endblock %}
 
 {% block js %}

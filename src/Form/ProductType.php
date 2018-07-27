@@ -36,7 +36,7 @@ class ProductType extends AbstractType
 
             ->add('description', TextareaType::class, array('label'=>'Saisissez votre annonce'))
 
-            ->add('image', FileType::class)
+            ->add('image', FileType::class, array('label'=>'ajoutez une image svp', 'required'=> false))
 
             ->add('Publier mon annonce', SubmitType::class, array('label'=>'Publier mon annonce', 'attr' => ['class' => 'btn btn-info']));
 
