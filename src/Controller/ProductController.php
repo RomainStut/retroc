@@ -17,16 +17,6 @@ use App\Service\FileUploader;
 class ProductController extends Controller
 {
     /**
-     * @Route("/product", name="product")
-     */
-    public function index()
-    {
-        return $this->render('product/index.html.twig', [
-            'controller_name' => 'ProductController',
-        ]);
-    }
-
-    /**
      * @Route("product/{id}", name="product", requirements = {"id"="[0-9]+"})
      */
     public function infoArticle($id){
