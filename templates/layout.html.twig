@@ -27,26 +27,28 @@
                 </div>
                 <div class="col-md-10">
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <a id="navbarColor01" class="btn btn-dark text-warning mt-4 ml-2 log-btn" href="{{ path('logout') }}">Déconnexion</a>
-                        <a id="navbarColor01" class="btn btn-dark text-warning mt-4 mr-3 log-btn" href="{{ path('userProfil') }}">Profil</a>
+                        <a  class="btn btn-dark text-warning mt-4 ml-2 log-btn navbarColor01" href="{{ path('logout') }}">Déconnexion</a>
+                        <a class="btn btn-dark text-warning mt-4 mr-3 log-btn navbarColor01" href="{{ path('userProfil') }}">Profil</a>
 
 
                     {% else %}
-                        <a id="navbarColor01" class="btn btn-dark text-warning mt-4 log-btn mr-5" href="{{ path('register') }}">Inscription</a>
-                        <a id="navbarColor01" class="btn btn-dark text-warning mt-4 log-btn mr-3" href="{{ path('login') }}">Connexion</a>
+                        <a id="" class="btn btn-dark text-warning mt-4 log-btn mr-5 navbarColor01" href="{{ path('register') }}">Inscription</a>
+                        <a id="" class="btn btn-dark text-warning mt-4 log-btn mr-3 navbarColor01" href="{{ path('login') }}">Connexion</a>
                     {% endif %}
 
                     {% if is_granted('ROLE_ADMIN') %}
 
-                    <a id="navbarColor01" class="btn btn-dark text-warning mt-4 ml-2 log-btn" href="{{ path('admin-users') }}">Gestion users</a>
-                        <a id="navbarColor01" class="btn btn-dark text-warning mt-4 ml-2 log-btn" href="{{ path('admin-blog') }}">Gestion du blog</a>
+                    <a id="" class="btn btn-dark text-warning mt-4 ml-2 log-btn navbarColor01" href="{{ path('admin-users') }}">Gestion users</a>
+                        <a id="" class="btn btn-dark text-warning mt-4 ml-2 log-btn navbarColor01" href="{{ path('admin-blog') }}">Gestion du blog</a>
+                        <a id="" class="btn btn-dark text-warning mt-4 ml-2 log-btn navbarColor01" href="{{ path('validation-annonce') }}">Gestion des annonces</a>
                     {% endif %}
 
 
                 </div>
             </div>
         </div>
-        <nav class="navbar navbar-expand-lg" id="navbarColor01" >
+        <nav class="navbar navbar-expand-lg navbar-dark navbarColor01" id="" >
+
             <a class="navbar-brand text-light" href="{{ path('home') }}">Accueil</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -67,7 +69,7 @@
                         <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Retro
                         </a>
-                        <div class="dropdown-menu "  aria-labelledby="navbarDropdown" id="navbarColor01">
+                        <div class="dropdown-menu navbarColor01 "  aria-labelledby="navbarDropdown" id="">
                             <a class="dropdown-item text-light hover-color"  href="{{ path('product-type', {type: 1}) }}">Tout</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item text-light hover-color"  href="#">Jeux</a>
@@ -81,7 +83,7 @@
                         <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Next-gen
                         </a>
-                        <div class="dropdown-menu" id="navbarColor01" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu navbarColor01" id="" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-light hover-color"  href="{{ path('product-type', {type: 2}) }}">Tout</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item text-light hover-color" href=" {{ path('product-type-cat', {type: 2, cat:2})}} ">Jeux</a>
@@ -94,8 +96,10 @@
                         <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Arcade
                         </a>
-                        <div class="dropdown-menu" id="navbarColor01" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item text-light hover-color"  href="{{ path('product-type', {type: 3}) }}">Tout</a>
+
+                        <div class="dropdown-menu navbarColor01" id="" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item text-light hover-color"  href="{{ path('product-type', {type: 4}) }}">Tout</a>
+
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item text-light hover-color" href="#">Jeux</a>
                             <div class="dropdown-divider"></div>
@@ -151,10 +155,105 @@
 		{% block content %}{% endblock %}
 
 	</div><hr><br>
+{#-------------------block product--------------------#}
+    <div class="container">
 
+        <!--Grid row-->
+        <div class="row">
+
+            <!--Grid column-->
+            <div class="col-lg-2 col-md-12 mb-4">
+
+                <!--Image-->
+                <div class="view overlay z-depth-1-half">
+                    <img src="{{ asset('uploads/images/3dd9d1c5024732ef6534c230c36823ec.jpeg' ) }}" class="img-fluid" alt="">
+                    <a href="">
+                        <div class="mask rgba-white-light"></div>
+                    </a>
+                </div>
+
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-lg-2 col-md-6 mb-4">
+
+                <!--Image-->
+                <div class="view overlay z-depth-1-half">
+                    <img src="{{ asset('uploads/images/69f109aabbe282525b1bf6f826113461.jpeg' ) }}" class="img-fluid" alt="">
+                    <a href="">
+                        <div class="mask rgba-white-light"></div>
+                    </a>
+                </div>
+
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-lg-2 col-md-6 mb-4">
+
+                <!--Image-->
+                <div class="view overlay z-depth-1-half">
+                    <img src="{{ asset('uploads/images/6c35b555e9b8568962cedde766e1c139.png' ) }}" class="img-fluid" alt="">
+                    <a href="">
+                        <div class="mask rgba-white-light"></div>
+                    </a>
+                </div>
+
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-lg-2 col-md-12 mb-4">
+
+                <!--Image-->
+                <div class="view overlay z-depth-1-half">
+                    <img src="{{ asset('uploads/images/88378898e2d08de1b0332a21f3c20501.jpeg' ) }}" class="img-fluid" alt="">
+                    <a href="">
+                        <div class="mask rgba-white-light"></div>
+                    </a>
+                </div>
+
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-lg-2 col-md-6 mb-4">
+
+                <!--Image-->
+                <div class="view overlay z-depth-1-half">
+                    <img src="{{ asset('uploads/images/0d5aad8934c42589e72dd68bad246461.jpeg' ) }}" class="img-fluid" alt="">
+                    <a href="">
+                        <div class="mask rgba-white-light"></div>
+                    </a>
+                </div>
+
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-lg-2 col-md-6 mb-4">
+
+                <!--Image-->
+                <div class="view overlay z-depth-1-half">
+                    <img src="{{ asset('uploads/images/c517a80f08e7e198dc338dec3b69208a.jpeg' ) }}" class="img-fluid" alt="">
+                    <a href="">
+                        <div class="mask rgba-white-light"></div>
+                    </a>
+                </div>
+
+            </div>
+            <!--Grid column-->
+
+        </div>
+        <!--Grid row-->
+
+    </div>
+
+    {#------------------block product end-----------------------#}
 
     <!-- Footer -->
-    <footer class="container-fluid mt-5" id="navbarColor01">
+    <footer class="container-fluid mt-5 navbarColor01" id="">
         <div class="row">
             <div class="col-md-6 d-flex justify-content-center">
                 <div class=" py-3 mt-3 my-3">
@@ -166,12 +265,6 @@
                             So you're my Uncle Joey. Better get used to these bars, kid.
                             You know, Doc, you left your equipment on all week. I followed you.
                             Yeah, you got my homework finished, McFly? I guess you guys aren't ready for that yet.
-
-
-                            You know, Doc, you left your equipment on all week. I followed you. Yeah, you got my homework finished, McFly? I guess you guys aren't ready for that.
-
-
-
                         </p>
                 </div>
             </div> 
@@ -209,8 +302,14 @@
                         </ul>
                     </div>
                 </div>                        
-            </div>           
+            </div>
         </div>
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3 border-primary">OCTOCOTE © 2018 Copyright:
+            <a href="https://octocote.com/"> Octocote.com</a>
+        </div>
+        <!-- Copyright -->
+
     </footer>   
     
     <!-- JQuery 3.3.1 -->
