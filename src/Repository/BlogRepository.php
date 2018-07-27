@@ -19,6 +19,20 @@ class BlogRepository extends ServiceEntityRepository
         parent::__construct($registry, Blog::class);
     }
 
+    //fonction pour récupérer les 3 derniers articles du blog qu'on affichera dans la page d'acceuil
+
+    public function myFindLastArticle(){
+
+        $querybuilder = $this->createQueryBuilder('a')
+
+            ->orderBy('a.datepost', 'DESC')
+            ->setMaxResults(3)
+            ->getQuery();
+
+        return $querybuilder->execute();
+
+    }
+
 //    /**
 //     * @return Blog[] Returns an array of Blog objects
 //     */
