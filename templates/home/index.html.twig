@@ -12,7 +12,8 @@
                 <div class="card col-3" style="width: 18rem;">
                     <div class="card-body">
                         {% if product.image%}
-                            <img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}" alt="Card image cap">
+                            <img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}"
+                                 alt="Card image cap">
                         {% endif %}
                         <h5 class="card-title">{{ product.name }}</h5><hr>
                         <p class="card-text">{{ product.price }} €</p>
@@ -22,6 +23,28 @@
 
             {% endfor %}
 
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+
+            {% for blog in blogs %}
+
+                <div class="card col-4 mt-5" style="width: 18rem;">
+                    <div class="card-body">
+                        {#{% if blog.image%}#}
+                        {#<img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}" alt="Card image cap">#}
+                        {#{% endif %}#}
+                        <h5 class="card-title">{{ blog.title }}</h5><hr>
+                        <p class="card-text" style="overflow:auto;">{{ blog.content  | striptags | slice(0, 150) }} </p>
+
+
+                        <a href="{{ path('product', {id: blog.id })}}">Voir</a>
+                    </div>
+                </div>
+
+
+            {% endfor %}
         </div>
     </div>
 

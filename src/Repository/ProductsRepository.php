@@ -42,6 +42,24 @@ class ProductsRepository extends ServiceEntityRepository
 
         return $querybuilder->execute();
     }
+
+    public function myfindUserProducts($id)
+    {
+         $querybuilder = $this->createQuerybuilder('p')
+             ->innerJoin('p.user', 'u')
+             ->addSelect('u')
+             ->innerJoin('p.categorie', 'c')
+             ->addSelect('c')
+             ->innerJoin('p.quality', 'q')
+             ->addSelect('q')
+             ->innerJoin('p.type', 't')
+             ->addSelect('t')
+             ->andWhere('p.user = :id')
+             ->setparameter('id', $id)            
+             ->getQuery();
+ 
+         return $querybuilder->execute();
+    }
 //    /**
 //     * @return Products[] Returns an array of Products objects
 //     */

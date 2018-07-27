@@ -1,4 +1,10 @@
 {% for message in messages %}
+
+  <div class="messageUser">
+    <h1><u>Titre : </u></h1>
     <p> {{message.title}} </p>
-    <p> {{message.content}} </p>
+    <h1><u>Contenu du message : </u></h1>
+    <p> {{message.content}} </p><hr>
+    </div>
+
 {% endfor %}

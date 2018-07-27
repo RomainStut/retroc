@@ -5,10 +5,12 @@ use App\Entity\Products;
 use App\Form\AdduserType;
 use App\Form\UpdateUserType;
 use App\Form\UserType;
+use App\Service\FileUploader;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Users;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\File;
 
 class AdminController extends Controller
 {
@@ -57,19 +59,21 @@ class AdminController extends Controller
     /**
      * @Route("/admin/users/update/{id}", name="update-user", requirements={"id", "\d+"})
      */
-    public function updateUser($id, Users $users, Request $request){
+    public function updateUser(Users $users, Request $request, FileUploader $uploader){
 
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+//        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
-        $users = $this->getUser($id);
+//        $users = $this->getUser($id);
 
+        $fileName = $users->getProfilepicture();
+        if($users->getProfilepicture()) {
 
+            $users->setProfilepicture(new File($this->getParameter('articles_image_directory') . '/' . $users->getProfilepicture()));
+        }
 
         $form = $this->createForm(UpdateUserType::class, $users);
 
-        $form->remove('plainPassword');
 
-        $form->remove('s\'inscrire');
 
 
         $form->handleRequest($request);
@@ -79,6 +83,15 @@ class AdminController extends Controller
         if($form->isSubmitted() && $form->isvalid()){
 
             $users = $form->getData();
+
+            if($users->getProfilepicture()){
+
+                $file = $users->getProfilepicture();
+
+                $fileName = $uploader->upload($file, $fileName);
+
+                $users->setProfilepicture($fileName);
+            }
 
 
             $entityManager = $this->getDoctrine()->getManager();
