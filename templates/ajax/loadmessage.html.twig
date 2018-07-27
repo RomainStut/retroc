@@ -1,22 +1,15 @@
 {% for message in messages %}
 
-  <div class="messageUser">
-    <h1><u>Titre : </u></h1>
-    <p> {{message.title}} </p>
-    <h1><u>Contenu du message : </u></h1>
-    <p> {{message.content}} </p>
-    </a>
+  <div class="messageUser" style="border:3px double #1A3E58; padding:3px; -moz-border-radius:10px 0;-webkit-border-radius:10px 0;border-radius:10px 0;">
+    <h1 style="margin-left: 10px; color: #1A3E58"><u>Titre : </u></h1>
+    <p style="margin-left: 10px; color: #1A3E58"> {{message.title}} </p>
+    <h1 style="margin-left: 10px; color: #1A3E58"><u>Contenu du message : </u></h1>
+    <p style="margin-left: 10px; color: #1A3E58"> {{message.content}} </p>
+    
     <a href="{{ path('message-delete', {id:message.id}) }}">
 
-        <button class="btn btn-dark">Supprimer</button>
-
-    </a>
-     <a href="{{ path('update-message', {id:message.id}) }}">
-
-        <button class="btn btn-dark">Modifier</button>
-
-    </a>
-    <hr>
-    </div>
+        <button class="btn btn-dark" style="margin-left: 10px;">Supprimer</button></a>  
+    
+    </div><br><br>
 
 {% endfor %}
