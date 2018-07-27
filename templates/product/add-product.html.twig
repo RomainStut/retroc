@@ -1,5 +1,9 @@
 {% extends 'layout.html.twig' %}
 
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/add-product.css') }}">
+{% endblock %}
+
 {% block title %}Ajout produit{% endblock%}
 
 {% block titlepage %}<h1 class="addproduct">Ajouter une annonce</h1>{% endblock%}
@@ -7,12 +11,21 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-8">
+        <div class="col-5">
             {{ form_start(form) }}
 
             {{ form_end(form) }}
         </div>
-        <div class="col-4 search"></div>
+        <div class="col-7">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Sélectionner le produit correspondant : </h2>
+                </div>
+                <div class="col-12 search">
+
+                </div>
+            </div>
+        </div>
         <div class="cote"></div>
 
     </div>
@@ -36,7 +49,7 @@
                         $('.search').empty();
                         if(data.status === "ok"){
                             $.each(data.products, function(i, product){
-                                $('.search').append('<p class="title-result">' + product.name  + '</p>')
+                                $('.search').append('<div id="cote-res" class="row mb-3"><img width="50" height="50" src="'+ product.img +'"><p class="title-result">' + product.name  + '</p></div>')
                             })
                         } else {
                             $('.search').append(data.erreur)
@@ -49,7 +62,7 @@
                 })
             })
 
-            $('body').on('click', 'p.title-result', function(){
+            $('body').on('click', 'div.cote-res', function(){
                 console.log($(this).val());
                 $('#product_name').val($(this).html())
                 $.ajax({
@@ -61,7 +74,7 @@
                     success: function(data){
                         console.log(data);
                         if(data.status === "ok"){
-                            $('.cote').append('<p> COTE =' + data.cote  + '</p>');
+                            $('.cote').append('<p> COTE =' + data.cote  + '€</p>');
                         } else {
                             $('.search').append(data.erreur)
                         }

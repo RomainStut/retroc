@@ -119,12 +119,9 @@
                 {# bar de recherche #}
 
                 <form class="form-inline my-2 my-lg-0 mr-5">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" id="chercher" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" id="layout-recherche" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" id="layout-chercher" type="submit">Search</button>
                 </form>
-                <div id="chercher-resultat"></div>
-
-
 
             </div>
         </nav>
@@ -229,26 +226,17 @@
 
     <script>
         $(function(){
-            $('body').on('keyup', '#chercher', function(e){
+            $('body').on('click', '#layout-chercher', function(e){
                 e.preventDefault();
+                console.log('ok')
                 $.ajax({
                     type: 'POST',
                     url: " {{ path('ajax-search-by-title') }} ",
                     timeout: 3000,
-                    data: "title=" + $(this).val(),
-                    dataType: 'json',
-                    success: function(data){
-                        console.log(data);
-                        $('#chercher-resultat').empty();
-                        if(data.status === "ok"){
-                            $.each(data.products, function(i, product){
-                                $('#chercher-resultat').append
-                                ('<p><a class="badge badge-primary" href="'+product.url+'">' + product.name  + '</a></p>')
-                            })
-                        } else {
-                            $('#chercher-resultat').append(data.erreur)
-                        }
-
+                    data: "title=" + $('#layout-recherche').val(),
+                    dataType: 'html',
+                    success: function(){
+                        console.log('redirected')
                     },
                     error: function(error){
                         console.log(error.responseText);
