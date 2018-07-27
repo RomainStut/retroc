@@ -77,7 +77,7 @@ class ProductController extends Controller
                 'Votre product est soummis à validation'
             );
 
-            return $this->redirectToRoute('addProduct');
+            return $this->redirectToRoute('showAll');
         }
 
         return $this->render('product/add-product.html.twig', array(

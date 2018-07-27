@@ -1,17 +1,25 @@
 {% for product in products %}
 
-    <p> {{product.name}}, {{product.categorie.name}}  </p> 
+    <div class="annonceUser mb-3" style="border:3px double #1A3E58; padding:3px; -moz-border-radius:10px 0;-webkit-border-radius:10px 0;border-radius:10px 0;">
+        <div class="row">
+        <h4 style="margin-left: 10px; color: #1A3E58"><u>Nom :</u></h4>
+        <p style="margin-left: 10px; color: #1A3E58"> {{product.name}} </p>
+        <h4 style="margin-left: 10px; color: #1A3E58"><u>Catégorie :</u></h4>
+        <p style="margin-left: 10px; color: #1A3E58">  {{product.categorie.name}}
+        <h4 style="margin-left: 10px; color: #1A3E58"><u>Prix :</u></h4>
+        <p style="margin-left: 10px; color: #1A3E58"> {{product.price}} € </p>
+        </div>
+        <a href="{{ path('update-product', {id:product.id}) }}">
 
-    <a href="{{ path('update-product', {id:product.id}) }}">
+            <button class="btn btn-dark">Modifier</button>
 
-        <button class="btn btn-dark">Modifier</button>
+        </a>
+        <a href="{{ path('product-delete', {id:product.id}) }}">
 
-    </a>
-    <a href="{{ path('product-delete', {id:product.id}) }}">
+            <button class="btn btn-dark">Supprimer</button>
 
-        <button class="btn btn-dark">Supprimer</button>
+        </a>
+    </div>
 
-    </a>
 
-    
 {% endfor %}

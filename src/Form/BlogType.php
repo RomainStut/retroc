@@ -21,7 +21,7 @@ class BlogType extends AbstractType
             ->add('title', TextType::class)
             ->add('content', TextareaType::class)
             ->add('type', EntityType::class, array('class'=>Type::class, 'choice_label'=>'name'))
-            ->add('image', FileType::class)
+            ->add('image', FileType::class, array('label'=>'ajoutez une image', 'required'=> false))
             ->add('Publier mon article', SubmitType::class, array('label'=>'Publier mon article', 'attr' => ['class' => 'btn btn-dark text-warning']));
         ;
     }

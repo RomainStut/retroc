@@ -32,7 +32,7 @@ class AdminController extends Controller
 
         $users = $repository->findAll();
 
-        return $this->render('admin/gestionUsers.html.twig',
+        return $this->render('admin/liste-users.html.twig',
             array('users' =>$users));
 
     }
@@ -57,7 +57,7 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("/admin/users/update/{id}", name="update-user", requirements={"id", "\d+"})
+     * @Route("admin/users/update/{id}", name="update-user", requirements={"id", "\d+"})
      */
     public function updateUser(Users $users, Request $request, FileUploader $uploader){
 
@@ -101,7 +101,7 @@ class AdminController extends Controller
             return $this->redirectToRoute('admin-users');
         }
 
-        return $this->render('/admin/update.html.twig', array('form' => $form->createView()));
+        return $this->render('/admin/update-user.html.twig', array('form' => $form->createView()));
 
     }
 

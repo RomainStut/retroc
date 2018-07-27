@@ -7,44 +7,82 @@
 
 {% block content %}
 
+
+
+
+
+
+
+
+    <div class="card text-white bg-secondary mb-3 " >
+        <div class="card-header">{{product.name}}</div>
+        <div class="card-body text-center" >
+            {% if product.image %}
+                <img src="{{ asset('uploads/images/' ~ product.image) }}" alt=" {{product.name}} " class="card-img-top text-center" style="max-width: 800px; max-height: 600px" type="button" data-toggle="modal" data-target="#modalImage" class="btn btn-dark zoomin">
+            {% endif %}
+            <h5 class="card-title">            <h5>Qualité :
+                    {% if product.quality.name == "mib" %}
+                        <i class="fas fa-star"></i>
+                    {% elseif product.quality.name == "occase" %}
+                        <i class="fas fa-star-half-alt"></i>
+                    {% else %}
+                        <i class="far fa-angry"></i>
+                    {% endif %}
+                </h5></h5>
+            <p class="card-text" style="font-size: 30px;"><strong>Prix: </strong> {{product.price}} € </p>
+
+            <p class="card-text"><h5>Description: </h5>{{product.description}}</p>
+            <p class="card-text">
+                <h4> Vendeur: {{ product.user.username }}</h4>
+                <div id="contactUser">
+                    <button class="btn btn-primary mt-4" type="submit" id="contact">coucou</button>
+                </div>
+                <div class="resultat"></div>
+            </p>
+        </div>
+    </div>
+
+
+
+
 <div class="container">
     <div class="row">
-        <div class="col-12">
-            <h1 class="text-center"> {{product.name}} </h1>
-            <h5>Catégorie : {{product.categorie.name}} </h5>
-            <h5>Qualité :
-                {% if product.quality.name == "mib" %}
-                    <i class="fas fa-star"></i>
-                {% elseif product.quality.name == "occase" %}
-                    <i class="fas fa-star-half-alt"></i>
-                {% else %}
-                    <i class="far fa-angry"></i>
-                {% endif %}
-            </h5>
-            <h2 style="color: rgb(88, 184, 88)">{{product.price}} € </h2>
-        </div>
-        <div class="col-12 d-flex">
-            <div class="col-md-8 text-center">
-                {% if product.image %}
-                    <img src="{{ asset('uploads/images/' ~ product.image) }}" alt=" {{product.name}} " style="width:400px; height:400px" type="button" data-toggle="modal" data-target="#modalImage" class="btn btn-dark zoomin">
-                {% endif %}
+        {#<div class="col-12">#}
+            {#<h1 class="text-center"> {{product.name}} </h1>#}
+            {#<h5>Catégorie : {{product.categorie.name}} </h5>#}
+            {#<h5>Qualité :#}
+                {#{% if product.quality.name == "mib" %}#}
+                    {#<i class="fas fa-star"></i>#}
+                {#{% elseif product.quality.name == "occase" %}#}
+                    {#<i class="fas fa-star-half-alt"></i>#}
+                {#{% else %}#}
+                    {#<i class="far fa-angry"></i>#}
+                {#{% endif %}#}
+            {#</h5>#}
+            {#<h2 style="color: rgb(88, 184, 88)">{{product.price}} € </h2>#}
+        {#</div>#}
+        {#<div class="col-12 d-flex">#}
+            {#<div class="col-md-8 text-center">#}
+                {#{% if product.image %}#}
+                    {#<img src="{{ asset('uploads/images/' ~ product.image) }}" alt=" {{product.name}} " style="width:400px; height:400px" type="button" data-toggle="modal" data-target="#modalImage" class="btn btn-dark zoomin">#}
+                {#{% endif %}#}
 
-            </div>
-            <div class="col-md-4">
-                <div class="text-center description">
-                    <h5>Description du produit :</h5>
-                    <p> {{product.description}} </p>
-                </div>
+            {#</div>#}
+            {#<div class="col-md-4">#}
+                {#<div class="text-center description">#}
+                    {#<h5>Description du produit :</h5>#}
+                    {#<p> {{product.description}} </p>#}
+                {#</div>#}
 
-                <div class="col-6">
-                    <h4> Vendeur: {{ product.user.username }}</h4>
-                    <div id="contactUser">
-                        <button class="btn btn-primary mt-4" type="submit" id="contact">coucou</button>
-                    </div>
-                    <div class="resultat"></div>
-                </div>
-            </div>
-        </div>
+                {#<div class="col-6">#}
+                    {#<h4> Vendeur: {{ product.user.username }}</h4>#}
+                    {#<div id="contactUser">#}
+                        {#<button class="btn btn-primary mt-4" type="submit" id="contact">coucou</button>#}
+                    {#</div>#}
+                    {#<div class="resultat"></div>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
         {# {{ dump(product) }} #}
 
         {# Div pour modal #}

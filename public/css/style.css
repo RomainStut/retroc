@@ -4,9 +4,18 @@ header{
 
     background-color:#193e57;
 }
+.navbar-default .navbar-toggle {
+    border-color: #f6ff00;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: #f6ff00;
+}
+
+
 
 body{
-
+    background: lightgrey;
     font-family: 'Rajdhani', sans-serif;
     font-size: 120%;
     width: 100%;
@@ -111,10 +120,10 @@ p{
 
 }
 
-/**************************Page User******************************************************/
+/**************************header******************************************************/
 
 
- 
+
 
 
 
