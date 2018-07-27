@@ -117,13 +117,14 @@
                 </ul>
 
                 {# bar de recherche #}
+                <div class="d-flex align-items-start flex-column bd-highlight">
+                    <form class="form-inline my-2 my-lg-0 mr-5">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" id="saisir-title" aria-label="Search">
 
-                <form class="form-inline my-2 my-lg-0 mr-5">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" id="chercher" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-                <div id="chercher-resultat"></div>
-
+                        <button class="btn btn-outline-success my-2 my-sm-0" id="chercher" type="submit">Search</button>
+                    </form>
+                    <div style="position:absolute;"id="chercher-resultat"></div>
+                </div>
 
 
             </div>
@@ -145,7 +146,7 @@
 
     </header>
 
-    <!-- Content -->	
+    <!-- Content -->
     <h1>{% block titlepage %}{% endblock%}</h1>
     
 	<div class="container">
@@ -229,17 +230,18 @@
 
     <script>
         $(function(){
-            $('body').on('keyup', '#chercher', function(e){
+            $('body').on('click', '#chercher', function(e){
                 e.preventDefault();
                 $.ajax({
                     type: 'POST',
                     url: " {{ path('ajax-search-by-title') }} ",
                     timeout: 3000,
-                    data: "title=" + $(this).val(),
+                    data: "title=" + $('#saisir-title').val(),
                     dataType: 'json',
                     success: function(data){
                         console.log(data);
                         $('#chercher-resultat').empty();
+
                         if(data.status === "ok"){
                             $.each(data.products, function(i, product){
                                 $('#chercher-resultat').append
