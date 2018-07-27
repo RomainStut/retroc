@@ -5,10 +5,73 @@
 {% block titlepage %}<h1 class="addproduct">Ajouter une annonce</h1>{% endblock%}
 
 {% block content %}
-    {{ form_start(form) }}
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            {{ form_start(form) }}
 
-    {{ form_end(form) }}
+            {{ form_end(form) }}
+        </div>
+        <div class="col-4 search"></div>
+        <div class="cote"></div>
 
+    </div>
+</div>
 {%  endblock %}
 
-{% block javascript %}{% endblock %}
+{% block js %}
+    <script>
+        $(function(){
+
+            $('body').on('change', 'input#product_name', function(e){
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: " {{ path('ajax-search-by-title') }} ",
+                    timeout: 3000,
+                    data: "title=" + $(this).val(),
+                    dataType: 'json',
+                    success: function(data){
+                        console.log(data);
+                        $('.search').empty();
+                        if(data.status === "ok"){
+                            $.each(data.products, function(i, product){
+                                $('.search').append('<p class="title-result">' + product.name  + '</p>')
+                            })
+                        } else {
+                            $('.search').append(data.erreur)
+                        }
+
+                    },
+                    error: function(error){
+                        console.log(error.responseText);
+                    }
+                })
+            })
+
+            $('body').on('click', 'p.title-result', function(){
+                console.log($(this).val());
+                $('#product_name').val($(this).html())
+                $.ajax({
+                    type: 'POST',
+                    url: " {{ path('ajax-calcule-cote') }} ",
+                    timeout: 3000,
+                    data: "title=" + $(this).html(),
+                    dataType: 'json',
+                    success: function(data){
+                        console.log(data);
+                        if(data.status === "ok"){
+                            $('.cote').append('<p> COTE =' + data.cote  + '</p>');
+                        } else {
+                            $('.search').append(data.erreur)
+                        }
+                    },
+                    error: function(error){
+                        console.log(error.responseText);
+                    }
+                })
+            })
+
+        })
+    </script>
+{% endblock %}

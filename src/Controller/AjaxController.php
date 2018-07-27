@@ -67,9 +67,33 @@ class AjaxController extends Controller
     }
 
     /**
+     * @Route("/admin/validation/{id}", name="validation-success", requirements={"id", "\d+"})
+     */
+    public function validateProduct(Products $products)
+    {
+        $repository = $this->getDoctrine()->getRepository(Products::class);
+        $product = $repository->find($products);
+
+        $product->setIsvalidate(true);
+
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $entityManager->persist($product);
+
+        $entityManager->flush();
+
+        $repository = $this->getDoctrine()->getRepository(Products::class);
+
+        $products = $repository->findInvalid();
+
+        return $this->render('admin/gestionAnnoncesAjax.html.twig',
+            array('products' => $products));
+
+    }
+
+    /**
     *@Route("/profil/annonce", name="annonce-user")
     */
-
     public function showProducts()
     {
 
@@ -89,6 +113,64 @@ class AjaxController extends Controller
                                 array('products' => $products)
         );
 
+    }
+
+    /**
+     * @Route("/admin/search-by-title", name="ajax-search-by-title")
+     */
+    public function searchByTitle(Request $request)
+    {
+
+        $search = $request->request->get('title', 'invalide');
+
+        $repository = $this->getDoctrine()->getRepository(Products::class);
+        $products = $repository->findAllWhereTitle($search);
+
+        if(!empty($products)){
+
+            foreach($products as $product){
+
+                $json[] = array('name' => $product->getName(), 'url' => $this->generateUrl('product', ['id' => $product->getId()]));
+
+            }
+
+            return $this->json(array('status'=>'ok', 'products' => $json));
+        }
+
+        return $this->json(array('status'=>'ko', 'erreur' => 'Aucun résultat'));
+
+    }
+
+    /**
+     * @Route("/admin/calcule-cote", name="ajax-calcule-cote")
+     */
+    public function calculeCote(Request $request)
+    {
+        $search = $request->request->get('title', 'invalide');
+
+        $repository = $this->getDoctrine()->getRepository(Products::class);
+        $products = $repository->findAllWhereTitle($search);
+
+        if(!empty($products)){
+
+            $total = 0;
+            $nb_article = 0;
+            $moyenne = 0;
+
+            foreach($products as $product){
+
+                $total += $product->getPrice();
+
+                $nb_article += 1;
+
+            }
+
+            $moyenne = $total/$nb_article;
+
+            return $this->json(array('status'=>'ok', 'cote' => $moyenne));
+        }
+
+        return $this->json(array('status'=>'ko', 'erreur' => 'Aucun prix'));
     }
 
 

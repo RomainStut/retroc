@@ -4,7 +4,8 @@
 
 {% block content %}
 
-    <div class="container-fluid">
+    <div class="container">
+        <h1><b>Dernières annonces</b></h1>
         <div class="row">
 
             {% for product in products %}
@@ -25,16 +26,17 @@
 
         </div>
     </div>
-    <div class="container">
+    <div class="container mt-5">
+        <h1><b>Derniers articles du blog Octocote</b></h1>
         <div class="row">
 
             {% for blog in blogs %}
 
-                <div class="card col-4 mt-5" style="width: 18rem;">
+                <div class="card col-4  " style="width: 18rem;">
                     <div class="card-body">
-                        {#{% if blog.image%}#}
-                        {#<img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}" alt="Card image cap">#}
-                        {#{% endif %}#}
+                        {% if blog.image%}
+                            <img class="card-img-top" src="{{ asset('uploads/images/' ~ blog.image) }}" alt="Card image cap">
+                        {% endif %}
                         <h5 class="card-title">{{ blog.title }}</h5><hr>
                         <p class="card-text" style="overflow:auto;">{{ blog.content  | striptags | slice(0, 150) }} </p>
 
