@@ -67,9 +67,33 @@ class AjaxController extends Controller
     }
 
     /**
+     * @Route("/admin/validation/{id}", name="validation-success", requirements={"id", "\d+"})
+     */
+    public function validateProduct(Products $products)
+    {
+        $repository = $this->getDoctrine()->getRepository(Products::class);
+        $product = $repository->find($products);
+
+        $product->setIsvalidate(true);
+
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $entityManager->persist($product);
+
+        $entityManager->flush();
+
+        $repository = $this->getDoctrine()->getRepository(Products::class);
+
+        $products = $repository->findInvalid();
+
+        return $this->render('admin/gestionAnnoncesAjax.html.twig',
+            array('products' => $products));
+
+    }
+
+    /**
     *@Route("/profil/annonce", name="annonce-user")
     */
-
     public function showProducts()
     {
 
@@ -88,6 +112,32 @@ class AjaxController extends Controller
         return $this->render('ajax/loadproduct.html.twig',
                                 array('products' => $products)
         );
+
+    }
+
+    /**
+     * @Route("/admin/search-by-title", name="ajax-search-by-title")
+     */
+    public function searchByTitle(Request $request)
+    {
+
+        $search = $request->request->get('title', 'invalide');
+
+        $repository = $this->getDoctrine()->getRepository(Products::class);
+        $products = $repository->findAllWhereTitle($search);
+
+        if(!empty($products)){
+
+            foreach($products as $product){
+
+                $json[] = array('name' => $product->getName(), 'url' => $this->generateUrl('product', ['id' => $product->getId()]));
+
+            }
+
+            return $this->json(array('status'=>'ok', 'products' => $json));
+        }
+
+        return $this->json(array('status'=>'ko', 'erreur' => 'Aucun résultat'));
 
     }
 
