@@ -146,4 +146,24 @@ class ProductsRepository extends ServiceEntityRepository
         return $querybuilder->execute();
     }
 
+    public function findInvalid(){
+
+        $querybuilder = $this->createQuerybuilder('p')
+            ->innerJoin('p.user', 'u')
+            ->addSelect('u')
+            ->innerJoin('p.categorie', 'c')
+            ->addSelect('c')
+            ->innerJoin('p.quality', 'q')
+            ->addSelect('q')
+            ->innerJoin('p.type', 't')
+            ->addSelect('t')
+            ->andWhere('p.isvalidate = false')
+            ->orderBy('p.datepost', 'DESC')
+            ->setMaxResults(4)
+            ->getQuery();
+
+        return $querybuilder->execute();
+
+    }
+
 }
