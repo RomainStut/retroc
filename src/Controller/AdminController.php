@@ -60,9 +60,7 @@ class AdminController extends Controller
      */
     public function updateUser(Users $users, Request $request, FileUploader $uploader){
 
-//        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
-//        $users = $this->getUser($id);
 
         $fileName = $users->getProfilepicture();
         if($users->getProfilepicture()) {
