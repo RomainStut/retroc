@@ -39,7 +39,7 @@ class AjaxController extends Controller
         $entityManager->flush();
 
 
-        return $this->render('ajax/send-message.html.twig', array('success' => $res));
+        return $this->render('ajax/send-message.html.twig', array('success' => 'Merci, votre message a bien été envoyé!'));
     }
 
     /**
