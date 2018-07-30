@@ -2,44 +2,30 @@
 
 {% block title %}Adresse{% endblock %}
 
-    {% block css %}
-         <!-- Boostrap.css -->
-         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-         <!-- FontAwesome v5.x -->
-         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    {% endblock %}
+{% block titlepage %}Nos Coordonnées <br><br>{% endblock %}
 
-
-        {% block titlepage %}Nos Coordonnées <br><br>{% endblock %} 
-
-         {% block content %}      
+{% block content %}
 
          <div class="container">
 
               <div class="row justify-content-between">
 
-                <div class="col-12 col-md-8" >
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2828.982394865661!2d-0.5850298842313523!3d44.84229188274434!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5527e77936472d%3A0x2854ac5dbdd54926!2sSoci%C3%A9t%C3%A9+Philomathique+de+Bordeaux!5e0!3m2!1sfr!2sfr!4v1532937879086"
+                  <div class="col-12 col-md-8" >
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2828.982394865661!2d-0.5850298842313523!3d44.84229188274434!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5527e77936472d%3A0x2854ac5dbdd54926!2sSoci%C3%A9t%C3%A9+Philomathique+de+Bordeaux!5e0!3m2!1sfr!2sfr!4v1532937879086"
                             width="100%" height="450" frameborder="0" style="border-radius: 45px 45px 45px 45px;" ></iframe>
-                </div>
+                  </div>
 
+                  <div class="col-12 col-md-4" style="border-radius: 45px 45px 45px 45px; background-color: darkgrey;">
+                      <ul>
+                          <li><h3>Octocote </h3></li>
+                          <li><h3>66 rue Abbée de l'épée</h3></li>
+                          <li><h3>Bordeaux (33000)</h3> <br></li>
+                          <li><h3>Nous envoyer un Mail <a href="{{ path('contact') }}">Cliquer ici</a></h3></li>
+                      </ul>
+                  </div>
+              </div>
 
-                <div class="col-12 col-md-4" style="border-radius: 45px 45px 45px 45px; background-color: darkgrey;">
+         </div>
 
+{% endblock %}
 
-                    <ul>
-                        <li><h3>Octocote </h3></li>
-                        <li><h3>66 rue Abbée de l'épée</h3></li>
-                        <li><h3>Bordeaux (33000)</h3> <br></li>
-                        <li><h3>Nous envoyer un Mail <a href="{{ path('contact') }}">Cliquer ici</a></h3></li>
-
-                    </ul>
-
-                </div>
-
-             </div>
-        
-          {% endblock %}
-          {% block javascripts %}{% endblock %}
-
-          
