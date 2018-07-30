@@ -78,6 +78,11 @@ class Products
      */
     private $messages;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $releasedate;
+
     public function __construct()
     {
         $this->messages = new ArrayCollection();
@@ -235,6 +240,18 @@ class Products
                 $message->setProduct(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getReleasedate(): ?\DateTimeInterface
+    {
+        return $this->releasedate;
+    }
+
+    public function setReleasedate(?\DateTimeInterface $releasedate): self
+    {
+        $this->releasedate = $releasedate;
 
         return $this;
     }

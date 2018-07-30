@@ -113,12 +113,8 @@
                     $('#contact').on('click', function(e){
                         event.preventDefault();
                         $('#contactUser').empty();
-                    <<<<<<< HEAD
-                        $('#contactUser').append('<form method="post">'+'<input id="message" class="form-control" type="textarea">'+'<input hidden id="productid" value=" {{product.id}} ">'+'<button class="btn btn-warning text-dark mt-4" id="send">Envoyer message</button>'+'</form>')
-                        =======
-                            $('#contactUser').append('<form method="post">'+'<input id="message" class="form-control" type="textarea">'+'<input hidden id="productid" value=" {{product.id}} ">'+'<button class="btn text-warning navbarColor01" id="send">Envoyer message</button>'+'</form>')
-                            >>>>>>> 5fbf298a083ac605e830225412af2c882aa38519
 
+                        $('#contactUser').append('<form method="post">'+'<input id="message" class="form-control" type="textarea">'+'<input hidden id="productid" value=" {{product.id}} ">'+'<button class="btn text-warning navbarColor01" id="send">Envoyer message</button>'+'</form>')
                     })
 
                     $('body').on('click', '#send', function(e){
@@ -141,6 +137,17 @@
                             }
                         })
 
+                    })
+
+                    $('.click-splitflap').splitFlap({
+                        image: '{{ asset('images/chars.png') }}',
+                        text:   '{{ product.releasedate|date("d/m/Y") }}',
+                        speed:          8,
+                        speedVariation: 2,
+                        autoplay:   true,
+                        onComplete: function () {
+                            console.log('Done !');
+                        }
                     })
 
                 })
