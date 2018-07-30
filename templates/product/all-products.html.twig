@@ -5,6 +5,15 @@
 
 {% block content %}
 
+    {% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="alert alert-{{ label }} mt-4 col-4">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% endfor %}
+
+
     <div class="container">
         <div class="row">
 
