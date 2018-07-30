@@ -6,6 +6,7 @@
 {% block title %}fiche-produit{% endblock %}
 
 {% block content %}
+
     <div class="container">
         <div class="card text-white bg-secondary mb-3 " >
             <div class="card-header text-warning font-weight-bold">
@@ -49,50 +50,8 @@
             </div>
         </div>
     </div>
-
-
-
     <div class="container">
         <div class="row">
-            {#<div class="col-12">#}
-            {#<h1 class="text-center"> {{product.name}} </h1>#}
-            {#<h5>Catégorie : {{product.categorie.name}} </h5>#}
-            {#<h5>Qualité :#}
-            {#{% if product.quality.name == "mib" %}#}
-            {#<i class="fas fa-star"></i>#}
-            {#{% elseif product.quality.name == "occase" %}#}
-            {#<i class="fas fa-star-half-alt"></i>#}
-            {#{% else %}#}
-            {#<i class="far fa-angry"></i>#}
-            {#{% endif %}#}
-            {#</h5>#}
-            {#<h2 style="color: rgb(88, 184, 88)">{{product.price}} € </h2>#}
-            {#</div>#}
-            {#<div class="col-12 d-flex">#}
-            {#<div class="col-md-8 text-center">#}
-            {#{% if product.image %}#}
-            {#<img src="{{ asset('uploads/images/' ~ product.image) }}" alt=" {{product.name}} " style="width:400px; height:400px" type="button" data-toggle="modal" data-target="#modalImage" class="btn btn-dark zoomin">#}
-            {#{% endif %}#}
-
-            {#</div>#}
-            {#<div class="col-md-4">#}
-            {#<div class="text-center description">#}
-            {#<h5>Description du produit :</h5>#}
-            {#<p> {{product.description}} </p>#}
-            {#</div>#}
-
-            {#<div class="col-6">#}
-            {#<h4> Vendeur: {{ product.user.username }}</h4>#}
-            {#<div id="contactUser">#}
-            {#<button class="btn btn-primary mt-4" type="submit" id="contact">coucou</button>#}
-            {#</div>#}
-            {#<div class="resultat"></div>#}
-            {#</div>#}
-            {#</div>#}
-            {#</div>#}
-            {# {{ dump(product) }} #}
-
-            {# Div pour modal #}
             <div class="modal" id="modalImage" tabindex="-1" role="dialog" aria-labelledby="myModal">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -119,6 +78,7 @@
 
                     $('body').on('click', '#send', function(e){
                         e.preventDefault();
+
                         var data = "message=" + $('#message').val();
                         var url = " {{path('user-message' , {id : 0})}} ",
                             url = url.replace('0', $('#productid').val() )
@@ -130,7 +90,11 @@
                             data: data,
                             dataType: 'html',
                             success: function(data){
-                                $('.resultat').append(data);
+
+                                if(data != null){
+                                    $('.resultat').append(data);
+                                }
+
                             },
                             error: function(error){
                                 console.log(error.responseText);

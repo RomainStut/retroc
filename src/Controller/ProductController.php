@@ -65,7 +65,6 @@ class ProductController extends Controller
             }
             $product->setImage($fileName);
 
-
             dump($product);
 
             $entityManager = $this->getDoctrine()->getManager();
@@ -116,7 +115,7 @@ class ProductController extends Controller
     }
 
     /**
-     * @Route("/product/typecat/{type}/{cat}", name="product-type-cat")
+     * @Route("/product/typecat/{type}/{cat}", name="product-type-cat", requirements={"type"="\d+", "cat"="\d+"})
      */
     public function showAllTypeCat(Type $type, Categories $cat)
     {
@@ -183,7 +182,7 @@ class ProductController extends Controller
 
         //créer un message de succes en flash
 
-        $this->addFlash('success', 'Produit supprimé !');
+        $this->addFlash('success', 'Annonce supprimée !');
         return $this->redirectToRoute('userProfil');
     }
 }

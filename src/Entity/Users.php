@@ -7,9 +7,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
+ * @UniqueEntity(fields="email", message="Email déjà pris")
+ * @UniqueEntity(fields="username", message="Username déjà pris")
  */
 class Users implements UserInterface, \Serializable
 {
@@ -21,12 +24,15 @@ class Users implements UserInterface, \Serializable
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=50, unique=true)
+     * @Assert\NotBlank()
      */
     private $username;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=100, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Email()
      */
     private $email;
 
