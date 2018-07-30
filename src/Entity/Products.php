@@ -39,7 +39,7 @@ class Products
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=false)
      *@Assert\Image
      */
     private $image;

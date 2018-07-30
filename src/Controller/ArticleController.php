@@ -68,7 +68,7 @@ class ArticleController extends Controller
 
             $this->addFlash(
                 'success',
-                'Votre article est soummis à validation de Romain'
+                'Votre article est soummis à validation du modérateur'
             );
 
             return $this->redirectToRoute('login');

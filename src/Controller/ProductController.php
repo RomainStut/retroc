@@ -53,6 +53,8 @@ class ProductController extends Controller
 
             $product->setDatepost(new \DateTime(date('Y-m-d H:i:s')));
 
+
+
             if($product->getImage()){
 
                 $file = $product->getImage();
@@ -61,8 +63,6 @@ class ProductController extends Controller
 
                 $product->setImage($fileName);
             }
-
-
 
             dump($product);
 
@@ -114,7 +114,7 @@ class ProductController extends Controller
     }
 
     /**
-     * @Route("/product/typecat/{type}/{cat}", name="product-type-cat")
+     * @Route("/product/typecat/{type}/{cat}", name="product-type-cat", requirements={"type"="\d+", "cat"="\d+"})
      */
     public function showAllTypeCat($type, $cat)
     {
