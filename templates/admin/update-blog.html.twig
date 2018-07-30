@@ -3,18 +3,16 @@
 
 {% block content %}
 
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-
             <div class="card col-10" style="width: 18rem;">
                 <div class="card-body">
                     {% if blogs.image%}
                         <img class="card-img-top" src="{{ asset('uploads/images/' ~  blogs.image) }}" alt="Card image cap">
                     {% endif %}
-                    <h3 class="card-title mt-3">{{ blogs.title }}</h3><hr>
-                    <p class="card-text" style="text-align: justify; font-size: 1rem">{{ blogs.content }}</p>
-                    <a href="{{ path('update-article-blog', {id:blogs.id}) }}" class="btn btn-dark text-warning">Modifier article</a>
-                    <a href="{{ path('delete-article-blog', {id:blogs.id}) }}" class="btn btn-dark mg-1 text-warning">Supprimer article</a>
+                    <h5 class="card-title">{{ blogs.title }}</h5><hr>
+                    <p class="card-text">{{ blogs.content }}</p>
+
 
                 </div>
             </div>

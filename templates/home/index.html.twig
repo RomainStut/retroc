@@ -41,12 +41,13 @@
                         <p class="card-text" style="overflow:auto;">{{ blog.content  | striptags | slice(0, 150) }} </p>
 
 
-                        <a href="{{ path('product', {id: blog.id })}}">Voir</a>
+                        <a href="{{ path('blog', {id: blog.id })}}">Voir</a>
                     </div>
                 </div>
 
 
             {% endfor %}
+            <a href="{{ path('show-all') }}" class="col-md-12 btn-md btn-secondary text-warning">Voir tous les articles</a>
         </div>
     </div>
 
