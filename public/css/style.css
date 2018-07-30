@@ -100,11 +100,6 @@ p{
 }
 .register{
     text-align: center;
-<<<<<<< HEAD
-
-=======
-    /* text-decoration: underline; */
->>>>>>> 9b5b66369efcf238eeb72270619d0ba0fc37f743
 }
 .addproduct{
     text-align: center;
@@ -129,7 +124,7 @@ p{
 
 }
 
-#formStyle{
+.formStyle{
     background-color:#1a3e58;
     border-radius: 10px;
 }
