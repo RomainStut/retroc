@@ -25,23 +25,23 @@
                         <div class="row">
                             <p style="font-size: 20px;" class="card-title col-4 text-warning"><b>Qualité : </b>
                                 {% if product.quality.name == "mib" %}
-                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"> {{ product.quality.name }}</i>
                                 {% elseif product.quality.name == "occase" %}
-                                    <i class="fas fa-star-half-alt"></i>
+                                    <i class="fas fa-star-half-alt"> {{ product.quality.name }}</i>
                                 {% else %}
-                                    <i class="far fa-angry"></i>
+                                    <i class="far fa-angry"> {{ product.quality.name }}</i>
                                 {% endif %}
                             </p>
 
-                            <p class="card-text">
-                            <p class="card-title col-5 text-warning mt-3" style="font-size: 20px;"><b>Vendeur: </b> {{ product.user.username }}</p>
-                            <div id="contactUser" class="col-md-3 offset-3 mt-3">
-                                <button class="btn btn-warning text-dark  " type="submit" id="contact">Contacter le vendeur</button>
-                            </div>
-                            <div class="resultat"></div>
-                            </p>
-                            <p class="col-4 text-warning mt-3" style="font-size: 20px;"><b>Description: </b></p>
-                            <p class="card-text col-12 text-warning mt-3" style="font-size: 15px; text-align: justify">{{product.description}}</p>
+
+                                <p class="card-title col-5 text-warning " style="font-size: 20px;"><b>Vendeur: </b> {{ product.user.username }}</p>
+                                <div id="contactUser" class="col-md-11 offset-1">
+                                    <button class="btn btn-warning text-dark font-weight-bold mt-3" type="submit" id="contact">Contacter le vendeur</button>
+                                </div>
+                                <div class="resultat"></div>
+
+                            <p class="col-md-3 text-warning mt-5 ml-1" style="font-size: 20px;"><b>Description: </b></p>
+                            <p class="card-text col-12 text-warning mt-2" style="font-size: 15px; text-align: justify">{{product.description}}</p>
 
                         </div>
                     </div>
