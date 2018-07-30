@@ -5,12 +5,12 @@
 
 {% block content %}
 
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
 
             {% for product in products %}
 
-                <div class="card col-4" style="width: 18rem;">
+                <div class="card col-3" style="width: 18rem;">
                     <div class="card-body">
                         {% if product.image%}
                             <img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}" alt="Card image cap">
@@ -22,10 +22,24 @@
                         <a href="{{ path('product', {id: product.id })}}">Voir 👁️</a>
                     </div>
                 </div>
-
-
             {% endfor %}
         </div>
     </div>
 
+{% endblock %}
+{% block js %}
+    <script>
+        $(function() {
+            $('.click-splitflap').splitFlap({
+                image: '{{ asset('images/chars.png') }}',
+                text:   '{{ products[0].type.dateflip|date("d/m/Y") }}',
+                speed:          8,
+                speedVariation: 2,
+                autoplay:   true,
+                onComplete: function () {
+                    console.log('Done !');
+                }
+            })
+        });
+    </script>
 {% endblock %}
