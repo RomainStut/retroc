@@ -2,16 +2,54 @@
 
 {% block title %}Register{% endblock %}
 
-{% block titlepage %}<h1 class="register">S'enregistrer</h1>{% endblock %}
+{% block titlepage %}{% endblock %}
 
 {% block content %}
 	<div class="container">
-		<div class="col-md-6 offset-2 bg-secondary text-warning p-3">
+		<div class="col-md-8 offset-2 text-warning p-4 formStyle">
+			<h1 class="register col-md-12">S'enregistrer</h1>
             {{ form_start(form) }}
 			<div class="row">
+				<div class="col-md-6">
+					<div class="col-md-12">
+						<label for="username">Pseudo</label>
+                        {{ form_widget(form.users.username) }}
+					</div>
+					<div class="col-md-12">
+						<label for="username">Email</label>
+                        {{ form_widget(form.users.email) }}
+					</div>
+					<div class="col-md-12">
+						<label for="username">Téléphone</label>
+                        {{ form_widget(form.users.tel) }}
+					</div>
+					<div class="col-md-12">
+						<label for="username">Date de naissance</label>
+                        {{ form_widget(form.users.datebirth) }}
+					</div>
+					<div class="col-md-12">
+						<label for="username">Adresse</label>
+                        {{ form_widget(form.users.address) }}
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="col-md-12">
+						<label for="username">Code Postal</label>
+                        {{ form_widget(form.users.codepostal) }}
+					</div>
+					<div class="col-md-12">
+						<label for="username">Ville</label>
+                        {{ form_widget(form.users.city) }}
+					</div>
+					<div class="col-md-12">
+                        {{ form_widget(form.plainPassword) }}
+					</div>
+					<div class="col-md-12">
+                        {{ form_widget(form.Inscription) }}
+					</div>
+				</div>
 
 
-                {{ form_widget(form.) }}
 			</div>
             {{ form_end(form) }}
 		</div>

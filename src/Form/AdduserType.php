@@ -17,11 +17,11 @@ class AdduserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add("users", UserType::class, array('data_class' => Users::class, "label" => false))
+            ->add("users", UserType::class, array('data_class' => Users::class, "label" => true))
             ->add('plainPassword',RepeatedType::class, array('type'=> PasswordType::class, 'invalid_message' => 'les mdp ne sont pas identiques',
                 'first_options' => ['label' => 'Mot de passe'],
                 'second_options' => ['label' => 'Répétez le mot de passe']))
-            ->add("S'inscrire", SubmitType::class, array('label'=>'Inscription', 'attr' => ['class' => 'btn btn-warning text-dark']))
+            ->add("Inscription", SubmitType::class, array('label'=>'Inscription', 'attr' => ['class' => 'navbarColor01 text-warning']))
         ;
     }
 
