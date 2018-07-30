@@ -72,15 +72,13 @@ class UserController extends Controller
 
                 $fileName = $uploader->upload($file, $fileName);
 
-                $users->setProfilepicture($fileName);
-
-            }
-
+                }
+            $users->setProfilepicture($fileName);
             $entityManager = $this->getDoctrine()->getManager();
 
             $entityManager->flush();
 
-            $this->addFlash('success', 'Utilisateur modifié !');
+            $this->addFlash('success', 'Profil modifié !');
             return $this->redirectToRoute('userProfil');
         }
         return$this->render('user/modifUser.html.twig', array('form' => $form->createView()));

@@ -39,7 +39,7 @@ class HomeController extends Controller
     {
         $form = $this->createFormBuilder(null)
             ->add('Recherche', TextType::class)
-            ->add('Rechercher', SubmitType::class, ['attr' => ['class' => 'btn btn-primary']])
+            ->add('Rechercher', SubmitType::class, ['attr' => ['class' => 'btn text-warning navbarColor01 ']])
         ->getForm();
 
         return $this->render('home/searchbar.html.twig', array('form' => $form->createView()));
@@ -57,6 +57,7 @@ class HomeController extends Controller
 
         return $this->render('product/recherche-res.html.twig', array('products' => $products));
     }
+    
 
 
 }

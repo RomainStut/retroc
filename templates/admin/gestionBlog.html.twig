@@ -1,0 +1,46 @@
+{% extends 'layout.html.twig' %}
+{% block title %} Liste Des articles {% endblock%}
+{% block titlepage %} Liste Des articles {% endblock%}
+
+{% block content %}
+
+    <div class="container-fluid">
+        {% if is_granted('ROLE_ADMIN') %}
+        <div class="row">
+            <a href="{{ path('add-article-blog') }}" class="btn btn-dark mb-1 col-3">Ajouter un article</a>
+        </div>
+        {% end %}
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }} mt-4 col-4">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+        <div class="row">
+
+            {% for blog in blogs %}
+
+                <div class="card col-4" style="width: 18rem;">
+                    <div class="card-body">
+                        {% if blog.image%}
+                            <img class="card-img-top" src="{{ asset('uploads/images/' ~ blog.image) }}" alt="Card image cap">
+                        {% endif %}
+                        <h5 class="card-title">{{ blog.title }}</h5><hr>
+                        <p class="card-text" style="overflow:auto;">{{ blog.content  | striptags | slice(0, 150) }} </p>
+
+
+                        <a href="{{ path('article-blog', {id: blog.id })}}">Voir</a>
+                    </div>
+                </div>
+
+
+            {% endfor %}
+        </div>
+    </div>
+
+
+
+
+
+{% endblock %}

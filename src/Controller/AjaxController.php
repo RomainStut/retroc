@@ -22,24 +22,34 @@ class AjaxController extends Controller
         $repository = $this->getDoctrine()->getRepository(Products::class);
         $product = $repository->find($products);
 
+
+
         $messagesend = $request->request->get('message', 'invalide');
 
-        $message->setDatepost(new \DateTime(date('Y-m-d H:i:s')));
-        $message->setExpediteur($this->getUser());
-        $message->setProduct($product);
-        $message->setDestinataire($product->getUser());
-        $message->setContent($messagesend);
-        $message->setTitle('titre test');
-        dump($message);
+        if(!empty($messagesend)) {
 
-        $entityManager = $this->getDoctrine()->getManager();
+            $message->setDatepost(new \DateTime(date('Y-m-d H:i:s')));
+            $message->setExpediteur($this->getUser());
+            $message->setProduct($product);
+            $message->setDestinataire($product->getUser());
+            $message->setContent($messagesend);
+            $message->setTitle('titre test');
+            dump($message);
 
-        $entityManager->persist($message);
+            $entityManager = $this->getDoctrine()->getManager();
 
-        $entityManager->flush();
+            $entityManager->persist($message);
 
+            $entityManager->flush();
 
-        return $this->render('ajax/send-message.html.twig', array('success' => $res));
+            $message = 'votre message a bien été envoyé!';
+        }
+        else{
+            $message = 'veuillez saisir votre message svp.';
+        }
+
+        return $this->render('ajax/send-message.html.twig', array('success' => $message));
+
     }
 
     /**
@@ -174,12 +184,10 @@ class AjaxController extends Controller
         return $this->json(array('status'=>'ko', 'erreur' => 'Aucun prix'));
     }
 
-    /**
-     * @Route
-     */
+    
 
 
-};
+}
 
 
 

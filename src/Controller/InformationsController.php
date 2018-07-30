@@ -68,13 +68,22 @@ class InformationsController extends Controller
     public function cgv()
     {
         return $this->render('informations/cgv.html.twig');
-    }
-    
-    public function contactmail(\Swift_Mailer $mailer)
-   {
-       
+    }  
    
+   /**
+     * @Route("/informations/adress", name="adress")
+     */
     
-   }
+    public function adress()
+    {
+        return $this->render('informations/adress.html.twig');
+    }
+
+    public function contactmail(\Swift_Mailer $mailer)
+    {
+        
+    
+     
+    }
 
 }

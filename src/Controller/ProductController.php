@@ -53,16 +53,14 @@ class ProductController extends Controller
 
             $product->setDatepost(new \DateTime(date('Y-m-d H:i:s')));
 
-
-
             if($product->getImage()){
 
                 $file = $product->getImage();
 
                 $fileName = $uploader->upload($file);
 
-                $product->setImage($fileName);
             }
+            $product->setImage($fileName);
 
             dump($product);
 
@@ -181,7 +179,7 @@ class ProductController extends Controller
 
         //créer un message de succes en flash
 
-        $this->addFlash('success', 'Produit supprimé !');
+        $this->addFlash('success', 'Annonce supprimée !');
         return $this->redirectToRoute('userProfil');
     }
 }
