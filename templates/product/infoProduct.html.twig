@@ -113,6 +113,7 @@
 
                     $('body').on('click', '#send', function(e){
                         e.preventDefault();
+
                         var data = "message=" + $('#message').val();
                         var url = " {{path('user-message' , {id : 0})}} ",
                             url = url.replace('0', $('#productid').val() )
@@ -124,7 +125,11 @@
                             data: data,
                             dataType: 'html',
                             success: function(data){
-                                $('.resultat').append(data);
+
+                                if(data != null){
+                                    $('.resultat').append(data);
+                                }
+
                             },
                             error: function(error){
                                 console.log(error.responseText);
