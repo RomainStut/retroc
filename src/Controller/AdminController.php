@@ -88,8 +88,8 @@ class AdminController extends Controller
 
                 $fileName = $uploader->upload($file, $fileName);
 
-                $users->setProfilepicture($fileName);
             }
+            $users->setProfilepicture($fileName);
 
 
             $entityManager = $this->getDoctrine()->getManager();

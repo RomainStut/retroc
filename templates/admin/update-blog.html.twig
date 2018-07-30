@@ -5,7 +5,6 @@
 
 <div class="container-fluid">
     <div class="row">
-
             <div class="card col-10" style="width: 18rem;">
                 <div class="card-body">
                     {% if blogs.image%}
@@ -13,8 +12,7 @@
                     {% endif %}
                     <h5 class="card-title">{{ blogs.title }}</h5><hr>
                     <p class="card-text">{{ blogs.content }}</p>
-                    <a href="{{ path('update-article-blog', {id:blogs.id}) }}" class="btn btn-dark text-warning">Modifier article</a>
-                    <a href="{{ path('delete-article-blog', {id:blogs.id}) }}" class="btn btn-dark mg-1 text-warning">Supprimer article</a>
+
 
                 </div>
             </div>

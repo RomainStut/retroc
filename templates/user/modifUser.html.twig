@@ -5,9 +5,11 @@
 {% block titlepage %}Modifier profil{% endblock %}
 
 {% block content %}
-<div class="container">
-    {{ form_start(form) }}
+    <div class="container">
+        <div class="col-4 text-warning" style="background: #6c757d">
+            {{ form_start(form) }}
 
-    {{ form_end(form) }}
-</div>
+            {{ form_end(form) }}
+        </div>
+    </div>
 {% endblock %}
