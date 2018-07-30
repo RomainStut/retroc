@@ -12,20 +12,23 @@
         {% block titlepage %}Nos Coordonnées <br><br>{% endblock %} 
 
          {% block content %}
-         <div>
-              <div class="row">
-                <div class="col-6" style="padding-left: 100px;">
-             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2828.982394865661!2d-0.5850298842313523!3d44.84229188274434!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5527e77936472d%3A0x2854ac5dbdd54926!2sSoci%C3%A9t%C3%A9+Philomathique+de+Bordeaux!5e0!3m2!1sfr!2sfr!4v1532937879086" width="600" height="450" frameborder="0" style="border:2px solid black" allowfullscreen></iframe>
-                </div>
-                  <div class="col-6" style="padding-left: 100px; padding-top: 100px; border: 2px solid black; background-color: lightgray;">
+         <div class="container p-3 text-warning">
+              <div class="row">                  
+                        <div class="col-12 md-6" style="padding-top: 10px; border: 2px solid black; background-color:#1A3E58;text-align: center;">
+
                         <h3><strong>-</strong> Octocote </h3>
                         <h4><strong>-</strong> 66 rue Abbée de l'épée</h4>
                         <h4><strong>-</strong> Bordeaux (33000)</h4> <br>
                         <h5><strong>-</strong> Nous envoyer un Mail <a href="{{ path('contact') }}">Cliquer ici</a></h5>
 
+                        </div>
+                        <div class="col-12 md-6">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2828.982394865661!2d-0.5850298842313523!3d44.84229188274434!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5527e77936472d%3A0x2854ac5dbdd54926!2sSoci%C3%A9t%C3%A9+Philomathique+de+Bordeaux!5e0!3m2!1sfr!2sfr!4v1532937879086" width="1125" height="400" style="margin-top: 20px;" frameborder="1" allowfullscreen></iframe>
+                        </div>
                   </div>
              </div>
-        </div>
-
+        
           {% endblock %}
           {% block javascripts %}{% endblock %}
+
+          
