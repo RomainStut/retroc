@@ -58,9 +58,9 @@ class ProductController extends Controller
                 $file = $product->getImage();
 
                 $fileName = $uploader->upload($file);
-
+                $product->setImage($fileName);
             }
-            $product->setImage($fileName);
+
 
 
             dump($product);
@@ -73,7 +73,7 @@ class ProductController extends Controller
 
             $this->addFlash(
                 'success',
-                'Votre product est soummis à validation'
+                'Votre annonce est soummise à validation'
             );
 
             return $this->redirectToRoute('showAll');

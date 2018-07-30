@@ -20,6 +20,7 @@ class Products
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(max=100, maxMessage="Le nom ne doit pas faire plus de 100 caractères")
      */
     private $name;
 
