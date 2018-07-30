@@ -100,7 +100,7 @@ p{
 }
 .register{
     text-align: center;
-    /* text-decoration: underline; */
+
 }
 .addproduct{
     text-align: center;
@@ -124,11 +124,13 @@ p{
     font-family: 'Space Mono', monospace;
 
 }
+
 .formStyle{
     background-color:#1a3e58;
     border-radius: 10px;
     box-shadow: 5px 10px #0a1b26;
 }
+
  
 
 
