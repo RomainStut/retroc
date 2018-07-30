@@ -6,9 +6,7 @@
 
     <div class="container">
         {% if is_granted('ROLE_ADMIN') %}
-
         <div class="row">
-
             <a href="{{ path('add-article-blog') }}" class="btn btn-secondary text-warning mb-1 col-3">Ajouter un article</a>
         </div>
         {% endif %}

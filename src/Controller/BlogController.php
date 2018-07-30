@@ -133,18 +133,6 @@ public function deleteArticle(Blog $blog){
     return $this->redirectToRoute('admin-blog');
 
 }
-    /**
-     * @Route("/blog/article/{id}", name="show-article-blog", requirements = {"id"="[0-9]+"})
-     */
-    public function infoArticleForUser($id)
-    {
-        $repository = $this->getDoctrine()->getRepository(Blog::class);
-        $blogs = $repository->Find($id);
-        if (!$blogs) {
-            throw $this->createNotFoundException('No article found for id ' . $id);
-        }
-        return $this->render('blog/info-article.html.twig', array('blogs' => $blogs));
 
-    }
 
 }
