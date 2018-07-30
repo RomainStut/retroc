@@ -6,99 +6,105 @@
 {% block title %}fiche-produit{% endblock %}
 
 {% block content %}
-
-
-
-
-
-
-
-
-    <div class="card text-white bg-secondary mb-3 " >
-        <div class="card-header">{{product.name}}</div>
-        <div class="card-body text-center" >
-            {% if product.image %}
-                <img src="{{ asset('uploads/images/' ~ product.image) }}" alt=" {{product.name}} " class="card-img-top text-center" style="max-width: 800px; max-height: 600px" type="button" data-toggle="modal" data-target="#modalImage" class="btn btn-dark zoomin">
-            {% endif %}
-            <h5 class="card-title">            <h5>Qualité :
-                    {% if product.quality.name == "mib" %}
-                        <i class="fas fa-star"></i>
-                    {% elseif product.quality.name == "occase" %}
-                        <i class="fas fa-star-half-alt"></i>
-                    {% else %}
-                        <i class="far fa-angry"></i>
-                    {% endif %}
-                </h5></h5>
-            <p class="card-text" style="font-size: 30px;"><strong>Prix: </strong> {{product.price}} € </p>
-
-            <p class="card-text"><h5>Description: </h5>{{product.description}}</p>
-            <p class="card-text">
-                <h4> Vendeur: {{ product.user.username }}</h4>
-                <div id="contactUser">
-                    <button class="btn text-warning navbarColor01" type="submit" id="contact">Contacter l'autheur de l'annonce</button>
+    <div class="container">
+        <div class="card text-white bg-secondary mb-3 " >
+            <div class="card-header text-warning font-weight-bold">
+                <div class="row">
+                    <span class="col-6">{{product.name}}</span>
+                    <p class="card-text col-3 offset-3 text-warning" style="font-size: 20px;"><b>Prix: </b> {{product.price}} € </p>
                 </div>
-                <div class="resultat"></div>
-                <div id="success-msg"></div>
-            </p>
+            </div>
+            <div class="card-body text-center" >
+                <div class="row">
+                    <div class="col-md-4">
+                        {% if product.image %}
+                            <img src="{{ asset('uploads/images/' ~ product.image) }}" alt=" {{product.name}} " class="card-img-top text-center" style="max-width: 800px; max-height: 600px" type="button" data-toggle="modal" data-target="#modalImage" class="btn btn-dark zoomin">
+                        {% endif %}
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <p style="font-size: 20px;" class="card-title col-4 text-warning"><b>Qualité : </b>
+                                {% if product.quality.name == "mib" %}
+                                    <i class="fas fa-star"> {{ product.quality.name }}</i>
+                                {% elseif product.quality.name == "occase" %}
+                                    <i class="fas fa-star-half-alt"> {{ product.quality.name }}</i>
+                                {% else %}
+                                    <i class="far fa-angry"> {{ product.quality.name }}</i>
+                                {% endif %}
+                            </p>
+
+
+                                <p class="card-title col-5 text-warning " style="font-size: 20px;"><b>Vendeur: </b> {{ product.user.username }}</p>
+                                <div id="contactUser" class="col-md-11 offset-1">
+                                    <button class="btn btn-warning text-dark font-weight-bold mt-3" type="submit" id="contact">Contacter le vendeur</button>
+                                </div>
+                                <div class="resultat"></div>
+
+                            <p class="col-md-3 text-warning mt-5 ml-1" style="font-size: 20px;"><b>Description: </b></p>
+                            <p class="card-text col-12 text-warning mt-2" style="font-size: 15px; text-align: justify">{{product.description}}</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
 
 
-
-<div class="container">
-    <div class="row">
-        {#<div class="col-12">#}
+    <div class="container">
+        <div class="row">
+            {#<div class="col-12">#}
             {#<h1 class="text-center"> {{product.name}} </h1>#}
             {#<h5>Catégorie : {{product.categorie.name}} </h5>#}
             {#<h5>Qualité :#}
-                {#{% if product.quality.name == "mib" %}#}
-                    {#<i class="fas fa-star"></i>#}
-                {#{% elseif product.quality.name == "occase" %}#}
-                    {#<i class="fas fa-star-half-alt"></i>#}
-                {#{% else %}#}
-                    {#<i class="far fa-angry"></i>#}
-                {#{% endif %}#}
+            {#{% if product.quality.name == "mib" %}#}
+            {#<i class="fas fa-star"></i>#}
+            {#{% elseif product.quality.name == "occase" %}#}
+            {#<i class="fas fa-star-half-alt"></i>#}
+            {#{% else %}#}
+            {#<i class="far fa-angry"></i>#}
+            {#{% endif %}#}
             {#</h5>#}
             {#<h2 style="color: rgb(88, 184, 88)">{{product.price}} € </h2>#}
-        {#</div>#}
-        {#<div class="col-12 d-flex">#}
+            {#</div>#}
+            {#<div class="col-12 d-flex">#}
             {#<div class="col-md-8 text-center">#}
-                {#{% if product.image %}#}
-                    {#<img src="{{ asset('uploads/images/' ~ product.image) }}" alt=" {{product.name}} " style="width:400px; height:400px" type="button" data-toggle="modal" data-target="#modalImage" class="btn btn-dark zoomin">#}
-                {#{% endif %}#}
+            {#{% if product.image %}#}
+            {#<img src="{{ asset('uploads/images/' ~ product.image) }}" alt=" {{product.name}} " style="width:400px; height:400px" type="button" data-toggle="modal" data-target="#modalImage" class="btn btn-dark zoomin">#}
+            {#{% endif %}#}
 
             {#</div>#}
             {#<div class="col-md-4">#}
-                {#<div class="text-center description">#}
-                    {#<h5>Description du produit :</h5>#}
-                    {#<p> {{product.description}} </p>#}
-                {#</div>#}
-
-                {#<div class="col-6">#}
-                    {#<h4> Vendeur: {{ product.user.username }}</h4>#}
-                    {#<div id="contactUser">#}
-                        {#<button class="btn btn-primary mt-4" type="submit" id="contact">coucou</button>#}
-                    {#</div>#}
-                    {#<div class="resultat"></div>#}
-                {#</div>#}
+            {#<div class="text-center description">#}
+            {#<h5>Description du produit :</h5>#}
+            {#<p> {{product.description}} </p>#}
             {#</div>#}
-        {#</div>#}
-        {# {{ dump(product) }} #}
 
-        {# Div pour modal #}
-        <div class="modal" id="modalImage" tabindex="-1" role="dialog" aria-labelledby="myModal">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <img src="{{ asset('uploads/images/' ~ product.image) }}" alt=" {{product.name}} " style="max-width:1000px; max-height:600px">
-                    </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
+            {#<div class="col-6">#}
+            {#<h4> Vendeur: {{ product.user.username }}</h4>#}
+            {#<div id="contactUser">#}
+            {#<button class="btn btn-primary mt-4" type="submit" id="contact">coucou</button>#}
+            {#</div>#}
+            {#<div class="resultat"></div>#}
+            {#</div>#}
+            {#</div>#}
+            {#</div>#}
+            {# {{ dump(product) }} #}
+
+            {# Div pour modal #}
+            <div class="modal" id="modalImage" tabindex="-1" role="dialog" aria-labelledby="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <img src="{{ asset('uploads/images/' ~ product.image) }}" alt=" {{product.name}} " style="max-width:1000px; max-height:600px">
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+        </div>
     </div>
-</div>
-        {% endblock %}
+{% endblock %}
 
         {% block js %}
             <script>
@@ -107,7 +113,11 @@
                     $('#contact').on('click', function(e){
                         event.preventDefault();
                         $('#contactUser').empty();
-                        $('#contactUser').append('<form method="post">'+'<input id="message" class="form-control" type="textarea">'+'<input hidden id="productid" value=" {{product.id}} ">'+'<button class="btn text-warning navbarColor01" id="send">Envoyer message</button>'+'</form>')
+                    <<<<<<< HEAD
+                        $('#contactUser').append('<form method="post">'+'<input id="message" class="form-control" type="textarea">'+'<input hidden id="productid" value=" {{product.id}} ">'+'<button class="btn btn-warning text-dark mt-4" id="send">Envoyer message</button>'+'</form>')
+                        =======
+                            $('#contactUser').append('<form method="post">'+'<input id="message" class="form-control" type="textarea">'+'<input hidden id="productid" value=" {{product.id}} ">'+'<button class="btn text-warning navbarColor01" id="send">Envoyer message</button>'+'</form>')
+                            >>>>>>> 5fbf298a083ac605e830225412af2c882aa38519
 
                     })
 

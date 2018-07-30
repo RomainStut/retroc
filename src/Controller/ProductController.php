@@ -59,9 +59,8 @@ class ProductController extends Controller
 
                 $fileName = $uploader->upload($file);
 
-                $product->setImage($fileName);
             }
-
+            $product->setImage($fileName);
 
 
             dump($product);

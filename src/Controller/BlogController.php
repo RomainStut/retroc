@@ -15,11 +15,10 @@ use Symfony\Component\HttpFoundation\File\File;
 class BlogController extends Controller
 {
     /**
-     * @Route("admin/blog", name="admin-blog")
+     * @Route("/blog/show-all", name="show-all")
      */
     public function showAll()
     {
-
         $repository = $this->getDoctrine()->getRepository(Blog::class);
 
         $blogs = $repository->findAll();
@@ -28,7 +27,7 @@ class BlogController extends Controller
 
 
     /**
-     * @Route("admin/blog/{id}", name="blog", requirements = {"id"="[0-9]+"})
+     * @Route("blog/article/{id}", name="article-blog", requirements = {"id"="[0-9]+"})
      */
     public function infoArticle($id)
     {
@@ -37,7 +36,7 @@ class BlogController extends Controller
         if (!$blogs) {
             throw $this->createNotFoundException('No article found for id ' . $id);
         }
-        return $this->render('admin/info-article-blog.html.twig', array('blogs' => $blogs));
+        return $this->render('blog/info-article.html.twig', array('blogs' => $blogs));
 
     }
 
@@ -105,9 +104,10 @@ class BlogController extends Controller
 
                 $fileName = $uploader->upload($file, $fileName);
 
-                $blog->setImage($fileName);
 
             }
+            $blog->setImage($fileName);
+
             $entityManager = $this->getDoctrine()->getManager();
 
             $entityManager->flush();
@@ -133,5 +133,6 @@ public function deleteArticle(Blog $blog){
     return $this->redirectToRoute('admin-blog');
 
 }
+
 
 }

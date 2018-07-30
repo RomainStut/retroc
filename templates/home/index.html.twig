@@ -9,19 +9,19 @@
         <div class="row">
 
             {% for product in products %}
-
-                <div class="card col-3" style="width: 18rem;">
-                    <div class="card-body">
-                        {% if product.image%}
-                            <img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}"
-                                 alt="Card image cap">
-                        {% endif %}
-                        <h5 class="card-title">{{ product.name }}</h5><hr>
-                        <p class="card-text">{{ product.price }} €</p>
-                        <a href="{{ path('product', {id: product.id})}}">Voir</a>
+                {% if product.isvalidate == 1 %}
+                    <div class="card col-3" style="width: 18rem;">
+                        <div class="card-body">
+                            {% if product.image%}
+                                <img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}"
+                                     alt="Card image cap">
+                            {% endif %}
+                            <h5 class="card-title">{{ product.name }}</h5><hr>
+                            <p class="card-text">{{ product.price }} €</p>
+                            <a href="{{ path('product', {id: product.id})}}">Voir</a>
+                        </div>
                     </div>
-                </div>
-
+                {% endif %}
             {% endfor %}
 
         </div>
@@ -41,12 +41,13 @@
                         <p class="card-text" style="overflow:auto;">{{ blog.content  | striptags | slice(0, 150) }} </p>
 
 
-                        <a href="{{ path('product', {id: blog.id })}}">Voir</a>
+                        <a href="{{ path('article-blog', {id: blog.id })}}">Voir</a>
                     </div>
                 </div>
 
 
             {% endfor %}
+            <a href="{{ path('show-all') }}" class="col-md-12 btn-md btn-secondary text-warning">Voir tous les articles</a>
         </div>
     </div>
 
