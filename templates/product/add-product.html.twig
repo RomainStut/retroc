@@ -11,14 +11,14 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-5">
+        <div class="col-5 d-flex justify-content-center">
             {{ form_start(form) }}
 
             {{ form_end(form) }}
         </div>
         <div class="col-7">
             <div class="row">
-                <div class="col-12">
+                <div class=" col-12">
                     <h2>Sélectionner le produit correspondant : </h2>
                 </div>
                 <div class="col-12 search">
@@ -83,6 +83,12 @@
                         console.log(error.responseText);
                     }
                 })
+            })
+
+            $('#product_image').on('change', function(){
+                console.log($(this).val());
+                console.log($('#product_image').next());
+                $('#product_image').next().html($(this).val());
             })
 
         })

@@ -39,7 +39,7 @@ class Products
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=false)
      *@Assert\Image
      */
     private $image;
@@ -77,6 +77,11 @@ class Products
      * @ORM\OneToMany(targetEntity="App\Entity\Messages", mappedBy="product")
      */
     private $messages;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $releasedate;
 
     public function __construct()
     {
@@ -235,6 +240,18 @@ class Products
                 $message->setProduct(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getReleasedate(): ?\DateTimeInterface
+    {
+        return $this->releasedate;
+    }
+
+    public function setReleasedate(?\DateTimeInterface $releasedate): self
+    {
+        $this->releasedate = $releasedate;
 
         return $this;
     }

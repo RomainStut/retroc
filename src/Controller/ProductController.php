@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Categories;
+use App\Entity\Category;
 use App\Entity\Message;
 use App\Entity\Products;
+use App\Entity\Type;
 use App\Form\MessageType;
 use App\Form\ProductType;
 use Symfony\Component\HttpFoundation\Request;
@@ -62,7 +65,6 @@ class ProductController extends Controller
             }
             $product->setImage($fileName);
 
-
             dump($product);
 
             $entityManager = $this->getDoctrine()->getManager();
@@ -113,14 +115,14 @@ class ProductController extends Controller
     }
 
     /**
-     * @Route("/product/typecat/{type}/{cat}", name="product-type-cat")
+     * @Route("/product/typecat/{type}/{cat}", name="product-type-cat", requirements={"type"="\d+", "cat"="\d+"})
      */
-    public function showAllTypeCat($type, $cat)
+    public function showAllTypeCat(Type $type, Categories $cat)
     {
         $repository = $this->getDoctrine()->getRepository(Products::class);
 
-        $products = $repository->findAllType($type, $cat);
-
+        $products = $repository->showAllTypeCat($type, $cat);
+        dump($cat);
         return $this->render('product/all-type-cat.html.twig', array('products' => $products));
 
     }
@@ -180,7 +182,7 @@ class ProductController extends Controller
 
         //créer un message de succes en flash
 
-        $this->addFlash('success', 'Produit supprimé !');
+        $this->addFlash('success', 'Annonce supprimée !');
         return $this->redirectToRoute('userProfil');
     }
 }
