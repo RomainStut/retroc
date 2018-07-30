@@ -113,7 +113,7 @@ class BlogController extends Controller
             $entityManager->flush();
 
             $this->addFlash('success', 'Article modifiée !');
-            return $this->redirectToRoute('blog', array('id' => $blog->getId()));
+            return $this->redirectToRoute('article-blog', array('id' => $blog->getId()));
         }
         return$this->render('blog/update.html.twig', array('form' => $form->createView()));
 
