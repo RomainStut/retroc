@@ -180,7 +180,7 @@ class ProductController extends Controller
 
         //créer un message de succes en flash
 
-        $this->addFlash('success', 'Produit supprimé !');
+        $this->addFlash('success', 'Annonce supprimée !');
         return $this->redirectToRoute('userProfil');
     }
 }

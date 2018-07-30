@@ -32,7 +32,11 @@
                         <label for="password">Mot de passe</label>
                         <input type="password" id="password" name="_password" class="form-control">
                     </div>
-                    <button type="submit" class="btn btn-warning text-dark">Login</button>
+                    <div class="row">
+                        <button type="submit" class="btn btn-warning text-dark col-md-3 offset-2">Connexion</button>
+                        <a href="{{ path('register') }}" class="btn btn-warning text-dark col-md-3 offset-2">inscription</a>
+
+                    </div>
                 </form>
             </div>
         </div>
