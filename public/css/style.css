@@ -54,6 +54,10 @@ header .dropdown-item:focus, .dropdown-item:hover{
     background-color: #ffde11 !important;
 }
 
+.compteur{
+    background: url('../images/fondcompteur.jpg');
+}
+
 
 /**************************Content******************************************************/
 
@@ -96,7 +100,11 @@ p{
 }
 .register{
     text-align: center;
+<<<<<<< HEAD
 
+=======
+    /* text-decoration: underline; */
+>>>>>>> 9b5b66369efcf238eeb72270619d0ba0fc37f743
 }
 .addproduct{
     text-align: center;
@@ -121,7 +129,10 @@ p{
 
 }
 
-
+#formStyle{
+    background-color:#1a3e58;
+    border-radius: 10px;
+}
 
  
 
