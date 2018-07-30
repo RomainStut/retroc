@@ -35,9 +35,10 @@
             <p class="card-text">
                 <h4> Vendeur: {{ product.user.username }}</h4>
                 <div id="contactUser">
-                    <button class="btn btn-primary mt-4" type="submit" id="contact">coucou</button>
+                    <button class="btn text-warning navbarColor01" type="submit" id="contact">Contacter l'autheur de l'annonce</button>
                 </div>
                 <div class="resultat"></div>
+                <div id="success-msg"></div>
             </p>
         </div>
     </div>
@@ -106,7 +107,7 @@
                     $('#contact').on('click', function(e){
                         event.preventDefault();
                         $('#contactUser').empty();
-                        $('#contactUser').append('<form method="post">'+'<input id="message" class="form-control" type="textarea">'+'<input hidden id="productid" value=" {{product.id}} ">'+'<button class="btn btn-primary mt-4" id="send">Envoyer message</button>'+'</form>')
+                        $('#contactUser').append('<form method="post">'+'<input id="message" class="form-control" type="textarea">'+'<input hidden id="productid" value=" {{product.id}} ">'+'<button class="btn text-warning navbarColor01" id="send">Envoyer message</button>'+'</form>')
 
                     })
 
