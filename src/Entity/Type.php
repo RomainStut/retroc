@@ -33,6 +33,11 @@ class Type
      */
     private $blogs;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $dateflip;
+
     public function __construct()
     {
         $this->products = new ArrayCollection();
@@ -114,6 +119,18 @@ class Type
                 $blog->setType(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDateflip(): ?\DateTimeInterface
+    {
+        return $this->dateflip;
+    }
+
+    public function setDateflip(\DateTimeInterface $dateflip): self
+    {
+        $this->dateflip = $dateflip;
 
         return $this;
     }

@@ -2,6 +2,17 @@
 {% block title %}Articles du blog{% endblock %}
 
 {% block content %}
+<div class="container">
+<div class="center-block">
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }} mt-4 col-4">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+</div>
+</div>
 
     <div class="container">
         <a href="{{ path('show-all') }}" class="btn btn-secondary text-warning mb-2 font-weight-bold">Retour liste des articles</a>
