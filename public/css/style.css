@@ -100,7 +100,7 @@ p{
 }
 .register{
     text-align: center;
-    text-decoration: underline;
+    /* text-decoration: underline; */
 }
 .addproduct{
     text-align: center;
