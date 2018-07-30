@@ -74,7 +74,7 @@ class BlogController extends Controller
                 'Votre article est ajouté'
             );
 
-            return $this->redirectToRoute('admin-blog');
+            return $this->redirectToRoute('show-all');
         }
         return $this->render('admin/add-article-blog.html.twig', array(
             'form' => $form->createView()
