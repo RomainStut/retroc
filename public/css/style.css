@@ -124,7 +124,10 @@ p{
     font-family: 'Space Mono', monospace;
 
 }
-
+#formStyle{
+    background-color:#1a3e58;
+    border-radius: 10px;
+}
  
 
 
