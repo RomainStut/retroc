@@ -4,6 +4,7 @@
 {% block content %}
 
     <div class="container">
+        <a href="{{ path('show-all') }}" class="btn btn-secondary text-warning mb-2 font-weight-bold">Retour liste des articles</a>
         <div class="row">
 
             <div class="card col-10" style="width: 18rem;">
@@ -13,7 +14,11 @@
                     {% endif %}
                     <h3 class="card-title mt-3">{{ blogs.title }}</h3><hr>
                     <p class="card-text" style="text-align: justify; font-size: 1rem">{{ blogs.content }}</p>
+                    {% if is_granted('ROLE_ADMIN') %}
 
+                        <a href="{{ path('update-article-blog', {id:blogs.id}) }}" class="btn btn-dark text-warning">Modifier article</a>
+                        <a href="{{ path('delete-article-blog', {id:blogs.id}) }}" class="btn btn-dark mg-1 text-warning">Supprimer article</a>
+                    {% endif %}
                 </div>
             </div>
         </div>

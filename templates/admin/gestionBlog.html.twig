@@ -30,7 +30,7 @@
                         <p class="card-text" style="overflow:auto;">{{ blog.content  | striptags | slice(0, 150) }} </p>
 
 
-                        <a href="{{ path('blog', {id: blog.id })}}">Voir</a>
+                        <a href="{{ path('article-blog', {id: blog.id })}}">Voir</a>
                     </div>
                 </div>
 
