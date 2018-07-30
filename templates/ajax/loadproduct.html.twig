@@ -18,7 +18,12 @@
                     </div>
                 </div>
                 <div class="col-5">
-                    <img src="{{ 'uploads/images/' ~ product.image }}" alt="..." class="img-thumbnail">
+                    {% if product.image %}
+                        <img src="{{ 'uploads/images/' ~ product.image }}" class="img-thumbnail" alt="photo_produit">
+                    {% else %}
+                        <img src="{{ asset('images/produit.jpg' ) }}" alt="  "class="img-thumbnail">
+                    {% endif %}
+                    {#<img src="{{ 'uploads/images/' ~ product.image }}" alt="..." class="img-thumbnail">#}
                 </div>
             </div>
             <a href="{{ path('update-product', {id:product.id}) }}">
