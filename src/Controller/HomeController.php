@@ -57,6 +57,7 @@ class HomeController extends Controller
 
         return $this->render('product/recherche-res.html.twig', array('products' => $products));
     }
+    
 
 
 }

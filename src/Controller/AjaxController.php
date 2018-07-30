@@ -174,12 +174,10 @@ class AjaxController extends Controller
         return $this->json(array('status'=>'ko', 'erreur' => 'Aucun prix'));
     }
 
-    /**
-     * @Route
-     */
+    
 
 
-};
+}
 
 
 
