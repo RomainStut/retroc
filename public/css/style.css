@@ -54,6 +54,10 @@ header .dropdown-item:focus, .dropdown-item:hover{
     background-color: #ffde11 !important;
 }
 
+.compteur{
+    background: url('../images/fondcompteur.jpg');
+}
+
 
 /**************************Content******************************************************/
 
