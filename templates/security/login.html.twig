@@ -21,7 +21,7 @@
             {% endif %}
         </div>
         <div class="row justify-content-center">
-            <div class="col-6 bg-secondary text-warning p-3" style="border: 3px solid #112735; border-radius: 15px">
+            <div class="col-6 text-warning p-3 formStyle" >
                 {# le formulaire de login #}
                 <form action="{{ path('login') }}" method="post" class="login">
                     <div class="form-group">
@@ -31,6 +31,8 @@
                     <div class="form-group">
                         <label for="password">Mot de passe : </label>
                         <input type="password" id="password" name="_password" class="form-control">
+                        <a href="" style="text-decoration: none"><small id="emailHelp" class="form-text text-warning">Mot de passe oublié</small></a>
+
                     </div>
                     <div class="row">
                         <button type="submit" class="btn btn-warning text-dark col-md-3 offset-2">Connexion</button>

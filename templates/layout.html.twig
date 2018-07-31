@@ -41,8 +41,8 @@
 
                 {% if is_granted('ROLE_ADMIN') %}
 
-                    <a id="" class="btn btn-dark text-warning mt-4 ml-2 log-btn navbarColor01" href="{{ path('admin-users') }}">Gestion users</a>
-                    <a id="" class="btn btn-dark text-warning mt-4 ml-2 log-btn navbarColor01" href="{{ path('validation-annonce') }}">Gestion des annonces</a>
+                    <a id="" class="btn btn-dark text-warning mt-4 mr-2 log-btn navbarColor01" href="{{ path('admin-users') }}">Gestion users</a>
+                    <a id="" class="btn btn-dark text-warning mt-4 mr-2 log-btn navbarColor01" href="{{ path('validation-annonce') }}">Gestion des annonces</a>
                 {% endif %}
 
             </div>
@@ -117,7 +117,7 @@
                     <a id="" class="nav-link text-light" href="{{ path('show-all') }}">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-light" href="{{ path('contact') }}">Contacts</a>
+                    <a class="nav-link text-light" href="{{ path('contact') }}">Contact</a>
                 </li>
 
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
@@ -163,7 +163,7 @@
 </header>
 
 <!-- Content -->
-<h1>{% block titlepage %}{% endblock%}</h1>
+<h1 class="col-md-4 offset-4">{% block titlepage %}{% endblock%}</h1>
 
 <div class="container-fluid bodyback">
 
@@ -351,6 +351,8 @@
         })
     });
 </script>
+
+
 
 
 {% block js %}{% endblock %}

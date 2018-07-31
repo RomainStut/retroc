@@ -1,7 +1,6 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}Liste des Annonces{% endblock %}
-{% block titlepage %}Liste des Annonces{% endblock %}
 
 {% block content %}
 
@@ -15,6 +14,7 @@
 
 
     <div class="container">
+        <h1 class="text-center">Toutes nos annonces</h1>
         {% for label, messages in app.flashes %}
             {% for message in messages %}
                 <div class="alert alert-{{ label }} mt-4">
@@ -26,17 +26,18 @@
 
             {% for product in products %}
                 {% if product.isvalidate == 1 %}
-                    <div class="card col-3" style="width: 18rem;">
+                
+                    <div class="card col-3 listStyle">
                         <div class="card-body">
                             {% if product.image%}
                                 <img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}" alt="Card image cap">
                             {% endif %}
-                            <h5 class="card-title">{{ product.name }}</h5><hr>
-                            <p class="card-text">{{ product.price }} €</p>
+                            <h5 class="card-title" style="color: #AC964A;">{{ product.name }}</h5><hr>
+                            <p class="card-text" style="color: #AC964A;">{{ product.price }} €</p>
 
-
-                            <a href="{{ path('product', {id: product.id })}}">Voir</a>
-                        </div>
+                            
+                            <a href="{{ path('product', {id: product.id })}}" class="navbarColor01 btn text-warning">Voir</a>
+                        </div>                        
                     </div>
 
                 {% endif %}

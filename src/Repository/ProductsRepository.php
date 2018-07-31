@@ -202,6 +202,24 @@ class ProductsRepository extends ServiceEntityRepository
 
         return $querybuilder->execute();
 
+    }public function findAllWhereTitleQuality($search, $quality){
+
+        $querybuilder = $this->createQuerybuilder('p')
+            ->innerJoin('p.user', 'u')
+            ->addSelect('u')
+            ->innerJoin('p.categorie', 'c')
+            ->addSelect('c')
+            ->innerJoin('p.quality', 'q')
+            ->addSelect('q')
+            ->innerJoin('p.type', 't')
+            ->addSelect('t')
+            ->andWhere('p.name LIKE :search AND p.quality = :quality')
+            ->setparameter('search', '%'.$search.'%')
+            ->setparameter('quality', $quality)
+            ->getQuery();
+
+        return $querybuilder->execute();
+
     }
 
 

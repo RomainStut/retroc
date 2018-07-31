@@ -107,12 +107,13 @@ p{
 }
 .register{
     text-align: center;
-
 }
 .addproduct{
     text-align: center;
-    text-decoration: underline;
+
 }
+
+
 
 
 /**************************footer******************************************************/
@@ -140,13 +141,77 @@ p{
     box-shadow: 5px 6px #0a1b26;
 }
 
+<<<<<<< HEAD
 .FormBouton{
     color: #ffffff;
     background-color: #112735;
     border-color: #375a7f;
 }
  
+=======
+.profilForm{
+    opacity: 1;
+}
 
+
+.formStyle h1{
+    text-align: center;
+}
+
+.cgv{
+     text-align: center;    
+     color: #AC964A;
+     margin-bottom: 100px;
+}
+.cgvContent{
+    padding-left: 70px;
+    padding-top: 50px;
+    padding-right: 70px;
+    background-color: #1A3E58;
+    
+}
+
+.cgvContent h3{
+    color: #AC964A;
+}
+
+.cgvContent p{
+    color: white;
+}
+>>>>>>> d9e5af1dc63ac7b07da6760f021554d7bcc14f5a
+
+.text-justify{
+    color: #AC964A;
+}
+
+.adress{
+    border: solid black 1px;
+    background-color: #1A3E58;
+}
+
+.adress h3{
+    color: #AC964A;
+}
+
+.adress a h3:hover{
+    color: white;
+}
+
+.listStyle{
+    width: 18rem;
+    /* margin-bottom: 20px; */
+    border: 1px solid lightgray;
+    background-color: #1a3e58;
+}
+
+
+
+
+
+ 
+h1{
+    font-weight: bold;
+}
 
 
 
