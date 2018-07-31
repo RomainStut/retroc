@@ -174,8 +174,16 @@ p{
     color: white;
 }
 
+.listStyle{
+    width: 18rem;
+    /* margin-bottom: 20px; */
+    border: 1px solid lightgray;
+    background-color: #1a3e58;
+}
 
- 
+
+
+
 
 
 
