@@ -5,7 +5,7 @@
 {% block content %}
 
     <div class="container">
-
+        
         <h1 class="text-center">{{ type.name|capitalize }}</h1>
 
         <div class="row">
@@ -13,16 +13,20 @@
             {% for product in products %}
                 {% if product.isvalidate == 1 %}
 
-                    <div class="card col-3" style="width: 18rem;">
+                    <div class="card col-md-3 mb-4 listStyle antipadding" style="position: relative; height: 450px;">
                         <div class="card-body">
                             {% if product.image%}
+                            <div style="height: 243px;">
                                 <img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}" alt="Card image cap">
+                            </div>
                             {% endif %}
-                            <h5 class="card-title">{{ product.name }}</h5><hr>
-                            <p class="card-text">{{ product.price }} €</p>
+                        <div>
+                            <h5 class="card-title text-warning" style="font-size: 1.5rem">{{ product.name }}</h5><hr>
+                        </div>
+                            <p class="card-text" style="color: white; font-size: 1.5rem">{{ product.price }} €</p>
 
 
-                            <a href="{{ path('product', {id: product.id })}}">Voir 👁️</a>
+                            <a href="{{ path('product', {id: product.id })}}" class="navbarColor01 btn text-warning col-12" style="bottom: 0; ">Voir</a>
                         </div>
                     </div>
                 {% endif %}

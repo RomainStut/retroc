@@ -8,14 +8,28 @@ body .modal-dialog {
     text-align: center;
 }
 
-.description{
-    border: 2px solid black;
-    border-radius: 15px;
-    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-    word-wrap: break-word;
-    padding: 15px;
-    height: 400px;
+.card-header{
+    font-size: 25px;
 }
+.card-header h3:last-of-type{
+    color: white;
+}
+
+.card-body b{
+    font-size: 20px;
+}
+
+.card-body p {
+    color: white;
+    font-size: 15px;
+}
+
+.bot-border{
+    border-bottom: 1px dashed #ffc107!important;
+}
+
+
+
 
 
 
