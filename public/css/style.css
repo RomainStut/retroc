@@ -198,19 +198,17 @@ p{
 }
 
 .listStyle{
-    width: 18rem;
-    /* margin-bottom: 20px; */
+    width: 18rem;  
     border: 1px solid lightgray;
     background-color: #1a3e58;
 }
-
-
-
-
-
  
 h1{
     font-weight: bold;
+}
+
+.antipadding{
+    padding: 0 !important;
 }
 
 
