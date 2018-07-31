@@ -27,18 +27,25 @@
             {% for product in products %}
                 {% if product.isvalidate == 1 %}
                 
-                    <div class="card col-3 listStyle">
+                    <div class="card col-md-3 mb-4 listStyle antipadding" style="position: relative; height: 400px;">
                         <div class="card-body">
                             {% if product.image%}
+                            <div style="height: 243px;">
                                 <img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}" alt="Card image cap">
+                            </div>
                             {% endif %}
-                            <h5 class="card-title" style="color: #AC964A;">{{ product.name }}</h5><hr>
-                            <p class="card-text" style="color: #AC964A;">{{ product.price }} €</p>
+                        <div style="position: relative">
+                            <h5 class="card-title font-weight-bold text-warning" style="color: #AC964A; position: absolute">{{ product.name }}</h5><hr>
+                        </div>
+                        
+                            <p class="card-text" style="color: white; font-size: 1.5rem">{{ product.price }} €</p>
+                        
 
                             
-                            <a href="{{ path('product', {id: product.id })}}" class="navbarColor01 btn text-warning">Voir</a>
+                            
                         </div>                        
-                    </div>
+                    <a href="{{ path('product', {id: product.id })}}" class="navbarColor01 btn text-warning col-12" style="position: absolute; bottom: 0;">Voir</a>
+                </div>
 
                 {% endif %}
             {% endfor %}
