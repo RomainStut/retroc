@@ -158,9 +158,10 @@ class AjaxController extends Controller
     public function calculeCote(Request $request)
     {
         $search = $request->request->get('title', 'invalide');
+        $quality = $request->request->get('quality', 'invalide');
 
         $repository = $this->getDoctrine()->getRepository(Products::class);
-        $products = $repository->findAllWhereTitle($search);
+        $products = $repository->findAllWhereTitleQuality($search, $quality);
 
         if(!empty($products)){
 

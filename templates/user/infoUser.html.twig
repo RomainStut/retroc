@@ -7,11 +7,11 @@
 <div class="container">
     <div class="row">
         <div class="col-2">
-            <button class="btn btn-secondary mt-1 text-warning" ><a class="text-warning" href="{{ path('updateUser',{id:user.id }) }}">Modifier Profil</a></button>
-            <button class="btn btn-secondary mt-1 text-warning load-annonce" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Mes annonces</button>
-            <button class="btn btn-secondary mt-1 text-warning load-message" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Mes messages</button>
+            <button class="btn navbarColor01 mt-1 text-warning" ><a class="text-warning" href="{{ path('updateUser',{id:user.id }) }}">Modifier Profil</a></button>
+            <button class="btn navbarColor01 mt-1 text-warning load-annonce" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Mes annonces</button>
+            <button class="btn navbarColor01 mt-1 text-warning load-message" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Mes messages</button>
         </div>
-        <div class="col-6 offset-3 bg-secondary p-3 text-warning">
+        <div class="col-6 offset-1 formStyle p-3 text-warning">
             <div class="row">
                 <div class="col-12 mr-5" >
                     <div class="row">
@@ -26,11 +26,21 @@
                     </div>
                 </div>
                 <div class="col-8 ml-5">
-                    <b> Pseudo: </b>{{ user.username }}<br>
-                    <b> Email: </b>{{ user.email }}<br>
-                    <b>Tel: </b>{{ user.tel }}<br>
-                    <b> Date de naissance: </b>{{ user.datebirth|date('d-m-Y') }}<br>
-                    <b> Ville: </b>{{ user.city }}<br>
+                    <div class="col-md-12">
+                    <b> Pseudo: </b>{{ user.username }}
+                    </div>
+                    <div class="col-md-12">
+                    <b> Email: </b>{{ user.email }}
+                    </div>
+                    <div class="col-md-12">
+                    <b>Tel: </b>{{ user.tel }}
+                    </div>
+                    <div class="col-md-12">
+                    <b> Date de naissance: </b>{{ user.datebirth|date('d-m-Y') }}
+                    </div>
+                    <div class="col-md-12">
+                    <b> Ville: </b>{{ user.city }}
+                    </div>
                 </div>
 
 

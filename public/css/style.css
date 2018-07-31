@@ -103,7 +103,7 @@ p{
 }
 .addproduct{
     text-align: center;
-    text-decoration: underline;
+
 }
 
 
@@ -131,6 +131,11 @@ p{
     border-radius: 10px;
     box-shadow: 5px 10px #0a1b26;
 }
+
+.profilForm{
+    opacity: 1;
+}
+
 
 .formStyle h1{
     text-align: center;
@@ -185,6 +190,10 @@ p{
 
 
 
+ 
+h1{
+    font-weight: bold;
+}
 
 
 

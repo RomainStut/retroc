@@ -16,7 +16,7 @@ class UpdateUserType extends AbstractType
     {
         $builder
             ->add("users", UserType::class, array('data_class' => Users::class))
-            ->add('profilepicture', FileType::class, array('label'=>'Ajoutez une image de profil', 'required'=> false))
+            ->add('profilepicture', FileType::class, array('label'=>'Ajoutez une image de profil', 'required'=> false, 'attr' => ['class' => 'profilForm']))
             ->add("modifier", SubmitType::class, array('label'=>'Modifier', 'attr' => ['class' => 'navbarColor01 text-warning']))
 
         ;
