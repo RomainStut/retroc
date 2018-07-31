@@ -33,7 +33,7 @@ class AjaxController extends Controller
             $message->setProduct($product);
             $message->setDestinataire($product->getUser());
             $message->setContent($messagesend);
-            $message->setTitle('titre test');
+            $message->setTitle($product->getName());
             dump($message);
 
             $entityManager = $this->getDoctrine()->getManager();
