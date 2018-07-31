@@ -8,6 +8,7 @@
     <div class="row">
         <div class="col-2">
             <button class="btn navbarColor01 mt-1 text-warning" ><a class="text-warning" href="{{ path('updateUser',{id:user.id }) }}">Modifier Profil</a></button>
+            <button class="btn navbarColor01 mt-1 text-warning" ><a href="{{ path('delete-user-profil', {id: user.id })}}">Supprimer le compte <i class="fas fa-times" style="color:#ffc107;"></i></a></button>
             <button class="btn navbarColor01 mt-1 text-warning load-annonce" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Mes annonces</button>
             <button class="btn navbarColor01 mt-1 text-warning load-message" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Mes messages</button>
         </div>
@@ -60,9 +61,7 @@
         <div class="col-12" id="result">
 
         </div>
-        <div class="col-12" id="result2">
 
-        </div>
     </div>
 </div>
 {% endblock %}
@@ -79,7 +78,7 @@
                     timeout : 3000,
                     dataType : 'html',
                     success: function(data){
-
+                        $('#result').empty();
                         $('#result').html(data);
                     },
                     error: function (error) {
@@ -99,13 +98,23 @@
                     timeout : 3000,
                     dataType : 'html',
                     success: function(data){
-
-                        $('#result2').html(data);
+                        $('#result').empty();
+                        $('#result').html(data);
                     },
                     error: function (error) {
                         console.log(error.responseText);
                     }
                 })
+            })
+            $('.click-splitflap').splitFlap({
+                image: '{{ asset('images/chars.png') }}',
+                text:   '{{ user.datebirth|date('d-m-Y') }}',
+                speed:          8,
+                speedVariation: 2,
+                autoplay:   true,
+                onComplete: function () {
+                    console.log('Done !');
+                }
             })
         })
     </script>

@@ -42,10 +42,7 @@ class InformationsController extends Controller
                ['nom'=>$nom,'prenom'=>$prenom, 'sujet'=>$sujet, 'email'=>$email, 'message'=>$message1]
            ),
            'text/html'
-       
        );
-       
-   
    if ($mailer->send($message)) {
        $confirmMessage="L'email a bien été envoyé !";
    }else{
@@ -54,9 +51,6 @@ class InformationsController extends Controller
    
        }
 
-       
-
-     
        return $this->render('informations/contact.html.twig', [
            'success'=>$confirmMessage, 'error'=>$errorMessage
        ]);

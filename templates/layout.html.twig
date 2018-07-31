@@ -142,6 +142,20 @@
 
         {{ render(controller('App\\Controller\\HomeController::searchBarHome' )) }}
     </nav>
+
+    {#<div class="">#}
+        {#<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">#}
+            {#<div class="carousel-inner">#}
+                {#<div class="carousel-item active">#}
+                    {#<img class="d-block w-100" src=" {{asset('images/slider.jpg')}} " alt="First slide">#}
+                {#</div>#}
+                {#<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">#}
+                {#</a>#}
+                {#<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">#}
+                {#</a>#}
+            {#</div>#}
+        {#</div>#}
+    {#</div>#}
     <div class="row justify-content-center compteur">
         <div class="click-splitflap my-3"></div>
     </div>
@@ -158,8 +172,9 @@
 </div><hr><br>
 
 
-
 <!-- Footer -->
+<footer class="container-fluid mt-5 navbarColor01 " id="footer">
+
 {#-------------------caroussel footer--------------------#}
 <footer class="container-fluid mt-5 navbarColor01 " id="footer">
     <div class="row">
@@ -176,7 +191,9 @@
                 </div>
             </div>
         </div>
-{#-------------------caroussel footer--------------------#}
+        {#-------------------caroussel footer--------------------#}
+    
+    <div class="row">
         <div class="col-md-6 d-flex justify-content-center">
             <div class=" py-3 mt-3 my-3">
                 <h5>Informations :</h5>

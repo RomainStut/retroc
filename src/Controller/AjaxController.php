@@ -33,7 +33,7 @@ class AjaxController extends Controller
             $message->setProduct($product);
             $message->setDestinataire($product->getUser());
             $message->setContent($messagesend);
-            $message->setTitle('titre test');
+            $message->setTitle($product->getName());
             dump($message);
 
             $entityManager = $this->getDoctrine()->getManager();
@@ -42,10 +42,10 @@ class AjaxController extends Controller
 
             $entityManager->flush();
 
-            $message = 'votre message a bien été envoyé!';
+            $message = 'Votre message a bien été envoyé!';
         }
         else{
-            $message = 'veuillez saisir votre message svp.';
+            $message = 'Merci de saisir votre message.';
         }
 
         return $this->render('ajax/send-message.html.twig', array('success' => $message));

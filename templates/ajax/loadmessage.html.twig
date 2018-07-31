@@ -4,18 +4,23 @@
 
 
   <div class="messageUser formStyle mt-5 p-3 col-md-8 offset-2" >
-      <div class="row">
-    <h4 class="text-warning col-md-3">Titre : </h4>
-    <p class="text-warning col-md-6" style="font-size: 1.5rem"> {{message.title}} </p>
-      </div>
-      <h4 class="text-warning col-12">Message : </h4>
-    <p class="text-warning col-12" style="font-size: 1.2rem"> {{message.content}} </p>
 
+      <div class="row">
+        <h4 class="text-warning col-md-3">Titre de l'annonce :</h4>
+          <p class="text-warning" style="font-size: 1.2rem">{{message.title}}</p>
+      </div>
+      <div class="row">
+          <h4 class="text-warning col-md-3">Auteur du message :</h4>
+          <p class="text-warning col-md-8" style="font-size: 1.2rem"> {{message.expediteur.username}} </p>
+      </div>
+      <div class="row">
+        <h4 class="text-warning col-md-3">Message : </h4>
+          <p class="text-warning col-md-8" style="font-size: 1.2rem"> {{message.content}} </p>
+      </div>
 
       <a href="">
           <button class="btn btn-warning text-dark btn-sm" style="margin-left: 10px;">Répondre</button>
       </a>
-
       <a href="{{ path('message-delete', {id:message.id}) }}">
           <button class="btn btn-warning text-dark btn-sm" style="margin-left: 10px;">Supprimer</button>
       </a>

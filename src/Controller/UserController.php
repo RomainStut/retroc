@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Entity\Users;
-
+use Symfony\Component\HttpFoundation\Session\Session;
 use App\Entity\Messages;
 
 
@@ -103,9 +103,32 @@ class UserController extends Controller
  
          $this->addFlash('success', 'Message supprimé !');
          return $this->redirectToRoute('userProfil');
-     }
+    }
 
-     
+    /**
+     * @Route("profil/delete/user/{id}", name="delete-user-profil", requirements= {"id"="\d+"})
+     */
+    public function deleteUserProfil(Users $user)
+        {
+
+            $currentUserId = $this->getUser()->getId();
 
 
+                $session = $this->get('session');
+                $session = new Session();
+                $session->invalidate();
+
+
+            $entityManager = $this->getDoctrine()->getManager();
+
+            $entityManager->remove($user);
+
+            $entityManager->flush();
+
+            //$this->addFlash('success', 'Votre profil a bien été supprimé! A bientôt sur Octocote!');
+
+            return $this->redirect('/?message=Votre profil a bien été supprimé! A bientôt sur Octocote!');
+
+
+        }
 }
