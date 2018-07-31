@@ -144,6 +144,7 @@ class ProductController extends Controller
      */
     public function updateProduct(Products $products, Request $request, FileUploader $uploader){
 
+        $this->denyAccessUnlessGranted('edit', $products);
         $fileName = $products->getImage();
         if($products->getImage()) {
 
@@ -181,8 +182,9 @@ class ProductController extends Controller
      */
 
     public function deleteProduct(Products $products){
-       //j'utilise mon voter pour déterminer si l'utilisateur peut modifier cette annonce
-       // $this->denyAccessUnlessGranted('delete', $products);
+
+       //j'utilise mon voter pour déterminer si l'utilisateur peut supprimer cette annonce
+        $this->denyAccessUnlessGranted('delete', $products);
         //recuperation de l'entity manager
         $entityManager = $this->getDoctrine()->getManager();
         //je veux supprimer ce produit
