@@ -100,16 +100,14 @@ p{
 }
 .register{
     text-align: center;
-<<<<<<< HEAD
-
-=======
-    /* text-decoration: underline; */
->>>>>>> 9b5b66369efcf238eeb72270619d0ba0fc37f743
+    text-decoration: underline;
 }
 .addproduct{
     text-align: center;
     text-decoration: underline;
 }
+
+
 
 
 /**************************footer******************************************************/
