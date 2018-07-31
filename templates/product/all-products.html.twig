@@ -1,7 +1,6 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}Liste des Annonces{% endblock %}
-{% block titlepage %}Liste des Annonces{% endblock %}
 
 {% block content %}
 
@@ -15,6 +14,7 @@
 
 
     <div class="container">
+        <h1 class="text-center">Toutes nos annonces</h1>
         {% for label, messages in app.flashes %}
             {% for message in messages %}
                 <div class="alert alert-{{ label }} mt-4">
@@ -26,18 +26,26 @@
 
             {% for product in products %}
                 {% if product.isvalidate == 1 %}
-                    <div class="card col-3" style="width: 18rem;">
+                
+                    <div class="card col-md-3 mb-4 listStyle antipadding" style="position: relative; height: 400px;">
                         <div class="card-body">
                             {% if product.image%}
+                            <div style="height: 243px;">
                                 <img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}" alt="Card image cap">
+                            </div>
                             {% endif %}
-                            <h5 class="card-title">{{ product.name }}</h5><hr>
-                            <p class="card-text">{{ product.price }} €</p>
-
-
-                            <a href="{{ path('product', {id: product.id })}}">Voir</a>
+                        <div style="position: relative">
+                            <h5 class="card-title font-weight-bold text-warning" style="color: #AC964A; position: absolute">{{ product.name }}</h5><hr>
                         </div>
-                    </div>
+                        
+                            <p class="card-text" style="color: white; font-size: 1.5rem">{{ product.price }} €</p>
+                        
+
+                            
+                            
+                        </div>                        
+                    <a href="{{ path('product', {id: product.id })}}" class="navbarColor01 btn text-warning col-12" style="position: absolute; bottom: 0;">Voir</a>
+                </div>
 
                 {% endif %}
             {% endfor %}
