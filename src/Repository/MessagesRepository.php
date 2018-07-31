@@ -57,7 +57,7 @@ class MessagesRepository extends ServiceEntityRepository
             ->addSelect('u')
             ->innerJoin('m.destinataire', 'y')
             ->addSelect('y')
-            ->andWhere('m.expediteur = :id')
+            ->andWhere('m.destinataire = :id')
             ->setparameter('id', $id)
             ->getQuery();
 
