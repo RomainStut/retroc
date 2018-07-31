@@ -3,13 +3,13 @@
 {% for message in messages %}
 
 
-  <div class="messageUser bg-secondary mt-5 p-3 col-md-8 offset-2" style="border:3px double #1A3E58; -moz-border-radius:10px 0;-webkit-border-radius:10px 0;border-radius:10px 0;">
+  <div class="messageUser formStyle mt-5 p-3 col-md-8 offset-2" >
       <div class="row">
-    <h4 class="text-warning col-3">Titre : </h4>
-    <p class="text-warning col-6" style="font-size: 1.5rem"> {{message.title}} </p>
+    <h4 class="text-warning col-md-3">Titre : </h4>
+    <p class="text-warning col-md-6" style="font-size: 1.5rem"> {{message.title}} </p>
       </div>
-      <h4 class="text-warning">Message : </h4>
-    <p class="text-warning" style="font-size: 1.2rem"> {{message.content}} </p>
+      <h4 class="text-warning col-12">Message : </h4>
+    <p class="text-warning col-12" style="font-size: 1.2rem"> {{message.content}} </p>
 
 
       <a href="">
