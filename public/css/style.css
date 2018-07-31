@@ -1,18 +1,32 @@
 
 /**************************HEADER*****************************************************/
+.head {
+
+    background-image: url("../images/headerX.svg");
+    -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+
+}
+
 header{
 
     background-color:#193e57;
 }
+
 .navbar-default .navbar-toggle {
     border-color: #f6ff00;
 }
+
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
     background-color: #f6ff00;
 }
 
-
+.navbarColor01{
+    color: #ffffff;
+    background-color: #112735;
+    border-color: #375a7f;
+}
 
 body{
     background: lightgrey;
@@ -22,19 +36,11 @@ body{
     margin: 0 auto;
 
 }
+.bodyback{
+background-image: url("../images/fondsite.svg");
+background-repeat: no-repeat;
+background-size: cover;
 
-#head{
-
-    background-image: url("../images/fondheader.jpg") ;
-    background-repeat: no-repeat;
-    background-position: center;
-
-}
-
-.navbarColor01{
-    color: #ffffff;
-    background-color: #112735;
-    border-color: #375a7f;
 }
 
 .log-btn{
@@ -55,7 +61,8 @@ header .dropdown-item:focus, .dropdown-item:hover{
 }
 
 .compteur{
-    background: url('../images/fondcompteur.jpg');
+    background: url('../images/fondcompteurX.svg');
+    background-size: cover; /* version standardisée */
 }
 
 
@@ -110,14 +117,16 @@ p{
 
 
 /**************************footer******************************************************/
-#head {
 
-    background-image: url("../images/fondheader.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
+
+#footer{
+    background-image: url("../images/footerX.svg");
+    -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+
+
+
 }
-
-
 /**************************Formulaire******************************************************/
 
 
@@ -129,9 +138,17 @@ p{
 .formStyle{
     background-color:#1a3e58;
     border-radius: 10px;
-    box-shadow: 5px 10px #0a1b26;
+    box-shadow: 5px 6px #0a1b26;
 }
 
+<<<<<<< HEAD
+.FormBouton{
+    color: #ffffff;
+    background-color: #112735;
+    border-color: #375a7f;
+}
+ 
+=======
 .profilForm{
     opacity: 1;
 }
@@ -161,6 +178,7 @@ p{
 .cgvContent p{
     color: white;
 }
+>>>>>>> d9e5af1dc63ac7b07da6760f021554d7bcc14f5a
 
 .text-justify{
     color: #AC964A;

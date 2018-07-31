@@ -111,7 +111,11 @@ class ProductController extends Controller
 
         $products = $repository->findAllType($type);
 
-        return $this->render('product/all-type.html.twig', array('products' => $products));
+        $repo = $this->getDoctrine()->getRepository(Type::class);
+
+        $typename = $repo->find($type);
+
+        return $this->render('product/all-type.html.twig', array('products' => $products, 'type' => $typename));
     }
 
     /**
@@ -122,8 +126,16 @@ class ProductController extends Controller
         $repository = $this->getDoctrine()->getRepository(Products::class);
 
         $products = $repository->showAllTypeCat($type, $cat);
-        dump($cat);
-        return $this->render('product/all-type-cat.html.twig', array('products' => $products));
+
+        $repositoryType = $this->getDoctrine()->getRepository(Type::class);
+
+        $typename = $repositoryType->find($type);
+
+        $repositoryCat = $this->getDoctrine()->getRepository(Categories::class);
+
+        $catname = $repositoryCat->find($cat);
+
+        return $this->render('product/all-type-cat.html.twig', array('products' => $products, 'type' => $typename, 'categorie' => $catname));
 
     }
 

@@ -1,11 +1,11 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Liste des Annonces{% endblock %}
-{% block titlepage %}Liste des Annonces{% endblock %}
+{% block title %}{{ type.name|capitalize }}{% endblock %}
 
 {% block content %}
 
     <div class="container">
+        <h1 class="text-center"> Liste des {{ categorie.name ~ ' ' ~ type.name|capitalize }}</h1>
         <div class="row">
 
             {% for product in products %}

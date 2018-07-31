@@ -1,12 +1,12 @@
 {% extends 'layout.html.twig' %}
 {% block title %} Liste Des articles {% endblock%}
-{% block titlepage %} Liste Des articles {% endblock%}
 
 {% block content %}
 
     <div class="container">
         {% if is_granted('ROLE_ADMIN') %}
-        <div class="row">
+        <h1 class="text-center">Liste des articles</h1>
+        <div class="row justify-content-center">
             <a href="{{ path('add-article-blog') }}" class="btn navbarColor01 text-warning mb-3 mb-1 col-3">Ajouter un article</a>
         </div>
         {% endif %}
