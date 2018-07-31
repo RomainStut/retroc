@@ -2,7 +2,7 @@
     border-radius: 15px;
 }
 
-.search div{
+.search .cote-res{
     border: 2px solid #375a7f;
     background: #1A3E58;
     padding: 2px;
@@ -15,8 +15,23 @@
     padding-top: 10px;
 }
 
-.search div:hover {
+.search .cote-res:hover {
     color: #fec007;
     cursor: pointer;
     background: rgba(26, 62, 88, 0.7);
+}
+
+.tutorial {
+    border: 3px dotted #CD950B;
+    border-radius: 25% 10%;
+    background: rgba(25, 62, 88, 0.8);
+}
+
+.tutorial p{
+    font-size: 1rem !important;
+    color: white;
+}
+
+.search .col-5 {
+    flex: none !important;
 }
