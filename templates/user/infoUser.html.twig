@@ -1,13 +1,14 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}Profil utilisateur{% endblock %}
-{% block titlepage %} <h1 class="ml-3" style="text-align: center; margin-bottom: 10px;">Profil de {{ user.username }}</h1>{% endblock %}
+{% block titlepage %}Profil de {{ user.username }}{% endblock %}
 
 {% block content %}
 <div class="container">
     <div class="row">
         <div class="col-2">
             <button class="btn navbarColor01 mt-1 text-warning" ><a class="text-warning" href="{{ path('updateUser',{id:user.id }) }}">Modifier Profil</a></button>
+            <button class="btn navbarColor01 mt-1 text-warning" ><a href="{{ path('delete-user-profil', {id: user.id })}}">Supprimer le compte <i class="fas fa-times" style="color:#ffc107;"></i></a></button>
             <button class="btn navbarColor01 mt-1 text-warning load-annonce" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Mes annonces</button>
             <button class="btn navbarColor01 mt-1 text-warning load-message" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Mes messages</button>
         </div>
@@ -104,6 +105,16 @@
                         console.log(error.responseText);
                     }
                 })
+            })
+            $('.click-splitflap').splitFlap({
+                image: '{{ asset('images/chars.png') }}',
+                text:   '{{ user.datebirth|date('d-m-Y') }}',
+                speed:          8,
+                speedVariation: 2,
+                autoplay:   true,
+                onComplete: function () {
+                    console.log('Done !');
+                }
             })
         })
     </script>

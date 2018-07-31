@@ -18,7 +18,7 @@ class HomeController extends Controller
      * @Route("/", name="home")
      */
 
-    public function showAll()
+    public function showAll(Request $request)
     {
         $repository = $this->getDoctrine()->getRepository(Products::class);
 
@@ -28,9 +28,12 @@ class HomeController extends Controller
 
         $blogs = $repository->myFindLastArticle();
 
+        $message = $request->query->get('message', null);
+
         return $this->render('home/index.html.twig',
                                 array('products'=> $products,
-                                        'blogs' => $blogs
+                                        'blogs' => $blogs,
+                                        'message' => $message
                                     )
         );
     }
