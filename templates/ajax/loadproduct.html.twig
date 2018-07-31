@@ -5,16 +5,16 @@
 
     {% for product in products %}
 
-        <div class="annonceUser mb-3 bg-secondary col-5 mr-5 mt-3 p-3" style="border:3px double #1A3E58; padding:3px; -moz-border-radius:10px 0;-webkit-border-radius:10px 0;border-radius:10px 0;">
+        <div class="annonceUser mb-3 formStyle col-5 mr-5 mt-3 p-3">
             <div class="row">
                 <div class="col-7 ">
                     <div class="row">
-                        <h4 class="col-4 text-warning" ><b>Nom</b> :</h4>
-                        <p class="col-8 text-warning" style="font-size: 1.5rem"> {{product.name}} </p>
-                        <h4 class="col-6 text-warning" ><b>Catégorie</b> :</h4>
-                        <p class="col-6 text-warning" style="font-size: 1.5rem">  {{product.categorie.name}}
-                        <h4 class="col-4 text-warning" ><b>Prix</b> :</h4>
-                        <p class="col-8 text-warning" style="font-size: 1.5rem"> {{product.price}} € </p>
+                        <h4 class="col-md-4 text-warning" ><b>Nom</b> :</h4>
+                        <p class="col-md-8 text-warning" style="font-size: 1.5rem"> {{product.name}} </p>
+                        <h4 class="col-md-6 text-warning" ><b>Catégorie</b> :</h4>
+                        <p class="col-md-6 text-warning" style="font-size: 1.5rem">  {{product.categorie.name}}
+                        <h4 class="col-md-4 text-warning" ><b>Prix</b> :</h4>
+                        <p class="col-md-8 text-warning" style="font-size: 1.5rem"> {{product.price}} € </p>
                     </div>
                 </div>
                 <div class="col-5">

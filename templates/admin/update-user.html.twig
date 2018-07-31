@@ -2,15 +2,59 @@
 
 {% block title %}Modifier utilisateur{% endblock%}
 
-{% block titlepage %}Modifier utilisateur{% endblock%}
+{% block titlepage %}<h1 class="col-md-4 offset-4 "> Modifier utilisateur</h1>{% endblock%}
 
 {% block content %}
 <div class="container">
-    <div class="col-4 text-warning" style="background: #6c757d">
+    <div class="col-8 offset-2 text-warning formStyle p-4" >
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="col-md-12">
+                    <label for="username">Pseudo</label>
+                    {{ form_widget(form.users.username) }}
+                </div>
+                <div class="col-md-12">
+                    <label for="username">Email</label>
+                    {{ form_widget(form.users.email) }}
+                </div>
+                <div class="col-md-12">
+                    <label for="username">Téléphone</label>
+                    {{ form_widget(form.users.tel) }}
+                </div>
+                <div class="col-md-12">
+                    <label for="username">Date de naissance</label>
+                    {{ form_widget(form.users.datebirth) }}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-12">
+                    <label for="username">Adresse</label>
+                    {{ form_widget(form.users.address) }}
+                </div>
 
-    {{ form_start(form) }}
 
-    {{ form_end(form) }}
+                <div class="col-md-12">
+                    <label for="username">Code Postal</label>
+                    {{ form_widget(form.users.codepostal) }}
+                </div>
+                <div class="col-md-12">
+                    <label for="username">Ville</label>
+                    {{ form_widget(form.users.city) }}
+                </div>
+                <div class="col-md-12">
+                    <label for="username">Image de profil</label>
+                    {{ form_widget(form.profilepicture) }}
+                </div>
+
+                <div class="col-md-12">
+                    {{ form_widget(form.modifier) }}
+                </div>
+            </div>
+
+
+        </div>
+        {{ form_end(form) }}
     </div>
 </div>
 {%  endblock %}
