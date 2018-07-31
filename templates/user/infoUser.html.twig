@@ -1,19 +1,16 @@
 {% extends 'layout.html.twig' %}
-{% block css %}
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/infouser.css') }}">
-{% endblock %}
 
 {% block title %}Profil utilisateur{% endblock %}
-{% block titlepage %}Profil de {{ user.username }}{% endblock %}
+{% block titlepage %} <h1 class="ml-3" style="text-align: center; margin-bottom: 10px;">Profil de {{ user.username }}</h1>{% endblock %}
 
 {% block content %}
 <div class="container">
     <div class="row">
         <div class="col-2">
             <button class="btn navbarColor01 mt-1 text-warning" ><a class="text-warning" href="{{ path('updateUser',{id:user.id }) }}">Modifier Profil</a></button>
+            <button class="btn navbarColor01 mt-1 text-warning" ><a href="{{ path('delete-user-profil', {id: user.id })}}">Supprimer le compte <i class="fas fa-times" style="color:#ffc107;"></i></a></button>
             <button class="btn navbarColor01 mt-1 text-warning load-annonce" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Mes annonces</button>
             <button class="btn navbarColor01 mt-1 text-warning load-message" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Mes messages</button>
-            <button class="btn btn-danger mt-1" ><a style="color:#ffffff;" href="#myModal" class="trigger-btn" data-toggle="modal"><i class="fas fa-times"></i> Supprimer le compte</a></button>
         </div>
         <div class="col-6 offset-1 formStyle p-3 text-warning">
             <div class="row">
@@ -67,27 +64,6 @@
 
     </div>
 </div>
-    {# DIV POUR LE MODAL DELETE#}
-    <div id="myModal" class="modal fade">
-        <div class="modal-dialog modal-confirm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="icon-box">
-                        <i class="fas fa-exclamation-triangle"></i>
-                    </div>
-                    <h4 class="modal-title">Attention !</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <p><b>Êtes-vous sûr de vouloir supprimer votre compte ?</b></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn navbarColor01" data-dismiss="modal">Annuler</button>
-                    <button type="button" class="btn btn-danger"><a style="color: #ffffff " href="{{ path('delete-user-profil', {id: user.id })}}">Supprimer</a></button>
-                </div>
-            </div>
-        </div>
-    </div>
 {% endblock %}
 
 {% block js %}
