@@ -9,22 +9,23 @@
         <div class="row">
 
             {% for product in products %}
+                {% if product.isvalidate == 1 %}
 
-                <div class="card col-3" style="width: 18rem;">
-                    <h5 class="card-title" style="margin-top:15px;"><strong>{{ product.name }}</strong></h5><hr>
-                    <div class="card-body">
-                        {% if product.image%}
-                            <img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}" alt="Card image cap">
-                        {% endif %}
+                    <div class="card col-3" style="width: 18rem;">
+                        <h5 class="card-title" style="margin-top:15px;"><strong>{{ product.name }}</strong></h5><hr>
+                        <div class="card-body">
+                            {% if product.image%}
+                                <img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}" alt="Card image cap">
+                            {% endif %}
 
-                        <p class="card-text">Prix: {{ product.price }} €</p>
+                            <p class="card-text">Prix: {{ product.price }} €</p>
 
 
-                        <a href="{{ path('product', {id: product.id })}}">Voir 👁️</a>
+                            <a href="{{ path('product', {id: product.id })}}">Voir 👁️</a>
+                        </div>
                     </div>
-                </div>
 
-
+                {% endif %}
             {% endfor %}
         </div>
     </div>

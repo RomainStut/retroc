@@ -156,16 +156,15 @@ class ProductController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
 
             $products = $form->getData();
-
+            $products->setIsValidate(false);
             if($products->getImage()){
 
                 $file = $products->getImage();
 
                 $fileName = $uploader->upload($file, $fileName);
 
-                $products->setImage($fileName);
-
             }
+            $products->setImage($fileName);
             $entityManager = $this->getDoctrine()->getManager();
 
             $entityManager->flush();
