@@ -130,6 +130,44 @@ p{
     border-radius: 10px;
 }
 
+.cgv{
+     text-align: center;    
+     color: #AC964A;
+     margin-bottom: 100px;
+}
+.cgvContent{
+    padding-left: 70px;
+    padding-top: 50px;
+    padding-right: 70px;
+    background-color: #1A3E58;
+    
+}
+
+.cgvContent h3{
+    color: #AC964A;
+}
+
+.cgvContent p{
+    color: white;
+}
+
+.text-justify{
+    color: #AC964A;
+}
+
+.adress{
+    border: solid black 1px;
+    background-color: #1A3E58;
+}
+
+.adress h3{
+    color: #AC964A;
+}
+
+.adress a h3:hover{
+    color: white;
+}
+
  
 
 
