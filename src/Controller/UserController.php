@@ -129,6 +129,5 @@ class UserController extends Controller
 
             return $this->redirect('/?message=Votre profil a bien été supprimé! A bientôt sur Octocote!');
 
-
         }
 }
