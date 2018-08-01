@@ -19,6 +19,8 @@
                             <div class="col-md-4" >
                                 {% if product.image %}
                                     <img src="{{ asset('uploads/images/' ~ product.image) }}" alt=" {{product.name}} " class="card-img-top text-center" style="max-width: 350px;" type="button" data-toggle="modal" data-target="#modalImage" class="btn btn-dark zoomin">
+                                {% else %}
+                                    <img src="{{ asset('images/produit.jpg' ) }}" alt="  "class="img-thumbnail">
                                 {% endif %}
                             </div>
                             <div class="col-md-8">
@@ -40,10 +42,10 @@
                             </div>
                         </div>
                         <a href="{{ path('update-product', {id:product.id}) }}">
-                            <button class="btn btn-warning btn-sm text-dark">Modifier</button>
+                            <button class="btn btn-sm btn-light">Modifier</button>
                         </a>
 
-                        <button class="btn btn-warning btn-sm text-dark delete-pdt" value="{{ product.id }}">Supprimer</button>
+                        <button class="btn btn-sm btn-light delete-pdt" value="{{ product.id }}">Supprimer</button>
 
 
                     </div>

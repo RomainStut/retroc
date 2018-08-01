@@ -2,15 +2,17 @@
 
 {% block title %}Modifier-annonce{% endblock %}
 
-{% block titlepage %}<h1 class="col-md-4 offset-4 mb-5">Modifier son annonce</h1>{% endblock %}
+{% block titlepage %}Modifier son annonce{% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="col-6 offset-2 text-warning formStyle p-4" >
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6  text-warning formStyle p-4" >
 
-    {{ form_start(form) }}
+                {{ form_start(form) }}
 
-    {{ form_end(form) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
     </div>
-</div>
 {% endblock %}
