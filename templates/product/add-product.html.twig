@@ -11,15 +11,12 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="text-warning formStyle col-5 p-4">
-            {{ form_start(form) }}
 
-            {{ form_end(form) }}
-        </div>
+
         <div class="col-7">
             <div class="row">
                 <div class=" col-12 text-center ">
-                    <h2>Sélectionner le produit correspondant : </h2>
+                    <h2>Estimation de votre produit : </h2>
                 </div>
                 <div class="col-12 search d-flex flex-column justify-content-center align-items-center">
                     <div class="tutorial col-5 mt-5">
@@ -29,79 +26,15 @@
             </div>
         </div>
 
+        <div class="text-warning formStyle col-5 p-4">
+            {{ form_start(form) }}
+            {{ form_end(form) }}
+        </div>
+
     </div>
 </div>
 {%  endblock %}
 
 {% block js %}
-    <script>
-        $(function(){
 
-            var titreselect;
-
-            $('body').on('keyup', 'input#product_name', function(e){
-                e.preventDefault();
-                $.ajax({
-                    type: 'POST',
-                    url: " {{ path('ajax-search-by-title') }} ",
-                    timeout: 3000,
-                    data: "title=" + $(this).val(),
-                    dataType: 'json',
-                    success: function(data){
-                        console.log(data);
-                        $('.search').empty();
-                        if(data.status === "ok"){
-                            $.each(data.products, function(i, product){
-                                $('.search').append('<div class="row mb-3 cote-res"><img width="50" height="50" src="'+ product.img +'"><p class="title-result">' + product.name  + '</p></div>')
-                            })
-                        } else {
-                            $('.search').append(data.erreur)
-                        }
-
-                    },
-                    error: function(error){
-                        console.log(error.responseText);
-                    }
-                })
-            })
-
-            $('body').on('click', 'div.cote-res', function(){
-                $('#product_name').val($(this).children('p').html())
-                titreselect = $(this).children('p').html();
-                $(this).addClass('choice');
-                $('.search').children().not(".choice").remove();
-                $('.search').append('<div class="tutorial col-5 mt-5"><p>Choisissez maintenant la qualité de votre produit</p></div>')
-            })
-
-            $('#product_image').on('change', function(){
-                console.log($(this).val());
-                console.log($('#product_image').next());
-                $('#product_image').next().html($(this).val());
-            })
-
-            $('#product_quality').on('change', function(){
-                console.log($(this).val() + titreselect)
-                $.ajax({
-                    type: 'POST',
-                    url: " {{ path('ajax-calcule-cote') }} ",
-                    timeout: 3000,
-                    data: "title=" + titreselect + "&quality=" + $(this).val(),
-                    dataType: 'json',
-                    success: function(data){
-                        $('.search').children('.tutorial').remove();
-                        $('.search').children('#cote-choice').remove();
-                        if(data.status === "ok"){
-                            $('.search').append('<p id="cote-choice" style="font-size: 3rem"> COTE = ' + data.cote  + '€</p>');
-                        } else {
-                            $('.search').append('<p id="cote-choice" style="font-size: 3rem">' + data.erreur + '</p>')
-                        }
-                    },
-                    error: function(error){
-                        console.log(error.responseText);
-                    }
-                })
-            })
-
-        })
-    </script>
 {% endblock %}
