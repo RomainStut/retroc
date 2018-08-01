@@ -78,9 +78,9 @@ class AjaxController extends Controller
     }
 
     /**
-     * @Route("/admin/validation/{id}", name="validation-success", requirements={"id", "\d+"})
+     * @Route("/admin/ajax/validation/{id}/{page}", defaults={"page":"1"}, name="validation-success", requirements={"id", "\d+"})
      */
-    public function validateProduct(Products $products)
+    public function validateProduct(Products $products, int $page)
     {
         $repository = $this->getDoctrine()->getRepository(Products::class);
         $product = $repository->find($products);
@@ -95,7 +95,7 @@ class AjaxController extends Controller
 
         $repository = $this->getDoctrine()->getRepository(Products::class);
 
-        $products = $repository->findInvalid();
+        $products = $repository->findInvalid($page);
 
         return $this->render('admin/gestionAnnoncesAjax.html.twig',
             array('products' => $products));
