@@ -19,7 +19,7 @@
                                 </div>
                             {% endif %}
                             <div style="position: relative;">
-                                <h5 class="card-title font-weight-bold text-warning">{{ product.name }}</h5>
+                                <h5 class="card-title font-weight-bold text-warning">{{ product.name|length > 23? product.name|slice(0, 23) ~ '...' :product.name  }}</h5>
                             </div>                            
                                 <p class="card-text" style="color: white; font-size: 1.5rem">Prix: {{ product.price }} €</p>               
                             </div>
