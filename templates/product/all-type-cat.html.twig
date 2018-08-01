@@ -16,7 +16,7 @@
                         <div class="card-body">
 
                             {% if product.image%}
-                            <div style="height: 275px;">
+                            <div style="height: 243px;">
                                 <img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}" alt="Card image cap">
                             </div>
                             {% endif %}
@@ -26,7 +26,7 @@
                             </div>
 
                             <div>                         
-                                <p class="card-text" style="color: white; font-size: 1.5rem">Prix: {{ product.price }} €</p>               
+                                <p class="card-text" style="color: white; font-size: 1.5rem">{{ product.price }} €</p>
                             </div>                  
                         </div>
                         <a href="{{ path('product', {id: product.id })}}" class="navbarColor01 btn text-warning col-12" style="position: absolute;bottom: 0;">Voir</a>
