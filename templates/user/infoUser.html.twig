@@ -4,82 +4,155 @@
 {% block titlepage %} <h1 class="ml-3" style="text-align: center; margin-bottom: 10px;">Profil de {{ user.username }}</h1>{% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col-2">
-            <button class="btn navbarColor01 mt-1 text-warning" ><a class="text-warning" href="{{ path('updateUser',{id:user.id }) }}">Modifier Profil</a></button>
-            <button class="btn navbarColor01 mt-1 text-warning" ><a href="{{ path('delete-user-profil', {id: user.id })}}">Supprimer le compte <i class="fas fa-times" style="color:#ffc107;"></i></a></button>
-            <button class="btn navbarColor01 mt-1 text-warning load-annonce" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Mes annonces</button>
-            <button class="btn navbarColor01 mt-1 text-warning load-message" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Mes messages</button>
-        </div>
-        <div class="col-6 offset-1 formStyle p-3 text-warning">
-            <div class="row">
-                <div class="col-12 mr-5" >
-                    <div class="row">
-                        <div class="col-4 offset-4" >
-                            {% if user.profilepicture %}
-                                <img src="{{ 'uploads/images/' ~ user.profilepicture }}" type="button" data-toggle="modal" data-target="#modalImage" class="btn btn-dark mr-5" style="height: 150px; width: 150px" alt=""><br>
-                            {% else %}
-                                <img src="{{ asset('images/yoda.jpeg' ) }}" alt="  " style=" " type="button" data-toggle="modal" data-target="#modalImage" class="btn btn-dark mr-5">
-                            {% endif %}
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <button class="btn navbarColor01 mt-1 text-warning" ><a class="text-warning" href="{{ path('updateUser',{id:user.id }) }}">Modifier Profil</a></button>
+                <button class="btn navbarColor01 mt-1 text-warning" ><a href="{{ path('delete-user-profil', {id: user.id })}}">Supprimer le compte <i class="fas fa-times" style="color:#ffc107;"></i></a></button>
+                <button class="btn navbarColor01 mt-1 text-warning load-annonce" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Mes annonces</button>
+                <button class="btn navbarColor01 mt-1 text-warning load-message" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Mes messages</button>
+            </div>
+            <div class="col-6 offset-1 formStyle p-3 text-warning">
+                <div class="row">
+                    <div class="col-12 mr-5" >
+                        <div class="row">
+                            <div class="col-4 offset-4" >
+                                {% if user.profilepicture %}
+                                    <img src="{{ 'uploads/images/' ~ user.profilepicture }}" type="button" data-toggle="modal" data-target="#modalImage" class="btn btn-dark mr-5" style="height: 150px; width: 150px" alt=""><br>
+                                {% else %}
+                                    <img src="{{ asset('images/yoda.jpeg' ) }}" alt="  " style=" " type="button" data-toggle="modal" data-target="#modalImage" class="btn btn-dark mr-5">
+                                {% endif %}
+                            </div>
+
                         </div>
+                    </div>
+                    <div class="col-8 ml-5">
+                        <div class="col-md-12">
+                            <b> Pseudo: </b>{{ user.username }}
+                        </div>
+                        <div class="col-md-12">
+                            <b> Email: </b>{{ user.email }}
+                        </div>
+                        <div class="col-md-12">
+                            <b>Tel: </b>{{ user.tel }}
+                        </div>
+                        <div class="col-md-12">
+                            <b> Date de naissance: </b>{{ user.datebirth|date('d-m-Y') }}
+                        </div>
+                        <div class="col-md-12">
+                            <b> Ville: </b>{{ user.city }}
+                        </div>
+                    </div>
 
-                    </div>
-                </div>
-                <div class="col-8 ml-5">
-                    <div class="col-md-12">
-                    <b> Pseudo: </b>{{ user.username }}
-                    </div>
-                    <div class="col-md-12">
-                    <b> Email: </b>{{ user.email }}
-                    </div>
-                    <div class="col-md-12">
-                    <b>Tel: </b>{{ user.tel }}
-                    </div>
-                    <div class="col-md-12">
-                    <b> Date de naissance: </b>{{ user.datebirth|date('d-m-Y') }}
-                    </div>
-                    <div class="col-md-12">
-                    <b> Ville: </b>{{ user.city }}
-                    </div>
-                </div>
 
+                </div>
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ label }} mt-4">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-12" id="result">
 
             </div>
-            {% for label, messages in app.flashes %}
-                {% for message in messages %}
-                    <div class="alert alert-{{ label }} mt-4">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            {% endfor %}
-        </div>
-
-    </div>
-
-    <div class="row">
-        <div class="col-12" id="result">
 
         </div>
-
     </div>
-</div>
 {% endblock %}
 
 {% block js %}
     <script>
-        $(function(){
-            $('.load-message').on('click', function(e){
+        $(function() {
+            $('.load-message').on('click', function (e) {
                 e.preventDefault();
                 console.log('ok');
                 $.ajax({
                     type: 'get',
-                    url: "{{ path('message-user')}}",
-                    timeout : 3000,
-                    dataType : 'html',
-                    success: function(data){
+                    url: "{{ path('message-user') }}",
+                    timeout: 3000,
+                    dataType: 'html',
+                    success: function (data) {
                         $('#result').empty();
                         $('#result').html(data);
+                    },
+                    error: function (error) {
+                        console.log(error.responseText);
+                    }
+                })
+            })
+
+
+            $('.load-annonce').on('click', function (e) {
+                e.preventDefault();
+                console.log('ok');
+                $.ajax({
+                    type: 'get',
+                    url: "{{ path('annonce-user') }}",
+                    timeout: 3000,
+                    dataType: 'html',
+                    success: function (data) {
+                        $('#result').empty();
+                        $('#result').html(data);
+                    },
+                    error: function (error) {
+                        console.log(error.responseText);
+                    }
+                })
+            })
+
+            $('.click-splitflap').splitFlap({
+                image: '{{ asset('images/chars.png') }}',
+                text: '{{ user.datebirth|date('d-m-Y') }}',
+                speed: 8,
+                speedVariation: 2,
+                autoplay: true,
+                onComplete: function () {
+                    console.log('Done !');
+                }
+            })
+
+            {#suppression des messages en ajax#}
+            $('body').on('click', '.delete-msg', function (e) {
+                e.preventDefault();
+                var url = " {{ path('message-delete' , {id : 0}) }} ",
+                    url = url.replace('0', $(this).val())
+                $.ajax({
+                    type: 'get',
+                    url: url,
+                    timeout: 3000,
+                    dataType: 'html',
+                    success: function (data) {
+                        console.log('done');
+                        $('#result').empty();
+                        $('#result').append(data);
+                    },
+                    error: function (error) {
+                        console.log(error.responseText);
+                    }
+                })
+            })
+
+            {#suppression des produits en ajax#}
+            $('body').on('click', '.delete-pdt', function (e) {
+                e.preventDefault();
+                var url = " {{ path('product-delete' , {id : 0}) }} ",
+                    url = url.replace('0', $(this).val())
+                $.ajax({
+                    type: 'get',
+                    url: url,
+                    timeout: 3000,
+                    dataType: 'html',
+                    success: function (data) {
+                        console.log('done');
+                        $('#result').empty();
+                        $('#result').append(data);
                     },
                     error: function (error) {
                         console.log(error.responseText);
@@ -88,34 +161,5 @@
             })
         })
 
-        $(function(){
-            $('.load-annonce').on('click', function(e){
-                e.preventDefault();
-                console.log('ok');
-                $.ajax({
-                    type: 'get',
-                    url: "{{ path('annonce-user')}}",
-                    timeout : 3000,
-                    dataType : 'html',
-                    success: function(data){
-                        $('#result').empty();
-                        $('#result').html(data);
-                    },
-                    error: function (error) {
-                        console.log(error.responseText);
-                    }
-                })
-            })
-            $('.click-splitflap').splitFlap({
-                image: '{{ asset('images/chars.png') }}',
-                text:   '{{ user.datebirth|date('d-m-Y') }}',
-                speed:          8,
-                speedVariation: 2,
-                autoplay:   true,
-                onComplete: function () {
-                    console.log('Done !');
-                }
-            })
-        })
     </script>
 {% endblock %}

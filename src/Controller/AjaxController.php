@@ -185,9 +185,40 @@ class AjaxController extends Controller
         return $this->json(array('status'=>'ko', 'erreur' => 'Aucun prix'));
     }
 
-    
 
+    /**
+     *@Route("/profil/message/delete/{id}", name="message-delete", requirements={"id", "\d+"})
+     */
+    public function deleteMsg(Messages $messages)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($messages);
+        $entityManager->flush();
 
+        $repository = $this->getDoctrine()->getRepository(Messages::class);
+
+        $messages = $repository->myfindUserMessage($this->getUser());
+
+        return $this->render('ajax/loadMessageDelete.html.twig',
+            array('messages' => $messages));
+    }
+
+    /**
+     *@Route("/profil/product/delete/{id}", name="product-delete", requirements={"id", "\d+"})
+     */
+    public function deletepdt(Products $products)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($products);
+        $entityManager->flush();
+
+        $repository = $this->getDoctrine()->getRepository(Products::class);
+
+        $products = $repository->myfindUserProducts($this->getUser());
+
+        return $this->render('ajax/loadProductDelete.html.twig',
+            array('products' => $products));
+    }
 }
 
 

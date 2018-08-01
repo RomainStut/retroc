@@ -31,10 +31,11 @@
                 <button class="btn btn-warning btn-sm text-dark">Modifier</button>
 
             </a>
+            <a href="{{ path('product-delete', {id:product.id}) }}">
 
-                <button class="btn btn-warning btn-sm text-dark delete-pdt" value="{{ product.id }}">Supprimer</button>
+                <button class="btn btn-warning btn-sm text-dark delete-pdt">Supprimer</button>
 
-
+            </a>
         </div>
 
 
