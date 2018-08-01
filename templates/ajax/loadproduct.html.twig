@@ -1,42 +1,58 @@
 <h3 class="col-md-12 font-weight-bold">Mes Annonces </h3>
-<div class="row d-flex justify-content-around">
 
 
+<div class="col-md-11 offset-1">
+    <div class="row ">
+        {% for product in products %}
 
-    {% for product in products %}
 
-        <div class="annonceUser mb-3 formStyle col-5 mr-5 mt-3 p-3">
-            <div class="row">
-                <div class="col-7 ">
-                    <div class="row">
-                        <h4 class="col-md-4 text-warning" ><b>Nom</b> :</h4>
-                        <p class="col-md-8 text-warning" style="font-size: 1.5rem"> {{product.name}} </p>
-                        <h4 class="col-md-6 text-warning" ><b>Catégorie</b> :</h4>
-                        <p class="col-md-6 text-warning" style="font-size: 1.5rem">  {{product.categorie.name}}
-                        <h4 class="col-md-4 text-warning" ><b>Prix</b> :</h4>
-                        <p class="col-md-8 text-warning" style="font-size: 1.5rem"> {{product.price}} € </p>
+            <div class="col-md-6 my-5 annonceUser">
+                <div class="card formStyle mb-3" >
+                    <div class="card-header">
+                        <div class="row">
+                            <h3 class="col-md-12 text-warning">{{product.name}}</h3>
+                            <h3 class="card-text col-md-12 " style="color: white">{{product.price}} € </h3>
+                        </div>
+                    </div>
+                    <div class="card-body" >
+                        <div class="row">
+                            <div class="col-md-4" >
+                                {% if product.image %}
+                                    <img src="{{ asset('uploads/images/' ~ product.image) }}" alt=" {{product.name}} " class="card-img-top text-center" style="max-width: 350px;" type="button" data-toggle="modal" data-target="#modalImage" class="btn btn-dark zoomin">
+                                {% endif %}
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row  bot-border">
+                                    <p class="col-12"><b class="text-warning">Qualité : </b>
+                                        {% if product.quality.name == "mib" %}
+                                            <i class="fas fa-star" style="color: white"> {{ product.quality.name }}</i>
+                                        {% elseif product.quality.name == "occase" %}
+                                            <i class="fas fa-star-half-alt" style="color: white"> {{ product.quality.name }}</i>
+                                        {% else %}
+                                            <i class="far fa-angry" style="color: white"> {{ product.quality.name }}</i>
+                                        {% endif %}
+                                    </p>
+                                    <p class="col-12" style="color: white"><b class="text-warning">Vendeur: </b> {{ product.user.username }}</p>
+                                    <p class="col-12"><b class="text-warning">Description: </b></p>
+                                    <p class="col-12" style="color: white; overflow:auto; color: white; font-size: 1rem">{{product.description| striptags | slice(0, 18)}}...</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <a href="{{ path('update-product', {id:product.id}) }}">
+                            <button class="btn btn-warning btn-sm text-dark">Modifier</button>
+                        </a>
+
+                        <button class="btn btn-warning btn-sm text-dark delete-pdt" value="{{ product.id }}">Supprimer</button>
+
+
                     </div>
                 </div>
-                <div class="col-5">
-                    {% if product.image %}
-                        <img src="{{ 'uploads/images/' ~ product.image }}" class="img-thumbnail" alt="photo_produit">
-                    {% else %}
-                        <img src="{{ asset('images/produit.jpg' ) }}" alt="  "class="img-thumbnail">
-                    {% endif %}
-                    {#<img src="{{ 'uploads/images/' ~ product.image }}" alt="..." class="img-thumbnail">#}
-                </div>
             </div>
-            <a href="{{ path('update-product', {id:product.id}) }}">
-
-                <button class="btn btn-warning btn-sm text-dark">Modifier</button>
-
-            </a>
-
-                <button class="btn btn-warning btn-sm text-dark delete-pdt" value="{{ product.id }}">Supprimer</button>
 
 
-        </div>
 
 
-    {% endfor %}
+        {% endfor %}
+    </div>
 </div>
