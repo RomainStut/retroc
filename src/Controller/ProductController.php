@@ -177,25 +177,5 @@ class ProductController extends Controller
     }
 
 
-    /**
-     * @Route("product/delete/{id}", name = "product-delete", requirements= {"id"="\d+"})
-     */
 
-    public function deleteProduct(Products $products){
-
-       //j'utilise mon voter pour déterminer si l'utilisateur peut supprimer cette annonce
-        $this->denyAccessUnlessGranted('delete', $products);
-        //recuperation de l'entity manager
-        $entityManager = $this->getDoctrine()->getManager();
-        //je veux supprimer ce produit
-        $entityManager->remove($products);
-
-        //j'exécute la requete
-        $entityManager->flush();
-
-        //créer un message de succes en flash
-
-        $this->addFlash('success', 'Annonce supprimée !');
-        return $this->redirectToRoute('userProfil');
-    }
 }
