@@ -7,22 +7,22 @@
 
         <div class="row">
             <h4 class="text-warning col-md-3">Titre de l'annonce :</h4>
-            <p class="text-warning" style="font-size: 1.2rem">{{message.title}}</p>
+            <p style="font-size: 1.2rem;color: white;border-bottom: 1px solid white;">{{message.title}}</p>
         </div>
         <div class="row">
             <h4 class="text-warning col-md-3">Auteur du message :</h4>
-            <p class="text-warning col-md-8" style="font-size: 1.2rem"> {{message.expediteur.username}} </p>
+            <p class="col-md-8" style="font-size: 1.2rem;color: white;border-bottom: 1px solid white;"> {{message.expediteur.username}} </p>
         </div>
         <div class="row">
             <h4 class="text-warning col-md-3">Message : </h4>
-            <p class="text-warning col-md-8" style="font-size: 1.2rem"> {{message.content}} </p>
+            <p class="col-md-8" style="font-size: 1.2rem;color: white;border-bottom: 1px solid white;"> {{message.content}} </p>
         </div>
 
         <a href="">
-            <button class="btn btn-warning text-dark btn-sm" style="margin-left: 10px;">Répondre</button>
+            <button class="btn text-dark btn-sm" style="margin-left: 10px;">Répondre</button>
         </a>
         {#<a href="{{ path('message-delete', {id:message.id}) }}">#}
-        <button value="{{ message.id }}" class="btn btn-warning text-dark btn-sm delete-msg" style="margin-left: 10px;">Supprimer</button>
+        <button value="{{ message.id }}" class="btn btn-danger text-dark btn-sm delete-msg" style="margin-left: 10px;float: right;"><span style="color: white;">Supprimer</span></button>
         {# </a>#}
 
 
