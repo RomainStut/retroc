@@ -20,16 +20,18 @@
 
             {% for product in products %}
                 {% if product.isvalidate == 1 %}
-                    <div class="card col-3" style="width: 18rem;">
+                    <div class="card col-md-3 mb-4 listStyle antipadding" style="position: relative; height: 400px;">
                         <div class="card-body">
                             {% if product.image%}
-                                <img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}"
-                                     alt="Card image cap">
+                            <div style="height: 243px;">
+                                <a href="{{ path('product', {id: product.id})}}"><img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}"alt="Card image cap"></a> 
+                            </div>                                   
                             {% endif %}
-                            <h5 class="card-title">{{ product.name }}</h5><hr>
-                            <p class="card-text">{{ product.price }} €</p>
-                            <a href="{{ path('product', {id: product.id})}}">Voir</a>
+                        <div style="position: relative;">
+                            <h5 class="card-title font-weight-bold text-warning" style="color: #AC964A; position: absolute">{{ product.name }}</h5><hr>
                         </div>
+                            <p class="card-text" style="color: white; font-size: 1.5rem">{{ product.price }} €</p>
+                        </div>                     
                     </div>
                 {% endif %}
             {% endfor %}
@@ -42,16 +44,20 @@
 
             {% for blog in blogs %}
 
-                <div class="card col-4  " style="width: 18rem;">
+                <div class="card col-md-3 mb-4 listStyle antipadding" style="position: relative; height: 400px;">
                     <div class="card-body">
                         {% if blog.image%}
-                            <img class="card-img-top" src="{{ asset('uploads/images/' ~ blog.image) }}" alt="Card image cap">
+                        <div style="height: 243px;">
+                                <a href="{{ path('article-blog', {id: blog.id })}}"><img class="card-img-top" src="{{ asset('uploads/images/' ~ blog.image) }}" alt="Card image cap"></a>
+                        </div> 
                         {% endif %}
-                        <h5 class="card-title">{{ blog.title }}</h5><hr>
-                        <p class="card-text" style="overflow:auto;">{{ blog.content  | striptags | slice(0, 150) }} </p>
+                    <div style="position: relative;">
+                        <h5 class="card-title font-weight-bold text-warning" style="color: #AC964A; position: absolute">{{ blog.title }}</h5><hr>
+                    </div>
+                        <p class="card-text" style="color: white; font-size: 1rem">{{ blog.content  | striptags | slice(0, 50) }} </p>
 
 
-                        <a href="{{ path('article-blog', {id: blog.id })}}">Voir</a>
+                        
                     </div>
                 </div>
 
