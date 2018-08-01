@@ -12,18 +12,22 @@
                 {% if product.isvalidate == 1 %}
 
                     <div class="card col-md-3 mb-4 listStyle antipadding" style="position: relative; height: 400px;">
+                    
                         <div class="card-body">
+
                             {% if product.image%}
-                                <div style="height: 243px;">
-                                    <img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}" alt="Card image cap">
-                                </div>
+                            <div style="height: 275px;">
+                                <img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}" alt="Card image cap">
+                            </div>
                             {% endif %}
-                            <div style="position: relative">
-                                <h5 class="card-title font-weight-bold text-warning" style="color: #AC964A; position: absolute;">{{ product.name }}</h5>
+
+                            <div style="position: relative;">
+                                <h5 class="card-title font-weight-bold text-warning">{{ product.name|length > 23? product.name|slice(0, 23) ~ '...' :product.name  }}</h5>
                             </div>
-                            <div>
-                                <p class="card-text" style="color: white; font-size: 1.5rem; padding-top: 50px;">Prix : {{ product.price }} €</p>
-                            </div>
+
+                            <div>                         
+                                <p class="card-text" style="color: white; font-size: 1.5rem">Prix: {{ product.price }} €</p>               
+                            </div>                  
                         </div>
                         <a href="{{ path('product', {id: product.id })}}" class="navbarColor01 btn text-warning col-12" style="position: absolute;bottom: 0;">Voir</a>
                     </div>
