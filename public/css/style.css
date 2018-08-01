@@ -33,7 +33,7 @@ body{
     font-family: 'Rajdhani', sans-serif;
     font-size: 120%;
     width: 100%;
-    margin: 0 auto;
+    /*margin: 0 auto;*/
 
 }
 .bodyback{
@@ -63,11 +63,20 @@ header .dropdown-item:focus, .dropdown-item:hover{
 .compteur{
     background: url('../images/fondcompteurX.svg');
     background-size: cover; /* version standardisée */
-    box-shadow: 10px 5px 5px black;
+    box-shadow: 0px 5px 5px black;
 }
 
 
+
 /**************************Content******************************************************/
+@media screen and (max-width: 600px) {
+
+    .click-splitflap {
+        display:none;
+
+    }
+}
+
 
 .infos{
     text-align: center; 
@@ -124,8 +133,9 @@ p{
     background-image: url("../images/footerX.svg");
     -webkit-background-size: cover; /* pour anciens Chrome et Safari */
     background-size: cover; /* version standardisée */
+}
 
-
+#blocTextFooter{
 
 }
 /**************************Formulaire******************************************************/

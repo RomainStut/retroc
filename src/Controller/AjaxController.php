@@ -148,7 +148,7 @@ class AjaxController extends Controller
             return $this->json(array('status'=>'ok', 'products' => $json));
         }
 
-        return $this->json(array('status'=>'ko', 'erreur' => 'Aucun résultat'));
+        return $this->json(array('status'=>'ko', 'erreur' => 'Aucun résultat.'));
 
     }
 
@@ -182,7 +182,7 @@ class AjaxController extends Controller
             return $this->json(array('status'=>'ok', 'cote' => $moyenne));
         }
 
-        return $this->json(array('status'=>'ko', 'erreur' => 'Aucun prix'));
+        return $this->json(array('status'=>'ko', 'erreur' => 'Calcul de côte impossible; il n\'y a actuellement aucun produit correspondant au votre.'));
     }
 
 
