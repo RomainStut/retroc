@@ -92,7 +92,7 @@ class SecurityController extends Controller
 
 
     }
-    
+
     /**
      * @Route("/register/reset", name="reset-password")
      */
