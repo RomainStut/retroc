@@ -18,7 +18,7 @@ class AdduserType extends AbstractType
     {
         $builder
             ->add("users", UserType::class, array('data_class' => Users::class, "label" => true))
-            ->add('plainPassword',RepeatedType::class, array('type'=> PasswordType::class, 'invalid_message' => 'les mdp ne sont pas identiques',
+            ->add('plainPassword',RepeatedType::class, array('type'=> PasswordType::class, 'invalid_message' => 'le mot de passe n\'est pas identique',
                 'first_options' => ['label' => 'Mot de passe'],
                 'second_options' => ['label' => 'Répétez le mot de passe']))
             ->add("Inscription", SubmitType::class, array('label'=>'Inscription', 'attr' => ['class' => 'navbarColor01 text-warning']))
