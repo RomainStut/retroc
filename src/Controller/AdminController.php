@@ -71,12 +71,7 @@ class AdminController extends Controller
 
         $form = $this->createForm(UpdateUserType::class, $users);
 
-
-
-
         $form->handleRequest($request);
-
-
 
         if($form->isSubmitted() && $form->isvalid()){
 
@@ -106,13 +101,14 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("/admin/validation", name="validation-annonce")
+     * @Route("/admin/validation", defaults={"page":"1"}, methods={"GET"}, name="validation-annonce")
+     * @Route("/admin/validation/page/{page}", requirements={"page": "[1-9]\d*"}, methods={"GET"}, name="validation_paginated")
      */
-    public function showInvalid()
+    public function showInvalid(int $page)
     {
         $repository = $this->getDoctrine()->getRepository(Products::class);
 
-        $products = $repository->findInvalid();
+        $products = $repository->findInvalid($page);
 
         return $this->render('admin/gestionAnnonces.html.twig',
             array('products' => $products));

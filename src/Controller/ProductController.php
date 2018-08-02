@@ -87,13 +87,15 @@ class ProductController extends Controller
     }
 
     /**
-     * @route("/product/all", name="showAll")
+     * @route("/product/all", defaults={"page":"1"}, methods={"GET"} ,name="showAll")
+     * @Route("/page/{page}", requirements={"page": "[1-9]\d*"}, methods={"GET"}, name="showAll_paginated")
      */
-    public function showAll(){
+    public function showAll(int $page)
+    {
 
         $repository = $this->getDoctrine()->getRepository(Products::class);
 
-        $products = $repository->myFindAll();
+        $products = $repository->myFindAll($page);
 
         return $this->render('product/all-products.html.twig',
             array('products'=> $products)
@@ -103,13 +105,14 @@ class ProductController extends Controller
 
 
      /**
-     * @Route("/product/type/{type}", name="product-type")
+     * @Route("/product/type/{type}", defaults={"page":"1"}, methods={"GET"}, name="product-type")
+      * @Route("/product/type/{type}/page/{page}", requirements={"page": "[1-9]\d*"}, methods={"GET"}, name="product-type_paginated")
      */
-    public function showAllType($type)
+    public function showAllType($type, int $page)
     {
         $repository = $this->getDoctrine()->getRepository(Products::class);
 
-        $products = $repository->findAllType($type);
+        $products = $repository->findAllType($type, $page);
 
         $repo = $this->getDoctrine()->getRepository(Type::class);
 
@@ -119,13 +122,14 @@ class ProductController extends Controller
     }
 
     /**
-     * @Route("/product/typecat/{type}/{cat}", name="product-type-cat", requirements={"type"="\d+", "cat"="\d+"})
+     * @Route("/product/typecat/{type}/{cat}", defaults={"page":"1"}, methods={"GET"}, name="product-type-cat", requirements={"type"="\d+", "cat"="\d+"})
+     * @Route("/product/type/{type}/cat/{cat}/page/{page}", requirements={"page": "[1-9]\d*"}, methods={"GET"}, name="product-type-cat_paginated")
      */
-    public function showAllTypeCat(Type $type, Categories $cat)
+    public function showAllTypeCat(Type $type, Categories $cat, int $page)
     {
         $repository = $this->getDoctrine()->getRepository(Products::class);
 
-        $products = $repository->showAllTypeCat($type, $cat);
+        $products = $repository->showAllTypeCat($type, $cat, $page);
 
         $repositoryType = $this->getDoctrine()->getRepository(Type::class);
 
@@ -177,25 +181,5 @@ class ProductController extends Controller
     }
 
 
-    /**
-     * @Route("product/delete/{id}", name = "product-delete", requirements= {"id"="\d+"})
-     */
 
-    public function deleteProduct(Products $products){
-
-       //j'utilise mon voter pour déterminer si l'utilisateur peut supprimer cette annonce
-        $this->denyAccessUnlessGranted('delete', $products);
-        //recuperation de l'entity manager
-        $entityManager = $this->getDoctrine()->getManager();
-        //je veux supprimer ce produit
-        $entityManager->remove($products);
-
-        //j'exécute la requete
-        $entityManager->flush();
-
-        //créer un message de succes en flash
-
-        $this->addFlash('success', 'Annonce supprimée !');
-        return $this->redirectToRoute('userProfil');
-    }
 }
