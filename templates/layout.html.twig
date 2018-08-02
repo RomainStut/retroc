@@ -28,6 +28,7 @@
             </div>
             <div class="col-md-10">
 
+
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     <a  class="btn btn-dark text-warning mt-4 ml-2 log-btn navbarColor01" href="{{ path('logout') }}">Déconnexion</a>
                     <a class="btn btn-dark text-warning mt-4 mr-3 log-btn navbarColor01" href="{{ path('userProfil') }}">Profil</a>
@@ -129,18 +130,12 @@
                 <li class="nav_item">
 
                 </li>
-
-
             </ul>
-
-            {# bar de recherche #}
-
-
-
-
         </div>
 
+        {# bar de recherche #}
         {{ render(controller('App\\Controller\\HomeController::searchBarHome' )) }}
+
     </nav>
 
     {#<div class="">#}
