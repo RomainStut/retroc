@@ -33,7 +33,7 @@ body{
     font-family: 'Rajdhani', sans-serif;
     font-size: 120%;
     width: 100%;
-    /*margin: 0 auto;*/
+    margin: 0 auto;
 
 }
 .bodyback{
@@ -67,16 +67,7 @@ header .dropdown-item:focus, .dropdown-item:hover{
 }
 
 
-
 /**************************Content******************************************************/
-@media screen and (max-width: 600px) {
-
-    .click-splitflap {
-        display:none;
-
-    }
-}
-
 
 .infos{
     text-align: center; 
@@ -132,9 +123,8 @@ p{
     background-image: url("../images/footerX.svg");
     -webkit-background-size: cover; /* pour anciens Chrome et Safari */
     background-size: cover; /* version standardisée */
-}
 
-#blocTextFooter{
+
 
 }
 /**************************Formulaire******************************************************/
