@@ -175,9 +175,9 @@
 <footer class="container-fluid mt-5 navbarColor01 " id="footer">
 
 {#-------------------caroussel footer--------------------#}
-<footer class="container-fluid mt-5 navbarColor01 " id="footer">
+<footer class="container-fluid mt-5 navbarColor01" id="footer">
     <div class="row">
-        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div id="carouselExampleSlidesOnly"  class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img class="d-block w-100" src="{{asset('images/sliderocto1.jpg')}} " alt="First slide">
@@ -215,8 +215,8 @@
                     </div>
                     <div class="col-12 text-center ">
                         <ul>                          
-                            <a href="#" style="color: #ced9e5;">
-                                <li>  
+                            <a href="/informations/information" style="color: #ced9e5;">
+                                <li>
                                     Informations
                                 </li>
                             </a>
@@ -294,6 +294,10 @@
                     console.log(error.responseText);
                 }
             })
+        })
+
+        $('.carousel').carousel({
+            interval: 3500
         })
     });
 
