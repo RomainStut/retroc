@@ -9,7 +9,7 @@
 
             {% for user in users %}
 
-                <div class="card col-md-3 mt-4 mr-3" style="width: 18rem;">
+                <div class="card col-md-3 mt-4 mr-3 text-warning" style="width: 18rem; background-color: #173E57;">
                     <div class="card-body">
                         {% if user.profilepicture%}
                             <img class="card-img-top" src="{{ asset('uploads/images/' ~  user.profilepicture) }}" alt="Card image cap">
@@ -18,9 +18,9 @@
                         <p class="card-text">{{ user.email }}</p>
 
 
-                        <a href="{{ path('update-user', {id: user.id })}}">Modifier le compte <i class="fas fa-cogs" style="color:#ffc107;"></i></a>
+                        <a href="{{ path('update-user', {id: user.id })}}" style="color: white;">Modifier le compte <i class="fas fa-cogs" style="color:#ffc107;"></i></a>
                         <hr>
-                        <a href="{{ path('delete-user', {id: user.id })}}">Supprimer le compte <i class="fas fa-times" style="color:#ffc107;"></i></a>
+                        <a href="{{ path('delete-user', {id: user.id })}}" style="color: white;">Supprimer le compte <i class="fas fa-times" style="color:#ffc107;"></i></a>
 
                     </div>
                 </div>
