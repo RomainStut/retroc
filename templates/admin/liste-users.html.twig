@@ -9,7 +9,7 @@
 
             {% for user in users %}
 
-                <div class="card col-3 mt-4 mr-3" style="width: 18rem;">
+                <div class="card col-md-3 mt-4 mr-3" style="width: 18rem;">
                     <div class="card-body">
                         {% if user.profilepicture%}
                             <img class="card-img-top" src="{{ asset('uploads/images/' ~  user.profilepicture) }}" alt="Card image cap">
