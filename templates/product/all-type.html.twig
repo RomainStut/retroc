@@ -12,23 +12,24 @@
 
             {% for product in products %}
 
-                    <div class="card col-md-3 mb-4 listStyle antipadding" style="position: relative; height: 400px;">
-                        <div class="card-body">
-                            {% if product.image%}
-                                <div style="height: 243px;">
-                                    <img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}" alt="Card image cap">
-                                </div>
-                            {% endif %}
-                            <div style="position: relative">
-                                <h5 class="card-title font-weight-bold text-warning" style="color: #AC964A; position: absolute;">{{ product.name|length > 23? product.name|slice(0, 23) ~ '...' :product.name  }}</h5>
+                <div class="card col-md-3 mb-4 listStyle antipadding" style="position: relative; height: 400px;">
+                    <div class="card-body">
+                        {% if product.image%}
+                            <div style="height: 243px;">
+                                <img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}" alt="Card image cap">
                             </div>
-
-                            <p class="card-text" style="color: white; font-size: 1.5rem; padding-top: 20px;">{{ product.price }} €</p>
+                        {% endif %}
+                        <div style="position: relative">
+                            <h5 class="card-title font-weight-bold text-warning" style="color: #AC964A; position: absolute">{{ product.name|length > 23? product.name|slice(0, 23) ~ '...' :product.name  }}</h5><hr>
                         </div>
-                        <a href="{{ path('product', {id: product.id })}}" class="navbarColor01 btn text-warning col-12" style="position: absolute;bottom: 0;">Voir</a>
+
+                        <p class="card-text" style="color: white; font-size: 1.5rem">{{ product.price }} €</p>
                     </div>
+                    <a href="{{ path('product', {id: product.id })}}" class="navbarColor01 btn text-warning col-12" style="position: absolute; bottom: 0;">Voir</a>
+                </div>
 
             {% endfor %}
+
         </div>
         <div class="row justify-content-center">
             {% if products.haveToPaginate %}

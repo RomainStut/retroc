@@ -69,7 +69,7 @@
                                     $('.search').append('<div class="row mb-3 cote-res"><img width="50" height="50" src="'+ product.img +'"><p class="title-result">' + product.name  + '</p></div>')
                                 })
                             } else {
-                                $('.search').append(data.erreur)
+                                $('.search').append('<div class="tutorial col-5 mt-5"><p>' + data.erreur  + '</p></div>')
                             }
             
                         },

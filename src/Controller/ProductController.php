@@ -224,6 +224,8 @@ class ProductController extends Controller
 
             $entityManager->flush();
 
+            return $this->redirectToRoute('validation-annonce');
+
            
             
         }
