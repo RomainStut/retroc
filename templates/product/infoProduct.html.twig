@@ -26,11 +26,11 @@
                         <div class="row  bot-border">
                             <p class="col-12"><b class="text-warning">Qualité : </b>
                                 {% if product.quality.name == "mib" %}
-                                    <img width="100" src="{{ asset('images/lb1.svg') }}">
+                                    <img width="100" src="{{ asset('images/lb1.svg') }}">  <i class="fas fa-question-circle" data-toggle="modal" data-target="#infoQuality"></i>
                                 {% elseif product.quality.name == "occase" %}
-                                    <img width="100" src="{{ asset('images/lb2.svg') }}">
+                                    <img width="100" src="{{ asset('images/lb2.svg') }}">  <i class="fas fa-question-circle" data-toggle="modal" data-target="#infoQuality"></i>
                                 {% else %}
-                                    <img width="100" src="{{ asset('images/lb3.svg') }}">
+                                    <img width="100" src="{{ asset('images/lb3.svg') }}">  <i class="fas fa-question-circle" data-toggle="modal" data-target="#infoQuality"></i>
                                 {% endif %}
                             </p>
                             <p class="col-12"><b class="text-warning">Vendeur: </b> {{ product.user.username }}</p>
@@ -61,13 +61,58 @@
             </div><!-- /.modal -->
         </div>
     </div>
+
+    {# modal info quality#}
+    <div class="modal fade infoq" id="infoQuality" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Informations sur les qualitées</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row justify-content-center">
+                        <div class="col-4">
+                            <img width="100" src="{{ asset('images/lb1.svg') }}">
+                        </div>
+                        <div class="col-8">
+                            <p>MIB : parfait, en boite</p>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-4">
+                            <img width="100" src="{{ asset('images/lb2.svg') }}">
+                        </div>
+                        <div class="col-8">
+                            <p>Occasion, complet</p>
+                        </div>
+
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-4">
+                            <img width="100" src="{{ asset('images/lb3.svg') }}">
+                        </div>
+                        <div class="col-8">
+                            <p>Loose : sans boite</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn navbarColor01 text-warning" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
         {% block js %}
             <script>
                 $(function(){
+
                     $('#contact').on('click', function(e){
-                        event.preventDefault();
+                        e.preventDefault();
                         $('#contactUser').empty();
                         $('#contactUser').append('<form id="mesageForm" class="mt-3" method="post">'+'<input id="message" class="form-control" type="textarea">'+'<input hidden id="productid" value=" {{product.id}} ">'+'<button class="btn btn-light mt-4" id="send">Envoyer message</button>'+'</form>')
                     })

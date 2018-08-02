@@ -48,7 +48,7 @@ class SecurityController extends Controller
 
     public function register(Request $request, UserPasswordEncoderInterface $encoder){
 
-        $user = new User();
+        $user = new Users();
 
         $form = $this->createForm(AdduserType::class, $user);
 
