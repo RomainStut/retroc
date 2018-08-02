@@ -28,6 +28,7 @@
             </div>
             <div class="col-md-10">
 
+
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     <a  class="btn btn-dark text-warning mt-4 ml-2 log-btn navbarColor01" href="{{ path('logout') }}">Déconnexion</a>
                     <a class="btn btn-dark text-warning mt-4 mr-3 log-btn navbarColor01" href="{{ path('userProfil') }}">Profil</a>
@@ -129,18 +130,16 @@
                 <li class="nav_item">
 
                 </li>
-
-
             </ul>
-
-            {# bar de recherche #}
-
-
-
 
         </div>
 
-        {{ render(controller('App\\Controller\\HomeController::searchBarHome' )) }}
+        <div class="col-2">
+            <input class="form-control" type="text" id="searchQuery">
+        </div>
+        <div class="col-1">
+            <button class="navbarColor01 text-warning btn" id="searchBtn"> Rechercher </button>
+        </div>
     </nav>
 
     {#<div class="">#}
@@ -196,7 +195,7 @@
     <div class="row">
         <div class="col-md-6 d-flex justify-content-center">
             <div class=" py-3 mt-3 my-3">
-                <h5>Informations :</h5>
+                <h5><u>Informations :</u></h5>
                 <p>Octocote a été créer par une équipe de développeur web junior fraichement sortis de la formation WebForce 3.
                     <br>
                 Cette plate-forme à vue le jour lors du développement du projet de fin de formation.
@@ -264,6 +263,7 @@
 <script src="{{ asset('js/jquery.splitflap.js') }}"></script>
 <script>
     $(function() {
+
         $('.click-splitflap').splitFlap({
             image: '{{ asset('images/chars.png') }}',
             text:   '{{ "now"|date("d/m/Y")  }}',
@@ -274,11 +274,32 @@
                 console.log('Done !');
             }
         })
+
+        $('a[href^="#"]').click(function(){
+            var the_id = $(this).attr("href");$('html, body').animate({scrollTop:$(the_id).offset().top}, 'slow');//return false;
+        });
+
+        $('#searchBtn').on('click', function(e){
+            e.preventDefault();
+
+            window:location.href = '/recherche/' + $('#searchQuery').val();
+            var url = " {{ path('recherche-titre-home' , {search : 0}) }} ",
+                url = url.replace('0', $('#searchQuery').val())
+            $.ajax({
+                type: 'GET',
+                url: url,
+                timeout: 3000,
+                dataType: 'html',
+                success: function() {
+                    window:location.href = '/recherche/' + $('#searchQuery').val();
+                },
+                error: function (error) {
+                    console.log(error.responseText);
+                }
+            })
+        })
     });
 
-    $('a[href^="#"]').click(function(){
-       var the_id = $(this).attr("href");$('html, body').animate({scrollTop:$(the_id).offset().top}, 'slow');//return false;
-});
 </script>
 
 

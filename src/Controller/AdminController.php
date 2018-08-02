@@ -71,12 +71,7 @@ class AdminController extends Controller
 
         $form = $this->createForm(UpdateUserType::class, $users);
 
-
-
-
         $form->handleRequest($request);
-
-
 
         if($form->isSubmitted() && $form->isvalid()){
 
