@@ -67,7 +67,7 @@ class AjaxController extends Controller
         //nous permet de renvoyer un message d'erreur si aucun id ne correspond
         if (!$messages) {
             throw $this->createNotFoundException(
-                'No message found for user id '.$userId
+                'No message found for user id '.$userId->getId()
             );
         }
 
