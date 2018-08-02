@@ -7,7 +7,7 @@
         {% if is_granted('ROLE_ADMIN') %}
         <h1 class="text-center">Liste des articles</h1>
         <div class="row justify-content-center">
-            <a href="{{ path('add-article-blog') }}" class="btn navbarColor01 text-warning mb-3 mb-1 col-3">Ajouter un article</a>
+            <a href="{{ path('add-article-blog') }}" class="btn navbarColor01 text-warning mb-3 mb-1 col-md-3">Ajouter un article</a>
         </div>
         {% endif %}
         {% for label, messages in app.flashes %}
@@ -18,7 +18,7 @@
             {% endfor %}
         {% endfor %}
    
-        <div class="row">
+        <div class="row" style="margin-left: 8px;">
 
             {% for blog in blogs %}
 
