@@ -36,7 +36,7 @@
         <div class="row justify-content-center">
             {% if products.haveToPaginate %}
                 <div class="navigation pagi text-center">
-                    {{ pagerfanta(products, 'twitter_bootstrap4', {routeName: 'showAll_paginated'}) }}
+                    {{ pagerfanta(products, 'twitter_bootstrap4', {routeName: 'product-type-cat_paginated', routeParams : { 'type': type.id, 'cat': categorie.id }}) }}
                 </div>
             {% endif %}
         </div>

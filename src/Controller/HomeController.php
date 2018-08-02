@@ -38,27 +38,18 @@ class HomeController extends Controller
         );
     }
 
-    public function searchBarHome()
-    {
-        $form = $this->createFormBuilder(null)
-            ->add('Recherche', TextType::class)
-            ->add('Rechercher', SubmitType::class, ['attr' => ['class' => 'btn text-warning navbarColor01 ']])
-        ->getForm();
-
-        return $this->render('home/searchbar.html.twig', array('form' => $form->createView()));
-    }
 
     /**
-     * @Route("/recherche", name="recherche-titre-home")
+     * @Route("/recherche/{search}", defaults={"page":"1"}, methods={"GET"}, name="recherche-titre-home")
+     * @Route("/recherche/{search}/page/{page}", requirements={"page": "[1-9]\d*"}, methods={"GET"}, name="recherche_paginated")
      */
-    public function searchBarQuery(Request $request)
+    public function searchBarQuery($search, int $page)
     {
-        $search = $request->request->get('form');
 
         $repository = $this->getDoctrine()->getRepository(Products::class);
-        $products = $repository->findAllWhereTitle($search['Recherche']);
+        $products = $repository->findAllWhereTitlePagination($search, $page);
 
-        return $this->render('product/recherche-res.html.twig', array('products' => $products));
+        return $this->render('product/recherche-res.html.twig', array('products' => $products, 'search' => $search));
     }
     
 

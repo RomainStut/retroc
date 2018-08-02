@@ -158,6 +158,27 @@ class ProductsRepository extends ServiceEntityRepository
         return $this->createPaginator($querybuilder, $page);
     }
 
+    public function findAllWhereTitlePagination($search, int $page = 1): Pagerfanta
+    {
+
+        $querybuilder = $this->createQuerybuilder('p')
+            ->innerJoin('p.user', 'u')
+            ->addSelect('u')
+            ->innerJoin('p.categorie', 'c')
+            ->addSelect('c')
+            ->innerJoin('p.quality', 'q')
+            ->addSelect('q')
+            ->innerJoin('p.type', 't')
+            ->addSelect('t')
+            ->andWhere('p.name LIKE :search')
+            ->setparameter('search', '%'.$search.'%')
+            ->orderBy('p.datepost', 'DESC')
+            ->getQuery();
+
+        return $this->createPaginator($querybuilder, $page);
+
+    }
+
     public function showAllTypeCat($type, $cat, int $page = 1): Pagerfanta
     {
         $querybuilder = $this->createQuerybuilder('p')
@@ -217,7 +238,10 @@ class ProductsRepository extends ServiceEntityRepository
 
         return $querybuilder->execute();
 
-    }public function findAllWhereTitleQuality($search, $quality){
+    }
+
+    public function findAllWhereTitleQuality($search, $quality)
+    {
 
         $querybuilder = $this->createQuerybuilder('p')
             ->innerJoin('p.user', 'u')
