@@ -25,7 +25,6 @@
         <div class="row">           
 
             {% for product in products %}
-                {% if product.isvalidate == 1 %}
 
                     <div class="card col-md-3 mb-4 listStyle antipadding" style="position: relative; height: 400px;">
                         <div class="card-body">
@@ -38,13 +37,19 @@
                                 <h5 class="card-title font-weight-bold text-warning" style="color: #AC964A; position: absolute">{{ product.name|length > 23? product.name|slice(0, 23) ~ '...' :product.name  }}</h5><hr>
                             </div>
 
-                                <p class="card-text" style="color: white; font-size: 1.5rem">{{ product.price }} €</p>
+                            <p class="card-text" style="color: white; font-size: 1.5rem">{{ product.price }} €</p>
                         </div>
                         <a href="{{ path('product', {id: product.id })}}" class="navbarColor01 btn text-warning col-12" style="position: absolute; bottom: 0;">Voir</a>
                     </div>
 
-                {% endif %}
             {% endfor %}
+        </div>
+        <div class="row justify-content-center">
+            {% if products.haveToPaginate %}
+                <div class="navigation pagi text-center">
+                    {{ pagerfanta(products, 'twitter_bootstrap4', {routeName: 'showAll_paginated'}) }}
+                </div>
+            {% endif %}
         </div>
     </div>
 

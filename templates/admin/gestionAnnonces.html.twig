@@ -8,7 +8,7 @@
         <div class="row loadcontent">
             {% for product in products %}
                 <div class="col-12">
-                    <div style="height: 190px" class="card mb-3">
+                    <div style="height: 190px" class="card formStyle mb-3">
                         <h5 class="card-header"> {{ product.name }} | {{ product.user.username }} </h5>
                         <div class="card-body">
                             <div class="row">
@@ -34,6 +34,11 @@
                     </div>
                 </div>
             {% endfor %}
+            {% if products.haveToPaginate %}
+                <div class="navigation text-center">
+                    {{ pagerfanta(products, 'twitter_bootstrap4', {routeName: 'validation_paginated'}) }}
+                </div>
+            {% endif %}
         </div>
     </div>
 

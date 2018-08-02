@@ -4,7 +4,10 @@ namespace App\Repository;
 
 use App\Entity\Products;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use PhpParser\Comment\Doc;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use Pagerfanta\Adapter\DoctrineORMAdapter;
+use Pagerfanta\Pagerfanta;
 
 /**
  * @method Products|null find($id, $lockMode = null, $lockVersion = null)
@@ -89,7 +92,17 @@ class ProductsRepository extends ServiceEntityRepository
     }
     */
 
-    public function myFindAll(){
+    private function createPaginator($query, $page): Pagerfanta
+    {
+        $paginator = new Pagerfanta(new DoctrineORMAdapter($query));
+        $paginator->setMaxPerPage(4);
+        $paginator->setCurrentPage($page);
+
+        return $paginator;
+    }
+
+    public function myFindAll(int $page = 1): Pagerfanta
+    {
 
         $querybuilder = $this->createQuerybuilder('p')
                         ->innerJoin('p.user', 'u')
@@ -100,9 +113,10 @@ class ProductsRepository extends ServiceEntityRepository
                         ->addSelect('q')
                         ->innerJoin('p.type', 't')
                         ->addSelect('t')
+                        ->andwhere('p.isvalidate = true')
                         ->getQuery();
 
-        return $querybuilder->execute();
+        return $this->createPaginator($querybuilder, $page);
 
     }
 
@@ -125,7 +139,7 @@ class ProductsRepository extends ServiceEntityRepository
 
     }
 
-    public function findAllType($type)
+    public function findAllType($type, int $page = 1): Pagerfanta
     {
         $querybuilder = $this->createQuerybuilder('p')
                         ->innerJoin('p.user', 'u')
@@ -136,15 +150,15 @@ class ProductsRepository extends ServiceEntityRepository
                         ->addSelect('q')
                         ->innerJoin('p.type', 't')
                         ->addSelect('t')
-                        ->andwhere('p.type = :type')
+                        ->andwhere('p.type = :type AND p.isvalidate = true')
                         ->setparameter('type', $type)
                         ->orderBy('p.datepost', 'DESC')
                         ->getQuery();
-        
-        return $querybuilder->execute();
+
+        return $this->createPaginator($querybuilder, $page);
     }
 
-    public function showAllTypeCat($type, $cat)
+    public function showAllTypeCat($type, $cat, int $page = 1): Pagerfanta
     {
         $querybuilder = $this->createQuerybuilder('p')
                         ->innerJoin('p.user', 'u')
@@ -155,16 +169,17 @@ class ProductsRepository extends ServiceEntityRepository
                         ->addSelect('q')
                         ->innerJoin('p.type', 't')
                         ->addSelect('t')
-                        ->andwhere('p.categorie = :cat AND p.type = :type')
+                        ->andwhere('p.categorie = :cat AND p.type = :type AND p.isvalidate = true')
                         ->setparameter('type', $type)
                         ->setparameter('cat', $cat)
                         ->orderBy('p.datepost', 'DESC')
                         ->getQuery();
-        
-        return $querybuilder->execute();
+
+        return $this->createPaginator($querybuilder, $page);
     }
 
-    public function findInvalid(){
+    public function findInvalid(int $page): Pagerfanta
+    {
 
         $querybuilder = $this->createQuerybuilder('p')
             ->innerJoin('p.user', 'u')
@@ -180,7 +195,7 @@ class ProductsRepository extends ServiceEntityRepository
             ->setMaxResults(4)
             ->getQuery();
 
-        return $querybuilder->execute();
+        return $this->createPaginator($querybuilder, $page);
 
     }
 

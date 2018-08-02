@@ -63,7 +63,7 @@ header .dropdown-item:focus, .dropdown-item:hover{
 .compteur{
     background: url('../images/fondcompteurX.svg');
     background-size: cover; /* version standardisée */
-    box-shadow: 10px 5px 5px black;
+    box-shadow: 0px 5px 5px black;
 }
 
 
@@ -113,7 +113,6 @@ p{
     text-align: center;
 
 }
-
 
 
 

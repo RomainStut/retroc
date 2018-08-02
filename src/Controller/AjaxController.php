@@ -78,9 +78,9 @@ class AjaxController extends Controller
     }
 
     /**
-     * @Route("/admin/validation/{id}", name="validation-success", requirements={"id", "\d+"})
+     * @Route("/admin/ajax/validation/{id}/{page}", defaults={"page":"1"}, name="validation-success", requirements={"id", "\d+"})
      */
-    public function validateProduct(Products $products)
+    public function validateProduct(Products $products, int $page)
     {
         $repository = $this->getDoctrine()->getRepository(Products::class);
         $product = $repository->find($products);
@@ -95,7 +95,7 @@ class AjaxController extends Controller
 
         $repository = $this->getDoctrine()->getRepository(Products::class);
 
-        $products = $repository->findInvalid();
+        $products = $repository->findInvalid($page);
 
         return $this->render('admin/gestionAnnoncesAjax.html.twig',
             array('products' => $products));
@@ -185,9 +185,40 @@ class AjaxController extends Controller
         return $this->json(array('status'=>'ko', 'erreur' => 'Calcul de côte impossible; il n\'y a actuellement aucun produit correspondant au votre.'));
     }
 
-    
 
+    /**
+     *@Route("/profil/message/delete/{id}", name="message-delete", requirements={"id", "\d+"})
+     */
+    public function deleteMsg(Messages $messages)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($messages);
+        $entityManager->flush();
 
+        $repository = $this->getDoctrine()->getRepository(Messages::class);
+
+        $messages = $repository->myfindUserMessage($this->getUser());
+
+        return $this->render('ajax/loadMessageDelete.html.twig',
+            array('messages' => $messages));
+    }
+
+    /**
+     *@Route("/profil/product/delete/{id}", name="product-delete", requirements={"id", "\d+"})
+     */
+    public function deletepdt(Products $products)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($products);
+        $entityManager->flush();
+
+        $repository = $this->getDoctrine()->getRepository(Products::class);
+
+        $products = $repository->myfindUserProducts($this->getUser());
+
+        return $this->render('ajax/loadProductDelete.html.twig',
+            array('products' => $products));
+    }
 }
 
 
