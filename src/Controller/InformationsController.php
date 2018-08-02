@@ -80,4 +80,12 @@ class InformationsController extends Controller
      
     }
 
+    /**
+     * @Route("/informations/information", name="info")
+     */
+    public function informationShow()
+    {
+        return $this->render('informations/information.html.twig');
+    }
+
 }

@@ -50,97 +50,101 @@
         </div>
 
     </div>
+    <div class="row" style="background-color: #112735">
+        <div class="col-12 col-md-8">
+            <nav class="navbar navbar-expand-lg navbar-dark navbarColor01" id="" >
 
+                <a class="navbar-brand text-light" href="{{ path('home') }}">Accueil</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto" >
+                        <li class="nav-item active">
+                            <a class="nav-link text-light" href="#"> <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light"  href="{{ path('showAll') }}">Annonces</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Retro
+                            </a>
+                            <div class="dropdown-menu navbarColor01 "  aria-labelledby="navbarDropdown" id="">
+                                <a class="dropdown-item text-light hover-color"  href="{{ path('product-type', {type: 1}) }}">Tout</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item text-light hover-color"  href="{{ path('product-type-cat', {type: 1, cat:2})}}">Jeux</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item text-light hover-color"   href="{{ path('product-type-cat', {type: 1, cat:1})}}">Consoles</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item text-light hover-color" href="{{ path('product-type-cat', {type: 1, cat:3})}}">Accessoires</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Next-gen
+                            </a>
+                            <div class="dropdown-menu navbarColor01" id="" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item text-light hover-color"  href="{{ path('product-type', {type: 2}) }}">Tout</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item text-light hover-color" href=" {{ path('product-type-cat', {type: 2, cat:2})}} ">Jeux</a>
+                                <div class="dropdown-divider text-light"></div>
+                                <a class="dropdown-item text-light hover-color" href="{{ path('product-type-cat', {type: 2, cat:1})}}">Consoles</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item text-light hover-color" href="{{ path('product-type-cat', {type: 2, cat:3})}}">Accessoires</a>
+                            </div>
+                        </li>                    <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Arcade
+                            </a>
 
-    <nav class="navbar navbar-expand-lg navbar-dark navbarColor01" id="" >
+                            <div class="dropdown-menu navbarColor01" id="" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item text-light hover-color"  href="{{ path('product-type', {type: 3}) }}">Tout</a>
 
-        <a class="navbar-brand text-light" href="{{ path('home') }}">Accueil</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item text-light hover-color" href="{{ path('product-type-cat', {type: 3, cat:2})}}">Jeux</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item text-light hover-color" href="{{ path('product-type-cat', {type: 3, cat:1})}}">Consoles</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item text-light hover-color" href="{{ path('product-type-cat', {type: 3, cat:3})}}">Accessoires</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a id="" class="nav-link text-light" href="{{ path('show-all') }}">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="{{ path('contact') }}">Contact</a>
+                        </li>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto" >
-                <li class="nav-item active">
-                    <a class="nav-link text-light" href="#"> <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light"  href="{{ path('showAll') }}">Annonces</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"></a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Retro
-                    </a>
-                    <div class="dropdown-menu navbarColor01 "  aria-labelledby="navbarDropdown" id="">
-                        <a class="dropdown-item text-light hover-color"  href="{{ path('product-type', {type: 1}) }}">Tout</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-light hover-color"  href="{{ path('product-type-cat', {type: 1, cat:2})}}">Jeux</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-light hover-color"   href="{{ path('product-type-cat', {type: 1, cat:1})}}">Consoles</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-light hover-color" href="{{ path('product-type-cat', {type: 1, cat:3})}}">Accessoires</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Next-gen
-                    </a>
-                    <div class="dropdown-menu navbarColor01" id="" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-light hover-color"  href="{{ path('product-type', {type: 2}) }}">Tout</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-light hover-color" href=" {{ path('product-type-cat', {type: 2, cat:2})}} ">Jeux</a>
-                        <div class="dropdown-divider text-light"></div>
-                        <a class="dropdown-item text-light hover-color" href="{{ path('product-type-cat', {type: 2, cat:1})}}">Consoles</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-light hover-color" href="{{ path('product-type-cat', {type: 2, cat:3})}}">Accessoires</a>
-                    </div>
-                </li>                    <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Arcade
-                    </a>
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="{{ path('addProduct') }}">Postez votre annonce</a>
+                            </li>
+                        {% endif %}
 
-                    <div class="dropdown-menu navbarColor01" id="" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-light hover-color"  href="{{ path('product-type', {type: 3}) }}">Tout</a>
+                        <li class="nav_item">
 
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-light hover-color" href="{{ path('product-type-cat', {type: 3, cat:2})}}">Jeux</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-light hover-color" href="{{ path('product-type-cat', {type: 3, cat:1})}}">Consoles</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-light hover-color" href="{{ path('product-type-cat', {type: 3, cat:3})}}">Accessoires</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a id="" class="nav-link text-light" href="{{ path('show-all') }}">Blog</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="{{ path('contact') }}">Contact</a>
-                </li>
+                        </li>
+                    </ul>
 
-                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="{{ path('addProduct') }}">Postez votre annonce</a>
-                    </li>
-                {% endif %}
-
-                <li class="nav_item">
-
-                </li>
-            </ul>
-
+                </div>
+            </nav>
         </div>
-
-        <div class="col-2">
-            <input class="form-control" type="text" id="searchQuery">
+        <div class="col-12 col-md-4 d-flex justify-content-center flex-row align-items-center">
+            <div class="row">
+                <div class="col-8">
+                    <input class="form-control" type="text" id="searchQuery">
+                </div>
+                <div class="col-4">
+                    <button class="navbarColor01 text-warning btn" id="searchBtn"> Rechercher </button>
+                </div>
+            </div>
         </div>
-        <div class="col-1">
-            <button class="navbarColor01 text-warning btn" id="searchBtn"> Rechercher </button>
-        </div>
-    </nav>
+    </div>
 
     {#<div class="">#}
         {#<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">#}
@@ -175,18 +179,15 @@
 <footer class="container-fluid mt-5 navbarColor01 " id="footer">
 
 {#-------------------caroussel footer--------------------#}
-<footer class="container-fluid mt-5 navbarColor01 " id="footer">
+<footer class="container-fluid mt-5 navbarColor01" id="footer">
     <div class="row">
-        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div id="carouselExampleSlidesOnly"  class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="d-block w-100" src="{{asset('images/slider01.jpg')}} " alt="First slide">
+                    <img class="d-block w-100" src="{{asset('images/sliderocto1.jpg')}} " alt="First slide">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="{{asset('images/slider01.jpg')}} " alt="Second slide">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="{{asset('images/slider01.jpg')}} " alt="Third slide">
+                    <img class="d-block w-100" src="{{asset('images/sliderocto2.jpg')}} " alt="Second slide">
                 </div>
             </div>
         </div>
@@ -196,14 +197,14 @@
         <div class="col-md-6 d-flex justify-content-center">
             <div class=" py-3 mt-3 my-3">
                 <h5><u>Informations :</u></h5>
-                <p>Octocote a été créer par une équipe de développeur web junior fraichement sortis de la formation WebForce 3.
+                <p>Octocote a été créé par une équipe de développeurs web juniors fraîchement sortis de la formation WebForce 3.
                     <br>
                 Cette plate-forme à vue le jour lors du développement du projet de fin de formation.
                     <br>
-                Le site permet de mettre en contacte les vendeurs et les acheteurs via le dépot d'annonce.
+                Le site permet de mettre en contact les vendeurs et les acheteurs via le dépôt d'annonce.
                 Il incorpore un système de calcul de côte honnête qui permet à l'utilisateur de mettre le prix
                 le plus juste autant pour lui que pour l'acheteur. En revanche si le vendeur est le premier à mettre en vente l'article,
-                se sera à lui de fixer le prix de manière honnête, et donc ainsi de créer la première Octocote du produit!
+                ce sera à lui de fixer le prix de manière honnête, et donc ainsi de créer la première Octocote du produit!
                 </p>
             </div>
         </div>       
@@ -218,8 +219,8 @@
                     </div>
                     <div class="col-12 text-center ">
                         <ul>                          
-                            <a href="#" style="color: #ced9e5;">
-                                <li>  
+                            <a href="/informations/information" style="color: #ced9e5;">
+                                <li>
                                     Informations
                                 </li>
                             </a>
@@ -297,6 +298,10 @@
                     console.log(error.responseText);
                 }
             })
+        })
+
+        $('.carousel').carousel({
+            interval: 3500
         })
     });
 

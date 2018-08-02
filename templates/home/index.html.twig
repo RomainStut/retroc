@@ -6,7 +6,7 @@
 
     <div class="container p-2" >
         <h1 class="text-center">Informations </h1>
-        <p style="font-size: 1.2rem; color:;">Bonjour et bienvenue sur <strong>octocote!</strong> Qui sommes-nous? Que proposons-nous?
+        <p style="font-size: 1.2rem; color:;">Bonjour et bienvenue sur <strong>Octocote!</strong> Qui sommes-nous? Que proposons-nous?
 
             Nous proposons de regrouper des <i>passionnés de plusieurs domaines</i>  étroitement liés,
             pour leur proposer une plate-forme communautaire d'échange et de vente de leurs objets de collection et de loisir.
@@ -27,12 +27,11 @@
         <div class="row">
 
             {% for product in products %}
-                {% if product.isvalidate == 1 %}
                     <div class="card col-md-3 mb-4 listStyle antipadding" style="position: relative; height: 400px;">
-                        <div class="card-body">
-                            {% if product.image%}
+                            <a href="{{ path('product', {id: product.id})}}" style="color:#1A3E58"><div class="card-body">
+                            {% if product.image %}
                             <div style="height: 243px;">
-                                <a href="{{ path('product', {id: product.id})}}"><img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}"alt="Card image cap"></a> 
+                                <img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}"alt="Card image cap">
                             </div>                                   
                             {% endif %}
                         <div style="position: relative;">
@@ -40,8 +39,7 @@
                         </div>
                             <p class="card-text" style="color: white; font-size: 1.5rem">{{ product.price }} €</p>
                         </div>                     
-                    </div>
-                {% endif %}
+                    </div></a>                 
             {% endfor %}
             <a href="{{ path('showAll') }}" class="col-md-12 btn-md navbarColor01 text-warning">Voir toutes les annonces</a>
         </div>
@@ -53,21 +51,21 @@
             {% for blog in blogs %}
 
                 <div class="card col-md-3 mb-4 listStyle antipadding" style="position: relative; height: 400px;">
-                    <div class="card-body">
+                        <a href="{{ path('article-blog', {id: blog.id })}}" style="color:#1A3E58"><div class="card-body">
                         {% if blog.image%}
                         <div style="height: 243px;">
-                                <a href="{{ path('article-blog', {id: blog.id })}}"><img class="card-img-top" src="{{ asset('uploads/images/' ~ blog.image) }}" alt="Card image cap"></a>
+                                <img class="card-img-top" src="{{ asset('uploads/images/' ~ blog.image) }}" alt="Card image cap">
                         </div> 
                         {% endif %}
                     <div style="position: relative;">
                         <h5 class="card-title font-weight-bold text-warning" style="color: #AC964A; position: absolute">{{ blog.title }}</h5><hr>
                     </div>
-                        <p class="card-text" style="color: white; font-size: 1rem">{{ blog.content  | striptags | slice(0, 50) }} </p>
+                        <p class="card-text" style="color: white; font-size: 1rem">{{ blog.content  | striptags | slice(0, 50) }} ... </p>
 
 
                         
                     </div>
-                </div>
+                </div></a>
 
 
             {% endfor %}

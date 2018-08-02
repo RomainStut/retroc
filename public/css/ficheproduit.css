@@ -28,6 +28,9 @@ body .modal-dialog {
     border-bottom: 1px dashed #ffc107!important;
 }
 
+.bot-border p i:hover {
+    cursor: pointer;
+}
 
 
 
@@ -36,4 +39,3 @@ body .modal-dialog {
 .zoomin:hover{
     cursor: pointer;
 }
-

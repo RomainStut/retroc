@@ -19,7 +19,7 @@
                     <h2>Estimation de votre produit : </h2>
                 </div>
                 <div class="col-12 search d-flex flex-column justify-content-center align-items-center">
-                    <div class="tutorial mt-5">
+                    <div class="tutorial col-5 mt-5">
                         <p>Indiquer le nom de votre produit puis sélectionner l'article correspondant dans la liste.</p>
                     </div>
                 </div>
@@ -38,6 +38,11 @@
 {% block js %}
     <script>
             $(function(){
+
+                // $('#product_price').hide();
+                // $('#product_price').prev('label').hide();
+
+                // $('#ajout :not(:first-child)').hide();z
 
                 //Ajout de champ invisible Choix
                 $('#product_quality').append('<option selected hidden disabled>Choix</option>');
