@@ -6,6 +6,7 @@
 {% block content %}
 
     <div class="container">
+
         <div class="row">
 
             {% for product in products %}
@@ -26,16 +27,20 @@
                     <a href="{{ path('product', {id: product.id })}}" class="navbarColor01 btn text-warning col-12" style="position: absolute; bottom: 0;">Voir</a>
                 </div>
 
-
             {% endfor %}
+
         </div>
+
         <div class="row justify-content-center">
+
             {% if products.haveToPaginate %}
                 <div class="navigation pagi text-center">
-                    {{ pagerfanta(products, 'twitter_bootstrap4', {routeName: 'showAll_paginated'}) }}
+                    {{ pagerfanta(products, 'twitter_bootstrap4', {routeName: 'recherche_paginated', routeParams : { 'search': search }}) }}
                 </div>
             {% endif %}
+
         </div>
+
     </div>
 
 {% endblock %}
