@@ -34,12 +34,17 @@
                     </div>
                 </div>
             {% endfor %}
-            {% if products.haveToPaginate %}
-                <div class="navigation text-center">
-                    {{ pagerfanta(products, 'twitter_bootstrap4', {routeName: 'validation_paginated'}) }}
-                </div>
-            {% endif %}
+
+            <div class="row justify-content-center">
+                {% if products.haveToPaginate %}
+                    <div class="navigation text-center">
+                        {{ pagerfanta(products, 'twitter_bootstrap4', {routeName: 'validation_paginated'}) }}
+                    </div>
+                {% endif %}
+            </div>
+
         </div>
+
     </div>
 
 {% endblock %}

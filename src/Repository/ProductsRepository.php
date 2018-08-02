@@ -131,6 +131,7 @@ class ProductsRepository extends ServiceEntityRepository
                         ->addSelect('q')
                         ->innerJoin('p.type', 't')
                         ->addSelect('t')
+                        ->andwhere('p.isvalidate = true')
                         ->orderBy('p.datepost', 'DESC')
                         ->setMaxResults(4)
                         ->getQuery();
