@@ -180,6 +180,58 @@ class ProductController extends Controller
         return$this->render('product/modifier.html.twig', array('form' => $form->createView()));
     }
 
+    /**
+     * @Route("admin/product/modif-product/{id}", name="modif-product", requirements= {"id"="\d+"})
+     */
+    public function ModifProduct(Products $products, Request $request, FileUploader $uploader){
+
+        $this->denyAccessUnlessGranted('edit', $products);
+
+        $repository = $this->getDoctrine()->getRepository(Products::class);
+
+        $product = $repository->find($products);
+
+        $user = $product->getUser();
+
+        $fileName = $products->getImage();
+
+        if($products->getImage()) {
+
+            $products->setImage(new File($this->getParameter('articles_image_directory') . '/' . $products->getImage()));
+        }
+
+        $form = $this->createForm(ProductType::class, $products);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $products = $form->getData();
+
+            $products->setIsValidate(false);
+
+            if($products->getImage()){
+
+                $file = $products->getImage();
+
+                $fileName = $uploader->upload($file, $fileName);
+
+            }
+
+            $products->setImage($fileName);
+
+            $entityManager = $this->getDoctrine()->getManager();
+
+            $entityManager->flush();
+
+           
+            
+        }
+
+        return $this->render('ajax/modifProduct.html.twig', array('form' => $form->createView(), 'user' => $user));
+        
+    }  
+
 
 
 }

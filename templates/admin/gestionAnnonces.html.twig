@@ -27,7 +27,7 @@
                                 </div>
                                 <div class="col-md-2">
                                     <button id="validate" value="{{ product.id }}" class="btn btn-success">Valider</button>
-                                    <button class="btn btn-warning">Refuser</button>
+                                    <a href="{{ path('modif-product', {'id': product.id}) }}" class="btn btn-warning">Modifier</a>
                                 </div>
                             </div>
                         </div>
@@ -51,6 +51,7 @@
 {% block js %}
     <script>
         $(function(){
+            
             $('body').on('click', 'button#validate',function(e){
                 e.preventDefault();
                 var url = " {{path('validation-success' , {id : 0})}} ",
@@ -69,7 +70,12 @@
                         console.log(error.responseText);
                     }
                 })
-            })
+            })             
+            
         })
     </script>
+    
+    
+       
+    
 {% endblock %}

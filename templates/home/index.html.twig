@@ -29,7 +29,7 @@
             {% for product in products %}
                     <div class="card col-md-3 mb-4 listStyle antipadding" style="position: relative; height: 400px;">
                             <a href="{{ path('product', {id: product.id})}}" style="color:#1A3E58"><div class="card-body">
-                            {% if product.image%}
+                            {% if product.image %}
                             <div style="height: 243px;">
                                 <img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}"alt="Card image cap">
                             </div>                                   
@@ -39,8 +39,7 @@
                         </div>
                             <p class="card-text" style="color: white; font-size: 1.5rem">{{ product.price }} €</p>
                         </div>                     
-                    </div></a> 
-                {% endif %}
+                    </div></a>                 
             {% endfor %}
             <a href="{{ path('showAll') }}" class="col-md-12 btn-md navbarColor01 text-warning">Voir toutes les annonces</a>
         </div>
