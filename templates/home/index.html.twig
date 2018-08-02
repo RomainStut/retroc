@@ -21,10 +21,10 @@
             {% for product in products %}
                 {% if product.isvalidate == 1 %}
                     <div class="card col-md-3 mb-4 listStyle antipadding" style="position: relative; height: 400px;">
-                        <div class="card-body">
+                            <a href="{{ path('product', {id: product.id})}}" style="color:#1A3E58"><div class="card-body">
                             {% if product.image%}
                             <div style="height: 243px;">
-                                <a href="{{ path('product', {id: product.id})}}"><img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}"alt="Card image cap"></a> 
+                                <img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}"alt="Card image cap">
                             </div>                                   
                             {% endif %}
                         <div style="position: relative;">
@@ -32,7 +32,7 @@
                         </div>
                             <p class="card-text" style="color: white; font-size: 1.5rem">{{ product.price }} €</p>
                         </div>                     
-                    </div>
+                    </div></a> 
                 {% endif %}
             {% endfor %}
             <a href="{{ path('showAll') }}" class="col-md-12 btn-md navbarColor01 text-warning">Voir toutes les annonces</a>
@@ -45,21 +45,21 @@
             {% for blog in blogs %}
 
                 <div class="card col-md-3 mb-4 listStyle antipadding" style="position: relative; height: 400px;">
-                    <div class="card-body">
+                        <a href="{{ path('article-blog', {id: blog.id })}}" style="color:#1A3E58"><div class="card-body">
                         {% if blog.image%}
                         <div style="height: 243px;">
-                                <a href="{{ path('article-blog', {id: blog.id })}}"><img class="card-img-top" src="{{ asset('uploads/images/' ~ blog.image) }}" alt="Card image cap"></a>
+                                <img class="card-img-top" src="{{ asset('uploads/images/' ~ blog.image) }}" alt="Card image cap">
                         </div> 
                         {% endif %}
                     <div style="position: relative;">
                         <h5 class="card-title font-weight-bold text-warning" style="color: #AC964A; position: absolute">{{ blog.title }}</h5><hr>
                     </div>
-                        <p class="card-text" style="color: white; font-size: 1rem">{{ blog.content  | striptags | slice(0, 50) }} </p>
+                        <p class="card-text" style="color: white; font-size: 1rem">{{ blog.content  | striptags | slice(0, 50) }} ... </p>
 
 
                         
                     </div>
-                </div>
+                </div></a>
 
 
             {% endfor %}
