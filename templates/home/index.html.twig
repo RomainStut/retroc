@@ -27,21 +27,19 @@
         <div class="row">
 
             {% for product in products %}
-                {% if product.isvalidate == 1 %}
                     <div class="card col-md-3 mb-4 listStyle antipadding" style="position: relative; height: 400px;">
                         <div class="card-body">
                             {% if product.image%}
                             <div style="height: 243px;">
-                                <a href="{{ path('product', {id: product.id})}}"><img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}"alt="Card image cap"></a> 
-                            </div>                                   
+                                <a href="{{ path('product', {id: product.id})}}"><img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}"alt="Card image cap"></a>
+                            </div>
                             {% endif %}
                         <div style="position: relative;">
                             <h5 class="card-title font-weight-bold text-warning" style="color: #AC964A; position: absolute">{{ product.name|length > 23? product.name|slice(0, 23) ~ '...' :product.name  }}</h5><hr>
                         </div>
                             <p class="card-text" style="color: white; font-size: 1.5rem">{{ product.price }} €</p>
-                        </div>                     
+                        </div>
                     </div>
-                {% endif %}
             {% endfor %}
             <a href="{{ path('showAll') }}" class="col-md-12 btn-md navbarColor01 text-warning">Voir toutes les annonces</a>
         </div>
