@@ -44,7 +44,7 @@ class Messages
     private $expediteur;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="messagesRecus")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="messages")
      * @ORM\JoinColumn(nullable=false)
      */
     private $destinataire;

@@ -219,6 +219,41 @@ class AjaxController extends Controller
         return $this->render('ajax/loadProductDelete.html.twig',
             array('products' => $products));
     }
+
+    /**
+     * @route("/product/replyMessage/{id}", name="reply-user-message", requirements={"id", "\d+"})
+     */
+    public function replyUserMessage(Messages $messagereceived, Request $request)
+    {
+        $message = new Messages();
+        //dump($request->request->all());
+        $repository = $this->getDoctrine()->getRepository(Messages::class);
+        $messagefind = $repository->find($messagereceived);
+        $messagesend = $request->request->get('message', 'invalide');
+        if(!empty($messagesend)) {
+            dump($messagefind);
+            $message->setDatepost(new \DateTime(date('Y-m-d H:i:s')));
+            $message->setExpediteur($this->getUser());
+            $message->setProduct($messagefind->getProduct());
+            $message->setDestinataire($messagefind->getExpediteur());
+            $message->setContent($messagesend);
+            $message->setTitle($messagefind->getTitle());
+            dump($message);
+
+            $entityManager = $this->getDoctrine()->getManager();
+
+            $entityManager->persist($message);
+
+            $entityManager->flush();
+            $message = 'Votre réponse a bien été envoyé!';
+        }
+        else{
+            $message = 'Merci de saisir votre message.';
+        }
+
+        return $this->render('ajax/reply-message.html.twig', array('success' => $message));
+
+    }
 }
 
 

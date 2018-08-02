@@ -9,41 +9,43 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-2">
-                <button class="btn navbarColor01 mt-1 text-warning" ><a class="text-warning" href="{{ path('updateUser',{id:user.id }) }}">Modifier Profil</a></button>
-                <button class="btn navbarColor01 mt-1 text-warning load-annonce" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Mes annonces</button>
-                <button class="btn navbarColor01 mt-1 text-warning load-message" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Mes messages</button>
-                <button class="btn btn-danger mt-1" ><a style="color:#ffffff;" href="#myModal" class="trigger-btn" data-toggle="modal"><i class="fas fa-times"></i> Supprimer le compte</a></button>
-            </div>
-            <div class="col-md-6 offset-1 formStyle p-3 text-warning">
-                <div class="row">
-                    <div class="col-12 mr-5" >
-                        <div class="row">
-                            <div class="col-4 offset-4" >
-                                {% if user.profilepicture %}
-                                    <img src="{{ 'uploads/images/' ~ user.profilepicture }}" type="button" data-toggle="modal" data-target="#modalImage" class="btn btn-dark mr-5" style="height: 150px; width: 150px" alt=""><br>
-                                {% else %}
-                                    <img src="{{ asset('images/yoda.jpeg' ) }}" alt="  " style=" " type="button" data-toggle="modal" data-target="#modalImage" class="btn btn-dark mr-5">
-                                {% endif %}
-                            </div>
+            <div class="col-md-2 mb-3">
 
-                        </div>
+                <button class="btn navbarColor01 mt-1 text-warning " ><a class="text-warning" href="{{ path('updateUser',{id:user.id }) }}">Modifier Profil</a></button>
+                <button class="btn navbarColor01 mt-1 text-warning load-annonce " id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Mes annonces</button>
+                <button class="btn navbarColor01 mt-1 text-warning load-message " id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Mes messages</button>
+                <button class="btn navbarColor01 mt-1 " ><a href="#myModal" class="trigger-btn text-warning" data-toggle="modal"> Supprimer le compte</a></button>
+
+            </div>
+
+            <div class="col-md-7 text-center offset-1 formStyle p-3">
+                <div class="row ">
+                    <div class="col-md-12 text-center">
+
+                        {% if user.profilepicture %}
+                            <img src="{{ 'uploads/images/' ~ user.profilepicture }}" type="button" data-toggle="modal" data-target="#modalImage" class="btn btn-dark" style="height: 150px; width: 150px" alt=""><br>
+                        {% else %}
+                            <img src="{{ asset('images/yoda.jpeg' ) }}" alt="  " style=" " type="button" data-toggle="modal" data-target="#modalImage" class="btn btn-dark">
+                        {% endif %}
+
+
                     </div>
-                    <div class="col-8 ml-5">
-                        <div class="col-md-12">
-                            <b> Pseudo: </b>{{ user.username }}
+
+                    <div class="col-md-12 text-center">
+                        <div class="col-md-12" style="color: white">
+                            <b class="text-warning"> Pseudo: </b>{{ user.username }}
                         </div>
-                        <div class="col-md-12">
-                            <b> Email: </b>{{ user.email }}
+                        <div class="col-md-12" style="color: white">
+                            <b class="text-warning"> Email: </b>{{ user.email }}
                         </div>
-                        <div class="col-md-12">
-                            <b>Tel: </b>{{ user.tel }}
+                        <div class="col-md-12" style="color: white">
+                            <b class="text-warning">Tel: </b>{{ user.tel }}
                         </div>
-                        <div class="col-md-12">
-                            <b> Date de naissance: </b>{{ user.datebirth|date('d-m-Y') }}
+                        <div class="col-md-12" style="color: white">
+                            <b class="text-warning"> Date de naissance: </b>{{ user.datebirth|date('d-m-Y') }}
                         </div>
-                        <div class="col-md-12">
-                            <b> Ville: </b>{{ user.city }}
+                        <div class="col-md-12" style="color: white">
+                            <b class="text-warning"> Ville: </b>{{ user.city }}
                         </div>
                     </div>
 
