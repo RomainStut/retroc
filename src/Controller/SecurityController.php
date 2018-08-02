@@ -147,7 +147,7 @@ class SecurityController extends Controller
                     );
             }
             if ($mailer->send($message)) {
-                $this->addFlash('success', "L'email de réinitialisation a bien été envoyé. Veuillez consulter votre boite mail.");
+                $this->addFlash('success', "L'email de réinitialisation a bien été envoyé. Veuillez consulter votre boîte mail.");
             }else{
                 $this->addFlash('danger',"Erreur lors de l'envoi de l'email veuillez verifier votre adresse email.");
             }
