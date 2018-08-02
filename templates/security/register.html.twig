@@ -6,52 +6,54 @@
 
 {% block content %}
 	<div class="container">
-		<div class="col-md-8 offset-2 text-warning p-4 formStyle">
-			<h1 class="register col-md-12 mb-3"></h1>
-            {{ form_start(form) }}
-			<div class="row">
-				<div class="col-md-6">
-					<div class="col-md-12">
-						<label for="username">Pseudo</label>
-                        {{ form_widget(form.users.username) }}
+		<div class="row justify-content-center">
+			<div class="col-md-8 text-warning p-4 formStyle">
+				<h1 class="register col-md-12 mb-3"></h1>
+                {{ form_start(form) }}
+				<div class="row">
+					<div class="col-md-6">
+						<div class="col-md-12">
+							<label for="username">Pseudo</label>
+                            {{ form_widget(form.users.username) }}
+						</div>
+						<div class="col-md-12">
+							<label for="username">Email</label>
+                            {{ form_widget(form.users.email) }}
+						</div>
+						<div class="col-md-12">
+							<label for="username">Téléphone</label>
+                            {{ form_widget(form.users.tel) }}
+						</div>
+						<div class="col-md-12">
+							<label for="username">Date de naissance</label>
+                            {{ form_widget(form.users.datebirth) }}
+						</div>
+						<div class="col-md-12">
+							<label for="username">Adresse</label>
+                            {{ form_widget(form.users.address) }}
+						</div>
 					</div>
-					<div class="col-md-12">
-						<label for="username">Email</label>
-                        {{ form_widget(form.users.email) }}
+					<div class="col-md-6">
+						<div class="col-md-12">
+							<label for="username">Code Postal</label>
+                            {{ form_widget(form.users.codepostal) }}
+						</div>
+						<div class="col-md-12">
+							<label for="username">Ville</label>
+                            {{ form_widget(form.users.city) }}
+						</div>
+						<div class="col-md-12">
+                            {{ form_widget(form.plainPassword) }}
+						</div>
+						<div class="col-md-12">
+                            {{ form_widget(form.Inscription) }}
+						</div>
 					</div>
-					<div class="col-md-12">
-						<label for="username">Téléphone</label>
-                        {{ form_widget(form.users.tel) }}
-					</div>
-					<div class="col-md-12">
-						<label for="username">Date de naissance</label>
-                        {{ form_widget(form.users.datebirth) }}
-					</div>
-					<div class="col-md-12">
-						<label for="username">Adresse</label>
-                        {{ form_widget(form.users.address) }}
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="col-md-12">
-						<label for="username">Code Postal</label>
-                        {{ form_widget(form.users.codepostal) }}
-					</div>
-					<div class="col-md-12">
-						<label for="username">Ville</label>
-                        {{ form_widget(form.users.city) }}
-					</div>
-					<div class="col-md-12">
-                        {{ form_widget(form.plainPassword) }}
-					</div>
-					<div class="col-md-12">
-                        {{ form_widget(form.Inscription) }}
-					</div>
-				</div>
 
 
+				</div>
+                {{ form_end(form) }}
 			</div>
-            {{ form_end(form) }}
 		</div>
 	</div>
 {% endblock %}
