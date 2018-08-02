@@ -28,7 +28,7 @@
                             </div>                                   
                             {% endif %}
                         <div style="position: relative;">
-                            <h5 class="card-title font-weight-bold text-warning" style="color: #AC964A; position: absolute">{{ product.name }}</h5><hr>
+                            <h5 class="card-title font-weight-bold text-warning" style="color: #AC964A; position: absolute">{{ product.name|length > 23? product.name|slice(0, 23) ~ '...' :product.name  }}</h5><hr>
                         </div>
                             <p class="card-text" style="color: white; font-size: 1.5rem">{{ product.price }} €</p>
                         </div>                     
