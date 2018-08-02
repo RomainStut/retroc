@@ -8,7 +8,7 @@
         <div class="row loadcontent">
             {% for product in products %}
                 <div class="col-12">
-                    <div style="height: 190px" class="card formStyle mb-3">
+                    <div style="height: 190px" class="card formStyle mb-3 text-warning">
                         <h5 class="card-header"> {{ product.name }} | {{ product.user.username }} </h5>
                         <div class="card-body">
                             <div class="row">
@@ -18,34 +18,40 @@
                                     {% endif %}
                                 </div>
                                 <div class="col-md-4">
-                                    <p style="text-overflow: ellipsis;"> {{ product.description | striptags | slice(0, 150) }} </p>
+                                    <p style="text-overflow: ellipsis;">Description : {{ product.description | striptags | slice(0, 150) }} </p>
                                 </div>
                                 <div class="col-md-4">
-                                    <p><strong>Qualité</strong> {{ product.quality.name }} </p>
-                                    <p><strong>Catégorie</strong> {{ product.categorie.name }} </p>
-                                    <p><strong>Type</strong> {{ product.type.name }} </p>
+                                    <p><strong>Qualité :</strong> {{ product.quality.name }} </p>
+                                    <p><strong>Catégorie :</strong> {{ product.categorie.name }} </p>
+                                    <p><strong>Type :</strong> {{ product.type.name }} </p>
                                 </div>
                                 <div class="col-md-2">
                                     <button id="validate" value="{{ product.id }}" class="btn btn-success">Valider</button>
-                                    <button class="btn btn-warning">Refuser</button>
+                                    <a href="{{ path('modif-product', {'id': product.id}) }}" class="btn btn-warning">Modifier</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             {% endfor %}
-            {% if products.haveToPaginate %}
-                <div class="navigation text-center">
-                    {{ pagerfanta(products, 'twitter_bootstrap4', {routeName: 'validation_paginated'}) }}
-                </div>
-            {% endif %}
+
+            <div class="row justify-content-center">
+                {% if products.haveToPaginate %}
+                    <div class="navigation text-center">
+                        {{ pagerfanta(products, 'twitter_bootstrap4', {routeName: 'validation_paginated'}) }}
+                    </div>
+                {% endif %}
+            </div>
+
         </div>
+
     </div>
 
 {% endblock %}
 {% block js %}
     <script>
         $(function(){
+            
             $('body').on('click', 'button#validate',function(e){
                 e.preventDefault();
                 var url = " {{path('validation-success' , {id : 0})}} ",
@@ -64,7 +70,12 @@
                         console.log(error.responseText);
                     }
                 })
-            })
+            })             
+            
         })
     </script>
+    
+    
+       
+    
 {% endblock %}

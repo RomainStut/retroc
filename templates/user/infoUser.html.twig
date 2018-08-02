@@ -3,7 +3,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/infouser.css') }}">
 {% endblock %}
 {% block title %}Profil utilisateur{% endblock %}
-{% block titlepage %} <h1 class="ml-3" style="text-align: center; margin-bottom: 10px;">Profil de {{ user.username }}</h1>{% endblock %}
+{% block titlepage %} <h1 class="ml-3 " style="text-align: center; margin-bottom: 10px;">Profil de {{ user.username }}</h1>{% endblock %}
 
 {% block content %}
 
@@ -11,12 +11,13 @@
         <div class="row">
             <div class="col-md-2 mb-3">
 
-                    <button class="btn navbarColor01 mt-1 text-warning " ><a class="text-warning" href="{{ path('updateUser',{id:user.id }) }}">Modifier Profil</a></button>
-                    <button class="btn navbarColor01 mt-1 text-warning load-annonce " id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Mes annonces</button>
-                    <button class="btn navbarColor01 mt-1 text-warning load-message " id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Mes messages</button>
-                    <button class="btn navbarColor01 mt-1 " ><a href="#myModal" class="trigger-btn text-warning" data-toggle="modal"> Supprimer le compte</a></button>
+                <button class="btn navbarColor01 mt-1 text-warning " ><a class="text-warning" href="{{ path('updateUser',{id:user.id }) }}">Modifier Profil</a></button>
+                <button class="btn navbarColor01 mt-1 text-warning load-annonce " id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Mes annonces</button>
+                <button class="btn navbarColor01 mt-1 text-warning load-message " id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Mes messages</button>
+                <button class="btn navbarColor01 mt-1 " ><a href="#myModal" class="trigger-btn text-warning" data-toggle="modal"> Supprimer le compte</a></button>
 
             </div>
+
             <div class="col-md-7 text-center offset-1 formStyle p-3">
                 <div class="row ">
                     <div class="col-md-12 text-center">
@@ -26,6 +27,7 @@
                         {% else %}
                             <img src="{{ asset('images/yoda.jpeg' ) }}" alt="  " style=" " type="button" data-toggle="modal" data-target="#modalImage" class="btn btn-dark">
                         {% endif %}
+
 
                     </div>
 

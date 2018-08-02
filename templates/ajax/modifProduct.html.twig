@@ -1,0 +1,19 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Modifier-annonce{% endblock %}
+
+{% block titlepage %}Modifier l'annonce de {{user.username}}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6  text-warning formStyle p-4" >
+
+                {{ form_start(form) }}
+
+                {{ form_end(form) }}
+                
+            </div>
+        </div>
+    </div>
+{% endblock %}
