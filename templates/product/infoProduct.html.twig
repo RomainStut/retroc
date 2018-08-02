@@ -2,7 +2,7 @@
 {% block css %}
     <link rel="stylesheet" type="text/css" href="{{ asset('css/ficheproduit.css') }}">
 {% endblock %}
-
+{% block titlepage %}
 {% block title %}fiche-produit{% endblock %}
 
 {% block content %}
@@ -26,17 +26,16 @@
                         <div class="row  bot-border">
                             <p class="col-12"><b class="text-warning">Qualité : </b>
                                 {% if product.quality.name == "mib" %}
-                                    <i class="fas fa-star"> {{ product.quality.name }}</i>
+                                    <img width="100" src="{{ asset('images/lb1.svg') }}">
                                 {% elseif product.quality.name == "occase" %}
-                                    <i class="fas fa-star-half-alt"> {{ product.quality.name }}</i>
+                                    <img width="100" src="{{ asset('images/lb2.svg') }}">
                                 {% else %}
-                                    <i class="far fa-angry"> {{ product.quality.name }}</i>
+                                    <img width="100" src="{{ asset('images/lb3.svg') }}">
                                 {% endif %}
                             </p>
                             <p class="col-12"><b class="text-warning">Vendeur: </b> {{ product.user.username }}</p>
                             <p class="col-12"><b class="text-warning">Description: </b></p>
                             <p class="col-12">{{product.description}}</p>
-
                         </div>
                         <div class="row">
                             <div id="contactUser" class="col-md-12">
@@ -67,17 +66,14 @@
         {% block js %}
             <script>
                 $(function(){
-
                     $('#contact').on('click', function(e){
                         event.preventDefault();
                         $('#contactUser').empty();
                         $('#contactUser').append('<form id="mesageForm" class="mt-3" method="post">'+'<input id="message" class="form-control" type="textarea">'+'<input hidden id="productid" value=" {{product.id}} ">'+'<button class="btn btn-light mt-4" id="send">Envoyer message</button>'+'</form>')
-
                     })
 
                     $('body').on('click', '#send', function(e){
                         e.preventDefault();
-
                         var data = "message=" + $('#message').val();
                         var url = " {{path('user-message' , {id : 0})}} ",
                             url = url.replace('0', $('#productid').val() )
@@ -89,19 +85,16 @@
                             data: data,
                             dataType: 'html',
                             success: function(data){
-
                                 if(data != null){
                                     $('#contactUser').children('#mesageForm').remove();
                                     $('.resultat').empty();
                                     $('.resultat').append('<p class="alert alert-success mt-3 text-dark" role="alert">' + data + '</p>');
                                 }
-
                             },
                             error: function(error){
                                 console.log(error.responseText);
                             }
                         })
-
                     })
 
                     $('.click-splitflap').splitFlap({
@@ -114,9 +107,7 @@
                             console.log('Done !');
                         }
                     })
-
                 })
-
             </script>
         {% endblock %}
 
