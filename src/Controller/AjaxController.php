@@ -127,7 +127,7 @@ class AjaxController extends Controller
     }
 
     /**
-     * @Route("/admin/search-by-title", name="ajax-search-by-title")
+     * @Route("/ajax/search-by-title", name="ajax-search-by-title")
      */
     public function searchByTitle(Request $request, Packages $asset)
     {
@@ -153,7 +153,7 @@ class AjaxController extends Controller
     }
 
     /**
-     * @Route("/admin/calcule-cote", name="ajax-calcule-cote")
+     * @Route("/ajax/calcule-cote", name="ajax-calcule-cote")
      */
     public function calculeCote(Request $request)
     {

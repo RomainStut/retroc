@@ -6,42 +6,48 @@
            
 {% block content %}
 
-<div class="container col-md-4 p-3 my-5 text-warning formStyle">
-    
-        <form method="post" action="{{ path('contact')}}"> 
-        <h1>Nous contacter</h1>
-            <div class="row">      
+    <div class="container col-md-4 p-3 my-5 text-warning formStyle">
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }} mt-4">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+        <form method="post" action="{{ path('contact')}}">
+            <h1>Nous contacter</h1>
+            <div class="row">
                 <div class="form-group col-md-12">
                     <h3>Nom :</h3>
                     <input name="nom" type="text" class="form-control" aria-describedby="nameHelp" placeholder="entrez votre nom" style="border:2px solid #999999; border-style: inset">
-                    
+
                 </div>
                 <div class="form-group col-md-12">
                     <h3>Prenom :</h3>
                     <input name="prenom" type="text" class="form-control" placeholder="entrez votre prenom" style="border:2px solid #999999; border-style: inset">
                 </div>
-                 <div class="form-group col-md-12">
+                <div class="form-group col-md-12">
                     <h3>Sujet :</h3>
                     <input name="sujet" type="text" class="form-control" placeholder="entrez votre sujet" style="border:2px solid #999999; border-style: inset">
                 </div>
                 <div class="form-group col-md-12">
-                        <h3>Email :</h3>
-                        <input name="email" type="email" class="form-control" placeholder="entrez votre email" style="border:2px solid #999999; border-style: inset">
-                        <small id="emailHelp" class="form-text text-muted">Entrez un email valide</small>
-                    </div> 
-                    <div class="form-group col-md-12">
-                            <h3>Entrez votre message :</h3>
-                            <textarea name="message" class="form-control" id="exampleFormControlTextarea1" rows="10" style="border:2px solid #999999; border-style: inset"></textarea>
-                          </div> 
-                <div class="form-group col-md-12 text-center">             
-                <button type="submit" class="btn text-warning navbarColor01">Envoyer</button>  
+                    <h3>Email :</h3>
+                    <input name="email" type="email" class="form-control" placeholder="entrez votre email" style="border:2px solid #999999; border-style: inset">
+                    <small id="emailHelp" class="form-text text-muted">Entrez un email valide</small>
                 </div>
-            </div>              
+                <div class="form-group col-md-12">
+                    <h3>Entrez votre message :</h3>
+                    <textarea name="message" class="form-control" id="exampleFormControlTextarea1" rows="10" style="border:2px solid #999999; border-style: inset"></textarea>
+                </div>
+                <div class="form-group col-md-12 text-center">
+                    <button type="submit" class="btn text-warning navbarColor01">Envoyer</button>
+                </div>
+            </div>
         </form>
     </div>
-</div>
+    </div>
 
-        {% endblock %}
+{% endblock %}
         {% block javascripts %}{% endblock %}
 
 
