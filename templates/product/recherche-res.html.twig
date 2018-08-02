@@ -9,11 +9,17 @@
 
         <div class="row">
 
+            {% if not products.nbResults %}
+                <div class="alert alert-warning" role="alert">
+                    <strong>Aucun résultat correspondant.</strong>
+                </div>
+            {% endif %}
+
             {% for product in products %}
 
                 <div class="card col-md-3 mb-4 listStyle antipadding" style="position: relative; height: 400px;">
                     <div class="card-body">
-                        {% if product.image%}
+                        {% if product.image %}
                             <div style="height: 243px;">
                                 <img class="card-img-top" src="{{ asset('uploads/images/' ~ product.image) }}" alt="Card image cap">
                             </div>

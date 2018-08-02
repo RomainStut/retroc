@@ -45,6 +45,9 @@ class HomeController extends Controller
      */
     public function searchBarQuery($search, int $page)
     {
+        if(empty($search)){
+            return $this->redirectToRoute('/');
+        }
 
         $repository = $this->getDoctrine()->getRepository(Products::class);
         $products = $repository->findAllWhereTitlePagination($search, $page);

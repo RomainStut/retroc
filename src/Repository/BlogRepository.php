@@ -26,7 +26,7 @@ class BlogRepository extends ServiceEntityRepository
         $querybuilder = $this->createQueryBuilder('a')
 
             ->orderBy('a.datepost', 'DESC')
-            ->setMaxResults(3)
+            ->setMaxResults(4)
             ->getQuery();
 
         return $querybuilder->execute();
