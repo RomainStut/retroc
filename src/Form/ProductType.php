@@ -31,13 +31,13 @@ class ProductType extends AbstractType
         $builder            
             ->add('name', TextType::class, array('label'=>'Nom du produit'))
 
-            ->add('quality', EntityType::class, array('class'=>Quality::class, 'choice_label'=>'name'))
+            ->add('quality', EntityType::class, array('class'=>Quality::class, 'choice_label'=>'name', 'required' => true))
 
             ->add('price', IntegerType::class, array('label'=>'Prix du produit'))
             
-            ->add('type', EntityType::class, array('class'=>Type::class, 'choice_label'=>'name'))
+            ->add('type', EntityType::class, array('class'=>Type::class, 'choice_label'=>'name', 'required' => true))
 
-            ->add('categorie', EntityType::class, array('class'=>Categories::class, 'choice_label'=>'name'))
+            ->add('categorie', EntityType::class, array('class'=>Categories::class, 'choice_label'=>'name', 'required' => true))
 
             ->add('releasedate', DateType::class, array(
                 'label'=>'Date de sortie',
@@ -48,7 +48,7 @@ class ProductType extends AbstractType
 
             ->add('image', FileType::class, array('label'=>'Ajouter une image', 'required'=> false))
 
-            ->add('Publier mon annonce', SubmitType::class, array('label'=>'Publier mon annonce', 'attr' => ['class' => 'navbarColor01 text-warning']));
+            ->add('publish', SubmitType::class, array('label'=>'Publier mon annonce', 'attr' => ['class' => 'navbarColor01 text-warning']));
 
             
 
