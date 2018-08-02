@@ -95,7 +95,7 @@ class ProductsRepository extends ServiceEntityRepository
     private function createPaginator($query, $page): Pagerfanta
     {
         $paginator = new Pagerfanta(new DoctrineORMAdapter($query));
-        $paginator->setMaxPerPage(4);
+        $paginator->setMaxPerPage(16);
         $paginator->setCurrentPage($page);
 
         return $paginator;
