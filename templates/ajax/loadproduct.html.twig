@@ -12,6 +12,11 @@
                         <div class="row">
                             <h3 class="col-md-12 text-warning">{{product.name}}</h3>
                             <h3 class="card-text col-md-12 " style="color: white">{{product.price}} € </h3>
+                            {% if product.isvalidate == true %}
+                                <h3 class="card-text col-md-12 " style="color: lightgreen">Validé</h3>
+                            {% else %}
+                                <h3 class="card-text col-md-12 " style="color: white">En cours de validation</h3>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="card-body" >
