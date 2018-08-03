@@ -58,7 +58,8 @@ class ProductsRepository extends ServiceEntityRepository
              ->innerJoin('p.type', 't')
              ->addSelect('t')
              ->andWhere('p.user = :id')
-             ->setparameter('id', $id)            
+             ->setparameter('id', $id)
+             ->orderBy('p.datepost', 'DESC')
              ->getQuery();
  
          return $querybuilder->execute();
@@ -114,6 +115,7 @@ class ProductsRepository extends ServiceEntityRepository
                         ->innerJoin('p.type', 't')
                         ->addSelect('t')
                         ->andwhere('p.isvalidate = true')
+                        ->orderBy('p.datepost', 'DESC')
                         ->getQuery();
 
         return $this->createPaginator($querybuilder, $page);

@@ -27,11 +27,11 @@
                                 <div class="row  bot-border">
                                     <p class="col-12"><b class="text-warning">Qualité : </b>
                                         {% if product.quality.name == "mib" %}
-                                            <i class="fas fa-star" style="color: white"> {{ product.quality.name }}</i>
+                                            <img width="100" src="{{ asset('images/lb1.svg') }}">
                                         {% elseif product.quality.name == "occase" %}
-                                            <i class="fas fa-star-half-alt" style="color: white"> {{ product.quality.name }}</i>
+                                            <img width="100" src="{{ asset('images/lb2.svg') }}">
                                         {% else %}
-                                            <i class="far fa-angry" style="color: white"> {{ product.quality.name }}</i>
+                                            <img width="100" src="{{ asset('images/lb3.svg') }}">
                                         {% endif %}
                                     </p>
                                     <p class="col-12" style="color: white"><b class="text-warning">Vendeur: </b> {{ product.user.username }}</p>
