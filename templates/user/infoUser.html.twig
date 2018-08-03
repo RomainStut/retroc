@@ -23,9 +23,9 @@
                     <div class="col-md-12 text-center">
 
                         {% if user.profilepicture %}
-                            <img src="{{ 'uploads/images/' ~ user.profilepicture }}" type="button" data-toggle="modal" data-target="#modalImage" class="btn btn-dark" style="height: 150px; width: 150px" alt=""><br>
+                            <img src="{{ 'uploads/images/' ~ user.profilepicture }}" style="height: 150px; width: 150px" alt="profil picture"><br>
                         {% else %}
-                            <img src="{{ asset('images/yoda.jpeg' ) }}" alt="  " style=" " type="button" data-toggle="modal" data-target="#modalImage" class="btn btn-dark">
+                            <img src="{{ asset('images/yoda.jpeg' ) }}" alt="profil-yoda" >
                         {% endif %}
 
 
