@@ -40,6 +40,8 @@ class ProductController extends Controller
 
     public function addProduct(Request $request, FileUploader $uploader)
     {
+        $this->denyAccessunlessgranted('IS_AUTHENTICATED_FULLY');
+
         $product = new Products();
 
         $form = $this->createForm(ProductType::class, $product);
