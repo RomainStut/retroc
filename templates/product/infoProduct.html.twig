@@ -41,7 +41,9 @@
                         </div>
                         <div class="row">
                             <div id="contactUser" class="col-md-12">
-                                <button class="btn btn-light font-weight-bold mt-3" type="submit" id="contact">Contacter le vendeur</button>
+                                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                    <button class="btn btn-light font-weight-bold mt-3" type="submit" id="contact">Contacter le vendeur</button>
+                                {% endif %}
                             </div>
                             <div class="col-md-12 resultat"></div>
                         </div>
