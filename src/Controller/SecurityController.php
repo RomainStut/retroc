@@ -25,22 +25,7 @@ use PHPMailer\PHPMailer\SMTP;
 
 class SecurityController extends Controller
 {
-    /**
-     * @Route("/login", name="login")
-     */
-    public function login(Request $request, AuthenticationUtils $authenticationUtils)
-    {
 
-    	$error = $authenticationUtils->getLastAuthenticationError();
-
-    	$lastUsername = $authenticationUtils->getLastUsername();
-
-        return $this->render('security/login.html.twig', [
-            'last_username' => $lastUsername,
-            'error' => $error
-        ]);
-
-    }
 
     /**
     *@Route("/register/", name="register")

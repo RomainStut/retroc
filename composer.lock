@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c1c2475b661962ecf490bae121de8c54",
+    "content-hash": "91c8b170c5478618238efae82c1edecc",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -4862,6 +4862,50 @@
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
             "time": "2018-05-30T07:26:09+00:00"
+        },
+        {
+            "name": "tiloweb/pagination-bundle",
+            "version": "1.4.2",
+            "target-dir": "Tiloweb/PaginationBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Tiloweb/SymfonyPaginationBundle.git",
+                "reference": "da5e0c89bc12e3a8fa023f451b56b2f9774efb90"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Tiloweb/SymfonyPaginationBundle/zipball/da5e0c89bc12e3a8fa023f451b56b2f9774efb90",
+                "reference": "da5e0c89bc12e3a8fa023f451b56b2f9774efb90",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/framework-bundle": ">=2.3",
+                "twig/twig": "~1.12|~2"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Tiloweb\\PaginationBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Thibault Henry",
+                    "homepage": "http://www.tiloweb.com"
+                }
+            ],
+            "description": "/",
+            "keywords": [
+                "Symfony2",
+                "bundle",
+                "pager",
+                "pagination",
+                "paginator",
+                "tiloweb"
+            ],
+            "time": "2017-12-09T13:33:25+00:00"
         },
         {
             "name": "twig/twig",

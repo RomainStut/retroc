@@ -8,6 +8,8 @@ use Symfony\Component\Asset\Packages;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+
 
 class AjaxController extends Controller
 {
@@ -253,6 +255,19 @@ class AjaxController extends Controller
 
         return $this->render('ajax/reply-message.html.twig', array('success' => $message));
 
+    }
+
+    /**
+     * @Route("/login", name="login")
+     */
+    public function login(Request $request, AuthenticationUtils $authenticationUtils)
+    {
+        $error = $authenticationUtils->getLastAuthenticationError();
+        $lastUsername = $authenticationUtils->getLastUsername();
+        return $this->render('layout.html.twig', [
+            'last_username' => $lastUsername,
+            'error' => $error
+        ]);
     }
 }
 

@@ -23,6 +23,7 @@
         "symfony/web-link": "^4.1",
         "symfony/webpack-encore-pack": "*",
         "symfony/yaml": "^4.1",
+        "tiloweb/pagination-bundle": "^1.4",
         "white-october/pagerfanta-bundle": "^1.2"
     },
     "require-dev": {

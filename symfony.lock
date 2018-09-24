@@ -392,6 +392,9 @@
     "symfony/yaml": {
         "version": "v4.1.1"
     },
+    "tiloweb/pagination-bundle": {
+        "version": "1.4.2"
+    },
     "twig/twig": {
         "version": "v2.5.0"
     },
